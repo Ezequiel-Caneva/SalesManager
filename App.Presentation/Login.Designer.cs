@@ -31,8 +31,8 @@
             label1 = new Label();
             label2 = new Label();
             iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            txtMail = new TextBox();
-            txtClave = new TextBox();
+            txtUsuario = new TextBox();
+            txtContrasenia = new TextBox();
             label3 = new Label();
             btnIngresar = new FontAwesome.Sharp.IconButton();
             btnCancelar = new FontAwesome.Sharp.IconButton();
@@ -76,20 +76,20 @@
             iconPictureBox1.TabIndex = 2;
             iconPictureBox1.TabStop = false;
             // 
-            // txtMail
+            // txtUsuario
             // 
-            txtMail.Location = new Point(289, 107);
-            txtMail.Name = "txtMail";
-            txtMail.Size = new Size(272, 23);
-            txtMail.TabIndex = 3;
+            txtUsuario.Location = new Point(289, 107);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(272, 23);
+            txtUsuario.TabIndex = 3;
             // 
-            // txtClave
+            // txtContrasenia
             // 
-            txtClave.Location = new Point(289, 161);
-            txtClave.Name = "txtClave";
-            txtClave.PasswordChar = '*';
-            txtClave.Size = new Size(272, 23);
-            txtClave.TabIndex = 4;
+            txtContrasenia.Location = new Point(289, 161);
+            txtContrasenia.Name = "txtContrasenia";
+            txtContrasenia.PasswordChar = '*';
+            txtContrasenia.Size = new Size(272, 23);
+            txtContrasenia.TabIndex = 4;
             // 
             // label3
             // 
@@ -161,8 +161,8 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnIngresar);
             Controls.Add(label3);
-            Controls.Add(txtClave);
-            Controls.Add(txtMail);
+            Controls.Add(txtContrasenia);
+            Controls.Add(txtUsuario);
             Controls.Add(iconPictureBox1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -181,8 +181,8 @@
         private Label label1;
         private Label label2;
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
-        private TextBox txtMail;
-        private TextBox txtClave;
+        private TextBox txtUsuario;
+        private TextBox txtContrasenia;
         private Label label3;
         private FontAwesome.Sharp.IconButton btnIngresar;
         private FontAwesome.Sharp.IconButton btnCancelar;

@@ -14,7 +14,9 @@ namespace App.Entities
         [Key]
         public int dni { get; set; }
         public string usuario { get; set; }
-        public string contraseña { get; set; }
+        public string contraseniahash { get; set; }
+        public string contraseniasalt {  get; set; }
+        public string email { get; set; }
         public int rol { get; set; }
 
     }

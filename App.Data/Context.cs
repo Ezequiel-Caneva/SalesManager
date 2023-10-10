@@ -12,17 +12,12 @@ namespace App.Data
     public class Context : DbContext
     {
 
-        public DbSet<Venta> Ventas { get; set; }
-
-        //public MailsContext(DbContextOptions<MailContext> options) : base(options)
-        //{
-        //}
-
+        public DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configura la cadena de conexión a la base de datos
-            string connectionString = "Persist Security Info=True;Initial Catalog=PruebaMS;Data Source=.;Integrated Security=True;TrustServerCertificate=True;";
+            string connectionString = "Persist Security Info=True;Initial Catalog=MOTO_PARTES_EXPRESS;Data Source=.;Integrated Security=True;TrustServerCertificate=True;";
             optionsBuilder.UseSqlServer(connectionString);
         }
     }
