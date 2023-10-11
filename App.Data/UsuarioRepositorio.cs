@@ -13,10 +13,11 @@ namespace App.Data
     public class UsuarioRepositorio
     {
         private readonly Context _context;
-
+        public Usuario _usuarioLogeado {  get; set; }
         public UsuarioRepositorio(Context context)
         {
             _context = context;
+            _usuarioLogeado = new Usuario();
         }
 
         // Inicio de registro
@@ -69,29 +70,24 @@ namespace App.Data
         {
             return _context.Usuario.FirstOrDefault(u => u.usuario.ToLower().Equals(usuario.ToLower()));
         }
-        public bool Logeo(LoginRequest loginRequest)  // chequear la base de datos si hay login 
+        public Usuario LogeoUsuario(LoginRequest loginRequest)
         {
             var passwordHasher = new PasswordHasher<Usuario>();
             var usuario = ObtenerUsuario(loginRequest.usuario);
             if (usuario != null)
             {
-                byte[] salt = HexToByteArray(usuario.contraseniasalt); //obtener el salto del usuario de a logear
+                byte[] salt = HexToByteArray(usuario.contraseniasalt); // Obtener el salto del usuario a logear
                 var passwordHash = GeneratePasswordHash(loginRequest.contrasenia, salt);
                 string passwordHashString = BitConverter.ToString(passwordHash).Replace("-", "");
 
                 var result = passwordHasher.VerifyHashedPassword(usuario, usuario.contraseniahash, loginRequest.contrasenia);
                 if (passwordHashString == usuario.contraseniahash)
                 {
-                    return true; // Contraseña válida
-                }
-                {
-                    return false;
+                    _usuarioLogeado = usuario;
+                    return usuario; // Devuelve el objeto de usuario completo
                 }
             }
-            else
-            {
-                return false;
-            }
+            return null; // Devuelve null si el inicio de sesión falla
         }
         public byte[] HexToByteArray(string hex)
         {

@@ -40,10 +40,9 @@
             menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             menuStrip2 = new MenuStrip();
             contenedor = new Panel();
-            dgvVentas = new DataGridView();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
             contenedor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -190,7 +189,7 @@
             // contenedor
             // 
             contenedor.AutoSize = true;
-            contenedor.Controls.Add(dgvVentas);
+            contenedor.Controls.Add(label2);
             contenedor.Dock = DockStyle.Fill;
             contenedor.Location = new Point(0, 131);
             contenedor.Name = "contenedor";
@@ -198,14 +197,14 @@
             contenedor.TabIndex = 3;
             contenedor.Paint += contenedor_Paint;
             // 
-            // dgvVentas
+            // label2
             // 
-            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVentas.Location = new Point(110, 53);
-            dgvVentas.Name = "dgvVentas";
-            dgvVentas.RowTemplate.Height = 25;
-            dgvVentas.Size = new Size(366, 283);
-            dgvVentas.TabIndex = 0;
+            label2.AutoSize = true;
+            label2.Location = new Point(118, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 0;
+            label2.Text = "label2";
             // 
             // Inicio
             // 
@@ -223,7 +222,7 @@
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             contenedor.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
+            contenedor.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -242,7 +241,6 @@
         private FontAwesome.Sharp.IconMenuItem menuReportes;
         private FontAwesome.Sharp.IconMenuItem menuAcercade;
         private Panel contenedor;
-        private DataGridView dgvVentas;
         private DataGridViewTextBoxColumn idVentaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn precioDataGridViewTextBoxColumn;
@@ -250,5 +248,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private Label label2;
     }
 }

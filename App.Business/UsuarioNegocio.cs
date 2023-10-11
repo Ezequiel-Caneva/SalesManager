@@ -18,17 +18,15 @@ namespace App.Business
         {
             _usuarioRepositorio = usuarioRepositorio;
         }
-
         public void CrearUsuario(int dni, string username, string password, string email, int rol)
         {
-            // Llama al repositorio para almacenar el usuario en la base de datos
             _usuarioRepositorio.CrearUsuario(dni,username,password,email, rol);
         }
-        public bool Logeo(LoginRequest request)
+        public Usuario LogeoUsuario(LoginRequest request)
         {
-            return _usuarioRepositorio.Logeo(request);
+            return _usuarioRepositorio.LogeoUsuario(request);
         }
-
+   
 
 
     }

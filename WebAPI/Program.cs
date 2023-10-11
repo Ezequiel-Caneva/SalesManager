@@ -34,7 +34,6 @@ builder.Services.AddDbContext<Context>();
 
 //Negocio
 
-
 builder.Services.AddTransient<UsuarioNegocio>();
 
 //Repositorio
@@ -51,8 +50,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-
 
 app.UseAuthorization();
 

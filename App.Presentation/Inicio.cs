@@ -16,16 +16,20 @@ namespace App.Presentation
         private int _currentItemsPerPage;
         private int _currentPage;
         private string _textToSearch;
-        public Inicio()
-        {
+        private Usuario _usuarioLogeado;
+
+        public Inicio(Usuario usuarioLogeado)
+        {   
+            _usuarioLogeado = new Usuario();
             InitializeComponent();
             _client = new HttpClient();
             _client.BaseAddress = _baseAddress;
             _currentPage = 1;
             _currentItemsPerPage = 10;
             _textToSearch = "venta";
-            contenedor.Visible = false;
-         
+            _usuarioLogeado = usuarioLogeado;
+
+
         }
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -37,17 +41,13 @@ namespace App.Presentation
         }
 
 
-
         private void menuVentas_Click(object sender, EventArgs e)
         {
-            
-            contenedor.Visible = true;
-            var resultado = Mostrar(_currentPage, _currentItemsPerPage, _textToSearch);
-            dgvVentas.DataSource = resultado.Items;
+
 
         }
 
-      
+
 
         private void contenedor_Paint(object sender, PaintEventArgs e)
         {
@@ -56,27 +56,9 @@ namespace App.Presentation
 
         private void menuPedidos_Click(object sender, EventArgs e)
         {
-           
+            label2.Text = _usuarioLogeado.usuario;
         }
 
-       
-        private Response<Venta> Mostrar(int _currentPage, int _currentItemsPerPage,string _textToSearch)
-        {
-            Search search = new Search()
-            {
-                PageIndex = _currentPage,
-                PageSize = _currentItemsPerPage,
-                TextToSearch = _textToSearch,
-            };
 
-            string json = JsonConvert.SerializeObject(search);
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/Ventas/Mostrar", content).Result;
-            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
-            var resultado = JsonConvert.DeserializeObject<Response<Venta>>(jsonToDeserialize);
-            return resultado;
-        }
-        
     }
 }

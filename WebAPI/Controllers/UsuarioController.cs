@@ -17,19 +17,20 @@ namespace WebAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private UsuarioNegocio _usuarionegocio;
-        private IConfiguration _configuration;
+       
 
-        public UsuarioController(UsuarioNegocio usuarionegocio, IConfiguration configuration)
+        public UsuarioController(UsuarioNegocio usuarionegocio)
         {
             _usuarionegocio = usuarionegocio;
-            _configuration = configuration;
+   
         }
 
         [HttpPost("Login")]
-        public bool Logeo(LoginRequest request)
+        public Usuario LogeoUsuario(LoginRequest request)
         {
-            return _usuarionegocio.Logeo(request);
+            return _usuarionegocio.LogeoUsuario(request);
         }
+      
     }
 }
 
