@@ -7,6 +7,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Data;
 using System.Reflection;
 using FontAwesome.Sharp;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace App.Presentation
 {
@@ -18,24 +19,57 @@ namespace App.Presentation
         private int _currentPage;
         private string _textToSearch;
         private Usuario _usuarioLogeado;
-
+        private static int dni;
+         
         private static IconMenuItem _menuActivo = null;
         private static Form _formActivo = null;
+        private List<Permiso> permisosUsuario;
 
 
         public Inicio(Usuario usuarioLogeado)
         {
+            permisosUsuario = new List<Permiso>();
             _usuarioLogeado = new Usuario();
             InitializeComponent();
             _client = new HttpClient();
             _client.BaseAddress = _baseAddress;
             _usuarioLogeado = usuarioLogeado;
+          
         }
         private void Inicio_Load(object sender, EventArgs e)
         {
+            permisosUsuario = ObtenerPermisos(_usuarioLogeado.usuario);
+            var nombresMenuPermitidos = permisosUsuario.Select(p => p.nombremenu.ToLower()).ToList();
+
+            foreach (IconMenuItem iconmenu in menuStrip1.Items)
+            {
+                if (!string.IsNullOrEmpty(iconmenu.Name))
+                {
+                    bool encontrado = nombresMenuPermitidos.Contains(iconmenu.Name.ToLower());
+                    iconmenu.Visible = encontrado;
+                }
+            }
+           
+
+
+
+
+
+
             Text = $"Usuario : {_usuarioLogeado.usuario}";
         }
+        private void contenedor_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
         private void menuVentasMostrador_Click(object sender, EventArgs e)
         {
             AbrirFormulario((IconMenuItem)sender, new FormVentasMostrador());
@@ -92,18 +126,16 @@ namespace App.Presentation
             contenedor.Controls.Add(formulario);
             formulario.Show();
         }
-
-        private void contenedor_Paint(object sender, PaintEventArgs e)
+        public List<Permiso> ObtenerPermisos(string nombre)
         {
-
+            var numerodni = nombre;
+            string data = JsonConvert.SerializeObject(numerodni);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Permiso/Obtener", content).Result;
+            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+            var usuarioPermisos = JsonConvert.DeserializeObject<Response<Permiso>>(jsonToDeserialize);
+            return usuarioPermisos.Items;
         }
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+      
     }
 }

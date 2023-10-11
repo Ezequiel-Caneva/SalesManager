@@ -35,10 +35,12 @@ builder.Services.AddDbContext<Context>();
 //Negocio
 
 builder.Services.AddTransient<UsuarioNegocio>();
+builder.Services.AddTransient<PermisoNegocio>();
 
 //Repositorio
 
 builder.Services.AddTransient<UsuarioRepositorio>();
+builder.Services.AddTransient<PermisoRepositorio>();
 
 var app = builder.Build();
 

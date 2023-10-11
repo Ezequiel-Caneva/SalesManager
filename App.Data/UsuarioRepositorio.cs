@@ -13,17 +13,15 @@ namespace App.Data
     public class UsuarioRepositorio
     {
         private readonly Context _context;
-        public Usuario _usuarioLogeado {  get; set; }
+       
         public UsuarioRepositorio(Context context)
         {
-            _context = context;
-            _usuarioLogeado = new Usuario();
+            _context = context;      
         }
 
         // Inicio de registro
         public void CrearUsuario(int dni, string username, string password, string email, int rol)
         {
-            
             // Genera un salt único para el usuario
             byte[] salt = GenerateSalt();
 
@@ -83,7 +81,6 @@ namespace App.Data
                 var result = passwordHasher.VerifyHashedPassword(usuario, usuario.contraseniahash, loginRequest.contrasenia);
                 if (passwordHashString == usuario.contraseniahash)
                 {
-                    _usuarioLogeado = usuario;
                     return usuario; // Devuelve el objeto de usuario completo
                 }
             }

@@ -18,7 +18,6 @@ namespace WebAPI.Controllers
     {
         private UsuarioNegocio _usuarionegocio;
        
-
         public UsuarioController(UsuarioNegocio usuarionegocio)
         {
             _usuarionegocio = usuarionegocio;
