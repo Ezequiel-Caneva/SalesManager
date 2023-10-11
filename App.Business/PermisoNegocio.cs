@@ -16,9 +16,9 @@ namespace App.Business
         {
             _permisoRepositorio = permisoRepositorio;
         }
-        public Response<Permiso> ObtenerPermisos(string nombre)
+        public Response<Permiso> ObtenerPermisos(Search search)
         {
-            return _permisoRepositorio.ObtenerPermisos(nombre);
+            return _permisoRepositorio.ObtenerPermisos(search);
         }
     }
 }

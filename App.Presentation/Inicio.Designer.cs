@@ -41,7 +41,9 @@
             menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             menuStrip2 = new MenuStrip();
             contenedor = new Panel();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
+            contenedor.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -208,12 +210,22 @@
             // contenedor
             // 
             contenedor.AutoSize = true;
+            contenedor.Controls.Add(label2);
             contenedor.Dock = DockStyle.Fill;
             contenedor.Location = new Point(0, 131);
             contenedor.Name = "contenedor";
             contenedor.Size = new Size(1271, 608);
             contenedor.TabIndex = 3;
             contenedor.Paint += contenedor_Paint;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(101, 52);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 0;
+            label2.Text = "label2";
             // 
             // Inicio
             // 
@@ -231,6 +243,8 @@
             Load += Inicio_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            contenedor.ResumeLayout(false);
+            contenedor.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -257,5 +271,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private FontAwesome.Sharp.IconMenuItem menuStock;
+        private Label label2;
     }
 }

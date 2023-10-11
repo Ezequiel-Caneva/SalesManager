@@ -15,10 +15,10 @@ namespace App.Data
         {
             _context = context;
         }
-        public Response<Permiso> ObtenerPermisos(string nombre)
+        public Response<Permiso> ObtenerPermisos(Search search)
         {
             
-            var usuario = _context.Usuario.FirstOrDefault(u => u.usuario == nombre);
+            var usuario = _context.Usuario.FirstOrDefault(u => u.usuario == search.TextToSearch);
 
             var rol = _context.Rol.FirstOrDefault(r => r.rolid == usuario.rol);
 

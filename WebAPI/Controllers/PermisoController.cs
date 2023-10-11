@@ -6,7 +6,7 @@ using App.Entities;
 
 namespace WebAPI.Controllers
 {
-    [Route("api/Permiso")]
+    [Route("api/permiso")]
     [ApiController]
     public class PermisoController : ControllerBase
     {
@@ -16,10 +16,10 @@ namespace WebAPI.Controllers
         {
             _permisoNegocio = permisoNegocio;
         }
-        [HttpPost("Obtener")]
-        public Response<Permiso> ObtenerPermisos(string nombre)
+        [HttpPost("obtener")]
+        public Response<Permiso> ObtenerPermisos(Search search)
         {
-            return _permisoNegocio.ObtenerPermisos(nombre);
+            return _permisoNegocio.ObtenerPermisos(search);
         }
     }
 }

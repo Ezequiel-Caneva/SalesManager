@@ -20,7 +20,7 @@ namespace App.Presentation
         private string _textToSearch;
         private Usuario _usuarioLogeado;
         private static int dni;
-         
+
         private static IconMenuItem _menuActivo = null;
         private static Form _formActivo = null;
         private List<Permiso> permisosUsuario;
@@ -28,17 +28,18 @@ namespace App.Presentation
 
         public Inicio(Usuario usuarioLogeado)
         {
-            permisosUsuario = new List<Permiso>();
             _usuarioLogeado = new Usuario();
             InitializeComponent();
             _client = new HttpClient();
             _client.BaseAddress = _baseAddress;
             _usuarioLogeado = usuarioLogeado;
-          
+
         }
         private void Inicio_Load(object sender, EventArgs e)
         {
+            permisosUsuario = new List<Permiso>();  
             permisosUsuario = ObtenerPermisos(_usuarioLogeado.usuario);
+            label2.Text = permisosUsuario.Count.ToString();
             var nombresMenuPermitidos = permisosUsuario.Select(p => p.nombremenu.ToLower()).ToList();
 
             foreach (IconMenuItem iconmenu in menuStrip1.Items)
@@ -49,12 +50,6 @@ namespace App.Presentation
                     iconmenu.Visible = encontrado;
                 }
             }
-           
-
-
-
-
-
 
             Text = $"Usuario : {_usuarioLogeado.usuario}";
         }
@@ -128,14 +123,37 @@ namespace App.Presentation
         }
         public List<Permiso> ObtenerPermisos(string nombre)
         {
-            var numerodni = nombre;
-            string data = JsonConvert.SerializeObject(numerodni);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Permiso/Obtener", content).Result;
-            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
-            var usuarioPermisos = JsonConvert.DeserializeObject<Response<Permiso>>(jsonToDeserialize);
-            return usuarioPermisos.Items;
+
+
+
+
+            Search e = new Search()
+            {
+                TextToSearch = nombre,
+            };
+            string json = JsonConvert.SerializeObject(e);
+
+            // Crear el contenido de la solicitud
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            // Realizar la solicitud POST
+            HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/permiso/obtener", content).Result;
+
+            // Verificar si la respuesta es exitosa
+            if (response.IsSuccessStatusCode)
+            {
+                // Leer y deserializar la respuesta
+                var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+                var usuarioPermisos = JsonConvert.DeserializeObject<Response<Permiso>>(jsonToDeserialize);
+                return usuarioPermisos.Items;
+            }
+            else
+            {
+                // Manejar el error de la respuesta (código de estado 400)
+                // Puedes registrar el error o manejarlo de la manera que necesites.
+                throw new Exception("Error en la solicitud: " + response.ReasonPhrase);
+            }
         }
-      
+
     }
 }

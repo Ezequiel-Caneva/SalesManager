@@ -13,7 +13,7 @@ namespace App.Business
     {
         private readonly UsuarioRepositorio _usuarioRepositorio;
 
-        public UsuarioNegocio() { }
+        
         public UsuarioNegocio(UsuarioRepositorio usuarioRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
