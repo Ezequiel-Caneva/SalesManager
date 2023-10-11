@@ -30,19 +30,18 @@
         {
             label1 = new Label();
             menuStrip1 = new MenuStrip();
+            menuVentasMostrador = new FontAwesome.Sharp.IconMenuItem();
             menuPedidos = new FontAwesome.Sharp.IconMenuItem();
             menuVentas = new FontAwesome.Sharp.IconMenuItem();
             menuCompras = new FontAwesome.Sharp.IconMenuItem();
             menuClientes = new FontAwesome.Sharp.IconMenuItem();
             menuProveedores = new FontAwesome.Sharp.IconMenuItem();
-            menuReportes = new FontAwesome.Sharp.IconMenuItem();
-            menuAcercade = new FontAwesome.Sharp.IconMenuItem();
+            menuStock = new FontAwesome.Sharp.IconMenuItem();
+            menuInformes = new FontAwesome.Sharp.IconMenuItem();
             menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             menuStrip2 = new MenuStrip();
             contenedor = new Panel();
-            label2 = new Label();
             menuStrip1.SuspendLayout();
-            contenedor.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -60,13 +59,27 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ButtonHighlight;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuPedidos, menuVentas, menuCompras, menuClientes, menuProveedores, menuReportes, menuAcercade, menuUsuarios });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuCompras, menuClientes, menuProveedores, menuStock, menuInformes, menuUsuarios });
             menuStrip1.Location = new Point(0, 58);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1271, 73);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
+            // 
+            // menuVentasMostrador
+            // 
+            menuVentasMostrador.AutoSize = false;
+            menuVentasMostrador.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            menuVentasMostrador.IconColor = Color.Black;
+            menuVentasMostrador.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuVentasMostrador.IconSize = 50;
+            menuVentasMostrador.ImageScaling = ToolStripItemImageScaling.None;
+            menuVentasMostrador.Name = "menuVentasMostrador";
+            menuVentasMostrador.Size = new Size(122, 69);
+            menuVentasMostrador.Text = "Venta en Mostrador";
+            menuVentasMostrador.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuVentasMostrador.Click += menuVentasMostrador_Click;
             // 
             // menuPedidos
             // 
@@ -108,6 +121,7 @@
             menuCompras.Size = new Size(122, 69);
             menuCompras.Text = "Compras";
             menuCompras.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuCompras.Click += menuCompras_Click;
             // 
             // menuClientes
             // 
@@ -121,6 +135,7 @@
             menuClientes.Size = new Size(122, 69);
             menuClientes.Text = "Clientes";
             menuClientes.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuClientes.Click += menuClientes_Click;
             // 
             // menuProveedores
             // 
@@ -134,32 +149,35 @@
             menuProveedores.Size = new Size(122, 69);
             menuProveedores.Text = "Proveedores";
             menuProveedores.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuProveedores.Click += menuProveedores_Click;
             // 
-            // menuReportes
+            // menuStock
             // 
-            menuReportes.AutoSize = false;
-            menuReportes.IconChar = FontAwesome.Sharp.IconChar.BarChart;
-            menuReportes.IconColor = Color.Black;
-            menuReportes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            menuReportes.IconSize = 50;
-            menuReportes.ImageScaling = ToolStripItemImageScaling.None;
-            menuReportes.Name = "menuReportes";
-            menuReportes.Size = new Size(122, 69);
-            menuReportes.Text = "Informes";
-            menuReportes.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuStock.AutoSize = false;
+            menuStock.IconChar = FontAwesome.Sharp.IconChar.Repeat;
+            menuStock.IconColor = Color.Black;
+            menuStock.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuStock.IconSize = 50;
+            menuStock.ImageScaling = ToolStripItemImageScaling.None;
+            menuStock.Name = "menuStock";
+            menuStock.Size = new Size(122, 69);
+            menuStock.Text = "Stock";
+            menuStock.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuStock.Click += menuStock_Click;
             // 
-            // menuAcercade
+            // menuInformes
             // 
-            menuAcercade.AutoSize = false;
-            menuAcercade.IconChar = FontAwesome.Sharp.IconChar.CircleInfo;
-            menuAcercade.IconColor = Color.Black;
-            menuAcercade.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            menuAcercade.IconSize = 50;
-            menuAcercade.ImageScaling = ToolStripItemImageScaling.None;
-            menuAcercade.Name = "menuAcercade";
-            menuAcercade.Size = new Size(122, 69);
-            menuAcercade.Text = "Acerca de";
-            menuAcercade.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuInformes.AutoSize = false;
+            menuInformes.IconChar = FontAwesome.Sharp.IconChar.BarChart;
+            menuInformes.IconColor = Color.Black;
+            menuInformes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuInformes.IconSize = 50;
+            menuInformes.ImageScaling = ToolStripItemImageScaling.None;
+            menuInformes.Name = "menuInformes";
+            menuInformes.Size = new Size(122, 69);
+            menuInformes.Text = "Informes";
+            menuInformes.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuInformes.Click += menuInformes_Click;
             // 
             // menuUsuarios
             // 
@@ -173,6 +191,7 @@
             menuUsuarios.Size = new Size(122, 69);
             menuUsuarios.Text = "Usuarios";
             menuUsuarios.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuUsuarios.Click += menuUsuarios_Click;
             // 
             // menuStrip2
             // 
@@ -189,22 +208,12 @@
             // contenedor
             // 
             contenedor.AutoSize = true;
-            contenedor.Controls.Add(label2);
             contenedor.Dock = DockStyle.Fill;
             contenedor.Location = new Point(0, 131);
             contenedor.Name = "contenedor";
             contenedor.Size = new Size(1271, 608);
             contenedor.TabIndex = 3;
             contenedor.Paint += contenedor_Paint;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(118, 25);
-            label2.Name = "label2";
-            label2.Size = new Size(38, 15);
-            label2.TabIndex = 0;
-            label2.Text = "label2";
             // 
             // Inicio
             // 
@@ -219,10 +228,9 @@
             Name = "Inicio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Inicio_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            contenedor.ResumeLayout(false);
-            contenedor.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -238,8 +246,8 @@
         private FontAwesome.Sharp.IconMenuItem menuCompras;
         private FontAwesome.Sharp.IconMenuItem menuClientes;
         private FontAwesome.Sharp.IconMenuItem menuProveedores;
-        private FontAwesome.Sharp.IconMenuItem menuReportes;
-        private FontAwesome.Sharp.IconMenuItem menuAcercade;
+        private FontAwesome.Sharp.IconMenuItem menuInformes;
+        private FontAwesome.Sharp.IconMenuItem menuVentasMostrador;
         private Panel contenedor;
         private DataGridViewTextBoxColumn idVentaDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn nombreDataGridViewTextBoxColumn;
@@ -248,6 +256,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private Label label2;
+        private FontAwesome.Sharp.IconMenuItem menuStock;
     }
 }

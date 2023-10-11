@@ -23,6 +23,7 @@ namespace App.Data
         // Inicio de registro
         public void CrearUsuario(int dni, string username, string password, string email, int rol)
         {
+            
             // Genera un salt único para el usuario
             byte[] salt = GenerateSalt();
 
@@ -41,7 +42,6 @@ namespace App.Data
                 email = email,
                 rol = rol
             };
-
             // Agrega el nuevo usuario al contexto y guarda los cambios en la base de datos
             _context.Usuario.Add(newUser);
             _context.SaveChanges();

@@ -22,9 +22,7 @@ namespace WebAPI.Controllers
         public UsuarioController(UsuarioNegocio usuarionegocio)
         {
             _usuarionegocio = usuarionegocio;
-   
         }
-
         [HttpPost("Login")]
         public Usuario LogeoUsuario(LoginRequest request)
         {

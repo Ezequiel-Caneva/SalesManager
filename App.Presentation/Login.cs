@@ -17,7 +17,7 @@ namespace App.Presentation
     {
         private readonly Uri _baseAddress = new Uri("https://localhost:7198/api");
         private readonly HttpClient _client;
-        private Usuario _usuarioLogeado;
+        private static Usuario _usuarioLogeado;
         public Login()
         {
             InitializeComponent();
@@ -53,6 +53,7 @@ namespace App.Presentation
                         _usuarioLogeado = usuarioLogeado;
                         Inicio form = new Inicio(_usuarioLogeado);
                         form.Show();
+                        this.Hide();
                     }
                     else
                     {
@@ -78,7 +79,6 @@ namespace App.Presentation
             txtContrasenia.UseSystemPasswordChar = true;
 
         }
-
         private void label2_Click(object sender, EventArgs e)
         {
 
