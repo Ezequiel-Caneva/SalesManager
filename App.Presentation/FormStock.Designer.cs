@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             labelcontenedor = new Label();
             txtNombreProducto = new TextBox();
             txtCantidadProducto = new TextBox();
@@ -42,7 +43,8 @@
             btnAgregarProducto = new FontAwesome.Sharp.IconButton();
             btnEditarProducto = new FontAwesome.Sharp.IconButton();
             btnEliminarProducto = new FontAwesome.Sharp.IconButton();
-            dataGridView1 = new DataGridView();
+            dgvProducto = new DataGridView();
+            btnSeleccionar = new DataGridViewButtonColumn();
             cbRubro = new ComboBox();
             Texto7 = new Label();
             Texto8 = new Label();
@@ -51,7 +53,13 @@
             iconButton1 = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             cbBuscarRubro = new ComboBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            btnSiguiente = new FontAwesome.Sharp.IconButton();
+            btnAnterior = new FontAwesome.Sharp.IconButton();
+            txtPagina = new TextBox();
+            cbItemsPorPagina = new ComboBox();
+            productoBindingSource = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)productoBindingSource).BeginInit();
             SuspendLayout();
             // 
             // labelcontenedor
@@ -192,6 +200,7 @@
             btnEditarProducto.TextAlign = ContentAlignment.MiddleRight;
             btnEditarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEditarProducto.UseVisualStyleBackColor = false;
+            btnEditarProducto.Click += btnEditarProducto_Click;
             // 
             // btnEliminarProducto
             // 
@@ -212,16 +221,29 @@
             btnEliminarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarProducto.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvProducto
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(256, 48);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(767, 524);
-            dataGridView1.TabIndex = 15;
+            dgvProducto.AllowUserToDeleteRows = false;
+            dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProducto.BackgroundColor = Color.White;
+            dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProducto.Columns.AddRange(new DataGridViewColumn[] { btnSeleccionar });
+            dgvProducto.Location = new Point(256, 48);
+            dgvProducto.Name = "dgvProducto";
+            dgvProducto.ReadOnly = true;
+            dgvProducto.RowTemplate.Height = 25;
+            dgvProducto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProducto.Size = new Size(577, 478);
+            dgvProducto.TabIndex = 15;
+            dgvProducto.CellContentDoubleClick += dgvProducto_CellContentDoubleClick;
+            dgvProducto.CellEndEdit += dgvProducto_CellEndEdit;
+            // 
+            // btnSeleccionar
+            // 
+            btnSeleccionar.HeaderText = "";
+            btnSeleccionar.Name = "btnSeleccionar";
+            btnSeleccionar.ReadOnly = true;
+            btnSeleccionar.Width = 21;
             // 
             // cbRubro
             // 
@@ -309,12 +331,66 @@
             cbBuscarRubro.Size = new Size(146, 23);
             cbBuscarRubro.TabIndex = 26;
             // 
+            // btnSiguiente
+            // 
+            btnSiguiente.IconChar = FontAwesome.Sharp.IconChar.MailForward;
+            btnSiguiente.IconColor = Color.Black;
+            btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSiguiente.IconSize = 20;
+            btnSiguiente.Location = new Point(690, 532);
+            btnSiguiente.Name = "btnSiguiente";
+            btnSiguiente.Size = new Size(34, 23);
+            btnSiguiente.TabIndex = 27;
+            btnSiguiente.UseVisualStyleBackColor = true;
+            btnSiguiente.Click += btnSiguiente_Click;
+            // 
+            // btnAnterior
+            // 
+            btnAnterior.AccessibleDescription = "";
+            btnAnterior.IconChar = FontAwesome.Sharp.IconChar.MailReply;
+            btnAnterior.IconColor = Color.Black;
+            btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAnterior.IconSize = 20;
+            btnAnterior.Location = new Point(612, 532);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.Size = new Size(36, 23);
+            btnAnterior.TabIndex = 28;
+            btnAnterior.UseVisualStyleBackColor = true;
+            btnAnterior.Click += btnAnterior_Click;
+            // 
+            // txtPagina
+            // 
+            txtPagina.BackColor = SystemColors.ActiveCaption;
+            txtPagina.Location = new Point(654, 532);
+            txtPagina.Name = "txtPagina";
+            txtPagina.Size = new Size(30, 23);
+            txtPagina.TabIndex = 29;
+            txtPagina.TextChanged += txtPagina_TextChanged;
+            // 
+            // cbItemsPorPagina
+            // 
+            cbItemsPorPagina.FormattingEnabled = true;
+            cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
+            cbItemsPorPagina.Location = new Point(744, 532);
+            cbItemsPorPagina.Name = "cbItemsPorPagina";
+            cbItemsPorPagina.Size = new Size(29, 23);
+            cbItemsPorPagina.TabIndex = 30;
+            cbItemsPorPagina.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // productoBindingSource
+            // 
+            productoBindingSource.DataSource = typeof(Entities.Producto);
+            // 
             // FormStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1075, 622);
+            Controls.Add(cbItemsPorPagina);
+            Controls.Add(txtPagina);
+            Controls.Add(btnAnterior);
+            Controls.Add(btnSiguiente);
             Controls.Add(cbBuscarRubro);
             Controls.Add(label1);
             Controls.Add(iconButton1);
@@ -323,7 +399,7 @@
             Controls.Add(textBox4);
             Controls.Add(Texto7);
             Controls.Add(cbRubro);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvProducto);
             Controls.Add(btnEliminarProducto);
             Controls.Add(btnEditarProducto);
             Controls.Add(btnAgregarProducto);
@@ -341,7 +417,8 @@
             Name = "FormStock";
             Text = "FormStock";
             Load += FormStock_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProducto).EndInit();
+            ((System.ComponentModel.ISupportInitialize)productoBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -362,7 +439,7 @@
         private FontAwesome.Sharp.IconButton btnAgregarProducto;
         private FontAwesome.Sharp.IconButton btnEditarProducto;
         private FontAwesome.Sharp.IconButton btnEliminarProducto;
-        private DataGridView dataGridView1;
+        private DataGridView dgvProducto;
         private ComboBox cbRubro;
         private Label Texto7;
         private Label Texto8;
@@ -371,5 +448,11 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private Label label1;
         private ComboBox cbBuscarRubro;
+        private FontAwesome.Sharp.IconButton btnSiguiente;
+        private FontAwesome.Sharp.IconButton btnAnterior;
+        private TextBox txtPagina;
+        private ComboBox cbItemsPorPagina;
+        private BindingSource productoBindingSource;
+        private DataGridViewButtonColumn btnSeleccionar;
     }
 }

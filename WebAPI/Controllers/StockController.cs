@@ -25,5 +25,18 @@ namespace WebAPI.Controllers
         {
             _stocknegocio.AgregarProducto(nuevoProducto);
         }
+        [HttpPost("EditarProducto")]
+        public void EditarProducto(Producto editadoProducto)
+        {
+            _stocknegocio.EditarProducto(editadoProducto);
+        }
+        [HttpPost("MostrarProducto")]
+        public Response<Producto> MostrarProducto(Search search)
+        {
+            return _stocknegocio.MostrarProducto(search);
+        }
+      
+
+
     }
 }
