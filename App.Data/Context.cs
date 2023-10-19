@@ -15,6 +15,8 @@ namespace App.Data
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Permiso> Permiso { get; set; }
         public DbSet<Rol> Rol { get; set; }
+        public DbSet<Rubro> Rubro { get; set; }
+        public DbSet<Producto> Producto { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configura la cadena de conexión a la base de datos

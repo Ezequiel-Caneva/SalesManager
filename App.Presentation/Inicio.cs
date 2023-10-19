@@ -37,9 +37,9 @@ namespace App.Presentation
         }
         private void Inicio_Load(object sender, EventArgs e)
         {
-            permisosUsuario = new List<Permiso>();  
+            permisosUsuario = new List<Permiso>();
             permisosUsuario = ObtenerPermisos(_usuarioLogeado.usuario);
-            label2.Text = permisosUsuario.Count.ToString();
+           
             var nombresMenuPermitidos = permisosUsuario.Select(p => p.nombremenu.ToLower()).ToList();
 
             foreach (IconMenuItem iconmenu in menuStrip1.Items)

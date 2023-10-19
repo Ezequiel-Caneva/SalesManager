@@ -19,9 +19,7 @@ namespace App.Data
         {
             
             var usuario = _context.Usuario.FirstOrDefault(u => u.usuario == search.TextToSearch);
-
             var rol = _context.Rol.FirstOrDefault(r => r.rolid == usuario.rol);
-
             var permisos = _context.Permiso.Where(p => p.rol == rol.rolid).ToList();
             var count = permisos.Count();
 

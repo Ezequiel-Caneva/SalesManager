@@ -14,11 +14,10 @@ namespace App.Entities
         [Key]
         public int productoid { get; set; } 
         public string nombre { get; set; }  
-        public string descripcion { get; set; } 
+        public string codigobarra { get; set; } 
         public decimal precioventa {  get; set; }
         public int stock { get; set; }
         public int rubro { get; set; }
 
-   
     }
 }

@@ -14,6 +14,5 @@ namespace App.Entities
         [Key]
         public int rubroid { get; set; }
         public string categoria { get; set; }
-        public string tipo { get; set; }
     }
 }
