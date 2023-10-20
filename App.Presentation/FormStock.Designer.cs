@@ -44,20 +44,21 @@
             btnEditarProducto = new FontAwesome.Sharp.IconButton();
             btnEliminarProducto = new FontAwesome.Sharp.IconButton();
             dgvProducto = new DataGridView();
-            btnSeleccionar = new DataGridViewButtonColumn();
             cbRubro = new ComboBox();
             Texto7 = new Label();
             Texto8 = new Label();
-            Texto9 = new Label();
-            textBox4 = new TextBox();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            txtCategoria = new TextBox();
             label1 = new Label();
-            cbBuscarRubro = new ComboBox();
             btnSiguiente = new FontAwesome.Sharp.IconButton();
             btnAnterior = new FontAwesome.Sharp.IconButton();
             txtPagina = new TextBox();
             cbItemsPorPagina = new ComboBox();
             productoBindingSource = new BindingSource(components);
+            btnEliminarRubro = new FontAwesome.Sharp.IconButton();
+            btnEditarRubro = new FontAwesome.Sharp.IconButton();
+            btnAgregarRubro = new FontAwesome.Sharp.IconButton();
+            btnMostrarProductos = new FontAwesome.Sharp.IconButton();
+            btnMostrarRubros = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productoBindingSource).BeginInit();
             SuspendLayout();
@@ -155,7 +156,7 @@
             Texto6.BackColor = SystemColors.ButtonFace;
             Texto6.BorderStyle = BorderStyle.FixedSingle;
             Texto6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            Texto6.Location = new Point(0, 172);
+            Texto6.Location = new Point(0, 184);
             Texto6.Name = "Texto6";
             Texto6.Size = new Size(213, 27);
             Texto6.TabIndex = 11;
@@ -172,7 +173,7 @@
             btnAgregarProducto.IconColor = Color.Black;
             btnAgregarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarProducto.IconSize = 16;
-            btnAgregarProducto.Location = new Point(27, 445);
+            btnAgregarProducto.Location = new Point(27, 443);
             btnAgregarProducto.Name = "btnAgregarProducto";
             btnAgregarProducto.Size = new Size(146, 23);
             btnAgregarProducto.TabIndex = 12;
@@ -192,7 +193,7 @@
             btnEditarProducto.IconColor = Color.Black;
             btnEditarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditarProducto.IconSize = 16;
-            btnEditarProducto.Location = new Point(27, 474);
+            btnEditarProducto.Location = new Point(27, 472);
             btnEditarProducto.Name = "btnEditarProducto";
             btnEditarProducto.Size = new Size(146, 23);
             btnEditarProducto.TabIndex = 13;
@@ -212,7 +213,7 @@
             btnEliminarProducto.IconColor = Color.Black;
             btnEliminarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarProducto.IconSize = 16;
-            btnEliminarProducto.Location = new Point(27, 503);
+            btnEliminarProducto.Location = new Point(27, 501);
             btnEliminarProducto.Name = "btnEliminarProducto";
             btnEliminarProducto.Size = new Size(146, 23);
             btnEliminarProducto.TabIndex = 14;
@@ -220,6 +221,7 @@
             btnEliminarProducto.TextAlign = ContentAlignment.MiddleRight;
             btnEliminarProducto.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarProducto.UseVisualStyleBackColor = false;
+            btnEliminarProducto.Click += btnEliminarProducto_Click;
             // 
             // dgvProducto
             // 
@@ -227,8 +229,7 @@
             dgvProducto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProducto.BackgroundColor = Color.White;
             dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProducto.Columns.AddRange(new DataGridViewColumn[] { btnSeleccionar });
-            dgvProducto.Location = new Point(256, 48);
+            dgvProducto.Location = new Point(319, 48);
             dgvProducto.Name = "dgvProducto";
             dgvProducto.ReadOnly = true;
             dgvProducto.RowTemplate.Height = 25;
@@ -237,13 +238,6 @@
             dgvProducto.TabIndex = 15;
             dgvProducto.CellContentDoubleClick += dgvProducto_CellContentDoubleClick;
             dgvProducto.CellEndEdit += dgvProducto_CellEndEdit;
-            // 
-            // btnSeleccionar
-            // 
-            btnSeleccionar.HeaderText = "";
-            btnSeleccionar.Name = "btnSeleccionar";
-            btnSeleccionar.ReadOnly = true;
-            btnSeleccionar.Width = 21;
             // 
             // cbRubro
             // 
@@ -269,67 +263,30 @@
             // 
             Texto8.AutoSize = true;
             Texto8.BackColor = Color.White;
-            Texto8.Location = new Point(27, 41);
+            Texto8.Location = new Point(27, 40);
             Texto8.Name = "Texto8";
-            Texto8.Size = new Size(33, 15);
+            Texto8.Size = new Size(61, 15);
             Texto8.TabIndex = 20;
-            Texto8.Text = "Tipo:";
+            Texto8.Text = "Categoria:";
             // 
-            // Texto9
+            // txtCategoria
             // 
-            Texto9.AutoSize = true;
-            Texto9.BackColor = Color.White;
-            Texto9.Location = new Point(27, 85);
-            Texto9.Name = "Texto9";
-            Texto9.Size = new Size(42, 15);
-            Texto9.TabIndex = 21;
-            Texto9.Text = "Rubro:";
-            // 
-            // textBox4
-            // 
-            textBox4.Location = new Point(27, 59);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(146, 23);
-            textBox4.TabIndex = 18;
-            // 
-            // iconButton1
-            // 
-            iconButton1.BackColor = Color.DodgerBlue;
-            iconButton1.Cursor = Cursors.Hand;
-            iconButton1.FlatAppearance.BorderColor = Color.Black;
-            iconButton1.FlatStyle = FlatStyle.Popup;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.Sistrix;
-            iconButton1.IconColor = Color.Black;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 16;
-            iconButton1.Location = new Point(27, 132);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(146, 23);
-            iconButton1.TabIndex = 22;
-            iconButton1.Text = "Buscar";
-            iconButton1.TextAlign = ContentAlignment.MiddleRight;
-            iconButton1.TextImageRelation = TextImageRelation.ImageBeforeText;
-            iconButton1.UseVisualStyleBackColor = false;
+            txtCategoria.Location = new Point(27, 59);
+            txtCategoria.Name = "txtCategoria";
+            txtCategoria.Size = new Size(146, 23);
+            txtCategoria.TabIndex = 18;
             // 
             // label1
             // 
             label1.BackColor = Color.White;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(256, 13);
+            label1.Location = new Point(319, 13);
             label1.Name = "label1";
             label1.Size = new Size(149, 23);
             label1.TabIndex = 25;
             label1.Text = "Lista de Productos";
             label1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // cbBuscarRubro
-            // 
-            cbBuscarRubro.FormattingEnabled = true;
-            cbBuscarRubro.Location = new Point(27, 103);
-            cbBuscarRubro.Name = "cbBuscarRubro";
-            cbBuscarRubro.Size = new Size(146, 23);
-            cbBuscarRubro.TabIndex = 26;
             // 
             // btnSiguiente
             // 
@@ -337,7 +294,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(690, 532);
+            btnSiguiente.Location = new Point(796, 532);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 27;
@@ -351,7 +308,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(612, 532);
+            btnAnterior.Location = new Point(718, 532);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 28;
@@ -361,7 +318,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(654, 532);
+            txtPagina.Location = new Point(760, 532);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 29;
@@ -371,7 +328,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(744, 532);
+            cbItemsPorPagina.Location = new Point(847, 532);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 30;
@@ -381,22 +338,109 @@
             // 
             productoBindingSource.DataSource = typeof(Entities.Producto);
             // 
+            // btnEliminarRubro
+            // 
+            btnEliminarRubro.BackColor = Color.Red;
+            btnEliminarRubro.Cursor = Cursors.Hand;
+            btnEliminarRubro.FlatAppearance.BorderColor = Color.Black;
+            btnEliminarRubro.FlatStyle = FlatStyle.Popup;
+            btnEliminarRubro.IconChar = FontAwesome.Sharp.IconChar.Trash;
+            btnEliminarRubro.IconColor = Color.Black;
+            btnEliminarRubro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEliminarRubro.IconSize = 16;
+            btnEliminarRubro.Location = new Point(27, 146);
+            btnEliminarRubro.Name = "btnEliminarRubro";
+            btnEliminarRubro.Size = new Size(146, 23);
+            btnEliminarRubro.TabIndex = 34;
+            btnEliminarRubro.Text = "Eliminar";
+            btnEliminarRubro.TextAlign = ContentAlignment.MiddleRight;
+            btnEliminarRubro.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEliminarRubro.UseVisualStyleBackColor = false;
+            // 
+            // btnEditarRubro
+            // 
+            btnEditarRubro.BackColor = Color.DodgerBlue;
+            btnEditarRubro.Cursor = Cursors.Hand;
+            btnEditarRubro.FlatAppearance.BorderColor = Color.Black;
+            btnEditarRubro.FlatStyle = FlatStyle.Popup;
+            btnEditarRubro.IconChar = FontAwesome.Sharp.IconChar.FileEdit;
+            btnEditarRubro.IconColor = Color.Black;
+            btnEditarRubro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnEditarRubro.IconSize = 16;
+            btnEditarRubro.Location = new Point(27, 117);
+            btnEditarRubro.Name = "btnEditarRubro";
+            btnEditarRubro.Size = new Size(146, 23);
+            btnEditarRubro.TabIndex = 33;
+            btnEditarRubro.Text = "Editar";
+            btnEditarRubro.TextAlign = ContentAlignment.MiddleRight;
+            btnEditarRubro.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnEditarRubro.UseVisualStyleBackColor = false;
+            btnEditarRubro.Click += btnEditarRubro_Click;
+            // 
+            // btnAgregarRubro
+            // 
+            btnAgregarRubro.BackColor = Color.ForestGreen;
+            btnAgregarRubro.Cursor = Cursors.Hand;
+            btnAgregarRubro.FlatAppearance.BorderColor = Color.Black;
+            btnAgregarRubro.FlatStyle = FlatStyle.Popup;
+            btnAgregarRubro.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            btnAgregarRubro.IconColor = Color.Black;
+            btnAgregarRubro.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAgregarRubro.IconSize = 16;
+            btnAgregarRubro.Location = new Point(27, 88);
+            btnAgregarRubro.Name = "btnAgregarRubro";
+            btnAgregarRubro.Size = new Size(146, 23);
+            btnAgregarRubro.TabIndex = 32;
+            btnAgregarRubro.Text = "Agregar";
+            btnAgregarRubro.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregarRubro.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAgregarRubro.UseVisualStyleBackColor = false;
+            btnAgregarRubro.Click += btnAgregarRubro_Click;
+            // 
+            // btnMostrarProductos
+            // 
+            btnMostrarProductos.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnMostrarProductos.IconColor = Color.Black;
+            btnMostrarProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMostrarProductos.Location = new Point(219, 48);
+            btnMostrarProductos.Name = "btnMostrarProductos";
+            btnMostrarProductos.Size = new Size(94, 23);
+            btnMostrarProductos.TabIndex = 35;
+            btnMostrarProductos.Text = "Productos";
+            btnMostrarProductos.UseVisualStyleBackColor = true;
+            btnMostrarProductos.Click += btnMostrarProductos_Click;
+            // 
+            // btnMostrarRubros
+            // 
+            btnMostrarRubros.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnMostrarRubros.IconColor = Color.Black;
+            btnMostrarRubros.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnMostrarRubros.Location = new Point(219, 77);
+            btnMostrarRubros.Name = "btnMostrarRubros";
+            btnMostrarRubros.Size = new Size(94, 23);
+            btnMostrarRubros.TabIndex = 36;
+            btnMostrarRubros.Text = "Rubros";
+            btnMostrarRubros.UseVisualStyleBackColor = true;
+            btnMostrarRubros.Click += btnMostrarRubros_Click;
+            // 
             // FormStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1075, 622);
+            Controls.Add(btnMostrarRubros);
+            Controls.Add(btnMostrarProductos);
+            Controls.Add(btnEliminarRubro);
+            Controls.Add(btnEditarRubro);
+            Controls.Add(btnAgregarRubro);
             Controls.Add(cbItemsPorPagina);
             Controls.Add(txtPagina);
             Controls.Add(btnAnterior);
             Controls.Add(btnSiguiente);
-            Controls.Add(cbBuscarRubro);
             Controls.Add(label1);
-            Controls.Add(iconButton1);
-            Controls.Add(Texto9);
             Controls.Add(Texto8);
-            Controls.Add(textBox4);
+            Controls.Add(txtCategoria);
             Controls.Add(Texto7);
             Controls.Add(cbRubro);
             Controls.Add(dgvProducto);
@@ -443,16 +487,18 @@
         private ComboBox cbRubro;
         private Label Texto7;
         private Label Texto8;
-        private Label Texto9;
-        private TextBox textBox4;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private TextBox txtCategoria;
         private Label label1;
-        private ComboBox cbBuscarRubro;
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private FontAwesome.Sharp.IconButton btnAnterior;
         private TextBox txtPagina;
         private ComboBox cbItemsPorPagina;
         private BindingSource productoBindingSource;
         private DataGridViewButtonColumn btnSeleccionar;
+        private FontAwesome.Sharp.IconButton btnEliminarRubro;
+        private FontAwesome.Sharp.IconButton btnEditarRubro;
+        private FontAwesome.Sharp.IconButton btnAgregarRubro;
+        private FontAwesome.Sharp.IconButton btnMostrarProductos;
+        private FontAwesome.Sharp.IconButton btnMostrarRubros;
     }
 }

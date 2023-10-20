@@ -30,9 +30,26 @@ namespace App.Business
         {
             _stockRepositorio.EditarProducto(editadoProducto);
         }
+        public Boolean EliminarProducto(Search productoid)
+        {
+            return _stockRepositorio.EliminarProducto(productoid);
+        }
+        public void AgregarRubro(Rubro nuevoRubro)
+        {
+            _stockRepositorio.AgregarRubro(nuevoRubro);
+        }
+        public void EditarRubro(Rubro nuevoRubro)
+        {
+            _stockRepositorio.EditarRubro(nuevoRubro);
+        }
+
         public Response<Producto> MostrarProducto(Search search)
         {
             return _stockRepositorio.MostrarProducto(search);
+        }
+        public Response<Rubro> MostrarRubro(Search search)
+        {
+            return _stockRepositorio.MostrarRubro(search);
         }
 
     }

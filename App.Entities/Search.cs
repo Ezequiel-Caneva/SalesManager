@@ -16,7 +16,7 @@ namespace App.Entities
 
         [DefaultValue(1)]
         public int PageIndex { get; set; }
-
+        
         public bool IsValid
         {
             get

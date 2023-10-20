@@ -21,8 +21,10 @@ namespace App.Presentation
         private int _currentItemsPerPage;
         private int _currentPage;
         private int _productoid;
+        private int _rubroid;
         List<Rubro> rubros;
-     
+        private bool mostrarProductos = true;
+
         public FormStock()
         {
             InitializeComponent();
@@ -35,18 +37,15 @@ namespace App.Presentation
 
         private void FormStock_Load(object sender, EventArgs e)
         {
-            MostrarProductos();
+            MostrarProductosoRubro();
             rubros = ObtenerRubros();
             cbRubro.DataSource = rubros;
-            cbRubro.DisplayMember = "categoria"; // Nombre de la propiedad que se mostrará en el ComboBox
-            cbRubro.ValueMember = "rubroid"; // Nombre de la propiedad que representa el valor seleccionado
-            cbBuscarRubro.DataSource = rubros;
-            cbBuscarRubro.DisplayMember = "categoria"; // Nombre de la propiedad que se mostrará en el ComboBox
-            cbBuscarRubro.ValueMember = "rubroid"; // Nombre de la propiedad que representa el valor seleccionado
+            cbRubro.DisplayMember = "categoria";
+            cbRubro.ValueMember = "rubroid";
         }
 
 
-
+        //Productos
         private void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             // Obtén el rubro seleccionado del ComboBox.
@@ -65,6 +64,8 @@ namespace App.Presentation
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/AgregarProducto", content).Result;
             if (response.IsSuccessStatusCode)
             {
+                mostrarProductos = true;
+                MostrarProductosoRubro();
                 MessageBox.Show("Producto agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -98,6 +99,8 @@ namespace App.Presentation
                     HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EditarProducto", content).Result;
                     if (response.IsSuccessStatusCode)
                     {
+                        mostrarProductos = true;
+                        MostrarProductosoRubro();
                         MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
@@ -107,17 +110,109 @@ namespace App.Presentation
 
                     }
                 }
-            }         
+            }
         }
-    
+        private void btnEliminarProducto_Click(object sender, EventArgs e)
+        {
+            var productoId = dgvProducto.SelectedRows[0].Cells["productoid"].Value.ToString();
+            Search producto = new Search()
+            {
+                TextToSearch = productoId
+            };
+            string data = JsonConvert.SerializeObject(producto);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EliminarProducto", content).Result;
+            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+            bool eliminacionExitosa = JsonConvert.DeserializeObject<bool>(jsonToDeserialize);
+            if (response.IsSuccessStatusCode && eliminacionExitosa == true)
+            {
 
+                MessageBox.Show("Producto eliminado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mostrarProductos = true;
+                MostrarProductosoRubro();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+        private void btnMostrarProductos_Click(object sender, EventArgs e)
+        {
+            mostrarProductos = true;
+            MostrarProductosoRubro();
+
+        }
+        //Fin Productos
+
+        //Rubros
+        private void btnAgregarRubro_Click(object sender, EventArgs e)
+        {
+            Rubro nuevoRubro = new Rubro()
+            {
+                categoria = txtCategoria.Text
+            };
+            string data = JsonConvert.SerializeObject(nuevoRubro);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/AgregarRubro", content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("Rubro agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mostrarProductos = false;
+                MostrarProductosoRubro();
+
+            }
+            else
+            {
+                MessageBox.Show("No se pudo agregar el nuevo Rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+        }
+        private void btnEditarRubro_Click(object sender, EventArgs e)
+        {
+            if (dgvProducto.SelectedRows.Count > 0)
+            {
+                var confirmarEditar = MessageBox.Show("¿Seguro que desea editar el Rubro?", "Confirmar edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmarEditar == DialogResult.Yes)
+                {
+                    Rubro nuevoRubro = new Rubro()
+                    {
+                        rubroid = Convert.ToInt32(_rubroid),
+                        categoria = txtCategoria.Text
+
+                    };
+                    string data = JsonConvert.SerializeObject(nuevoRubro);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EditarRubro", content).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+
+                        MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mostrarProductos = false;
+                        MostrarProductosoRubro();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo editar el rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+        }
+        private void btnMostrarRubros_Click(object sender, EventArgs e)
+        {
+            mostrarProductos = false;
+            MostrarProductosoRubro();
+        }
+        //fin Rubros 
+     
+        //Paginado
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             if (_currentPage > 1)
             {
                 _currentPage--;
                 txtPagina.Text = _currentPage.ToString();
-                MostrarProductos();
+                MostrarProductosoRubro();
             }
         }
 
@@ -125,13 +220,13 @@ namespace App.Presentation
         {
             _currentPage++;
             txtPagina.Text = _currentPage.ToString();
-            MostrarProductos();
+            MostrarProductosoRubro();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
-            MostrarProductos();
+            MostrarProductosoRubro();
         }
 
         private void txtPagina_TextChanged(object sender, EventArgs e)
@@ -147,33 +242,44 @@ namespace App.Presentation
                 _currentPage = 1;
             }
 
-            MostrarProductos();
+            MostrarProductosoRubro();
         }
+        //fin Paginado
 
+        //Datagriedview
         private void dgvProducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridViewRow selectedRow = dgvProducto.Rows[e.RowIndex];
-                selectedRow.Selected = true;
-                _productoid = (int)selectedRow.Cells["productoid"].Value;
-                txtNombreProducto.Text = selectedRow.Cells["nombre"].Value.ToString();
-                txtCodigoProducto.Text = selectedRow.Cells["codigobarra"].Value.ToString();
-                txtPrecioProducto.Text = selectedRow.Cells["precioventa"].Value.ToString();
-                txtCantidadProducto.Text = selectedRow.Cells["stock"].Value.ToString();
-                int rubroId = (int)selectedRow.Cells["rubro"].Value;
-                // Establece el valor seleccionado en el ComboBox
-                cbRubro.SelectedValue = rubroId;
+                if (mostrarProductos == true)
+                {
+
+
+                    selectedRow.Selected = true;
+                    _productoid = (int)selectedRow.Cells["productoid"].Value;
+                    txtNombreProducto.Text = selectedRow.Cells["nombre"].Value.ToString();
+                    txtCodigoProducto.Text = selectedRow.Cells["codigobarra"].Value.ToString();
+                    txtPrecioProducto.Text = selectedRow.Cells["precioventa"].Value.ToString();
+                    txtCantidadProducto.Text = selectedRow.Cells["stock"].Value.ToString();
+                    int rubroId = (int)selectedRow.Cells["rubro"].Value;
+                    cbRubro.SelectedValue = rubroId;
+                }
+                else
+                {
+                    _rubroid = (int)selectedRow.Cells["rubroid"].Value;
+                    txtCategoria.Text = selectedRow.Cells["categoria"].Value.ToString();
+                }
             }
         }
-
-
-
         private void dgvProducto_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+        //fin Datagriedview
 
+
+        //Metodos
         public List<Rubro> ObtenerRubros()
         {
             HttpResponseMessage response = _client.GetAsync($"{_client.BaseAddress}/Stock/ObtenerRubro").Result;
@@ -188,24 +294,45 @@ namespace App.Presentation
 
             return null;
         }
-        public void MostrarProductos()
+        public void MostrarProductosoRubro()
         {
-            Search search = new Search()
+            if (mostrarProductos == true)
             {
-                PageIndex = _currentPage,
-                PageSize = _currentItemsPerPage,
-                TextToSearch = "",
+                {
+                    Search search = new Search()
+                    {
+                        PageIndex = _currentPage,
+                        PageSize = _currentItemsPerPage,
+                        TextToSearch = "",
+                    };
+                    string json = JsonConvert.SerializeObject(search);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/MostrarProducto", content).Result;
+                    var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+                    var result = JsonConvert.DeserializeObject<Response<Producto>>(jsonToDeserialize);
+                    dgvProducto.DataSource = result.Items;
+                    dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                }
+            }
+            else if(mostrarProductos == false)
+            {
+                Search search = new Search()
+                {
+                    PageIndex = _currentPage,
+                    PageSize = _currentItemsPerPage,
+                    TextToSearch = "",
+                };
+                string json = JsonConvert.SerializeObject(search);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/MostrarRubro", content).Result;
+                var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+                var result = JsonConvert.DeserializeObject<Response<Rubro>>(jsonToDeserialize);
+                dgvProducto.DataSource = result.Items;
+                dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             };
-            string json = JsonConvert.SerializeObject(search);
-            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/MostrarProducto", content).Result;
-            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
-            var result = JsonConvert.DeserializeObject<Response<Producto>>(jsonToDeserialize);
-            dgvProducto.DataSource = result.Items;
-            dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-
+    
         }
+        //Fin metodos
     }
 }
 
