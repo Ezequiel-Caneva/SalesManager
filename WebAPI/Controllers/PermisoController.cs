@@ -21,5 +21,6 @@ namespace WebAPI.Controllers
         {
             return _permisoNegocio.ObtenerPermisos(search);
         }
+
     }
 }

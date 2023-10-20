@@ -15,7 +15,7 @@ namespace App.Entities
         public int proveedorid { get; set; }
         public string razonsocial { get; set; }
         public string nombre { get; set; }
-        public int telefono { get; set; }
+        public string telefono { get; set; }
         public string direccion { get; set; }   
         public Proveedor() { }
 

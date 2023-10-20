@@ -93,6 +93,7 @@ namespace App.Data
             if(rubroExistente != null)
             {
                 rubroExistente.categoria = editadoRubro.categoria;
+                _context.SaveChanges();
             }
         }
         public Response<Rubro> MostrarRubro(Search search)

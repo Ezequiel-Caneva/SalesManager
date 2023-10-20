@@ -37,12 +37,14 @@ builder.Services.AddDbContext<Context>();
 builder.Services.AddTransient<UsuarioNegocio>();
 builder.Services.AddTransient<PermisoNegocio>();
 builder.Services.AddTransient<StockNegocio>();
+builder.Services.AddTransient<ProveedorNegocio>();
 
 //Repositorio
 
 builder.Services.AddTransient<UsuarioRepositorio>();
 builder.Services.AddTransient<PermisoRepositorio>();
 builder.Services.AddTransient<StockRepositorio>();
+builder.Services.AddTransient<ProveedorRepositorio>();
 
 var app = builder.Build();
 
