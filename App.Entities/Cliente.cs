@@ -13,14 +13,14 @@ namespace App.Entities
     {
         [Key]
         public int clienteid { set; get; }
-        public int dni { set; get; }
+        public string dni { set; get; }
         public string nombre { set; get; }
         public string direccion { set; get; }
-        public int telefono { set; get; }
+        public string telefono { set; get; }
         public string email { set; get; }
         public string ciudad { set; get; }
         public int codigopostal { set; get; }
 
-        Cliente() { }
+      
     }
 }

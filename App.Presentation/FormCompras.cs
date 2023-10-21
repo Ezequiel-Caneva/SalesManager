@@ -18,9 +18,12 @@ namespace App.Presentation
         private readonly HttpClient _client;
         private int _currentItemsPerPage;
         private int _currentPage;
+        public int _proveedorid;
+        public int _productoid;
         List<Proveedor> proveedores;
         List<Producto> productos;
         List<Rubro> rubro;
+
         public FormCompras()
         {
             InitializeComponent();
@@ -73,6 +76,35 @@ namespace App.Presentation
 
             }
         }
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (dgvCompras.SelectedRows.Count > 0)
+            {
+                var confirmarEditar = MessageBox.Show("¿Seguro que desea editar esta Compra?", "Confirmar edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmarEditar == DialogResult.Yes)
+                {
+
+                    Producto nuevoProducto = new Producto()
+                    {
+
+                    };
+                    string data = JsonConvert.SerializeObject(nuevoProducto);
+                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EditarCompra", content).Result;
+                    if (response.IsSuccessStatusCode)
+                    {
+
+                        MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo editar el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+            }
+        }
         private void dgvCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             MostrarCompras();
@@ -93,6 +125,23 @@ namespace App.Presentation
             var result = JsonConvert.DeserializeObject<Response<DetalleCompra>>(jsonToDeserialize);
             dgvCompras.DataSource = result.Items;
             dgvCompras.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+        private void dgvCompras_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dgvCompras.Rows[e.RowIndex];
+                _productoid = (int)selectedRow.Cells["productoid"].Value;
+                _proveedorid = (int)selectedRow.Cells["proveedorid"].Value;
+                txtCantidad.Text = selectedRow.Cells["cantidad"].Value.ToString();
+                txtPrecioComp.Text = selectedRow.Cells["preciocompra"].Value.ToString();
+                int productoId = (int)selectedRow.Cells["productoid"].Value;
+                int proveedorId = (int)selectedRow.Cells["proveedorid"].Value;
+
+                // Establecer los valores seleccionados de los ComboBox
+                cbProducto.SelectedValue = productoId;
+                CbProveedor.SelectedValue = proveedorId;
+            }
         }
         public List<Proveedor> ObtenerProveedores()
         {
@@ -194,6 +243,28 @@ namespace App.Presentation
             MostrarCompras();
         }
 
-
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DetalleCompra eliminar = new DetalleCompra()
+            {
+                productoid = _productoid,
+                proveedorid = _proveedorid
+            };
+          
+            string data = JsonConvert.SerializeObject(eliminar);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Compra/EliminarCompra", content).Result;
+            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+            bool eliminacionExitosa = JsonConvert.DeserializeObject<bool>(jsonToDeserialize);
+            if (response.IsSuccessStatusCode && eliminacionExitosa == true)
+            {
+                MessageBox.Show("Compra eliminada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MostrarCompras();
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

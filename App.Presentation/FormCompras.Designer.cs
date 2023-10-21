@@ -126,6 +126,7 @@
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
             btnEliminar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminar.UseVisualStyleBackColor = false;
+            btnEliminar.Click += btnEliminar_Click;
             // 
             // btnEditar
             // 
@@ -145,6 +146,7 @@
             btnEditar.TextAlign = ContentAlignment.MiddleRight;
             btnEditar.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
             // 
             // btnAgregar
             // 
@@ -273,6 +275,7 @@
             dgvCompras.Size = new Size(618, 425);
             dgvCompras.TabIndex = 69;
             dgvCompras.CellContentClick += dgvCompras_CellContentClick;
+            dgvCompras.CellContentDoubleClick += dgvCompras_CellContentDoubleClick;
             // 
             // cbRubro
             // 

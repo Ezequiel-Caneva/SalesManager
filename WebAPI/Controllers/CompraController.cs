@@ -24,7 +24,12 @@ namespace WebAPI.Controllers
         {
             return _comprasNegocio.MostrarCompras(search);
         }
-        
+        [HttpPost("EliminarCompra")]
+        public Boolean EliminarProducto(DetalleCompra eliminar)
+        {
+            return _comprasNegocio.EliminarCompra(eliminar);
+        }
+
 
     }
 }

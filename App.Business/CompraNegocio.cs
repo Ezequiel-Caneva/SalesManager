@@ -23,5 +23,9 @@ namespace App.Business
         {
             return _comprasRepositorio.MostrarCompras(search);
         }
+        public Boolean EliminarCompra(DetalleCompra eliminar)
+        {
+            return _comprasRepositorio.EliminarCompra(eliminar);
+        }
     }
 }

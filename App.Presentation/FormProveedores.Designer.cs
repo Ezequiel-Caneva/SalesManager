@@ -57,7 +57,7 @@
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(213, 619);
+            labelcontenedor.Size = new Size(291, 619);
             labelcontenedor.TabIndex = 1;
             labelcontenedor.Click += labelcontenedor_Click;
             // 
@@ -73,7 +73,7 @@
             btnEliminar.IconSize = 16;
             btnEliminar.Location = new Point(22, 326);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(146, 23);
+            btnEliminar.Size = new Size(210, 23);
             btnEliminar.TabIndex = 39;
             btnEliminar.Text = "Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleRight;
@@ -93,7 +93,7 @@
             btnEditar.IconSize = 16;
             btnEditar.Location = new Point(22, 297);
             btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(146, 23);
+            btnEditar.Size = new Size(210, 23);
             btnEditar.TabIndex = 38;
             btnEditar.Text = "Editar";
             btnEditar.TextAlign = ContentAlignment.MiddleRight;
@@ -113,7 +113,7 @@
             btnAgregar.IconSize = 16;
             btnAgregar.Location = new Point(22, 268);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(146, 23);
+            btnAgregar.Size = new Size(210, 23);
             btnAgregar.TabIndex = 37;
             btnAgregar.Text = "Agregar";
             btnAgregar.TextAlign = ContentAlignment.MiddleRight;
@@ -136,7 +136,7 @@
             // 
             txtNombreProv.Location = new Point(22, 85);
             txtNombreProv.Name = "txtNombreProv";
-            txtNombreProv.Size = new Size(146, 23);
+            txtNombreProv.Size = new Size(210, 23);
             txtNombreProv.TabIndex = 35;
             txtNombreProv.TextChanged += txtNombreProv_TextChanged;
             // 
@@ -157,7 +157,7 @@
             // 
             txtRzProv.Location = new Point(22, 129);
             txtRzProv.Name = "txtRzProv";
-            txtRzProv.Size = new Size(146, 23);
+            txtRzProv.Size = new Size(210, 23);
             txtRzProv.TabIndex = 41;
             txtRzProv.TextChanged += txtRzProv_TextChanged;
             // 
@@ -165,7 +165,7 @@
             // 
             txtDirecProv.Location = new Point(22, 173);
             txtDirecProv.Name = "txtDirecProv";
-            txtDirecProv.Size = new Size(146, 23);
+            txtDirecProv.Size = new Size(210, 23);
             txtDirecProv.TabIndex = 42;
             txtDirecProv.TextChanged += txtDirecProv_TextChanged;
             // 
@@ -173,7 +173,7 @@
             // 
             txtTelProv.Location = new Point(22, 217);
             txtTelProv.Name = "txtTelProv";
-            txtTelProv.Size = new Size(146, 23);
+            txtTelProv.Size = new Size(210, 23);
             txtTelProv.TabIndex = 43;
             txtTelProv.TextChanged += txtTelProv_TextChanged;
             // 
@@ -216,7 +216,7 @@
             dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProveedores.BackgroundColor = Color.White;
             dgvProveedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProveedores.Location = new Point(286, 76);
+            dgvProveedores.Location = new Point(329, 67);
             dgvProveedores.Name = "dgvProveedores";
             dgvProveedores.ReadOnly = true;
             dgvProveedores.RowTemplate.Height = 25;
@@ -231,7 +231,7 @@
             txt6.BackColor = Color.White;
             txt6.BorderStyle = BorderStyle.FixedSingle;
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt6.Location = new Point(286, 35);
+            txt6.Location = new Point(329, 24);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
             txt6.TabIndex = 48;
@@ -243,7 +243,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(834, 507);
+            cbItemsPorPagina.Location = new Point(877, 498);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 52;
@@ -252,7 +252,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(747, 507);
+            txtPagina.Location = new Point(783, 498);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 51;
@@ -265,7 +265,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(705, 507);
+            btnAnterior.Location = new Point(741, 498);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 50;
@@ -278,7 +278,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(783, 507);
+            btnSiguiente.Location = new Point(819, 498);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 49;
