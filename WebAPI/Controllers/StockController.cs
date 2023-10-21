@@ -21,6 +21,11 @@ namespace WebAPI.Controllers
         {
             return _stocknegocio.ObtenerRubro();
         }
+        [HttpGet("ObtenerProductos")]
+        public List<Producto> ObtenerProducto()
+        {
+            return _stocknegocio.ObtenerProductos();
+        }
 
         //Productos
         [HttpPost("AgregarProducto")]

@@ -32,6 +32,10 @@ namespace App.Business
         {
             return _proveedorRepositorio.MostrarProveedores(search);
         }
+        public List<Proveedor> ObtenerProveedores()
+        {
+            return _proveedorRepositorio.ObtenerProveedores();
+        }
 
     }
 

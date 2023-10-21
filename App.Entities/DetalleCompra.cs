@@ -18,7 +18,7 @@ namespace App.Entities
         public int proveedorid { set; get; }
         public string proveedor { set; get; }
         public int productoid { set; get; }
-        public string produto { set; get; }
+     
 
     }
 }

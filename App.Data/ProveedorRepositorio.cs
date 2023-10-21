@@ -69,6 +69,14 @@ namespace App.Data
 
             return response;
         }
-      
+
+        // se utiliza en el formulario Compras
+        public List<Proveedor> ObtenerProveedores()
+        {
+            List<Proveedor> proveedores= _context.Proveedor.ToList();
+
+            return proveedores;
+        }
+
     }
 }

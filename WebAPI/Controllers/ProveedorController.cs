@@ -37,7 +37,11 @@ namespace WebAPI.Controllers
         {
             return _proveedorNegocio.MostrarProveedores(search);
         }
-        
+        [HttpGet("ObtenerProveedores")]
+        public List<Proveedor> ObtenerProveedores()
+        {
+            return _proveedorNegocio.ObtenerProveedores();
+        }
 
     }
 }

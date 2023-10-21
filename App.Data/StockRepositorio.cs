@@ -22,6 +22,12 @@ namespace App.Data
 
             return rubros;
         }
+        public List<Producto> ObtenerProductos()
+        {
+            List<Producto> productos = _context.Producto.ToList();
+
+            return productos;
+        }
         public void AgregarProducto(Producto  nuevoProducto)
         {
             _context.Producto.Add(nuevoProducto); // Agrega el nuevo producto al contexto

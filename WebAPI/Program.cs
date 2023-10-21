@@ -38,6 +38,7 @@ builder.Services.AddTransient<UsuarioNegocio>();
 builder.Services.AddTransient<PermisoNegocio>();
 builder.Services.AddTransient<StockNegocio>();
 builder.Services.AddTransient<ProveedorNegocio>();
+builder.Services.AddTransient<CompraNegocio>();
 
 //Repositorio
 
@@ -45,6 +46,7 @@ builder.Services.AddTransient<UsuarioRepositorio>();
 builder.Services.AddTransient<PermisoRepositorio>();
 builder.Services.AddTransient<StockRepositorio>();
 builder.Services.AddTransient<ProveedorRepositorio>();
+builder.Services.AddTransient<CompraRepositorio>();
 
 var app = builder.Build();
 

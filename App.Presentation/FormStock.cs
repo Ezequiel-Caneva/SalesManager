@@ -204,7 +204,7 @@ namespace App.Presentation
             MostrarProductosoRubro();
         }
         //fin Rubros 
-     
+
         //Paginado
         private void btnAnterior_Click(object sender, EventArgs e)
         {
@@ -314,7 +314,7 @@ namespace App.Presentation
                     dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 }
             }
-            else if(mostrarProductos == false)
+            else if (mostrarProductos == false)
             {
                 Search search = new Search()
                 {
@@ -330,7 +330,7 @@ namespace App.Presentation
                 dgvProducto.DataSource = result.Items;
                 dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             };
-    
+
         }
         //Fin metodos
     }

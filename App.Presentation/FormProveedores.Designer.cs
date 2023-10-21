@@ -59,6 +59,7 @@
             labelcontenedor.Name = "labelcontenedor";
             labelcontenedor.Size = new Size(213, 619);
             labelcontenedor.TabIndex = 1;
+            labelcontenedor.Click += labelcontenedor_Click;
             // 
             // btnEliminar
             // 
@@ -129,6 +130,7 @@
             Text1.Size = new Size(54, 15);
             Text1.TabIndex = 36;
             Text1.Text = "Nombre:";
+            Text1.Click += Text1_Click;
             // 
             // txtNombreProv
             // 
@@ -136,6 +138,7 @@
             txtNombreProv.Name = "txtNombreProv";
             txtNombreProv.Size = new Size(146, 23);
             txtNombreProv.TabIndex = 35;
+            txtNombreProv.TextChanged += txtNombreProv_TextChanged;
             // 
             // Texto5
             // 
@@ -148,6 +151,7 @@
             Texto5.TabIndex = 40;
             Texto5.Text = "Agregar Proveedor";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
+            Texto5.Click += Texto5_Click;
             // 
             // txtRzProv
             // 
@@ -155,6 +159,7 @@
             txtRzProv.Name = "txtRzProv";
             txtRzProv.Size = new Size(146, 23);
             txtRzProv.TabIndex = 41;
+            txtRzProv.TextChanged += txtRzProv_TextChanged;
             // 
             // txtDirecProv
             // 
@@ -162,6 +167,7 @@
             txtDirecProv.Name = "txtDirecProv";
             txtDirecProv.Size = new Size(146, 23);
             txtDirecProv.TabIndex = 42;
+            txtDirecProv.TextChanged += txtDirecProv_TextChanged;
             // 
             // txtTelProv
             // 
@@ -169,6 +175,7 @@
             txtTelProv.Name = "txtTelProv";
             txtTelProv.Size = new Size(146, 23);
             txtTelProv.TabIndex = 43;
+            txtTelProv.TextChanged += txtTelProv_TextChanged;
             // 
             // txt1
             // 
@@ -179,6 +186,7 @@
             txt1.Size = new Size(76, 15);
             txt1.TabIndex = 44;
             txt1.Text = "Razon Social:";
+            txt1.Click += txt1_Click;
             // 
             // txt2
             // 
@@ -189,6 +197,7 @@
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 45;
             txt2.Text = "Direccion:";
+            txt2.Click += txt2_Click;
             // 
             // txt4
             // 
@@ -199,6 +208,7 @@
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 46;
             txt4.Text = "Telefono:";
+            txt4.Click += txt4_Click;
             // 
             // dgvProveedores
             // 
@@ -213,6 +223,7 @@
             dgvProveedores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProveedores.Size = new Size(577, 425);
             dgvProveedores.TabIndex = 47;
+            dgvProveedores.CellContentClick += dgvProveedores_CellContentClick;
             dgvProveedores.CellContentDoubleClick += dgvProveedores_CellContentDoubleClick;
             // 
             // txt6
@@ -226,6 +237,7 @@
             txt6.TabIndex = 48;
             txt6.Text = "Lista de Proveedores";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
+            txt6.Click += txt6_Click;
             // 
             // cbItemsPorPagina
             // 

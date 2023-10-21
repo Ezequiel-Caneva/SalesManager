@@ -21,6 +21,8 @@ namespace App.Business
         {
             return _stockRepositorio.ObtenerRubro();
         }
+        
+        
         public void AgregarProducto(Producto nuevoProducto)
         {
             _stockRepositorio.AgregarProducto(nuevoProducto);
@@ -51,6 +53,10 @@ namespace App.Business
         {
             return _stockRepositorio.MostrarRubro(search);
         }
-
+        // se utiliza en el formulario Compras
+        public List<Producto> ObtenerProductos()
+        {
+            return _stockRepositorio.ObtenerProductos();
+        }
     }
 }
