@@ -15,10 +15,10 @@ namespace App.Entities
         public int pedidoid{ get; set; } 
         public string estado { get; set; }
         public DateTime fecha { get; set; } 
-        public Boolean comfirmacin { get; set;  }
+        public Boolean confirmacion { get; set;  }
         public int factura { get; set; }    
         public int vendedor { get; set; }   
         public int cliente { get; set; }    
-
+        public Boolean despachado { get; set; } 
     }
 }

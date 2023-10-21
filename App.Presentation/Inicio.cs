@@ -39,7 +39,7 @@ namespace App.Presentation
         {
             permisosUsuario = new List<Permiso>();
             permisosUsuario = ObtenerPermisos(_usuarioLogeado.usuario);
-           
+
             var nombresMenuPermitidos = permisosUsuario.Select(p => p.nombremenu.ToLower()).ToList();
 
             foreach (IconMenuItem iconmenu in menuStrip1.Items)

@@ -118,7 +118,7 @@
             btnEliminar.IconColor = Color.Black;
             btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminar.IconSize = 16;
-            btnEliminar.Location = new Point(40, 366);
+            btnEliminar.Location = new Point(41, 357);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(210, 23);
             btnEliminar.TabIndex = 52;
@@ -158,7 +158,7 @@
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 16;
-            btnAgregar.Location = new Point(40, 290);
+            btnAgregar.Location = new Point(41, 299);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(210, 23);
             btnAgregar.TabIndex = 50;

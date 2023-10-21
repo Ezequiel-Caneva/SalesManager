@@ -250,7 +250,7 @@ namespace App.Presentation
                 productoid = _productoid,
                 proveedorid = _proveedorid
             };
-          
+
             string data = JsonConvert.SerializeObject(eliminar);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Compra/EliminarCompra", content).Result;

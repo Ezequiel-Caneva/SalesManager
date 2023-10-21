@@ -71,7 +71,7 @@
             btnEliminar.IconColor = Color.Black;
             btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminar.IconSize = 16;
-            btnEliminar.Location = new Point(22, 326);
+            btnEliminar.Location = new Point(45, 326);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(210, 23);
             btnEliminar.TabIndex = 39;
@@ -91,7 +91,7 @@
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditar.IconSize = 16;
-            btnEditar.Location = new Point(22, 297);
+            btnEditar.Location = new Point(45, 297);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(210, 23);
             btnEditar.TabIndex = 38;
@@ -111,7 +111,7 @@
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 16;
-            btnAgregar.Location = new Point(22, 268);
+            btnAgregar.Location = new Point(45, 268);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(210, 23);
             btnAgregar.TabIndex = 37;
@@ -125,7 +125,7 @@
             // 
             Text1.AutoSize = true;
             Text1.BackColor = Color.White;
-            Text1.Location = new Point(23, 67);
+            Text1.Location = new Point(46, 67);
             Text1.Name = "Text1";
             Text1.Size = new Size(54, 15);
             Text1.TabIndex = 36;
@@ -134,7 +134,7 @@
             // 
             // txtNombreProv
             // 
-            txtNombreProv.Location = new Point(22, 85);
+            txtNombreProv.Location = new Point(45, 85);
             txtNombreProv.Name = "txtNombreProv";
             txtNombreProv.Size = new Size(210, 23);
             txtNombreProv.TabIndex = 35;
@@ -147,7 +147,7 @@
             Texto5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Texto5.Location = new Point(0, 20);
             Texto5.Name = "Texto5";
-            Texto5.Size = new Size(213, 27);
+            Texto5.Size = new Size(291, 27);
             Texto5.TabIndex = 40;
             Texto5.Text = "Agregar Proveedor";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
@@ -155,7 +155,7 @@
             // 
             // txtRzProv
             // 
-            txtRzProv.Location = new Point(22, 129);
+            txtRzProv.Location = new Point(45, 129);
             txtRzProv.Name = "txtRzProv";
             txtRzProv.Size = new Size(210, 23);
             txtRzProv.TabIndex = 41;
@@ -163,7 +163,7 @@
             // 
             // txtDirecProv
             // 
-            txtDirecProv.Location = new Point(22, 173);
+            txtDirecProv.Location = new Point(45, 173);
             txtDirecProv.Name = "txtDirecProv";
             txtDirecProv.Size = new Size(210, 23);
             txtDirecProv.TabIndex = 42;
@@ -171,7 +171,7 @@
             // 
             // txtTelProv
             // 
-            txtTelProv.Location = new Point(22, 217);
+            txtTelProv.Location = new Point(45, 217);
             txtTelProv.Name = "txtTelProv";
             txtTelProv.Size = new Size(210, 23);
             txtTelProv.TabIndex = 43;
@@ -181,7 +181,7 @@
             // 
             txt1.AutoSize = true;
             txt1.BackColor = Color.White;
-            txt1.Location = new Point(22, 111);
+            txt1.Location = new Point(45, 111);
             txt1.Name = "txt1";
             txt1.Size = new Size(76, 15);
             txt1.TabIndex = 44;
@@ -192,7 +192,7 @@
             // 
             txt2.AutoSize = true;
             txt2.BackColor = Color.White;
-            txt2.Location = new Point(22, 155);
+            txt2.Location = new Point(45, 155);
             txt2.Name = "txt2";
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 45;
@@ -203,7 +203,7 @@
             // 
             txt4.AutoSize = true;
             txt4.BackColor = Color.White;
-            txt4.Location = new Point(22, 199);
+            txt4.Location = new Point(45, 199);
             txt4.Name = "txt4";
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 46;
