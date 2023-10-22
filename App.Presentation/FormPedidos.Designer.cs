@@ -28,12 +28,176 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "FormPedidos";
+            dgvPedidos = new DataGridView();
+            cbItemsPorPagina = new ComboBox();
+            txtPagina = new TextBox();
+            btnAnterior = new FontAwesome.Sharp.IconButton();
+            btnSiguiente = new FontAwesome.Sharp.IconButton();
+            txt6 = new Label();
+            btnConfimado = new FontAwesome.Sharp.IconButton();
+            bntPendiente = new FontAwesome.Sharp.IconButton();
+            btnDespachado = new FontAwesome.Sharp.IconButton();
+            dgvDetalle = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
+            SuspendLayout();
+            // 
+            // dgvPedidos
+            // 
+            dgvPedidos.AllowUserToDeleteRows = false;
+            dgvPedidos.BackgroundColor = Color.White;
+            dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPedidos.Location = new Point(101, 68);
+            dgvPedidos.Name = "dgvPedidos";
+            dgvPedidos.ReadOnly = true;
+            dgvPedidos.RowTemplate.Height = 25;
+            dgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPedidos.Size = new Size(493, 425);
+            dgvPedidos.TabIndex = 75;
+            dgvPedidos.CellClick += dgvPedidos_CellClick;
+            dgvPedidos.CellContentDoubleClick += dgvPedidos_CellContentDoubleClick;
+            dgvPedidos.CellFormatting += dgvPedidos_CellFormatting;
+            // 
+            // cbItemsPorPagina
+            // 
+            cbItemsPorPagina.FormattingEnabled = true;
+            cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
+            cbItemsPorPagina.Location = new Point(531, 497);
+            cbItemsPorPagina.Name = "cbItemsPorPagina";
+            cbItemsPorPagina.Size = new Size(29, 23);
+            cbItemsPorPagina.TabIndex = 74;
+            // 
+            // txtPagina
+            // 
+            txtPagina.BackColor = SystemColors.ActiveCaption;
+            txtPagina.Location = new Point(453, 498);
+            txtPagina.Name = "txtPagina";
+            txtPagina.Size = new Size(30, 23);
+            txtPagina.TabIndex = 73;
+            // 
+            // btnAnterior
+            // 
+            btnAnterior.AccessibleDescription = "";
+            btnAnterior.IconChar = FontAwesome.Sharp.IconChar.MailReply;
+            btnAnterior.IconColor = Color.Black;
+            btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAnterior.IconSize = 20;
+            btnAnterior.Location = new Point(411, 497);
+            btnAnterior.Name = "btnAnterior";
+            btnAnterior.Size = new Size(36, 23);
+            btnAnterior.TabIndex = 72;
+            btnAnterior.UseVisualStyleBackColor = true;
+            // 
+            // btnSiguiente
+            // 
+            btnSiguiente.IconChar = FontAwesome.Sharp.IconChar.MailForward;
+            btnSiguiente.IconColor = Color.Black;
+            btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnSiguiente.IconSize = 20;
+            btnSiguiente.Location = new Point(489, 498);
+            btnSiguiente.Name = "btnSiguiente";
+            btnSiguiente.Size = new Size(34, 23);
+            btnSiguiente.TabIndex = 71;
+            btnSiguiente.UseVisualStyleBackColor = true;
+            // 
+            // txt6
+            // 
+            txt6.BackColor = Color.White;
+            txt6.BorderStyle = BorderStyle.FixedSingle;
+            txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt6.Location = new Point(101, 32);
+            txt6.Name = "txt6";
+            txt6.Size = new Size(227, 23);
+            txt6.TabIndex = 70;
+            txt6.Text = "Vizualizar Pedidos";
+            txt6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnConfimado
+            // 
+            btnConfimado.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnConfimado.IconColor = Color.Black;
+            btnConfimado.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnConfimado.Location = new Point(5, 97);
+            btnConfimado.Name = "btnConfimado";
+            btnConfimado.Size = new Size(90, 23);
+            btnConfimado.TabIndex = 76;
+            btnConfimado.Text = "Confimado";
+            btnConfimado.UseVisualStyleBackColor = true;
+            // 
+            // bntPendiente
+            // 
+            bntPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
+            bntPendiente.IconColor = Color.Black;
+            bntPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            bntPendiente.Location = new Point(5, 68);
+            bntPendiente.Name = "bntPendiente";
+            bntPendiente.Size = new Size(90, 23);
+            bntPendiente.TabIndex = 77;
+            bntPendiente.Text = "Pendiente";
+            bntPendiente.UseVisualStyleBackColor = true;
+            bntPendiente.Click += bntPendiente_Click;
+            // 
+            // btnDespachado
+            // 
+            btnDespachado.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnDespachado.IconColor = Color.Black;
+            btnDespachado.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnDespachado.Location = new Point(5, 126);
+            btnDespachado.Name = "btnDespachado";
+            btnDespachado.Size = new Size(90, 23);
+            btnDespachado.TabIndex = 78;
+            btnDespachado.Text = "Despachado";
+            btnDespachado.UseVisualStyleBackColor = true;
+            // 
+            // dgvDetalle
+            // 
+            dgvDetalle.AllowUserToDeleteRows = false;
+            dgvDetalle.BackgroundColor = Color.White;
+            dgvDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetalle.Location = new Point(627, 68);
+            dgvDetalle.Name = "dgvDetalle";
+            dgvDetalle.ReadOnly = true;
+            dgvDetalle.RowTemplate.Height = 25;
+            dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDetalle.Size = new Size(501, 425);
+            dgvDetalle.TabIndex = 79;
+            dgvDetalle.CellContentDoubleClick += dgvDetalle_CellContentDoubleClick;
+            // 
+            // FormPedidos
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(1241, 624);
+            Controls.Add(dgvDetalle);
+            Controls.Add(btnDespachado);
+            Controls.Add(bntPendiente);
+            Controls.Add(btnConfimado);
+            Controls.Add(dgvPedidos);
+            Controls.Add(cbItemsPorPagina);
+            Controls.Add(txtPagina);
+            Controls.Add(btnAnterior);
+            Controls.Add(btnSiguiente);
+            Controls.Add(txt6);
+            Name = "FormPedidos";
+            Text = "FormPedidos";
+            Load += FormPedidos_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPedidos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvDetalle).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+        private DataGridView dgvPedidos;
+        private ComboBox cbItemsPorPagina;
+        private TextBox txtPagina;
+        private FontAwesome.Sharp.IconButton btnAnterior;
+        private FontAwesome.Sharp.IconButton btnSiguiente;
+        private Label txt6;
+        private FontAwesome.Sharp.IconButton btnConfimado;
+        private FontAwesome.Sharp.IconButton bntPendiente;
+        private FontAwesome.Sharp.IconButton btnDespachado;
+        private DataGridView dgvDetalle;
     }
 }

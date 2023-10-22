@@ -24,6 +24,9 @@ namespace App.Presentation
             _client = new HttpClient();
             _client.BaseAddress = _baseAddress;
             _usuarioLogeado = new Usuario();
+            txtUsuario.Text = "ezequiel";
+            txtContrasenia.Text = "123456";
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

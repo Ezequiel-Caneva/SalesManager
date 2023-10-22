@@ -40,7 +40,6 @@
             btnAgregar = new FontAwesome.Sharp.IconButton();
             Text1 = new Label();
             txtNombre = new TextBox();
-            labelcontenedor = new Label();
             txtEmail = new TextBox();
             txtCiudad = new TextBox();
             label1 = new Label();
@@ -53,6 +52,7 @@
             btnAnterior = new FontAwesome.Sharp.IconButton();
             btnSiguiente = new FontAwesome.Sharp.IconButton();
             txt6 = new Label();
+            labelcontenedor = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -196,16 +196,6 @@
             txtNombre.Size = new Size(210, 23);
             txtNombre.TabIndex = 48;
             // 
-            // labelcontenedor
-            // 
-            labelcontenedor.BackColor = Color.White;
-            labelcontenedor.BorderStyle = BorderStyle.FixedSingle;
-            labelcontenedor.Dock = DockStyle.Left;
-            labelcontenedor.Location = new Point(0, 0);
-            labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(291, 557);
-            labelcontenedor.TabIndex = 47;
-            // 
             // txtEmail
             // 
             txtEmail.Location = new Point(41, 251);
@@ -329,6 +319,16 @@
             txt6.Text = "Lista de Clientes";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // labelcontenedor
+            // 
+            labelcontenedor.BackColor = Color.White;
+            labelcontenedor.BorderStyle = BorderStyle.FixedSingle;
+            labelcontenedor.Dock = DockStyle.Left;
+            labelcontenedor.Location = new Point(0, 0);
+            labelcontenedor.Name = "labelcontenedor";
+            labelcontenedor.Size = new Size(291, 557);
+            labelcontenedor.TabIndex = 47;
+            // 
             // FormClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -382,7 +382,6 @@
         private FontAwesome.Sharp.IconButton btnAgregar;
         private Label Text1;
         private TextBox txtNombre;
-        private Label labelcontenedor;
         private TextBox txtEmail;
         private TextBox txtCiudad;
         private Label label1;
@@ -395,5 +394,6 @@
         private FontAwesome.Sharp.IconButton btnAnterior;
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private Label txt6;
+        private Label labelcontenedor;
     }
 }

@@ -144,7 +144,7 @@ namespace App.Presentation
                 MessageBox.Show("No se pudo eliminar el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-     
+
         private void btnAnterior_Click(object sender, EventArgs e)
         {
             if (_currentPage > 1)

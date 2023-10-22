@@ -20,11 +20,19 @@ namespace App.Data
         public DbSet<Proveedor> Proveedor { get; set; }
         public DbSet<DetalleCompra> Compra { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Pedido> Pedido { get; set; }
+        public DbSet<DetalleVenta> detalleVenta { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configura la cadena de conexión a la base de datos
             string connectionString = "Persist Security Info=True;Initial Catalog=MOTO_PARTES_EXPRESS;Data Source=.;Integrated Security=True;TrustServerCertificate=True;";
             optionsBuilder.UseSqlServer(connectionString);
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<DetalleVenta>()
+                .HasKey(dv => new { dv.pedido, dv.producto });
+        }
+
     }
 }

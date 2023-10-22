@@ -40,6 +40,7 @@ builder.Services.AddTransient<StockNegocio>();
 builder.Services.AddTransient<ProveedorNegocio>();
 builder.Services.AddTransient<CompraNegocio>();
 builder.Services.AddTransient<ClienteNegocio>();
+builder.Services.AddTransient<PedidoNegocio>();
 
 //Repositorio
 
@@ -49,6 +50,7 @@ builder.Services.AddTransient<StockRepositorio>();
 builder.Services.AddTransient<ProveedorRepositorio>();
 builder.Services.AddTransient<CompraRepositorio>();
 builder.Services.AddTransient<ClienteRepositorio>();
+builder.Services.AddTransient<PedidoRepositorio>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

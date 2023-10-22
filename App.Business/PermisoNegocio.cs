@@ -20,5 +20,6 @@ namespace App.Business
         {
             return _permisoRepositorio.ObtenerPermisos(search);
         }
+       
     }
 }

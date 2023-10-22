@@ -12,11 +12,20 @@ namespace App.Entities
     public class DetalleVenta
     {
         [Key]
-        public int cantidad { set; get; }
-        public decimal precio_total { set; get; }   
-        public DateTime fecha { set; get; }
-        public int pedido { set; get; } 
-        public int producto { set; get; }
+        public int pedido { set; get; }
 
+        [Key]
+        public int producto { get; set; }
+        public int cantidad { set; get; }
+   
+        public decimal precio_total { set; get; }
+        public DateTime fecha { set; get; } 
+
+        [NotMapped]
+        public Producto _producto { set; get; }
+
+        
+       
     }
 }
+       

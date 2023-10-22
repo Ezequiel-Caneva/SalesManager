@@ -6,9 +6,18 @@ using App.Business;
 using App.Data;
 using App.Entities;
 
+
+
+
+
+
 Console.Write("Crear usuario(1)");
 Console.Write("Logear (2)");
 int opcion = Convert.ToInt32(Console.ReadLine());
+
+
+
+
 
 switch (opcion)
 {
@@ -52,9 +61,7 @@ switch (opcion)
         Console.Write("Ingrese la contraseña: ");
         loginrequest.contrasenia = Console.ReadLine();
 
-        UsuarioNegocio e = new UsuarioNegocio();
         
-       
         break;
 }
 

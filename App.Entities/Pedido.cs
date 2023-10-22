@@ -12,13 +12,12 @@ namespace App.Entities
     public class Pedido
     {
         [Key]
-        public int pedidoid{ get; set; } 
-        public string estado { get; set; }
-        public DateTime fecha { get; set; } 
-        public Boolean confirmacion { get; set;  }
-        public int factura { get; set; }    
-        public int vendedor { get; set; }   
-        public int cliente { get; set; }    
-        public Boolean despachado { get; set; } 
+        public int pedidoid { get; set; } 
+        public string? estado { get; set; }
+        public DateTime? fecha { get; set; }   
+        public int? factura { get; set; }    
+        public int? vendedor { get; set; }   
+        public int? cliente { get; set; }    
+  
     }
 }
