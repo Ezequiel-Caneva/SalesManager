@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
         [HttpPost("MostrarPendientes")]
         public Response<Pedido> MostrarPendientes(Search search)
         {
-            return _pedidoNegocio.MostrarPendientes(search);
+            return _pedidoNegocio.MostrarPedidos(search);
         }
         [HttpPost("DetallePedido")]
         public Response<DetalleVenta> DetallePedido(Search search)

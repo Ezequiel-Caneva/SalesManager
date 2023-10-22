@@ -38,6 +38,9 @@
             bntPendiente = new FontAwesome.Sharp.IconButton();
             btnDespachado = new FontAwesome.Sharp.IconButton();
             dgvDetalle = new DataGridView();
+            btnConfirmar = new FontAwesome.Sharp.IconButton();
+            btnDespachar = new FontAwesome.Sharp.IconButton();
+            btnCancelar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
             SuspendLayout();
@@ -61,11 +64,12 @@
             // cbItemsPorPagina
             // 
             cbItemsPorPagina.FormattingEnabled = true;
-            cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
+            cbItemsPorPagina.Items.AddRange(new object[] { "1", "5", "10", "15", "20", "25", "50" });
             cbItemsPorPagina.Location = new Point(531, 497);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 74;
+            cbItemsPorPagina.SelectedIndexChanged += cbItemsPorPagina_SelectedIndexChanged;
             // 
             // txtPagina
             // 
@@ -74,6 +78,7 @@
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 73;
+            txtPagina.TextChanged += txtPagina_TextChanged;
             // 
             // btnAnterior
             // 
@@ -87,6 +92,7 @@
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 72;
             btnAnterior.UseVisualStyleBackColor = true;
+            btnAnterior.Click += btnAnterior_Click;
             // 
             // btnSiguiente
             // 
@@ -99,6 +105,7 @@
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 71;
             btnSiguiente.UseVisualStyleBackColor = true;
+            btnSiguiente.Click += btnSiguiente_Click;
             // 
             // txt6
             // 
@@ -123,6 +130,7 @@
             btnConfimado.TabIndex = 76;
             btnConfimado.Text = "Confimado";
             btnConfimado.UseVisualStyleBackColor = true;
+            btnConfimado.Click += btnConfimado_Click;
             // 
             // bntPendiente
             // 
@@ -152,9 +160,10 @@
             // dgvDetalle
             // 
             dgvDetalle.AllowUserToDeleteRows = false;
+            dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvDetalle.BackgroundColor = Color.White;
             dgvDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetalle.Location = new Point(627, 68);
+            dgvDetalle.Location = new Point(677, 68);
             dgvDetalle.Name = "dgvDetalle";
             dgvDetalle.ReadOnly = true;
             dgvDetalle.RowTemplate.Height = 25;
@@ -162,6 +171,52 @@
             dgvDetalle.Size = new Size(501, 425);
             dgvDetalle.TabIndex = 79;
             dgvDetalle.CellContentDoubleClick += dgvDetalle_CellContentDoubleClick;
+            dgvDetalle.CellFormatting += dgvDetalle_CellFormatting;
+            // 
+            // btnConfirmar
+            // 
+            btnConfirmar.BackColor = Color.DarkGreen;
+            btnConfirmar.FlatStyle = FlatStyle.Popup;
+            btnConfirmar.ForeColor = SystemColors.ControlLightLight;
+            btnConfirmar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
+            btnConfirmar.IconColor = Color.Black;
+            btnConfirmar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnConfirmar.IconSize = 28;
+            btnConfirmar.Location = new Point(614, 75);
+            btnConfirmar.Name = "btnConfirmar";
+            btnConfirmar.Size = new Size(38, 34);
+            btnConfirmar.TabIndex = 80;
+            btnConfirmar.UseVisualStyleBackColor = false;
+            btnConfirmar.Click += btnConfirmar_Click;
+            // 
+            // btnDespachar
+            // 
+            btnDespachar.BackColor = SystemColors.MenuHighlight;
+            btnDespachar.FlatStyle = FlatStyle.Popup;
+            btnDespachar.IconChar = FontAwesome.Sharp.IconChar.Dolly;
+            btnDespachar.IconColor = SystemColors.ActiveCaptionText;
+            btnDespachar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnDespachar.IconSize = 28;
+            btnDespachar.Location = new Point(614, 155);
+            btnDespachar.Name = "btnDespachar";
+            btnDespachar.Size = new Size(38, 34);
+            btnDespachar.TabIndex = 81;
+            btnDespachar.UseVisualStyleBackColor = false;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.BackColor = Color.FromArgb(192, 0, 0);
+            btnCancelar.FlatStyle = FlatStyle.Popup;
+            btnCancelar.ForeColor = SystemColors.ActiveCaptionText;
+            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
+            btnCancelar.IconColor = Color.Black;
+            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCancelar.IconSize = 28;
+            btnCancelar.Location = new Point(614, 115);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(38, 34);
+            btnCancelar.TabIndex = 82;
+            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // FormPedidos
             // 
@@ -169,6 +224,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1241, 624);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnDespachar);
+            Controls.Add(btnConfirmar);
             Controls.Add(dgvDetalle);
             Controls.Add(btnDespachado);
             Controls.Add(bntPendiente);
@@ -199,5 +257,8 @@
         private FontAwesome.Sharp.IconButton bntPendiente;
         private FontAwesome.Sharp.IconButton btnDespachado;
         private DataGridView dgvDetalle;
+        private FontAwesome.Sharp.IconButton btnConfirmar;
+        private FontAwesome.Sharp.IconButton btnDespachar;
+        private FontAwesome.Sharp.IconButton btnCancelar;
     }
 }

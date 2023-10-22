@@ -17,12 +17,12 @@ namespace App.Data
             _context = context;
         }
     
-        public Response<Pedido> MostrarPendientes(Search search)
+        public Response<Pedido> MostrarPedidos(Search search)
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
 
-            var query = _context.Pedido.AsQueryable();
+            var query = _context.Pedido.Where(p => p.estado == search.TextToSearch);
 
 
             var count = query.Count();
@@ -50,7 +50,7 @@ namespace App.Data
             var query2 = _context.Producto.AsQueryable();
             var resultado = query.Select(detalle =>
             {
-                var producto = query2.FirstOrDefault(p => p.productoid == detalle.pedido);
+                var producto = query2.FirstOrDefault(p => p.productoid == detalle.producto);
                 detalle._producto = producto;
                 return detalle;
             }).ToList();

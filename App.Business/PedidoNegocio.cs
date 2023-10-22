@@ -18,9 +18,9 @@ namespace App.Business
             _pedidoRepositorio = pedidoRepositorio;
         }
        
-        public Response<Pedido> MostrarPendientes(Search search)
+        public Response<Pedido> MostrarPedidos(Search search)
         {
-            return _pedidoRepositorio.MostrarPendientes(search);
+            return _pedidoRepositorio.MostrarPedidos(search);
         }
         public Response<DetalleVenta> DetallePedido(Search search)
         {
