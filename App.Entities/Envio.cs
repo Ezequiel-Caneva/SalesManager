@@ -18,6 +18,6 @@ namespace App.Entities
         public DateTime fecha_recepcion { set; get; }   
         public string empresa_transporte { set; get; }  
         public int pedido { set; get; }
-        public Envio() { }
+        
     }
 }

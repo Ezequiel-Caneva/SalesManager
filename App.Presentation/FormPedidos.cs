@@ -34,17 +34,22 @@ namespace App.Presentation
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
+            btnVer.Visible = false;
             btnConfirmar.Visible = false;
             btnCancelar.Visible = false;
             btnDespachar.Visible = false;
+            btnFactura.Visible = false;
             dgvDetalle.Visible = false;
+
         }
 
         private void bntPendiente_Click(object sender, EventArgs e)
         {
+            btnVer.Visible = false;
             btnConfirmar.Visible = true;
             btnCancelar.Visible = true;
             btnDespachar.Visible = false;
+            btnFactura.Visible = false;
             filtro = "Pendiente";
             filtrar(filtro);
 
@@ -55,6 +60,7 @@ namespace App.Presentation
             btnConfirmar.Visible = false;
             btnCancelar.Visible = false;
             btnDespachar.Visible = true;
+            btnFactura.Visible = true;
             dgvDetalle.Visible = false;
             filtro = "Confirmado";
             filtrar(filtro);
@@ -130,7 +136,7 @@ namespace App.Presentation
                         bool pedidofac = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
                         if (pedidofac == true)
                         {
-                            MessageBox.Show("Pedido Confirmado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Pedido Confirmado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
@@ -147,9 +153,92 @@ namespace App.Presentation
             else
             {
                 MessageBox.Show("No se pudo confirmar el pedido por falta de stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            var confirmarEditar = MessageBox.Show("¿Desea cancelar por falta de stock o eliminar pedido?", "Confirmar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (confirmarEditar == DialogResult.Yes)
+            {
 
+                Pedido pedido = new Pedido()
+                {
+                    pedidoid = pedidoId,
+                    estado = "FaltaStock",
+                };
+
+                string json3 = JsonConvert.SerializeObject(pedido);
+                StringContent content3 = new StringContent(json3, Encoding.UTF8, "application/json");
+                HttpResponseMessage response3 = _client.PostAsync($"{_client.BaseAddress}/Pedido/Rechazar", content3).Result;
+                if (response3.IsSuccessStatusCode)
+                {
+                    bool pedidocancelar = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
+                    if (pedidocancelar == true)
+                    {
+                        MessageBox.Show("Pedido Rechazado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo confirmar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo confirma el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+        private void btnDespachar_Click(object sender, EventArgs e)
+        {
+            var confirmarEditar = MessageBox.Show("¿Desea despachar el pedido?", "Confirmar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+            if (confirmarEditar == DialogResult.Yes)
+            {
+
+                Pedido pedido = new Pedido()
+                {
+                    pedidoid = pedidoId,
+                    estado = "Despachado",
+                };
+                Envio _envio = new Envio()
+                {
+                    pedido = pedidoId
+                };
+                subEnvios envio = new subEnvios(_envio);
+                envio.ShowDialog();
+                string json3 = JsonConvert.SerializeObject(pedido);
+                StringContent content3 = new StringContent(json3, Encoding.UTF8, "application/json");
+                HttpResponseMessage response3 = _client.PostAsync($"{_client.BaseAddress}/Pedido/Rechazar", content3).Result;
+                if (response3.IsSuccessStatusCode)
+                {
+                    bool pedidocancelar = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
+                    if (pedidocancelar == true)
+                    {
+                        MessageBox.Show("Pedido despachado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo despachar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo despachar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+        private void btnDespachado_Click(object sender, EventArgs e)
+        {
+            btnVer.Visible = true;
+            btnConfirmar.Visible = false;
+            btnCancelar.Visible = false;
+            btnDespachar.Visible = false;
+            btnFactura.Visible = false;
+            dgvDetalle.Visible = false;
+            filtro = "Despachado";
+            filtrar(filtro);
+        }
         private void dgvPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
@@ -247,7 +336,7 @@ namespace App.Presentation
         private void dgvDetalle_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 
-           
+
         }
         private void filtrar(string filtro)
         {
@@ -313,9 +402,15 @@ namespace App.Presentation
         }
 
         private void btnFactura_Click(object sender, EventArgs e)
-        { 
+        {
             subFactura detalle = new subFactura(pedidoId);
             detalle.Show();
+        }
+
+        private void btnVer_Click(object sender, EventArgs e)
+        {
+            subMostrarEnvio mostrar = new subMostrarEnvio(pedidoId);
+
         }
     }
 }

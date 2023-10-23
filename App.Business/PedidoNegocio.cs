@@ -42,5 +42,13 @@ namespace App.Business
         {
             return _pedidoRepositorio.ObtenerFactura(search);
         }
+        public Boolean Rechazar(Pedido pedido)
+        {
+            return _pedidoRepositorio.Rechazar(pedido); 
+        }
+        public Boolean EnvioNuevo(Envio envioNuevo)
+        {
+            return _pedidoRepositorio.EnvioNuevo(envioNuevo);
+        }
     }
 }

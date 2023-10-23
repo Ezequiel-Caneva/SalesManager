@@ -43,6 +43,7 @@
             btnCancelar = new FontAwesome.Sharp.IconButton();
             iconToolStripButton1 = new FontAwesome.Sharp.IconToolStripButton();
             btnFactura = new FontAwesome.Sharp.IconButton();
+            btnVer = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
             SuspendLayout();
@@ -158,6 +159,7 @@
             btnDespachado.TabIndex = 78;
             btnDespachado.Text = "Despachado";
             btnDespachado.UseVisualStyleBackColor = true;
+            btnDespachado.Click += btnDespachado_Click;
             // 
             // dgvDetalle
             // 
@@ -204,6 +206,7 @@
             btnDespachar.Size = new Size(38, 34);
             btnDespachar.TabIndex = 81;
             btnDespachar.UseVisualStyleBackColor = false;
+            btnDespachar.Click += btnDespachar_Click;
             // 
             // btnCancelar
             // 
@@ -219,6 +222,7 @@
             btnCancelar.Size = new Size(38, 34);
             btnCancelar.TabIndex = 82;
             btnCancelar.UseVisualStyleBackColor = false;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // iconToolStripButton1
             // 
@@ -238,12 +242,27 @@
             btnFactura.IconColor = Color.Black;
             btnFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnFactura.IconSize = 28;
-            btnFactura.Location = new Point(614, 155);
+            btnFactura.Location = new Point(614, 115);
             btnFactura.Name = "btnFactura";
             btnFactura.Size = new Size(38, 34);
             btnFactura.TabIndex = 83;
             btnFactura.UseVisualStyleBackColor = false;
             btnFactura.Click += btnFactura_Click;
+            // 
+            // btnVer
+            // 
+            btnVer.BackColor = SystemColors.MenuHighlight;
+            btnVer.FlatStyle = FlatStyle.Popup;
+            btnVer.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            btnVer.IconColor = SystemColors.ActiveCaptionText;
+            btnVer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnVer.IconSize = 28;
+            btnVer.Location = new Point(614, 75);
+            btnVer.Name = "btnVer";
+            btnVer.Size = new Size(38, 34);
+            btnVer.TabIndex = 84;
+            btnVer.UseVisualStyleBackColor = false;
+            btnVer.Click += btnVer_Click;
             // 
             // FormPedidos
             // 
@@ -251,6 +270,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1241, 624);
+            Controls.Add(btnVer);
             Controls.Add(btnFactura);
             Controls.Add(btnCancelar);
             Controls.Add(btnDespachar);
@@ -290,5 +310,6 @@
         private FontAwesome.Sharp.IconButton btnCancelar;
         private FontAwesome.Sharp.IconToolStripButton iconToolStripButton1;
         private FontAwesome.Sharp.IconButton btnFactura;
+        private FontAwesome.Sharp.IconButton btnVer;
     }
 }

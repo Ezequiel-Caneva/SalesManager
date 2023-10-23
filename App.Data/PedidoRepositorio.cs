@@ -163,7 +163,42 @@ namespace App.Data
 
             return pedido;
         }
-    }
+        public Boolean Rechazar(Pedido pedido)
+        {
+
+            bool verificar = _context.Pedido.Any(c => c.pedidoid == pedido.pedidoid);
+            if (verificar == true)
+            {
+                var pedidoidExistente = _context.Pedido.Find(pedido.pedidoid);
+
+                if (pedidoidExistente != null)
+                {
+
+                    // Actualiza los campos con los nuevos valores
+                    pedidoidExistente.estado = pedido.estado;
+
+                    // Guarda los cambios en la base de datos
+                    _context.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public Boolean EnvioNuevo(Envio envioNuevo)
+        {
+                _context.Envio.Add(envioNuevo);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+    
 }
 
 

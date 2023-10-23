@@ -35,7 +35,7 @@ namespace WebAPI.Controllers
             return _pedidoNegocio.AgregarFactura(factura);
         }
         [HttpPost("Confirmar")]
-        public Boolean AgregarFacturaPedido(Pedido pedido) 
+        public Boolean AgregarFacturaPedido(Pedido pedido)
         {
             return _pedidoNegocio.AgregarFacturaPedido(pedido);
         }
@@ -44,6 +44,15 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.ObtenerFactura(search);
         }
-
+        [HttpPost("Rechazar")] 
+        public Boolean Rechazar(Pedido pedido)
+        {
+            return _pedidoNegocio.Rechazar(pedido);
+        }
+        [HttpPost("EnvioNuevo")]
+        public Boolean EnvioNuevo(Envio envioNuevo) 
+        {
+            return _pedidoNegocio.EnvioNuevo(envioNuevo);
+        }
     }
 }
