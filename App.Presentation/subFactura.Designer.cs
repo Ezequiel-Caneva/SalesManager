@@ -1,6 +1,6 @@
 ﻿namespace App.Presentation
 {
-    partial class FormVentas
+    partial class subFactura
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblFactura = new Label();
             SuspendLayout();
             // 
-            // FormVentas
+            // lblFactura
+            // 
+            lblFactura.BackColor = Color.White;
+            lblFactura.BorderStyle = BorderStyle.FixedSingle;
+            lblFactura.Dock = DockStyle.Left;
+            lblFactura.Location = new Point(0, 0);
+            lblFactura.Name = "lblFactura";
+            lblFactura.Size = new Size(234, 211);
+            lblFactura.TabIndex = 48;
+            lblFactura.Click += lblFactura_Click;
+            // 
+            // subFactura
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "FormVentas";
-            Text = "FormVentas";
-            Load += FormVentas_Load;
+            ClientSize = new Size(234, 211);
+            Controls.Add(lblFactura);
+            Name = "subFactura";
+            Text = "subPedidos";
+            Load += subFactura_Load;
             ResumeLayout(false);
         }
 
         #endregion
+
+        private Label lblFactura;
     }
 }

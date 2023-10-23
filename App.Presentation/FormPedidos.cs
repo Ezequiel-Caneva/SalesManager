@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,9 @@ namespace App.Presentation
         private int _currentItemsPerPage;
         private int _currentPage;
         private string filtro;
-        private int pedidoId;
+        public int pedidoId;
+        private bool autorizar = false;
+
         public FormPedidos()
         {
             InitializeComponent();
@@ -31,6 +34,9 @@ namespace App.Presentation
 
         private void FormPedidos_Load(object sender, EventArgs e)
         {
+            btnConfirmar.Visible = false;
+            btnCancelar.Visible = false;
+            btnDespachar.Visible = false;
             dgvDetalle.Visible = false;
         }
 
@@ -45,11 +51,11 @@ namespace App.Presentation
         }
         private void btnConfimado_Click(object sender, EventArgs e)
         {
+
             btnConfirmar.Visible = false;
             btnCancelar.Visible = false;
             btnDespachar.Visible = true;
             dgvDetalle.Visible = false;
-           
             filtro = "Confirmado";
             filtrar(filtro);
 
@@ -57,16 +63,96 @@ namespace App.Presentation
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            
+            if (autorizar == true)
+            {
+                var confirmarEditar = MessageBox.Show("¿Seguro que desea editar esta Compra?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (confirmarEditar == DialogResult.Yes)
+                {
+                    Random random = new Random();
+                    int numero = random.Next(1, 1000);
+                    Search search = new Search()
+                    {
+                        PageIndex = _currentPage,
+                        PageSize = _currentItemsPerPage,
+                        TextToSearch = pedidoId.ToString()
+                    };
+
+                    string json = JsonConvert.SerializeObject(search);
+                    StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/ObtenerPedido", content).Result;
+                    var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+                    var result = JsonConvert.DeserializeObject<Pedido>(jsonToDeserialize);
+                    decimal montototal = 0;
+
+                    foreach (var item in result._venta)
+                    {
+                        montototal = montototal + item.precio_total;
+                    }
+                    Factura factura = new Factura()
+                    {
+                        nrofactura = numero,
+                        montototal = montototal,
+                        fecha = DateTime.Now
+                    };
+                    string json2 = JsonConvert.SerializeObject(factura);
+                    StringContent content2 = new StringContent(json2, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response2 = _client.PostAsync($"{_client.BaseAddress}/Pedido/AgregarFactura", content2).Result;
+                    if (response2.IsSuccessStatusCode)
+                    {
+                        bool facturaAgregada = JsonConvert.DeserializeObject<bool>(response2.Content.ReadAsStringAsync().Result);
+                        if (facturaAgregada == true)
+                        {
+                            MessageBox.Show("Se genero la factura", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo generar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo generar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    Pedido pedido = new Pedido()
+                    {
+                        pedidoid = result.pedidoid,
+                        factura = factura.nrofactura,
+                        estado = "Confirmado",
+                        _venta = result._venta
+                    };
+                    string json3 = JsonConvert.SerializeObject(pedido);
+                    StringContent content3 = new StringContent(json3, Encoding.UTF8, "application/json");
+                    HttpResponseMessage response3 = _client.PostAsync($"{_client.BaseAddress}/Pedido/Confirmar", content3).Result;
+                    if (response3.IsSuccessStatusCode)
+                    {
+                        bool pedidofac = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
+                        if (pedidofac == true)
+                        {
+                            MessageBox.Show("Pedido Confirmado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo confirmar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo confirma el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    filtrar(filtro);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se pudo confirmar el pedido por falta de stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.Value == null)
-            {
-                e.Value = "No generada"; // O establece otro valor predeterminado
-                e.FormattingApplied = true;
-            }
+
 
         }
 
@@ -107,7 +193,19 @@ namespace App.Presentation
                     dataTable.Rows.Add(row);
 
                 }
+                foreach (var item in detalles)
+                {
+                    if (item.cantidad <= item._producto.stock)
+                    {
+                        autorizar = true;
+                    }
+                    else
+                    {
+                        autorizar = false;
+                    }
+                }
                 dgvDetalle.DataSource = dataTable;
+
                 if (e.ColumnIndex == dgvDetalle.Columns["Cantidad"].Index && e.RowIndex >= 0)
                 {
                     int cantidad = (int)dgvDetalle.Rows[e.RowIndex].Cells["Cantidad"].Value;
@@ -148,8 +246,8 @@ namespace App.Presentation
 
         private void dgvDetalle_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            subPedidos detalle = new subPedidos();
-            detalle.Show();
+
+           
         }
         private void filtrar(string filtro)
         {
@@ -214,6 +312,10 @@ namespace App.Presentation
             filtrar(filtro);
         }
 
-        
+        private void btnFactura_Click(object sender, EventArgs e)
+        { 
+            subFactura detalle = new subFactura(pedidoId);
+            detalle.Show();
+        }
     }
 }

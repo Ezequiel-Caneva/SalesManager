@@ -24,6 +24,26 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.DetallePedido(search);
         }
+        [HttpPost("ObtenerPedido")]
+        public Pedido ObtenerPedido(Search search)
+        {
+            return _pedidoNegocio.ObtenerPedido(search);
+        }
+        [HttpPost("AgregarFactura")]
+        public Boolean AgregarFactura(Factura factura)
+        {
+            return _pedidoNegocio.AgregarFactura(factura);
+        }
+        [HttpPost("Confirmar")]
+        public Boolean AgregarFacturaPedido(Pedido pedido) 
+        {
+            return _pedidoNegocio.AgregarFacturaPedido(pedido);
+        }
+        [HttpPost("ObtenerFactura")]
+        public Pedido ObtenerFactura(Search search)
+        {
+            return _pedidoNegocio.ObtenerFactura(search);
+        }
 
     }
 }

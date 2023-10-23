@@ -41,6 +41,8 @@
             btnConfirmar = new FontAwesome.Sharp.IconButton();
             btnDespachar = new FontAwesome.Sharp.IconButton();
             btnCancelar = new FontAwesome.Sharp.IconButton();
+            iconToolStripButton1 = new FontAwesome.Sharp.IconToolStripButton();
+            btnFactura = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
             SuspendLayout();
@@ -197,7 +199,7 @@
             btnDespachar.IconColor = SystemColors.ActiveCaptionText;
             btnDespachar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnDespachar.IconSize = 28;
-            btnDespachar.Location = new Point(614, 155);
+            btnDespachar.Location = new Point(614, 75);
             btnDespachar.Name = "btnDespachar";
             btnDespachar.Size = new Size(38, 34);
             btnDespachar.TabIndex = 81;
@@ -218,12 +220,38 @@
             btnCancelar.TabIndex = 82;
             btnCancelar.UseVisualStyleBackColor = false;
             // 
+            // iconToolStripButton1
+            // 
+            iconToolStripButton1.IconChar = FontAwesome.Sharp.IconChar.None;
+            iconToolStripButton1.IconColor = Color.Black;
+            iconToolStripButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconToolStripButton1.Name = "iconToolStripButton1";
+            iconToolStripButton1.Size = new Size(23, 23);
+            iconToolStripButton1.Text = "iconToolStripButton1";
+            // 
+            // btnFactura
+            // 
+            btnFactura.BackColor = Color.CadetBlue;
+            btnFactura.FlatStyle = FlatStyle.Popup;
+            btnFactura.ForeColor = SystemColors.ActiveCaptionText;
+            btnFactura.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
+            btnFactura.IconColor = Color.Black;
+            btnFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnFactura.IconSize = 28;
+            btnFactura.Location = new Point(614, 155);
+            btnFactura.Name = "btnFactura";
+            btnFactura.Size = new Size(38, 34);
+            btnFactura.TabIndex = 83;
+            btnFactura.UseVisualStyleBackColor = false;
+            btnFactura.Click += btnFactura_Click;
+            // 
             // FormPedidos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1241, 624);
+            Controls.Add(btnFactura);
             Controls.Add(btnCancelar);
             Controls.Add(btnDespachar);
             Controls.Add(btnConfirmar);
@@ -260,5 +288,7 @@
         private FontAwesome.Sharp.IconButton btnConfirmar;
         private FontAwesome.Sharp.IconButton btnDespachar;
         private FontAwesome.Sharp.IconButton btnCancelar;
+        private FontAwesome.Sharp.IconToolStripButton iconToolStripButton1;
+        private FontAwesome.Sharp.IconButton btnFactura;
     }
 }

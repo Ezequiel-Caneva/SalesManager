@@ -15,7 +15,8 @@ namespace App.Entities
         public int nrofactura { get; set; }
         public DateTime fecha { get; set; } 
         public decimal montototal { get; set; }
-       
+
+        public bool cobrado { get; set; }
 
     }
 }

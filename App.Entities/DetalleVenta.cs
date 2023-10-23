@@ -19,7 +19,7 @@ namespace App.Entities
         public int cantidad { set; get; }
    
         public decimal precio_total { set; get; }
-        public DateTime fecha { set; get; } 
+        public DateTime? fecha { set; get; } 
 
         [NotMapped]
         public Producto _producto { set; get; }
