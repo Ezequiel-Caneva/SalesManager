@@ -59,6 +59,8 @@
             btnAgregarRubro = new FontAwesome.Sharp.IconButton();
             btnMostrarProductos = new FontAwesome.Sharp.IconButton();
             btnMostrarRubros = new FontAwesome.Sharp.IconButton();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productoBindingSource).BeginInit();
             SuspendLayout();
@@ -281,7 +283,7 @@
             label1.BackColor = Color.White;
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(419, 13);
+            label1.Location = new Point(419, 23);
             label1.Name = "label1";
             label1.Size = new Size(149, 23);
             label1.TabIndex = 25;
@@ -402,7 +404,7 @@
             btnMostrarProductos.IconChar = FontAwesome.Sharp.IconChar.None;
             btnMostrarProductos.IconColor = Color.Black;
             btnMostrarProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMostrarProductos.Location = new Point(319, 48);
+            btnMostrarProductos.Location = new Point(319, 64);
             btnMostrarProductos.Name = "btnMostrarProductos";
             btnMostrarProductos.Size = new Size(94, 23);
             btnMostrarProductos.TabIndex = 35;
@@ -415,7 +417,7 @@
             btnMostrarRubros.IconChar = FontAwesome.Sharp.IconChar.None;
             btnMostrarRubros.IconColor = Color.Black;
             btnMostrarRubros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMostrarRubros.Location = new Point(319, 77);
+            btnMostrarRubros.Location = new Point(319, 94);
             btnMostrarRubros.Name = "btnMostrarRubros";
             btnMostrarRubros.Size = new Size(94, 23);
             btnMostrarRubros.TabIndex = 36;
@@ -423,12 +425,36 @@
             btnMostrarRubros.UseVisualStyleBackColor = true;
             btnMostrarRubros.Click += btnMostrarRubros_Click;
             // 
+            // iconButton2
+            // 
+            iconButton2.BackColor = SystemColors.MenuHighlight;
+            iconButton2.FlatStyle = FlatStyle.Popup;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            iconButton2.IconColor = SystemColors.ActiveCaptionText;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.IconSize = 24;
+            iconButton2.Location = new Point(1023, 23);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new Size(31, 23);
+            iconButton2.TabIndex = 92;
+            iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(803, 23);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(214, 23);
+            textBox1.TabIndex = 91;
+            // 
             // FormStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1075, 622);
+            Controls.Add(iconButton2);
+            Controls.Add(textBox1);
             Controls.Add(btnMostrarRubros);
             Controls.Add(btnMostrarProductos);
             Controls.Add(btnEliminarRubro);
@@ -500,5 +526,7 @@
         private FontAwesome.Sharp.IconButton btnAgregarRubro;
         private FontAwesome.Sharp.IconButton btnMostrarProductos;
         private FontAwesome.Sharp.IconButton btnMostrarRubros;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private TextBox textBox1;
     }
 }

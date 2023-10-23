@@ -16,5 +16,12 @@ namespace App.Presentation
         {
             InitializeComponent();
         }
+
+
+
+        private void FormVentasMostrador_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -36,10 +36,12 @@
             lblFactura.BackColor = Color.White;
             lblFactura.BorderStyle = BorderStyle.FixedSingle;
             lblFactura.Dock = DockStyle.Left;
+            lblFactura.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             lblFactura.Location = new Point(0, 0);
             lblFactura.Name = "lblFactura";
             lblFactura.Size = new Size(234, 211);
             lblFactura.TabIndex = 48;
+            lblFactura.TextAlign = ContentAlignment.MiddleRight;
             lblFactura.Click += lblFactura_Click;
             // 
             // subFactura

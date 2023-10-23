@@ -53,6 +53,8 @@
             btnSiguiente = new FontAwesome.Sharp.IconButton();
             txt6 = new Label();
             labelcontenedor = new Label();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             SuspendLayout();
             // 
@@ -312,7 +314,7 @@
             txt6.BackColor = Color.White;
             txt6.BorderStyle = BorderStyle.FixedSingle;
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt6.Location = new Point(317, 23);
+            txt6.Location = new Point(317, 30);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
             txt6.TabIndex = 70;
@@ -329,12 +331,36 @@
             labelcontenedor.Size = new Size(291, 557);
             labelcontenedor.TabIndex = 47;
             // 
+            // iconButton2
+            // 
+            iconButton2.BackColor = SystemColors.MenuHighlight;
+            iconButton2.FlatStyle = FlatStyle.Popup;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            iconButton2.IconColor = SystemColors.ActiveCaptionText;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.IconSize = 24;
+            iconButton2.Location = new Point(902, 32);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new Size(31, 23);
+            iconButton2.TabIndex = 92;
+            iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(682, 32);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(214, 23);
+            textBox1.TabIndex = 91;
+            // 
             // FormClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1005, 557);
+            Controls.Add(iconButton2);
+            Controls.Add(textBox1);
             Controls.Add(dgvClientes);
             Controls.Add(cbItemsPorPagina);
             Controls.Add(txtPagina);
@@ -395,5 +421,7 @@
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private Label txt6;
         private Label labelcontenedor;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private TextBox textBox1;
     }
 }

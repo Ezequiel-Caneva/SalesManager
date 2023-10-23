@@ -28,13 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.White;
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(-2, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(331, 296);
+            label1.TabIndex = 0;
+            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // subMostrarEnvio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(328, 295);
+            Controls.Add(label1);
             Name = "subMostrarEnvio";
             Text = "subMostrarEnvio";
             Load += subMostrarEnvio_Load;
@@ -42,5 +55,7 @@
         }
 
         #endregion
+
+        private Label label1;
     }
 }

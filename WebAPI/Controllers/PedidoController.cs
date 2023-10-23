@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using App.Business;
 using App.Entities;
+using App.Data;
 
 namespace WebAPI.Controllers
 {
@@ -53,6 +54,16 @@ namespace WebAPI.Controllers
         public Boolean EnvioNuevo(Envio envioNuevo) 
         {
             return _pedidoNegocio.EnvioNuevo(envioNuevo);
+        }
+        [HttpPost("DetalleCliente")]
+        public Cliente DetalleCliente(Search search)
+        {
+            return _pedidoNegocio.DetalleCliente(search);
+        }
+        [HttpPost("DetalleEnvio")]
+        public Envio DetalleEnvio(Search search)
+        {
+            return _pedidoNegocio.DetalleEnvio(search);
         }
     }
 }

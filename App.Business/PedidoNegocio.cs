@@ -44,11 +44,19 @@ namespace App.Business
         }
         public Boolean Rechazar(Pedido pedido)
         {
-            return _pedidoRepositorio.Rechazar(pedido); 
+            return _pedidoRepositorio.Rechazar(pedido);
         }
         public Boolean EnvioNuevo(Envio envioNuevo)
         {
             return _pedidoRepositorio.EnvioNuevo(envioNuevo);
+        }
+        public Cliente DetalleCliente(Search search)
+        {
+            return _pedidoRepositorio.DetalleCliente(search);
+        }
+        public Envio DetalleEnvio(Search search)
+        {
+            return _pedidoRepositorio.DetalleEnvio(search);
         }
     }
 }

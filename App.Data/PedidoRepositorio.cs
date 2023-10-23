@@ -114,31 +114,31 @@ namespace App.Data
         }
         public bool AgregarFacturaPedido(Pedido pedido)
         {
-          
-             var pedidoExistente = _context.Pedido.FirstOrDefault(u => u.pedidoid == pedido.pedidoid);
+
+            var pedidoExistente = _context.Pedido.FirstOrDefault(u => u.pedidoid == pedido.pedidoid);
 
             if (pedidoExistente != null)
-                {
+            {
                 pedidoExistente.factura = pedido.factura;
                 pedidoExistente.estado = pedido.estado;
                 foreach (var detalleventa in pedido._venta)
+                {
+                    var productoEnBD = _context.Producto.FirstOrDefault(p => p.productoid == detalleventa.producto);
+
+                    if (productoEnBD != null)
                     {
-                        var productoEnBD = _context.Producto.FirstOrDefault(p => p.productoid == detalleventa.producto );
-
-                        if (productoEnBD != null)
-                        {
-                            productoEnBD.stock -= detalleventa.cantidad;
-                        }
+                        productoEnBD.stock -= detalleventa.cantidad;
                     }
-
-                    // Actualiza los campos con los nuevos valores
-                  
-
-                    // Guarda los cambios en la base de datos una sola vez
-                    _context.SaveChanges();
-
-                    return true;
                 }
+
+                // Actualiza los campos con los nuevos valores
+
+
+                // Guarda los cambios en la base de datos una sola vez
+                _context.SaveChanges();
+
+                return true;
+            }
             return false;
 
 
@@ -193,13 +193,25 @@ namespace App.Data
         }
         public Boolean EnvioNuevo(Envio envioNuevo)
         {
-                _context.Envio.Add(envioNuevo);
-                _context.SaveChanges();
-                return true;
-            }
+            _context.Envio.Add(envioNuevo);
+            _context.SaveChanges();
+            return true;
         }
-    
+        public Cliente DetalleCliente(Search search)
+        {
+            var pedido = _context.Pedido.FirstOrDefault(u => u.pedidoid == Convert.ToInt32(search.TextToSearch));
+            var cliente = _context.Cliente.FirstOrDefault(r => r.clienteid == pedido.cliente);
+            return cliente;
+        }
+        public Envio DetalleEnvio(Search search)
+        {
+            var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
+            return envio;
+        }
+    }
+   
 }
+
 
 
     

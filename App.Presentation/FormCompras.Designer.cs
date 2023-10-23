@@ -49,6 +49,8 @@
             dgvCompras = new DataGridView();
             cbRubro = new ComboBox();
             txt7 = new Label();
+            iconButton2 = new FontAwesome.Sharp.IconButton();
+            textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCompras).BeginInit();
             SuspendLayout();
             // 
@@ -255,7 +257,7 @@
             txt6.BackColor = Color.White;
             txt6.BorderStyle = BorderStyle.FixedSingle;
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt6.Location = new Point(349, 22);
+            txt6.Location = new Point(349, 34);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
             txt6.TabIndex = 64;
@@ -296,12 +298,36 @@
             txt7.TabIndex = 70;
             txt7.Text = "Rubro:";
             // 
+            // iconButton2
+            // 
+            iconButton2.BackColor = SystemColors.MenuHighlight;
+            iconButton2.FlatStyle = FlatStyle.Popup;
+            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            iconButton2.IconColor = SystemColors.ActiveCaptionText;
+            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            iconButton2.IconSize = 24;
+            iconButton2.Location = new Point(927, 34);
+            iconButton2.Name = "iconButton2";
+            iconButton2.Size = new Size(31, 23);
+            iconButton2.TabIndex = 92;
+            iconButton2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            textBox1.BorderStyle = BorderStyle.FixedSingle;
+            textBox1.Location = new Point(707, 34);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(214, 23);
+            textBox1.TabIndex = 91;
+            // 
             // FormCompras
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1065, 586);
+            Controls.Add(iconButton2);
+            Controls.Add(textBox1);
             Controls.Add(txt7);
             Controls.Add(dgvCompras);
             Controls.Add(cbItemsPorPagina);
@@ -354,5 +380,7 @@
         private DataGridView dgvCompras;
         private ComboBox cbRubro;
         private Label txt7;
+        private FontAwesome.Sharp.IconButton iconButton2;
+        private TextBox textBox1;
     }
 }
