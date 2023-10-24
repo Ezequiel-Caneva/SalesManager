@@ -198,6 +198,30 @@ namespace App.Presentation
                 }
             }
         }
+        private void btnEliminarRubro_Click(object sender, EventArgs e)
+        {
+            var rubro = dgvProducto.SelectedRows[0].Cells["rubroid"].Value.ToString();
+            Search search = new Search()
+            {
+                TextToSearch = rubro
+            };
+            string data = JsonConvert.SerializeObject(search);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EliminarRubro", content).Result;
+            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+            bool eliminacionExitosa = JsonConvert.DeserializeObject<bool>(jsonToDeserialize);
+            if (response.IsSuccessStatusCode && eliminacionExitosa == true)
+            {
+
+                MessageBox.Show("Rubro eliminado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mostrarProductos = true;
+                MostrarProductosoRubro("");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo eliminar el Rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
         private void btnMostrarRubros_Click(object sender, EventArgs e)
         {
             mostrarProductos = false;
@@ -247,7 +271,7 @@ namespace App.Presentation
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             var buscar = txtBuscar.Text;
-             MostrarProductosoRubro(buscar);
+            MostrarProductosoRubro(buscar);
         }
         //fin Paginado
 
@@ -308,7 +332,7 @@ namespace App.Presentation
                     {
                         PageIndex = _currentPage,
                         PageSize = _currentItemsPerPage,
-                        TextToSearch =txtbuscar,
+                        TextToSearch = txtbuscar,
                     };
                     string json = JsonConvert.SerializeObject(search);
                     StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -338,7 +362,9 @@ namespace App.Presentation
 
         }
 
-       
+        
+
+
         //Fin metodos
     }
 }

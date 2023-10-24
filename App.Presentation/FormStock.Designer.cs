@@ -358,6 +358,7 @@
             btnEliminarRubro.TextAlign = ContentAlignment.MiddleRight;
             btnEliminarRubro.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnEliminarRubro.UseVisualStyleBackColor = false;
+            btnEliminarRubro.Click += btnEliminarRubro_Click;
             // 
             // btnEditarRubro
             // 

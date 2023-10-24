@@ -44,6 +44,10 @@ namespace App.Business
         {
             _stockRepositorio.EditarRubro(nuevoRubro);
         }
+        public Boolean EliminarRubro(Search search)
+        {
+            return _stockRepositorio.EliminarRubro(search);
+        }
 
         public Response<Producto> MostrarProducto(Search search)
         {

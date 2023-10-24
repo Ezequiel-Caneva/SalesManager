@@ -274,7 +274,7 @@ namespace App.Presentation
                         bool pedidocancelar = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
                         if (pedidocancelar == true)
                         {
-                            MessageBox.Show("Pedido despachado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Pedido despachado", "Confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {

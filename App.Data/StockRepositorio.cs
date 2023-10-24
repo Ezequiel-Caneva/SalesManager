@@ -73,6 +73,23 @@ namespace App.Data
             _context.Rubro.Add(nuevoRubro); // Agrega el nuevo producto al contexto
             _context.SaveChanges();
         }
+
+        public Boolean EliminarRubro(Search search)
+        {
+            var Rubro = _context.Rubro.SingleOrDefault(p => p.rubroid == Convert.ToInt32(search.TextToSearch)); // recuperar un único elemento de una secuencia que cumple con una condición específica. 
+
+            if (Rubro != null)
+            {
+                // Elimina el producto del contexto y de la base de datos
+                _context.Rubro.Remove(Rubro);
+                _context.SaveChanges(); // Confirma la eliminación en la base de datos
+
+                return true; // Éxito en la eliminación
+            }
+
+            return false; // Producto no encontrado
+
+        }
         //Mostrar todos los productos
         public Response<Producto> MostrarProducto(Search search)
         {

@@ -48,7 +48,7 @@ namespace App.Presentation
                 {
 
                     MessageBox.Show("Envio cargado Correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    this.Close();
                 }
                 else
                 {

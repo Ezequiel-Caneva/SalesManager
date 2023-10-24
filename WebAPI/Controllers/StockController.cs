@@ -55,6 +55,11 @@ namespace WebAPI.Controllers
         {
             _stocknegocio.EditarRubro(nuevoRubro);
         }
+        [HttpPost("EliminarRubro")]
+        public Boolean EliminarRubro(Search search)
+        {
+            return _stocknegocio.EliminarRubro(search);
+        }
 
 
 

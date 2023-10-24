@@ -32,10 +32,8 @@
             dgvCobros = new DataGridView();
             txt7 = new Label();
             cbRubro = new ComboBox();
-            CbProveedor = new ComboBox();
             cbProducto = new ComboBox();
             label1 = new Label();
-            txt4 = new Label();
             txt3 = new Label();
             txt1 = new Label();
             txtPrecioComp = new TextBox();
@@ -89,14 +87,6 @@
             cbRubro.Size = new Size(210, 23);
             cbRubro.TabIndex = 98;
             // 
-            // CbProveedor
-            // 
-            CbProveedor.FormattingEnabled = true;
-            CbProveedor.Location = new Point(7, 243);
-            CbProveedor.Name = "CbProveedor";
-            CbProveedor.Size = new Size(210, 23);
-            CbProveedor.TabIndex = 99;
-            // 
             // cbProducto
             // 
             cbProducto.FormattingEnabled = true;
@@ -114,16 +104,6 @@
             label1.Size = new Size(49, 15);
             label1.TabIndex = 96;
             label1.Text = "Factura:";
-            // 
-            // txt4
-            // 
-            txt4.AutoSize = true;
-            txt4.BackColor = Color.White;
-            txt4.Location = new Point(6, 225);
-            txt4.Name = "txt4";
-            txt4.Size = new Size(64, 15);
-            txt4.TabIndex = 95;
-            txt4.Text = "Proveedor:";
             // 
             // txt3
             // 
@@ -181,7 +161,7 @@
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 16;
-            btnAgregar.Location = new Point(7, 281);
+            btnAgregar.Location = new Point(7, 240);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(210, 38);
             btnAgregar.TabIndex = 89;
@@ -210,10 +190,8 @@
             Controls.Add(dgvCobros);
             Controls.Add(txt7);
             Controls.Add(cbRubro);
-            Controls.Add(CbProveedor);
             Controls.Add(cbProducto);
             Controls.Add(label1);
-            Controls.Add(txt4);
             Controls.Add(txt3);
             Controls.Add(txt1);
             Controls.Add(txtPrecioComp);
@@ -235,10 +213,8 @@
         private DataGridView dgvCobros;
         private Label txt7;
         private ComboBox cbRubro;
-        private ComboBox CbProveedor;
         private ComboBox cbProducto;
         private Label label1;
-        private Label txt4;
         private Label txt3;
         private Label txt1;
         private TextBox txtPrecioComp;
