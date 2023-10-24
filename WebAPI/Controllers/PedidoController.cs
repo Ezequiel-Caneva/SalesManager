@@ -65,5 +65,10 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.DetalleEnvio(search);
         }
+        [HttpPost("CargarenCobro")]
+        public Boolean CargarenCobro(Cobro cobro)
+        {
+            return _pedidoNegocio.CargarenCobro(cobro);
+        }
     }
 }

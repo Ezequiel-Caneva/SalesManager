@@ -59,8 +59,8 @@
             btnAgregarRubro = new FontAwesome.Sharp.IconButton();
             btnMostrarProductos = new FontAwesome.Sharp.IconButton();
             btnMostrarRubros = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
+            txtBuscar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productoBindingSource).BeginInit();
             SuspendLayout();
@@ -425,27 +425,28 @@
             btnMostrarRubros.UseVisualStyleBackColor = true;
             btnMostrarRubros.Click += btnMostrarRubros_Click;
             // 
-            // iconButton2
+            // btnBuscar
             // 
-            iconButton2.BackColor = SystemColors.MenuHighlight;
-            iconButton2.FlatStyle = FlatStyle.Popup;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton2.IconColor = SystemColors.ActiveCaptionText;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(1023, 23);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(31, 23);
-            iconButton2.TabIndex = 92;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnBuscar.BackColor = SystemColors.MenuHighlight;
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            btnBuscar.IconColor = SystemColors.ActiveCaptionText;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 24;
+            btnBuscar.Location = new Point(1023, 23);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(31, 23);
+            btnBuscar.TabIndex = 92;
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // textBox1
+            // txtBuscar
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(803, 23);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 23);
-            textBox1.TabIndex = 91;
+            txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+            txtBuscar.Location = new Point(803, 23);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(214, 23);
+            txtBuscar.TabIndex = 91;
             // 
             // FormStock
             // 
@@ -453,8 +454,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1075, 622);
-            Controls.Add(iconButton2);
-            Controls.Add(textBox1);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtBuscar);
             Controls.Add(btnMostrarRubros);
             Controls.Add(btnMostrarProductos);
             Controls.Add(btnEliminarRubro);
@@ -526,7 +527,7 @@
         private FontAwesome.Sharp.IconButton btnAgregarRubro;
         private FontAwesome.Sharp.IconButton btnMostrarProductos;
         private FontAwesome.Sharp.IconButton btnMostrarRubros;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private TextBox textBox1;
+        private FontAwesome.Sharp.IconButton btnBuscar;
+        private TextBox txtBuscar;
     }
 }

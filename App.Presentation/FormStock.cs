@@ -37,7 +37,7 @@ namespace App.Presentation
 
         private void FormStock_Load(object sender, EventArgs e)
         {
-            MostrarProductosoRubro();
+            MostrarProductosoRubro("");
             rubros = ObtenerRubros();
             cbRubro.DataSource = rubros;
             cbRubro.DisplayMember = "categoria";
@@ -65,7 +65,7 @@ namespace App.Presentation
             if (response.IsSuccessStatusCode)
             {
                 mostrarProductos = true;
-                MostrarProductosoRubro();
+                MostrarProductosoRubro("");
                 MessageBox.Show("Producto agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
@@ -100,7 +100,7 @@ namespace App.Presentation
                     if (response.IsSuccessStatusCode)
                     {
                         mostrarProductos = true;
-                        MostrarProductosoRubro();
+                        MostrarProductosoRubro("");
                         MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
@@ -129,7 +129,7 @@ namespace App.Presentation
 
                 MessageBox.Show("Producto eliminado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mostrarProductos = true;
-                MostrarProductosoRubro();
+                MostrarProductosoRubro("");
             }
             else
             {
@@ -140,7 +140,7 @@ namespace App.Presentation
         private void btnMostrarProductos_Click(object sender, EventArgs e)
         {
             mostrarProductos = true;
-            MostrarProductosoRubro();
+            MostrarProductosoRubro("");
 
         }
         //Fin Productos
@@ -159,7 +159,7 @@ namespace App.Presentation
             {
                 MessageBox.Show("Rubro agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 mostrarProductos = false;
-                MostrarProductosoRubro();
+                MostrarProductosoRubro("");
 
             }
             else
@@ -189,7 +189,7 @@ namespace App.Presentation
 
                         MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         mostrarProductos = false;
-                        MostrarProductosoRubro();
+                        MostrarProductosoRubro("");
                     }
                     else
                     {
@@ -201,7 +201,7 @@ namespace App.Presentation
         private void btnMostrarRubros_Click(object sender, EventArgs e)
         {
             mostrarProductos = false;
-            MostrarProductosoRubro();
+            MostrarProductosoRubro("");
         }
         //fin Rubros 
 
@@ -212,7 +212,7 @@ namespace App.Presentation
             {
                 _currentPage--;
                 txtPagina.Text = _currentPage.ToString();
-                MostrarProductosoRubro();
+                MostrarProductosoRubro("");
             }
         }
 
@@ -220,13 +220,13 @@ namespace App.Presentation
         {
             _currentPage++;
             txtPagina.Text = _currentPage.ToString();
-            MostrarProductosoRubro();
+            MostrarProductosoRubro("");
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
-            MostrarProductosoRubro();
+            MostrarProductosoRubro("");
         }
 
         private void txtPagina_TextChanged(object sender, EventArgs e)
@@ -242,7 +242,12 @@ namespace App.Presentation
                 _currentPage = 1;
             }
 
-            MostrarProductosoRubro();
+            MostrarProductosoRubro("");
+        }
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            var buscar = txtBuscar.Text;
+             MostrarProductosoRubro(buscar);
         }
         //fin Paginado
 
@@ -294,7 +299,7 @@ namespace App.Presentation
 
             return null;
         }
-        public void MostrarProductosoRubro()
+        public void MostrarProductosoRubro(string txtbuscar)
         {
             if (mostrarProductos == true)
             {
@@ -303,7 +308,7 @@ namespace App.Presentation
                     {
                         PageIndex = _currentPage,
                         PageSize = _currentItemsPerPage,
-                        TextToSearch = "",
+                        TextToSearch =txtbuscar,
                     };
                     string json = JsonConvert.SerializeObject(search);
                     StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -320,7 +325,7 @@ namespace App.Presentation
                 {
                     PageIndex = _currentPage,
                     PageSize = _currentItemsPerPage,
-                    TextToSearch = "",
+                    TextToSearch = txtbuscar,
                 };
                 string json = JsonConvert.SerializeObject(search);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -332,6 +337,8 @@ namespace App.Presentation
             };
 
         }
+
+       
         //Fin metodos
     }
 }

@@ -58,5 +58,9 @@ namespace App.Business
         {
             return _pedidoRepositorio.DetalleEnvio(search);
         }
+        public Boolean CargarenCobro(Cobro cobro)
+        {
+            return _pedidoRepositorio.CargarenCobro(cobro);
+        }
     }
 }

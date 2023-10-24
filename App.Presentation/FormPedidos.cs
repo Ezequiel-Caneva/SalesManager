@@ -1,4 +1,6 @@
 ﻿using App.Entities;
+using FontAwesome.Sharp;
+using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -84,7 +86,7 @@ namespace App.Presentation
             {
                 if (autorizar == true)
                 {
-                    var confirmarEditar = MessageBox.Show("¿Seguro que desea editar esta Compra?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    var confirmarEditar = MessageBox.Show("¿Seguro que desea confirmar este pedido?", "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (confirmarEditar == DialogResult.Yes)
                     {
                         Random random = new Random();
@@ -113,6 +115,7 @@ namespace App.Presentation
                             montototal = montototal,
                             fecha = DateTime.Now
                         };
+
                         string json2 = JsonConvert.SerializeObject(factura);
                         StringContent content2 = new StringContent(json2, Encoding.UTF8, "application/json");
                         HttpResponseMessage response2 = _client.PostAsync($"{_client.BaseAddress}/Pedido/AgregarFactura", content2).Result;
@@ -160,6 +163,33 @@ namespace App.Presentation
                         {
                             MessageBox.Show("No se pudo confirma el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
+                       
+                        Cobro cobro = new Cobro()
+                        {
+                            nrofactura = factura.nrofactura,
+                            cliente = result.cliente,
+                            fecha = DateTime.Now,
+                            tipo_comprobante = "FAC",
+                            nro_comprobante = factura.nrofactura,
+                            credito = factura.montototal,
+                            saldo = factura.montototal,
+                        };
+                        string json4 = JsonConvert.SerializeObject(cobro);
+                        StringContent content4 = new StringContent(json4, Encoding.UTF8, "application/json");
+                        HttpResponseMessage response4 = _client.PostAsync($"{_client.BaseAddress}/Pedido/CargarenCobro", content4).Result;
+                        if (response4.IsSuccessStatusCode)
+                        {
+                            bool cobroCon = JsonConvert.DeserializeObject<bool>(response4.Content.ReadAsStringAsync().Result);
+                            if (cobroCon != true)
+                            {
+                                MessageBox.Show("No se pudo cargar la factura en Cobros2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo cargar la factura en Cobros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
                         filtrar(filtro);
                     }
                 }
@@ -288,18 +318,48 @@ namespace App.Presentation
                 MessageBox.Show("Seleccione un pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void dgvPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        //Paginado
+        private void btnAnterior_Click(object sender, EventArgs e)
         {
+            if (_currentPage > 1)
+            {
 
-
+                _currentPage--;
+                txtPagina.Text = _currentPage.ToString();
+                filtrar(filtro);
+            }
         }
 
-        private void dgvPedidos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void txtPagina_TextChanged(object sender, EventArgs e)
         {
+            int index;
 
+            if (int.TryParse(txtPagina.Text, out index))
+            {
+                _currentPage = index;
+            }
+            else
+            {
+                _currentPage = 1;
+            }
+            filtrar(filtro);
         }
 
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            _currentPage++;
+            txtPagina.Text = _currentPage.ToString();
+            filtrar(filtro);
+        }
+
+        private void cbItemsPorPagina_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
+            filtrar(filtro);
+        }
+        // Fin Paginado
+
+   
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvDetalle.Visible = true;
@@ -344,24 +404,24 @@ namespace App.Presentation
                     }
                 }
                 dgvDetalle.DataSource = dataTable;
-
-                if (e.ColumnIndex == dgvDetalle.Columns["Cantidad"].Index && e.RowIndex >= 0)
+                if (!autorizar)
                 {
-                    int cantidad = (int)dgvDetalle.Rows[e.RowIndex].Cells["Cantidad"].Value;
-                    int stock = (int)dgvDetalle.Rows[e.RowIndex].Cells["Stock"].Value;
-                    if (cantidad > stock)
+                    foreach (DataGridViewRow row in dgvDetalle.Rows)
                     {
-                        // Establecer el color de fondo deseado para la fila
-                        dgvDetalle.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
-                        dgvDetalle.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White; // Opcional: configurar el color del texto
-                    }
-                    else
-                    {
-                        // Restaurar los colores predeterminados de la fila
-                        dgvDetalle.Rows[e.RowIndex].DefaultCellStyle.BackColor = dgvDetalle.DefaultCellStyle.BackColor;
-                        dgvDetalle.Rows[e.RowIndex].DefaultCellStyle.ForeColor = dgvDetalle.DefaultCellStyle.ForeColor;
+                        if (row.Cells["Cantidad"].Value != null && row.Cells["Stock"].Value != null)
+                        {
+                            int cantidad = (int)row.Cells["Cantidad"].Value;
+                            int stock = (int)row.Cells["Stock"].Value;
+
+                            if (cantidad > stock)
+                            {
+                                row.DefaultCellStyle.BackColor = Color.Red;
+                                row.DefaultCellStyle.ForeColor = Color.White;
+                            }
+                        }
                     }
                 }
+   
 
             }
         }
@@ -383,11 +443,7 @@ namespace App.Presentation
 
         }
 
-        private void dgvDetalle_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
+       
         private void filtrar(string filtro)
         {
             Search search = new Search()
@@ -405,50 +461,27 @@ namespace App.Presentation
             dgvPedidos.DataSource = bindingList;
             dgvPedidos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+      
         private void dgvDetalle_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
 
+        }
+
+        private void dgvDetalle_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
+        private void dgvPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
 
         }
 
-        private void btnAnterior_Click(object sender, EventArgs e)
+        private void dgvPedidos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (_currentPage > 1)
-            {
 
-                _currentPage--;
-                txtPagina.Text = _currentPage.ToString();
-                filtrar(filtro);
-            }
-        }
-
-        private void txtPagina_TextChanged(object sender, EventArgs e)
-        {
-            int index;
-
-            if (int.TryParse(txtPagina.Text, out index))
-            {
-                _currentPage = index;
-            }
-            else
-            {
-                _currentPage = 1;
-            }
-            filtrar(filtro);
-        }
-
-        private void btnSiguiente_Click(object sender, EventArgs e)
-        {
-            _currentPage++;
-            txtPagina.Text = _currentPage.ToString();
-            filtrar(filtro);
-        }
-
-        private void cbItemsPorPagina_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
-            filtrar(filtro);
         }
 
 

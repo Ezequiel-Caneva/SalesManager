@@ -78,8 +78,10 @@ namespace App.Data
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
-            // Obtén todos los productos sin aplicar filtros
-            var query = _context.Producto.AsQueryable();
+            var obtenerproductos = ObtenerProductos();
+            var query = from m in obtenerproductos
+                        where m.nombre.Contains(search.TextToSearch)
+                        select m;
 
 
             var count = query.Count();
@@ -106,8 +108,10 @@ namespace App.Data
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
-            // Obtén todos los productos sin aplicar filtros
-            var query = _context.Rubro.AsQueryable();
+            var ObtenerRubro1 = ObtenerRubro();
+            var query = from m in ObtenerRubro1
+                        where m.categoria.Contains(search.TextToSearch)
+                        select m;
 
 
             var count = query.Count();

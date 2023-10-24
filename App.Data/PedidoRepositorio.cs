@@ -208,6 +208,12 @@ namespace App.Data
             var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
             return envio;
         }
+        public Boolean CargarenCobro(Cobro cobro)
+        {
+            _context.Cobro.Add(cobro);
+            _context.SaveChanges();
+            return true;
+        }
     }
    
 }

@@ -17,7 +17,7 @@ namespace App.Entities
         public DateTime? fecha { get; set; }   
         public int? factura { get; set; }    
         public int? vendedor { get; set; }   
-        public int? cliente { get; set; }
+        public int cliente { get; set; }
         [NotMapped]
         public List<DetalleVenta>? _venta {  get; set; }
         [NotMapped]
