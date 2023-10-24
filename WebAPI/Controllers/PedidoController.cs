@@ -70,5 +70,10 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.CargarenCobro(cobro);
         }
+        [HttpPost("MostrarCobros")]
+        public Response<Cobro> MostrarCobros(Search search)
+        {
+            return _pedidoNegocio.MostrarCobros(search);
+        }
     }
 }

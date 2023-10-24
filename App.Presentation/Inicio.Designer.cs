@@ -41,7 +41,6 @@
             menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             menuStrip2 = new MenuStrip();
             contenedor = new Panel();
-            menuCobros = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,7 +59,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ButtonHighlight;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuCompras, menuCobros, menuClientes, menuProveedores, menuStock, menuInformes, menuUsuarios });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuCompras, menuClientes, menuProveedores, menuStock, menuInformes, menuUsuarios });
             menuStrip1.Location = new Point(0, 58);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1271, 73);
@@ -71,7 +70,7 @@
             // menuVentasMostrador
             // 
             menuVentasMostrador.AutoSize = false;
-            menuVentasMostrador.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            menuVentasMostrador.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
             menuVentasMostrador.IconColor = Color.Black;
             menuVentasMostrador.IconFont = FontAwesome.Sharp.IconFont.Auto;
             menuVentasMostrador.IconSize = 50;
@@ -99,14 +98,14 @@
             // menuVentas
             // 
             menuVentas.AutoSize = false;
-            menuVentas.IconChar = FontAwesome.Sharp.IconChar.Tags;
+            menuVentas.IconChar = FontAwesome.Sharp.IconChar.Coins;
             menuVentas.IconColor = Color.Black;
             menuVentas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             menuVentas.IconSize = 50;
             menuVentas.ImageScaling = ToolStripItemImageScaling.None;
             menuVentas.Name = "menuVentas";
             menuVentas.Size = new Size(122, 69);
-            menuVentas.Text = "Ventas";
+            menuVentas.Text = "Cobros";
             menuVentas.TextImageRelation = TextImageRelation.ImageAboveText;
             menuVentas.Click += menuVentas_Click;
             // 
@@ -216,19 +215,6 @@
             contenedor.TabIndex = 3;
             contenedor.Paint += contenedor_Paint;
             // 
-            // menuCobros
-            // 
-            menuCobros.AutoSize = false;
-            menuCobros.IconChar = FontAwesome.Sharp.IconChar.UserGear;
-            menuCobros.IconColor = Color.Black;
-            menuCobros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            menuCobros.IconSize = 50;
-            menuCobros.ImageScaling = ToolStripItemImageScaling.None;
-            menuCobros.Name = "menuCobros";
-            menuCobros.Size = new Size(122, 69);
-            menuCobros.Text = "Cobros";
-            menuCobros.TextImageRelation = TextImageRelation.ImageAboveText;
-            // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -271,6 +257,5 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private FontAwesome.Sharp.IconMenuItem menuStock;
-        private FontAwesome.Sharp.IconMenuItem menuCobros;
     }
 }

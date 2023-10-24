@@ -28,19 +28,223 @@
         /// </summary>
         private void InitializeComponent()
         {
+            txt6 = new Label();
+            dgvCobros = new DataGridView();
+            txt7 = new Label();
+            cbRubro = new ComboBox();
+            CbProveedor = new ComboBox();
+            cbProducto = new ComboBox();
+            label1 = new Label();
+            txt4 = new Label();
+            txt3 = new Label();
+            txt1 = new Label();
+            txtPrecioComp = new TextBox();
+            txtCantidad = new TextBox();
+            Texto5 = new Label();
+            btnAgregar = new FontAwesome.Sharp.IconButton();
+            labelcontenedor = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvCobros).BeginInit();
             SuspendLayout();
+            // 
+            // txt6
+            // 
+            txt6.BackColor = Color.White;
+            txt6.BorderStyle = BorderStyle.FixedSingle;
+            txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt6.Location = new Point(291, 49);
+            txt6.Name = "txt6";
+            txt6.Size = new Size(227, 23);
+            txt6.TabIndex = 102;
+            txt6.Text = "Deudas del Cliente:";
+            txt6.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // dgvCobros
+            // 
+            dgvCobros.AllowUserToDeleteRows = false;
+            dgvCobros.BackgroundColor = Color.White;
+            dgvCobros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCobros.Location = new Point(291, 93);
+            dgvCobros.Name = "dgvCobros";
+            dgvCobros.ReadOnly = true;
+            dgvCobros.RowTemplate.Height = 25;
+            dgvCobros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvCobros.Size = new Size(882, 407);
+            dgvCobros.TabIndex = 101;
+            // 
+            // txt7
+            // 
+            txt7.AutoSize = true;
+            txt7.BackColor = Color.White;
+            txt7.Location = new Point(12, 49);
+            txt7.Name = "txt7";
+            txt7.Size = new Size(47, 15);
+            txt7.TabIndex = 100;
+            txt7.Text = "Cliente:";
+            // 
+            // cbRubro
+            // 
+            cbRubro.FormattingEnabled = true;
+            cbRubro.Location = new Point(6, 67);
+            cbRubro.Name = "cbRubro";
+            cbRubro.Size = new Size(210, 23);
+            cbRubro.TabIndex = 98;
+            // 
+            // CbProveedor
+            // 
+            CbProveedor.FormattingEnabled = true;
+            CbProveedor.Location = new Point(7, 243);
+            CbProveedor.Name = "CbProveedor";
+            CbProveedor.Size = new Size(210, 23);
+            CbProveedor.TabIndex = 99;
+            // 
+            // cbProducto
+            // 
+            cbProducto.FormattingEnabled = true;
+            cbProducto.Location = new Point(6, 111);
+            cbProducto.Name = "cbProducto";
+            cbProducto.Size = new Size(210, 23);
+            cbProducto.TabIndex = 97;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.White;
+            label1.Location = new Point(4, 93);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 15);
+            label1.TabIndex = 96;
+            label1.Text = "Factura:";
+            // 
+            // txt4
+            // 
+            txt4.AutoSize = true;
+            txt4.BackColor = Color.White;
+            txt4.Location = new Point(6, 225);
+            txt4.Name = "txt4";
+            txt4.Size = new Size(64, 15);
+            txt4.TabIndex = 95;
+            txt4.Text = "Proveedor:";
+            // 
+            // txt3
+            // 
+            txt3.AutoSize = true;
+            txt3.BackColor = Color.White;
+            txt3.Location = new Point(5, 181);
+            txt3.Name = "txt3";
+            txt3.Size = new Size(98, 15);
+            txt3.TabIndex = 94;
+            txt3.Text = "Metodo de pago:";
+            // 
+            // txt1
+            // 
+            txt1.AutoSize = true;
+            txt1.BackColor = Color.White;
+            txt1.Location = new Point(5, 137);
+            txt1.Name = "txt1";
+            txt1.Size = new Size(97, 15);
+            txt1.TabIndex = 93;
+            txt1.Text = "Monto a Abonar:";
+            // 
+            // txtPrecioComp
+            // 
+            txtPrecioComp.Location = new Point(7, 199);
+            txtPrecioComp.Name = "txtPrecioComp";
+            txtPrecioComp.Size = new Size(209, 23);
+            txtPrecioComp.TabIndex = 92;
+            // 
+            // txtCantidad
+            // 
+            txtCantidad.Location = new Point(7, 155);
+            txtCantidad.Name = "txtCantidad";
+            txtCantidad.Size = new Size(209, 23);
+            txtCantidad.TabIndex = 91;
+            // 
+            // Texto5
+            // 
+            Texto5.BackColor = SystemColors.ActiveCaption;
+            Texto5.BorderStyle = BorderStyle.FixedSingle;
+            Texto5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            Texto5.Location = new Point(0, 22);
+            Texto5.Name = "Texto5";
+            Texto5.Size = new Size(241, 27);
+            Texto5.TabIndex = 90;
+            Texto5.Text = "Cobrar ";
+            Texto5.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // btnAgregar
+            // 
+            btnAgregar.BackColor = Color.ForestGreen;
+            btnAgregar.Cursor = Cursors.Hand;
+            btnAgregar.FlatAppearance.BorderColor = Color.Black;
+            btnAgregar.FlatStyle = FlatStyle.Popup;
+            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            btnAgregar.IconColor = Color.Black;
+            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAgregar.IconSize = 16;
+            btnAgregar.Location = new Point(7, 281);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(210, 38);
+            btnAgregar.TabIndex = 89;
+            btnAgregar.Text = "Cobrar";
+            btnAgregar.TextAlign = ContentAlignment.MiddleRight;
+            btnAgregar.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnAgregar.UseVisualStyleBackColor = false;
+            // 
+            // labelcontenedor
+            // 
+            labelcontenedor.BackColor = Color.White;
+            labelcontenedor.BorderStyle = BorderStyle.FixedSingle;
+            labelcontenedor.Dock = DockStyle.Left;
+            labelcontenedor.Location = new Point(0, 0);
+            labelcontenedor.Name = "labelcontenedor";
+            labelcontenedor.Size = new Size(241, 608);
+            labelcontenedor.TabIndex = 88;
             // 
             // FormVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(1202, 608);
+            Controls.Add(txt6);
+            Controls.Add(dgvCobros);
+            Controls.Add(txt7);
+            Controls.Add(cbRubro);
+            Controls.Add(CbProveedor);
+            Controls.Add(cbProducto);
+            Controls.Add(label1);
+            Controls.Add(txt4);
+            Controls.Add(txt3);
+            Controls.Add(txt1);
+            Controls.Add(txtPrecioComp);
+            Controls.Add(txtCantidad);
+            Controls.Add(Texto5);
+            Controls.Add(btnAgregar);
+            Controls.Add(labelcontenedor);
             Name = "FormVentas";
             Text = "FormVentas";
             Load += FormVentas_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvCobros).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label txt6;
+        private DataGridView dgvCobros;
+        private Label txt7;
+        private ComboBox cbRubro;
+        private ComboBox CbProveedor;
+        private ComboBox cbProducto;
+        private Label label1;
+        private Label txt4;
+        private Label txt3;
+        private Label txt1;
+        private TextBox txtPrecioComp;
+        private TextBox txtCantidad;
+        private Label Texto5;
+        private FontAwesome.Sharp.IconButton btnAgregar;
+        private Label labelcontenedor;
     }
 }

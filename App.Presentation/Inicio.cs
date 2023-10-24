@@ -101,6 +101,10 @@ namespace App.Presentation
         {
             AbrirFormulario((IconMenuItem)sender, new FormUsuarios());
         }
+        private void menuCobros_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new FormUsuarios());
+        }
         private void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
             if (_menuActivo != null)
@@ -123,10 +127,6 @@ namespace App.Presentation
         }
         public List<Permiso> ObtenerPermisos(string nombre)
         {
-
-
-
-
             Search e = new Search()
             {
                 TextToSearch = nombre,
