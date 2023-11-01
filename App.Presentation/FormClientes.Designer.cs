@@ -62,7 +62,7 @@
             // 
             txt4.AutoSize = true;
             txt4.BackColor = Color.White;
-            txt4.Location = new Point(40, 192);
+            txt4.Location = new Point(34, 181);
             txt4.Name = "txt4";
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 59;
@@ -72,7 +72,7 @@
             // 
             txt2.AutoSize = true;
             txt2.BackColor = Color.White;
-            txt2.Location = new Point(40, 148);
+            txt2.Location = new Point(34, 137);
             txt2.Name = "txt2";
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 58;
@@ -82,7 +82,7 @@
             // 
             txt1.AutoSize = true;
             txt1.BackColor = Color.White;
-            txt1.Location = new Point(40, 104);
+            txt1.Location = new Point(97, 114);
             txt1.Name = "txt1";
             txt1.Size = new Size(28, 15);
             txt1.TabIndex = 57;
@@ -90,21 +90,21 @@
             // 
             // txtTel
             // 
-            txtTel.Location = new Point(41, 210);
+            txtTel.Location = new Point(35, 199);
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(210, 23);
             txtTel.TabIndex = 56;
             // 
             // txtDirec
             // 
-            txtDirec.Location = new Point(41, 166);
+            txtDirec.Location = new Point(35, 155);
             txtDirec.Name = "txtDirec";
             txtDirec.Size = new Size(210, 23);
             txtDirec.TabIndex = 55;
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(41, 122);
+            txtDni.Location = new Point(35, 111);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(210, 23);
             txtDni.TabIndex = 54;
@@ -114,7 +114,7 @@
             Texto5.BackColor = SystemColors.ActiveCaption;
             Texto5.BorderStyle = BorderStyle.FixedSingle;
             Texto5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            Texto5.Location = new Point(0, 19);
+            Texto5.Location = new Point(-6, 23);
             Texto5.Name = "Texto5";
             Texto5.Size = new Size(291, 27);
             Texto5.TabIndex = 53;
@@ -131,7 +131,7 @@
             btnEliminar.IconColor = Color.Black;
             btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminar.IconSize = 16;
-            btnEliminar.Location = new Point(41, 440);
+            btnEliminar.Location = new Point(35, 429);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(210, 23);
             btnEliminar.TabIndex = 52;
@@ -151,7 +151,7 @@
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditar.IconSize = 16;
-            btnEditar.Location = new Point(41, 411);
+            btnEditar.Location = new Point(35, 400);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(210, 23);
             btnEditar.TabIndex = 51;
@@ -171,7 +171,7 @@
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 16;
-            btnAgregar.Location = new Point(41, 382);
+            btnAgregar.Location = new Point(35, 371);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(210, 23);
             btnAgregar.TabIndex = 50;
@@ -185,7 +185,7 @@
             // 
             Text1.AutoSize = true;
             Text1.BackColor = Color.White;
-            Text1.Location = new Point(41, 61);
+            Text1.Location = new Point(35, 50);
             Text1.Name = "Text1";
             Text1.Size = new Size(54, 15);
             Text1.TabIndex = 49;
@@ -193,21 +193,21 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(41, 78);
+            txtNombre.Location = new Point(35, 67);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(210, 23);
             txtNombre.TabIndex = 48;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(41, 251);
+            txtEmail.Location = new Point(35, 240);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(210, 23);
             txtEmail.TabIndex = 60;
             // 
             // txtCiudad
             // 
-            txtCiudad.Location = new Point(41, 295);
+            txtCiudad.Location = new Point(35, 284);
             txtCiudad.Name = "txtCiudad";
             txtCiudad.Size = new Size(210, 23);
             txtCiudad.TabIndex = 61;
@@ -216,7 +216,7 @@
             // 
             label1.AutoSize = true;
             label1.BackColor = Color.White;
-            label1.Location = new Point(40, 236);
+            label1.Location = new Point(34, 225);
             label1.Name = "label1";
             label1.Size = new Size(39, 15);
             label1.TabIndex = 62;
@@ -226,7 +226,7 @@
             // 
             label2.AutoSize = true;
             label2.BackColor = Color.White;
-            label2.Location = new Point(40, 277);
+            label2.Location = new Point(34, 266);
             label2.Name = "label2";
             label2.Size = new Size(48, 15);
             label2.TabIndex = 63;
@@ -236,7 +236,7 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.White;
-            label3.Location = new Point(40, 324);
+            label3.Location = new Point(34, 313);
             label3.Name = "label3";
             label3.Size = new Size(84, 15);
             label3.TabIndex = 65;
@@ -244,7 +244,7 @@
             // 
             // txtCodPostal
             // 
-            txtCodPostal.Location = new Point(41, 342);
+            txtCodPostal.Location = new Point(35, 331);
             txtCodPostal.Name = "txtCodPostal";
             txtCodPostal.Size = new Size(210, 23);
             txtCodPostal.TabIndex = 64;
@@ -254,7 +254,7 @@
             dgvClientes.AllowUserToDeleteRows = false;
             dgvClientes.BackgroundColor = Color.White;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvClientes.Location = new Point(317, 61);
+            dgvClientes.Location = new Point(407, 61);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
             dgvClientes.RowTemplate.Height = 25;
@@ -314,7 +314,7 @@
             txt6.BackColor = Color.White;
             txt6.BorderStyle = BorderStyle.FixedSingle;
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt6.Location = new Point(317, 30);
+            txt6.Location = new Point(407, 32);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
             txt6.TabIndex = 70;
@@ -323,12 +323,13 @@
             // 
             // labelcontenedor
             // 
+            labelcontenedor.Anchor = AnchorStyles.None;
             labelcontenedor.BackColor = Color.White;
             labelcontenedor.BorderStyle = BorderStyle.FixedSingle;
-            labelcontenedor.Dock = DockStyle.Left;
-            labelcontenedor.Location = new Point(0, 0);
+            labelcontenedor.ImageAlign = ContentAlignment.MiddleLeft;
+            labelcontenedor.Location = new Point(-46, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(291, 557);
+            labelcontenedor.Size = new Size(291, 597);
             labelcontenedor.TabIndex = 47;
             // 
             // iconButton2
@@ -358,7 +359,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1005, 557);
+            ClientSize = new Size(1128, 594);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(dgvClientes);

@@ -29,14 +29,10 @@ namespace App.Business
         public Pedido ObtenerPedido(Search search)
         {
             return _pedidoRepositorio.ObtenerPedido(search);
-        }
-        public Boolean AgregarFactura(Factura factura)
+        }  
+        public Boolean Confirmar(Pedido pedido)
         {
-            return _pedidoRepositorio.AgregarFactura(factura);
-        }
-        public Boolean AgregarFacturaPedido(Pedido pedido)
-        {
-            return _pedidoRepositorio.AgregarFacturaPedido(pedido);
+            return _pedidoRepositorio.Confirmar(pedido);
         }
         public Pedido ObtenerFactura(Search search)
         {
@@ -58,10 +54,7 @@ namespace App.Business
         {
             return _pedidoRepositorio.DetalleEnvio(search);
         }
-        public Boolean CargarenCobro(Cobro cobro)
-        {
-            return _pedidoRepositorio.CargarenCobro(cobro);
-        }
+       
         public Response<Cobro> MostrarCobros(Search search)
         {
             return _pedidoRepositorio.MostrarCobros(search);

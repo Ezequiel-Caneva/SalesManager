@@ -15,8 +15,8 @@ namespace WebAPI.Controllers
         {
             _pedidoNegocio = pedidoNegocio;
         }
-        [HttpPost("MostrarPendientes")]
-        public Response<Pedido> MostrarPendientes(Search search)
+        [HttpPost("MostrarPedidos")]
+        public Response<Pedido> MostrarPedidos(Search search)
         {
             return _pedidoNegocio.MostrarPedidos(search);
         }
@@ -29,24 +29,25 @@ namespace WebAPI.Controllers
         public Pedido ObtenerPedido(Search search)
         {
             return _pedidoNegocio.ObtenerPedido(search);
-        }
-        [HttpPost("AgregarFactura")]
-        public Boolean AgregarFactura(Factura factura)
-        {
-            return _pedidoNegocio.AgregarFactura(factura);
-        }
-        [HttpPost("Confirmar")]
-        public Boolean AgregarFacturaPedido(Pedido pedido)
-        {
-            return _pedidoNegocio.AgregarFacturaPedido(pedido);
-        }
+        }  
+      
         [HttpPost("ObtenerFactura")]
         public Pedido ObtenerFactura(Search search)
         {
             return _pedidoNegocio.ObtenerFactura(search);
         }
-        [HttpPost("Rechazar")] 
+        [HttpPost("Rechazado")] 
         public Boolean Rechazar(Pedido pedido)
+        {
+            return _pedidoNegocio.Rechazar(pedido);
+        }
+        [HttpPost("Confirmado")]
+        public Boolean Confirmar(Pedido pedido)
+        {
+            return _pedidoNegocio.Confirmar(pedido);
+        }
+        [HttpPost("Despachado")]
+        public Boolean Despachar(Pedido pedido)
         {
             return _pedidoNegocio.Rechazar(pedido);
         }
@@ -65,11 +66,8 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.DetalleEnvio(search);
         }
-        [HttpPost("CargarenCobro")]
-        public Boolean CargarenCobro(Cobro cobro)
-        {
-            return _pedidoNegocio.CargarenCobro(cobro);
-        }
+       
+     
         [HttpPost("MostrarCobros")]
         public Response<Cobro> MostrarCobros(Search search)
         {

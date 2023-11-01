@@ -33,8 +33,12 @@ namespace App.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Producto>()
+                .HasOne(p => p._Rubro)
+                .WithMany()
+                .HasForeignKey(p => p.rubro);
             modelBuilder.Entity<DetalleVenta>()
-                .HasKey(dv => new { dv.pedido, dv.producto });
+            .HasKey(d => new { d.pedido, d.producto });
         }
 
     }

@@ -2,6 +2,7 @@
 using FontAwesome.Sharp;
 using Microsoft.AspNetCore.Identity;
 using Newtonsoft.Json;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -97,7 +98,6 @@ namespace App.Presentation
                             PageSize = _currentItemsPerPage,
                             TextToSearch = pedidoId.ToString()
                         };
-
                         string json = JsonConvert.SerializeObject(search);
                         StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
                         HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/ObtenerPedido", content).Result;
@@ -109,87 +109,30 @@ namespace App.Presentation
                         {
                             montototal = montototal + item.precio_total;
                         }
-                        Factura factura = new Factura()
+                        result.factura = numero;
+                        result.estado = "Confirmado";
+                        result._factura = new Factura()
                         {
-                            nrofactura = numero,
-                            montototal = montototal,
-                            fecha = DateTime.Now
+                                montototal = montototal,
+                                fecha = DateTime.Now,
+                                nrofactura = numero,  
+                                cobrado = false,
                         };
-
-                        string json2 = JsonConvert.SerializeObject(factura);
-                        StringContent content2 = new StringContent(json2, Encoding.UTF8, "application/json");
-                        HttpResponseMessage response2 = _client.PostAsync($"{_client.BaseAddress}/Pedido/AgregarFactura", content2).Result;
-                        if (response2.IsSuccessStatusCode)
-                        {
-                            bool facturaAgregada = JsonConvert.DeserializeObject<bool>(response2.Content.ReadAsStringAsync().Result);
-                            if (facturaAgregada == true)
-                            {
-                                MessageBox.Show("Se genero la factura", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo generar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo generar la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-                        Pedido pedido = new Pedido()
-                        {
-                            pedidoid = result.pedidoid,
-                            factura = factura.nrofactura,
-                            estado = "Confirmado",
-                            _venta = result._venta
-                        };
-                        string json3 = JsonConvert.SerializeObject(pedido);
-                        StringContent content3 = new StringContent(json3, Encoding.UTF8, "application/json");
-                        HttpResponseMessage response3 = _client.PostAsync($"{_client.BaseAddress}/Pedido/Confirmar", content3).Result;
-                        if (response3.IsSuccessStatusCode)
-                        {
-                            bool pedidofac = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
-                            if (pedidofac == true)
-                            {
-                                MessageBox.Show("Pedido Confirmado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo confirmar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo confirma el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        result._venta = null;
                        
-                        Cobro cobro = new Cobro()
+                       
+                     
+
+                   
+                        Boolean confirmado = CambiarEstado(result);
+                        if (confirmado == true)
                         {
-                            nrofactura = factura.nrofactura,
-                            cliente = result.cliente,
-                            fecha = DateTime.Now,
-                            tipo_comprobante = "FAC",
-                            nro_comprobante = factura.nrofactura,
-                            credito = factura.montototal,
-                            saldo = factura.montototal,
-                        };
-                        string json4 = JsonConvert.SerializeObject(cobro);
-                        StringContent content4 = new StringContent(json4, Encoding.UTF8, "application/json");
-                        HttpResponseMessage response4 = _client.PostAsync($"{_client.BaseAddress}/Pedido/CargarenCobro", content4).Result;
-                        if (response4.IsSuccessStatusCode)
-                        {
-                            bool cobroCon = JsonConvert.DeserializeObject<bool>(response4.Content.ReadAsStringAsync().Result);
-                            if (cobroCon != true)
-                            {
-                                MessageBox.Show("No se pudo cargar la factura en Cobros2", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                            MessageBox.Show("Pedido Confirmado", "Confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo cargar la factura en Cobros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No se pudo Confirmado el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                         filtrar(filtro);
                     }
                 }
@@ -212,31 +155,19 @@ namespace App.Presentation
                 var confirmarEditar = MessageBox.Show("¿Desea cancelar por falta de stock o eliminar pedido?", "Confirmar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (confirmarEditar == DialogResult.Yes)
                 {
-
                     Pedido pedido = new Pedido()
                     {
                         pedidoid = pedidoId,
-                        estado = "FaltaStock",
+                        estado = "Rechazado",
                     };
-
-                    string json3 = JsonConvert.SerializeObject(pedido);
-                    StringContent content3 = new StringContent(json3, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response3 = _client.PostAsync($"{_client.BaseAddress}/Pedido/Rechazar", content3).Result;
-                    if (response3.IsSuccessStatusCode)
+                    bool cancelar = CambiarEstado(pedido);
+                    if (cancelar == true)
                     {
-                        bool pedidocancelar = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
-                        if (pedidocancelar == true)
-                        {
-                            MessageBox.Show("Pedido Rechazado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo confirmar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Pedido cancelado", "Confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("No se pudo confirma el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("No se pudo cancelar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -253,7 +184,6 @@ namespace App.Presentation
                 var confirmarEditar = MessageBox.Show("¿Desea despachar el pedido?", "Confirmar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (confirmarEditar == DialogResult.Yes)
                 {
-
                     Pedido pedido = new Pedido()
                     {
                         pedidoid = pedidoId,
@@ -266,25 +196,15 @@ namespace App.Presentation
                     subEnvios envio = new subEnvios(_envio);
                     envio.ShowDialog();
                     envio.Close();
-                    string json3 = JsonConvert.SerializeObject(pedido);
-                    StringContent content3 = new StringContent(json3, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response3 = _client.PostAsync($"{_client.BaseAddress}/Pedido/Rechazar", content3).Result;
-                    if (response3.IsSuccessStatusCode)
+                    bool despachar = CambiarEstado(pedido);
+                    if (despachar == true)
                     {
-                        bool pedidocancelar = JsonConvert.DeserializeObject<bool>(response3.Content.ReadAsStringAsync().Result);
-                        if (pedidocancelar == true)
-                        {
-                            MessageBox.Show("Pedido despachado", "Confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("No se pudo despachar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MessageBox.Show("Pedido despachado", "Confirmado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
                         MessageBox.Show("No se pudo despachar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    }    
                 }
             }
             else
@@ -323,7 +243,6 @@ namespace App.Presentation
         {
             if (_currentPage > 1)
             {
-
                 _currentPage--;
                 txtPagina.Text = _currentPage.ToString();
                 filtrar(filtro);
@@ -333,7 +252,6 @@ namespace App.Presentation
         private void txtPagina_TextChanged(object sender, EventArgs e)
         {
             int index;
-
             if (int.TryParse(txtPagina.Text, out index))
             {
                 _currentPage = index;
@@ -344,22 +262,18 @@ namespace App.Presentation
             }
             filtrar(filtro);
         }
-
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             _currentPage++;
             txtPagina.Text = _currentPage.ToString();
             filtrar(filtro);
         }
-
         private void cbItemsPorPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
             filtrar(filtro);
         }
         // Fin Paginado
-
-   
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvDetalle.Visible = true;
@@ -370,8 +284,6 @@ namespace App.Presentation
                 // Aquí, consulta y carga los detalles del pedido correspondiente en el dgvDetalle.
                 // Puedes utilizar Entity Framework o tu método de acceso a datos para obtener los detalles.
                 var detalles = ObtenerDetallesDelPedido(pedidoId);
-
-
                 DataTable dataTable = new DataTable();
 
                 dataTable.Columns.Add("Producto", typeof(string));
@@ -421,8 +333,6 @@ namespace App.Presentation
                         }
                     }
                 }
-   
-
             }
         }
         public List<DetalleVenta> ObtenerDetallesDelPedido(int pedidoid)
@@ -440,10 +350,7 @@ namespace App.Presentation
             var result = JsonConvert.DeserializeObject<Response<DetalleVenta>>(jsonToDeserialize);
             var resutado = result.Items;
             return resutado;
-
-        }
-
-       
+        }  
         private void filtrar(string filtro)
         {
             Search search = new Search()
@@ -454,13 +361,22 @@ namespace App.Presentation
             };
             string json = JsonConvert.SerializeObject(search);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/MostrarPendientes", content).Result;
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/MostrarPedidos", content).Result;
             var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
             var result = JsonConvert.DeserializeObject<Response<Pedido>>(jsonToDeserialize);
             BindingList<Pedido> bindingList = new BindingList<Pedido>(result.Items);
             dgvPedidos.DataSource = bindingList;
             dgvPedidos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+        public Boolean CambiarEstado(Pedido pedido)
+        {
+            string json = JsonConvert.SerializeObject(pedido);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/{pedido.estado}", content).Result;
+            var cambiado = JsonConvert.DeserializeObject<Boolean>(response.Content.ReadAsStringAsync().Result);
+            return cambiado;
+         }
+       
       
         private void dgvDetalle_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {

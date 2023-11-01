@@ -16,7 +16,7 @@ namespace App.Entities
         public DateTime fecha { get; set; } 
         public decimal montototal { get; set; }
 
-        public bool cobrado { get; set; }
+        public bool? cobrado { get; set; }
 
     }
 }

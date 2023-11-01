@@ -91,28 +91,10 @@ namespace App.Data
 
             pedido._venta = detalles;
 
-
             return pedido;
         }
-        public Boolean AgregarFactura(Factura factura)
-        {
-
-            Boolean verificar = _context.Factura.Any(c => c.nrofactura == factura.nrofactura);
-
-            if (verificar == true)
-            {
-                // El cliente ya existe, no lo agregues y devuelve falso para indicar que no se realizó la operación.
-                return false;
-            }
-            else
-            {
-                // El cliente no existe, agrégalo a la base de datos y guarda los cambios.
-                _context.Factura.Add(factura);
-                _context.SaveChanges();
-                return true;
-            }
-        }
-        public bool AgregarFacturaPedido(Pedido pedido)
+     
+        public Boolean Confirmar(Pedido pedido)
         {
 
             var pedidoExistente = _context.Pedido.FirstOrDefault(u => u.pedidoid == pedido.pedidoid);
@@ -121,7 +103,9 @@ namespace App.Data
             {
                 pedidoExistente.factura = pedido.factura;
                 pedidoExistente.estado = pedido.estado;
-                foreach (var detalleventa in pedido._venta)
+                var detalle_venta = _context.detalleVenta.Where(d => d.pedido == pedido.pedidoid).ToList();
+
+                foreach (var detalleventa in detalle_venta)
                 {
                     var productoEnBD = _context.Producto.FirstOrDefault(p => p.productoid == detalleventa.producto);
 
@@ -129,19 +113,37 @@ namespace App.Data
                     {
                         productoEnBD.stock -= detalleventa.cantidad;
                     }
+                    
                 }
+                Boolean verificar = _context.Factura.Any(c => c.nrofactura == pedido._factura.nrofactura);
+                if (verificar == true)
+                {
+                    return false;
+                }
+                else
+                {
+                    //Agregar factura en cobros
+                    Cobro cobro = new Cobro()
+                    {
+                        nrofactura = pedido.factura,
+                        cliente = pedido.cliente,
+                        fecha = DateTime.Now,
+                        tipo_comprobante = "FAC",
+                        credito = pedido._factura.montototal,
+                        saldo = pedido._factura.montototal,
 
-                // Actualiza los campos con los nuevos valores
-
-
-                // Guarda los cambios en la base de datos una sola vez
-                _context.SaveChanges();
-
-                return true;
+                    };
+                    Factura factura = new Factura();
+                    factura = pedido._factura;
+                    _context.Cobro.Add(cobro);
+                    //Agregar factura en Facturas
+                    _context.Factura.Add(factura);
+                    _context.SaveChanges();
+                    return true;
+                }
+               
             }
             return false;
-
-
         }
         public Pedido ObtenerFactura(Search search)
         {
@@ -208,12 +210,7 @@ namespace App.Data
             var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
             return envio;
         }
-        public Boolean CargarenCobro(Cobro cobro)
-        {
-            _context.Cobro.Add(cobro);
-            _context.SaveChanges();
-            return true;
-        }
+       
         public Response<Cobro> MostrarCobros(Search search)
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);

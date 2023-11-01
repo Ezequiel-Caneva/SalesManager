@@ -28,71 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            dataGridView2 = new DataGridView();
-            btnVer = new FontAwesome.Sharp.IconButton();
-            iconButton1 = new FontAwesome.Sharp.IconButton();
+            dgvProductos = new DataGridView();
+            dgvLista = new DataGridView();
+            btnAgregar = new FontAwesome.Sharp.IconButton();
+            btnQuitar = new FontAwesome.Sharp.IconButton();
             txt6 = new Label();
             label1 = new Label();
-            textBox1 = new TextBox();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
+            txtBuscar = new TextBox();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
             iconButton3 = new FontAwesome.Sharp.IconButton();
             iconButton4 = new FontAwesome.Sharp.IconButton();
             cbItemsPorPagina = new ComboBox();
             txtPagina = new TextBox();
             btnAnterior = new FontAwesome.Sharp.IconButton();
             btnSiguiente = new FontAwesome.Sharp.IconButton();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLista).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvProductos
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(74, 37);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(436, 421);
-            dataGridView1.TabIndex = 0;
+            dgvProductos.BackgroundColor = Color.White;
+            dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProductos.Location = new Point(74, 37);
+            dgvProductos.Name = "dgvProductos";
+            dgvProductos.RowTemplate.Height = 25;
+            dgvProductos.Size = new Size(436, 421);
+            dgvProductos.TabIndex = 0;
+            dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
-            // dataGridView2
+            // dgvLista
             // 
-            dataGridView2.BackgroundColor = Color.White;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(595, 37);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(436, 421);
-            dataGridView2.TabIndex = 1;
+            dgvLista.BackgroundColor = Color.White;
+            dgvLista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvLista.Location = new Point(595, 37);
+            dgvLista.Name = "dgvLista";
+            dgvLista.RowTemplate.Height = 25;
+            dgvLista.Size = new Size(436, 421);
+            dgvLista.TabIndex = 1;
             // 
-            // btnVer
+            // btnAgregar
             // 
-            btnVer.BackColor = SystemColors.MenuHighlight;
-            btnVer.FlatStyle = FlatStyle.Popup;
-            btnVer.IconChar = FontAwesome.Sharp.IconChar.ChevronRight;
-            btnVer.IconColor = SystemColors.ActiveCaptionText;
-            btnVer.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnVer.IconSize = 28;
-            btnVer.Location = new Point(534, 48);
-            btnVer.Name = "btnVer";
-            btnVer.Size = new Size(38, 31);
-            btnVer.TabIndex = 85;
-            btnVer.UseVisualStyleBackColor = false;
+            btnAgregar.BackColor = SystemColors.MenuHighlight;
+            btnAgregar.FlatStyle = FlatStyle.Popup;
+            btnAgregar.IconChar = FontAwesome.Sharp.IconChar.ChevronRight;
+            btnAgregar.IconColor = SystemColors.ActiveCaptionText;
+            btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAgregar.IconSize = 28;
+            btnAgregar.Location = new Point(534, 48);
+            btnAgregar.Name = "btnAgregar";
+            btnAgregar.Size = new Size(38, 31);
+            btnAgregar.TabIndex = 85;
+            btnAgregar.UseVisualStyleBackColor = false;
+            btnAgregar.Click += btnAgregar_Click;
             // 
-            // iconButton1
+            // btnQuitar
             // 
-            iconButton1.BackColor = Color.IndianRed;
-            iconButton1.FlatStyle = FlatStyle.Popup;
-            iconButton1.IconChar = FontAwesome.Sharp.IconChar.ChevronLeft;
-            iconButton1.IconColor = SystemColors.ActiveCaptionText;
-            iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton1.IconSize = 28;
-            iconButton1.Location = new Point(534, 85);
-            iconButton1.Name = "iconButton1";
-            iconButton1.Size = new Size(38, 31);
-            iconButton1.TabIndex = 86;
-            iconButton1.UseVisualStyleBackColor = false;
+            btnQuitar.BackColor = Color.IndianRed;
+            btnQuitar.FlatStyle = FlatStyle.Popup;
+            btnQuitar.IconChar = FontAwesome.Sharp.IconChar.ChevronLeft;
+            btnQuitar.IconColor = SystemColors.ActiveCaptionText;
+            btnQuitar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnQuitar.IconSize = 28;
+            btnQuitar.Location = new Point(534, 85);
+            btnQuitar.Name = "btnQuitar";
+            btnQuitar.Size = new Size(38, 31);
+            btnQuitar.TabIndex = 86;
+            btnQuitar.UseVisualStyleBackColor = false;
             // 
             // txt6
             // 
@@ -118,27 +120,27 @@
             label1.Text = "Listar productos:";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // txtBuscar
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(259, 10);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 23);
-            textBox1.TabIndex = 89;
+            txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+            txtBuscar.Location = new Point(259, 10);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(214, 23);
+            txtBuscar.TabIndex = 89;
             // 
-            // iconButton2
+            // btnBuscar
             // 
-            iconButton2.BackColor = SystemColors.MenuHighlight;
-            iconButton2.FlatStyle = FlatStyle.Popup;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton2.IconColor = SystemColors.ActiveCaptionText;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(479, 10);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(31, 23);
-            iconButton2.TabIndex = 90;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnBuscar.BackColor = SystemColors.MenuHighlight;
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            btnBuscar.IconColor = SystemColors.ActiveCaptionText;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 24;
+            btnBuscar.Location = new Point(479, 10);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(31, 23);
+            btnBuscar.TabIndex = 90;
+            btnBuscar.UseVisualStyleBackColor = false;
             // 
             // iconButton3
             // 
@@ -218,33 +220,33 @@
             Controls.Add(btnSiguiente);
             Controls.Add(iconButton4);
             Controls.Add(iconButton3);
-            Controls.Add(iconButton2);
-            Controls.Add(textBox1);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtBuscar);
             Controls.Add(label1);
             Controls.Add(txt6);
-            Controls.Add(iconButton1);
-            Controls.Add(btnVer);
-            Controls.Add(dataGridView2);
-            Controls.Add(dataGridView1);
+            Controls.Add(btnQuitar);
+            Controls.Add(btnAgregar);
+            Controls.Add(dgvLista);
+            Controls.Add(dgvProductos);
             Name = "FormVentasMostrador";
             Text = "FormVentasMostrador";
             Load += FormVentasMostrador_Load;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvProductos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvLista).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
-        private DataGridView dataGridView2;
-        private FontAwesome.Sharp.IconButton btnVer;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private DataGridView dgvProductos;
+        private DataGridView dgvLista;
+        private FontAwesome.Sharp.IconButton btnAgregar;
+        private FontAwesome.Sharp.IconButton btnQuitar;
         private Label txt6;
         private Label label1;
-        private TextBox textBox1;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private TextBox txtBuscar;
+        private FontAwesome.Sharp.IconButton btnBuscar;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton4;
         private ComboBox cbItemsPorPagina;

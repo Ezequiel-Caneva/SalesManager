@@ -272,11 +272,13 @@ namespace App.Presentation
         {
             var buscar = txtBuscar.Text;
             MostrarProductosoRubro(buscar);
+            txtPagina.Text = "1";
         }
         //fin Paginado
 
         //Datagriedview
-        private void dgvProducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvProducto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
@@ -300,6 +302,10 @@ namespace App.Presentation
                     txtCategoria.Text = selectedRow.Cells["categoria"].Value.ToString();
                 }
             }
+        }
+        private void dgvProducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+          
         }
         private void dgvProducto_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -340,6 +346,7 @@ namespace App.Presentation
                     var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
                     var result = JsonConvert.DeserializeObject<Response<Producto>>(jsonToDeserialize);
                     dgvProducto.DataSource = result.Items;
+                    dgvProducto.Columns["_Rubro"].Visible = false;
                     dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 }
             }
@@ -359,10 +366,12 @@ namespace App.Presentation
                 dgvProducto.DataSource = result.Items;
                 dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             };
+           
 
         }
 
-        
+
+
 
 
         //Fin metodos

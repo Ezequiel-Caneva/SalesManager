@@ -1,4 +1,5 @@
 ﻿using App.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -95,12 +96,14 @@ namespace App.Data
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
-            var obtenerproductos = ObtenerProductos();
-            var query = from m in obtenerproductos
-                        where m.nombre.Contains(search.TextToSearch)
-                        select m;
-
-
+            /* var obtenerproductos = ObtenerProductos();
+             var query = from m in obtenerproductos
+                         where m.nombre.Contains(search.TextToSearch)
+                         select m;
+            */
+            var query = _context.Producto
+                      .Include(p => p._Rubro);
+                      
             var count = query.Count();
             var response = new Response<Producto>()
             {
