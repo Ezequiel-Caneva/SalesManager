@@ -305,7 +305,7 @@ namespace App.Presentation
         }
         private void dgvProducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-          
+
         }
         private void dgvProducto_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
@@ -347,7 +347,9 @@ namespace App.Presentation
                     var result = JsonConvert.DeserializeObject<Response<Producto>>(jsonToDeserialize);
                     dgvProducto.DataSource = result.Items;
                     dgvProducto.Columns["_Rubro"].Visible = false;
+
                     dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                    label1.Text = "Lista de productos";
                 }
             }
             else if (mostrarProductos == false)
@@ -365,8 +367,9 @@ namespace App.Presentation
                 var result = JsonConvert.DeserializeObject<Response<Rubro>>(jsonToDeserialize);
                 dgvProducto.DataSource = result.Items;
                 dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                label1.Text = "Lista de Rubros";
             };
-           
+
 
         }
 

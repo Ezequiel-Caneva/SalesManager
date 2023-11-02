@@ -42,7 +42,7 @@
             // 
             // label1
             // 
-            label1.BackColor = Color.SteelBlue;
+            label1.BackColor = Color.FromArgb(45, 66, 91);
             label1.Dock = DockStyle.Left;
             label1.Location = new Point(0, 0);
             label1.Name = "label1";
@@ -52,7 +52,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.BackColor = Color.SteelBlue;
+            label2.BackColor = Color.FromArgb(45, 66, 91);
             label2.Font = new Font("Segoe UI", 17F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = SystemColors.ButtonHighlight;
             label2.Location = new Point(26, 196);
@@ -64,7 +64,7 @@
             // 
             // iconPictureBox1
             // 
-            iconPictureBox1.BackColor = Color.SteelBlue;
+            iconPictureBox1.BackColor = Color.FromArgb(45, 66, 91);
             iconPictureBox1.ForeColor = SystemColors.ButtonHighlight;
             iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Store;
             iconPictureBox1.IconColor = SystemColors.ButtonHighlight;
@@ -155,7 +155,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonHighlight;
+            BackColor = Color.White;
             ClientSize = new Size(595, 330);
             Controls.Add(label5);
             Controls.Add(btnCancelar);

@@ -113,17 +113,17 @@ namespace App.Presentation
                         result.estado = "Confirmado";
                         result._factura = new Factura()
                         {
-                                montototal = montototal,
-                                fecha = DateTime.Now,
-                                nrofactura = numero,  
-                                cobrado = false,
+                            montototal = montototal,
+                            fecha = DateTime.Now,
+                            nrofactura = numero,
+                            cobrado = false,
                         };
                         result._venta = null;
-                       
-                       
-                     
 
-                   
+
+
+
+
                         Boolean confirmado = CambiarEstado(result);
                         if (confirmado == true)
                         {
@@ -204,7 +204,7 @@ namespace App.Presentation
                     else
                     {
                         MessageBox.Show("No se pudo despachar el pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }    
+                    }
                 }
             }
             else
@@ -350,7 +350,7 @@ namespace App.Presentation
             var result = JsonConvert.DeserializeObject<Response<DetalleVenta>>(jsonToDeserialize);
             var resutado = result.Items;
             return resutado;
-        }  
+        }
         private void filtrar(string filtro)
         {
             Search search = new Search()
@@ -366,6 +366,7 @@ namespace App.Presentation
             var result = JsonConvert.DeserializeObject<Response<Pedido>>(jsonToDeserialize);
             BindingList<Pedido> bindingList = new BindingList<Pedido>(result.Items);
             dgvPedidos.DataSource = bindingList;
+            dgvPedidos.Columns["_factura"].Visible = false;
             dgvPedidos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
         public Boolean CambiarEstado(Pedido pedido)
@@ -375,9 +376,9 @@ namespace App.Presentation
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/{pedido.estado}", content).Result;
             var cambiado = JsonConvert.DeserializeObject<Boolean>(response.Content.ReadAsStringAsync().Result);
             return cambiado;
-         }
-       
-      
+        }
+
+
         private void dgvDetalle_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 

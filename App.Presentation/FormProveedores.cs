@@ -145,8 +145,7 @@ namespace App.Presentation
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
             MostrarProveedores();
         }
-
-        private void dgvProveedores_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
@@ -158,6 +157,8 @@ namespace App.Presentation
                 txtTelProv.Text = selectedRow.Cells["telefono"].Value.ToString();
             }
         }
+
+      
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -217,16 +218,17 @@ namespace App.Presentation
         {
         }
 
-        private void dgvProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
+        
         private void labelcontenedor_Click(object sender, EventArgs e)
         {
         }
 
         private void txt6_Click(object sender, EventArgs e)
         {
+        }
+        private void dgvProveedores_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

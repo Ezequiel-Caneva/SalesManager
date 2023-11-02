@@ -212,7 +212,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
+            BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1067, 559);
             Controls.Add(cbItemsPorPagina);
             Controls.Add(txtPagina);

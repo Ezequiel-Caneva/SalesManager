@@ -47,7 +47,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.SteelBlue;
+            label1.BackColor = Color.FromArgb(45, 66, 91);
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ButtonFace;
             label1.Location = new Point(12, 9);
@@ -196,7 +196,7 @@
             // menuStrip2
             // 
             menuStrip2.AutoSize = false;
-            menuStrip2.BackColor = Color.SteelBlue;
+            menuStrip2.BackColor = Color.FromArgb(45, 66, 91);
             menuStrip2.Location = new Point(0, 0);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.RightToLeft = RightToLeft.Yes;

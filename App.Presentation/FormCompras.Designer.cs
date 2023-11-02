@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             txt4 = new Label();
             txt3 = new Label();
             txt1 = new Label();
@@ -57,7 +59,8 @@
             // txt4
             // 
             txt4.AutoSize = true;
-            txt4.BackColor = Color.White;
+            txt4.BackColor = Color.FromArgb(40, 60, 90);
+            txt4.ForeColor = Color.White;
             txt4.Location = new Point(40, 237);
             txt4.Name = "txt4";
             txt4.Size = new Size(64, 15);
@@ -67,7 +70,8 @@
             // txt3
             // 
             txt3.AutoSize = true;
-            txt3.BackColor = Color.White;
+            txt3.BackColor = Color.FromArgb(40, 60, 90);
+            txt3.ForeColor = Color.White;
             txt3.Location = new Point(39, 193);
             txt3.Name = "txt3";
             txt3.Size = new Size(105, 15);
@@ -77,7 +81,8 @@
             // txt1
             // 
             txt1.AutoSize = true;
-            txt1.BackColor = Color.White;
+            txt1.BackColor = Color.FromArgb(40, 60, 90);
+            txt1.ForeColor = Color.WhiteSmoke;
             txt1.Location = new Point(39, 149);
             txt1.Name = "txt1";
             txt1.Size = new Size(58, 15);
@@ -100,12 +105,13 @@
             // 
             // Texto5
             // 
-            Texto5.BackColor = SystemColors.ActiveCaption;
+            Texto5.BackColor = Color.FromArgb(45, 66, 91);
             Texto5.BorderStyle = BorderStyle.FixedSingle;
             Texto5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            Texto5.ForeColor = Color.White;
             Texto5.Location = new Point(0, 18);
             Texto5.Name = "Texto5";
-            Texto5.Size = new Size(291, 27);
+            Texto5.Size = new Size(311, 27);
             Texto5.TabIndex = 53;
             Texto5.Text = "Cargar Compras";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
@@ -172,18 +178,19 @@
             // 
             // labelcontenedor
             // 
-            labelcontenedor.BackColor = Color.White;
+            labelcontenedor.BackColor = Color.FromArgb(40, 60, 90);
             labelcontenedor.BorderStyle = BorderStyle.FixedSingle;
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(291, 586);
-            labelcontenedor.TabIndex = 47;
+            labelcontenedor.Size = new Size(311, 682);
+            labelcontenedor.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = Color.White;
+            label1.BackColor = Color.FromArgb(40, 60, 90);
+            label1.ForeColor = Color.White;
             label1.Location = new Point(38, 105);
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
@@ -254,9 +261,9 @@
             // 
             // txt6
             // 
-            txt6.BackColor = Color.White;
-            txt6.BorderStyle = BorderStyle.FixedSingle;
+            txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt6.ForeColor = Color.White;
             txt6.Location = new Point(349, 34);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
@@ -267,11 +274,33 @@
             // dgvCompras
             // 
             dgvCompras.AllowUserToDeleteRows = false;
-            dgvCompras.BackgroundColor = Color.White;
+            dgvCompras.AllowUserToResizeColumns = false;
+            dgvCompras.AllowUserToResizeRows = false;
+            dgvCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCompras.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvCompras.BackgroundColor = Color.FromArgb(45, 66, 91);
+            dgvCompras.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCompras.EnableHeadersVisualStyles = false;
+            dgvCompras.GridColor = Color.SteelBlue;
             dgvCompras.Location = new Point(349, 63);
             dgvCompras.Name = "dgvCompras";
             dgvCompras.ReadOnly = true;
+            dgvCompras.RowHeadersVisible = false;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvCompras.RowTemplate.Height = 25;
             dgvCompras.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCompras.Size = new Size(618, 425);
@@ -291,7 +320,8 @@
             // txt7
             // 
             txt7.AutoSize = true;
-            txt7.BackColor = Color.White;
+            txt7.BackColor = Color.FromArgb(40, 60, 90);
+            txt7.ForeColor = Color.White;
             txt7.Location = new Point(40, 61);
             txt7.Name = "txt7";
             txt7.Size = new Size(42, 15);
@@ -300,10 +330,9 @@
             // 
             // iconButton2
             // 
-            iconButton2.BackColor = SystemColors.MenuHighlight;
             iconButton2.FlatStyle = FlatStyle.Popup;
             iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton2.IconColor = SystemColors.ActiveCaptionText;
+            iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
             iconButton2.Location = new Point(927, 34);
@@ -324,8 +353,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(1065, 586);
+            BackColor = Color.FromArgb(45, 66, 91);
+            ClientSize = new Size(1233, 682);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(txt7);
