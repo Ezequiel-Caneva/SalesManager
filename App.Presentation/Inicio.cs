@@ -53,18 +53,7 @@ namespace App.Presentation
 
             Text = $"Usuario : {_usuarioLogeado.usuario}";
         }
-        private void contenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-        private void menuStrip2_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+    
         private void menuVentasMostrador_Click(object sender, EventArgs e)
         {
             AbrirFormulario((IconMenuItem)sender, new FormVentasMostrador());
@@ -154,6 +143,6 @@ namespace App.Presentation
                 throw new Exception("Error en la solicitud: " + response.ReasonPhrase);
             }
         }
-
+       
     }
 }

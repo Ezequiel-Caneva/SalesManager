@@ -65,7 +65,7 @@
             menuStrip1.Size = new Size(1271, 73);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
+      
             // 
             // menuVentasMostrador
             // 
@@ -203,7 +203,7 @@
             menuStrip2.Size = new Size(1271, 58);
             menuStrip2.TabIndex = 2;
             menuStrip2.Text = "menuStrip2";
-            menuStrip2.ItemClicked += menuStrip2_ItemClicked;
+           
             // 
             // contenedor
             // 
@@ -213,7 +213,7 @@
             contenedor.Name = "contenedor";
             contenedor.Size = new Size(1271, 608);
             contenedor.TabIndex = 3;
-            contenedor.Paint += contenedor_Paint;
+        
             // 
             // Inicio
             // 

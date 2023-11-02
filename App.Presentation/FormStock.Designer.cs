@@ -268,8 +268,7 @@
             dgvProducto.Size = new Size(778, 478);
             dgvProducto.TabIndex = 15;
             dgvProducto.CellContentClick += dgvProducto_CellContentClick;
-            dgvProducto.CellContentDoubleClick += dgvProducto_CellContentDoubleClick;
-            dgvProducto.CellEndEdit += dgvProducto_CellEndEdit;
+        
             // 
             // cbRubro
             // 

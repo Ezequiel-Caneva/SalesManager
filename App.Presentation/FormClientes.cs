@@ -199,66 +199,7 @@ namespace App.Presentation
             dgvClientes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
-        private void Text1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNombre_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txt1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtDni_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txt2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtDirec_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txt4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtTel_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtCiudad_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtCodPostal_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void dgvClientes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+ 
 
     }
 }

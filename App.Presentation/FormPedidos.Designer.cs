@@ -101,8 +101,6 @@
             dgvPedidos.Size = new Size(590, 425);
             dgvPedidos.TabIndex = 75;
             dgvPedidos.CellClick += dgvPedidos_CellClick;
-            dgvPedidos.CellContentDoubleClick += dgvPedidos_CellContentDoubleClick;
-            dgvPedidos.CellFormatting += dgvPedidos_CellFormatting;
             // 
             // cbItemsPorPagina
             // 
@@ -117,7 +115,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(550, 501);
+            txtPagina.Location = new Point(550, 499);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 73;
@@ -210,7 +208,10 @@
             // dgvDetalle
             // 
             dgvDetalle.AllowUserToDeleteRows = false;
+            dgvDetalle.AllowUserToResizeColumns = false;
+            dgvDetalle.AllowUserToResizeRows = false;
             dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDetalle.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDetalle.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvDetalle.BorderStyle = BorderStyle.None;
             dgvDetalle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -248,8 +249,6 @@
             dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDetalle.Size = new Size(451, 425);
             dgvDetalle.TabIndex = 79;
-            dgvDetalle.CellContentDoubleClick += dgvDetalle_CellContentDoubleClick;
-            dgvDetalle.CellFormatting += dgvDetalle_CellFormatting;
             // 
             // btnConfirmar
             // 

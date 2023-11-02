@@ -71,7 +71,7 @@
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 59;
             txt4.Text = "Telefono:";
-            txt4.Click += txt4_Click;
+            
             // 
             // txt2
             // 
@@ -83,7 +83,7 @@
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 58;
             txt2.Text = "Direccion:";
-            txt2.Click += txt2_Click;
+            
             // 
             // txt1
             // 
@@ -95,7 +95,7 @@
             txt1.Size = new Size(28, 15);
             txt1.TabIndex = 57;
             txt1.Text = "Dni:";
-            txt1.Click += txt1_Click;
+           
             // 
             // txtTel
             // 
@@ -103,7 +103,7 @@
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(210, 23);
             txtTel.TabIndex = 56;
-            txtTel.TextChanged += txtTel_TextChanged;
+         
             // 
             // txtDirec
             // 
@@ -111,7 +111,7 @@
             txtDirec.Name = "txtDirec";
             txtDirec.Size = new Size(210, 23);
             txtDirec.TabIndex = 55;
-            txtDirec.TextChanged += txtDirec_TextChanged;
+          
             // 
             // txtDni
             // 
@@ -119,7 +119,7 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(210, 23);
             txtDni.TabIndex = 54;
-            txtDni.TextChanged += txtDni_TextChanged;
+           
             // 
             // Texto5
             // 
@@ -204,7 +204,7 @@
             Text1.Size = new Size(54, 15);
             Text1.TabIndex = 49;
             Text1.Text = "Nombre:";
-            Text1.Click += Text1_Click;
+        
             // 
             // txtNombre
             // 
@@ -212,7 +212,7 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(210, 23);
             txtNombre.TabIndex = 48;
-            txtNombre.TextChanged += txtNombre_TextChanged;
+           
             // 
             // txtEmail
             // 
@@ -220,7 +220,7 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(210, 23);
             txtEmail.TabIndex = 60;
-            txtEmail.TextChanged += txtEmail_TextChanged;
+            
             // 
             // txtCiudad
             // 
@@ -228,7 +228,7 @@
             txtCiudad.Name = "txtCiudad";
             txtCiudad.Size = new Size(210, 23);
             txtCiudad.TabIndex = 61;
-            txtCiudad.TextChanged += txtCiudad_TextChanged;
+           
             // 
             // label1
             // 
@@ -240,7 +240,7 @@
             label1.Size = new Size(39, 15);
             label1.TabIndex = 62;
             label1.Text = "Email:";
-            label1.Click += label1_Click;
+            
             // 
             // label2
             // 
@@ -252,7 +252,7 @@
             label2.Size = new Size(48, 15);
             label2.TabIndex = 63;
             label2.Text = "Ciudad:";
-            label2.Click += label2_Click;
+           
             // 
             // label3
             // 
@@ -264,7 +264,7 @@
             label3.Size = new Size(84, 15);
             label3.TabIndex = 65;
             label3.Text = "Codigo Postal:";
-            label3.Click += label3_Click;
+            
             // 
             // txtCodPostal
             // 
@@ -272,7 +272,7 @@
             txtCodPostal.Name = "txtCodPostal";
             txtCodPostal.Size = new Size(210, 23);
             txtCodPostal.TabIndex = 64;
-            txtCodPostal.TextChanged += txtCodPostal_TextChanged;
+            
             // 
             // dgvClientes
             // 
@@ -317,7 +317,7 @@
             dgvClientes.Size = new Size(860, 425);
             dgvClientes.TabIndex = 75;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
-            dgvClientes.CellContentDoubleClick += dgvClientes_CellContentDoubleClick;
+           
             // 
             // cbItemsPorPagina
             // 

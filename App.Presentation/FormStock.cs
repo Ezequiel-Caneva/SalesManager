@@ -303,14 +303,7 @@ namespace App.Presentation
                 }
             }
         }
-        private void dgvProducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void dgvProducto_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
         //fin Datagriedview
 
 

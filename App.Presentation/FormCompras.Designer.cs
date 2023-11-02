@@ -280,6 +280,7 @@
             dgvCompras.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvCompras.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvCompras.BorderStyle = BorderStyle.None;
+            dgvCompras.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
             dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);

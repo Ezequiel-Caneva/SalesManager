@@ -379,27 +379,6 @@ namespace App.Presentation
         }
 
 
-        private void dgvDetalle_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
-
-        }
-
-        private void dgvDetalle_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
-        private void dgvPedidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-
-
-        }
-
-        private void dgvPedidos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
 
     }

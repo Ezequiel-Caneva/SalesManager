@@ -60,7 +60,7 @@
             label2.Size = new Size(214, 31);
             label2.TabIndex = 1;
             label2.Text = "MotoPartes Express";
-            label2.Click += label2_Click;
+            
             // 
             // iconPictureBox1
             // 
