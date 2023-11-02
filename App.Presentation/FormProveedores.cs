@@ -158,7 +158,7 @@ namespace App.Presentation
             }
         }
 
-      
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -183,52 +183,6 @@ namespace App.Presentation
             }
         }
 
-        private void txtTelProv_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt4_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void Texto5_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txt2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtRzProv_TextChanged(object sender, EventArgs e)
-        {
-        }
-        private void txt1_Click(object sender, EventArgs e)
-        {
-        }
-        private void txtNombreProv_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void Text1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtDirecProv_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        
-        private void labelcontenedor_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txt6_Click(object sender, EventArgs e)
-        {
-        }
-        private void dgvProveedores_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+     
     }
 }
