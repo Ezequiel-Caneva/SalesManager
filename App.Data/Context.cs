@@ -47,6 +47,10 @@ namespace App.Data
                  .HasOne(p => p._factura)
                 .WithMany()
                 .HasForeignKey(p => p.factura);
+            modelBuilder.Entity<Pedido>()
+                 .HasOne(p => p._cliente)
+                .WithMany()
+                .HasForeignKey(p => p.cliente);
 
         }
 

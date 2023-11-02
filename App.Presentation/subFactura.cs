@@ -36,6 +36,7 @@ namespace App.Presentation
                                 $"fecha {pedido._factura.fecha}\n" +
                                 $"{elementosformateados}" +
                                 $"Monto total : {pedido._factura.montototal}";
+
         }
         private Pedido BuscarFactura(int pedidoId)
         {
@@ -47,7 +48,7 @@ namespace App.Presentation
             };
             string json = JsonConvert.SerializeObject(search);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/ObtenerFactura", content).Result;
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/ObtenerPedido", content).Result;
             var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
             var result = JsonConvert.DeserializeObject<Pedido>(jsonToDeserialize);
             return result;

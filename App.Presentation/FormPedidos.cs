@@ -13,6 +13,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.tool.xml;
+using System.IO;
 
 namespace App.Presentation
 {
@@ -146,6 +150,7 @@ namespace App.Presentation
                 var confirmarEditar = MessageBox.Show("¿Desea cancelar por falta de stock o eliminar pedido?", "Confirmar", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (confirmarEditar == DialogResult.Yes)
                 {
+
                     Pedido pedido = new Pedido()
                     {
                         pedidoid = pedidoId,
@@ -207,16 +212,67 @@ namespace App.Presentation
         {
             if (pedidoId != 0)
             {
-                subFactura detalle = new subFactura(pedidoId);
-                detalle.Show();
+                Search search = new Search()
+                {
+                    PageIndex = _currentPage,
+                    PageSize = _currentItemsPerPage,
+                    TextToSearch = pedidoId.ToString()
+                };
+                string json = JsonConvert.SerializeObject(search);
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Pedido/ObtenerPedido", content).Result;
+                var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+                var result = JsonConvert.DeserializeObject<Pedido>(jsonToDeserialize);
 
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SaveFileDialog savefile = new SaveFileDialog();
+                savefile.FileName = $"Fac {DateTime.Now.ToString("dd  MM yyyy")}.pdf";
+                string PaginaHTML_Texto = Properties.Resources.Plantilla1.ToString();
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CLIENTE", result._cliente.nombre);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@DOCUMENTO", result._cliente.dni);
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", result._factura.fecha.ToString("dd/MM/yyyy"));
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@NRO", result._factura.nrofactura.ToString());
+                PaginaHTML_Texto = PaginaHTML_Texto.Replace("@TOTAL", result._factura.montototal.ToString());
+
+
+                string filas = string.Empty;
+                foreach (var enlistar in result._venta)
+                {
+                    filas += "<tr>";
+                    filas += "<td style=\"font-size: small;\">" + enlistar.cantidad.ToString() + "</td>";
+                    filas += "<td style=\"font-size: small;\">" + enlistar._producto.nombre + "</td>";
+                    filas += "<td style=\"font-size: small;\">" + enlistar._producto.precioventa.ToString() + "</td>";
+                    filas += "<td style=\"font-size: small;\">" + enlistar.precio_total.ToString() + "</td>";
+                    filas += "</tr>";
+
+                    PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+
+                    if (savefile.ShowDialog() == DialogResult.OK)
+                    {
+                        using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
+                        {
+                            //Creamos un nuevo documento y lo definimos como PDF
+                            Document pdfDoc = new Document(PageSize.A4, 25, 25, 25, 25);
+                            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+                            PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);
+                            pdfDoc.Open();
+                            pdfDoc.Add(new Phrase(""));
+                            //pdfDoc.Add(new Phrase("Hola Mundo"));
+                            using (StringReader sr = new StringReader(PaginaHTML_Texto))
+                            {
+                                XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+                            }
+                            pdfDoc.Close();
+                            stream.Close();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Seleccione un pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
-
         private void btnVer_Click(object sender, EventArgs e)
         {
             if (pedidoId != 0)

@@ -30,7 +30,6 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.ObtenerPedido(search);
         }  
-      
         [HttpPost("ObtenerFactura")]
         public Pedido ObtenerFactura(Search search)
         {
@@ -66,8 +65,6 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.DetalleEnvio(search);
         }
-       
-     
         [HttpPost("MostrarCobros")]
         public Response<Cobro> MostrarCobros(Search search)
         {

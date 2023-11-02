@@ -22,7 +22,10 @@ namespace App.Entities
         public List<DetalleVenta>? _venta {  get; set; } 
         [NotMapped]
         public Factura? _factura { get; set; }
-        
+        [NotMapped]
+        public Cliente? _cliente {  get; set; }
+
+
 
     }
 }
