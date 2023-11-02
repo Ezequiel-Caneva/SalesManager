@@ -36,7 +36,6 @@ namespace App.Presentation
                                 $"fecha {pedido._factura.fecha}\n" +
                                 $"{elementosformateados}" +
                                 $"Monto total : {pedido._factura.montototal}";
-
         }
         private Pedido BuscarFactura(int pedidoId)
         {

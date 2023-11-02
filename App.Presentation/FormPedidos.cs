@@ -59,7 +59,6 @@ namespace App.Presentation
         }
         private void btnConfimado_Click(object sender, EventArgs e)
         {
-
             btnConfirmar.Visible = false;
             btnCancelar.Visible = false;
             btnDespachar.Visible = true;
@@ -67,8 +66,6 @@ namespace App.Presentation
             dgvDetalle.Visible = false;
             filtro = "Confirmado";
             filtrar(filtro);
-
-
         }
         private void btnDespachado_Click(object sender, EventArgs e)
         {
@@ -120,10 +117,6 @@ namespace App.Presentation
                         };
                         result._venta = null;
 
-
-
-
-
                         Boolean confirmado = CambiarEstado(result);
                         if (confirmado == true)
                         {
@@ -139,14 +132,12 @@ namespace App.Presentation
                 else
                 {
                     MessageBox.Show("No se pudo confirmar el pedido por falta de stock", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                 }
             }
             else
             {
                 MessageBox.Show("Seleccione un pedido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {

@@ -39,6 +39,15 @@ namespace App.Data
                 .HasForeignKey(p => p.rubro);
             modelBuilder.Entity<DetalleVenta>()
             .HasKey(d => new { d.pedido, d.producto });
+            modelBuilder.Entity<DetalleVenta>()
+                .HasOne(p => p._producto)
+                .WithMany()
+                .HasForeignKey(p => p.producto);
+            modelBuilder.Entity<Pedido>()
+                 .HasOne(p => p._factura)
+                .WithMany()
+                .HasForeignKey(p => p.factura);
+
         }
 
     }

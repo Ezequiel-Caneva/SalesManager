@@ -44,17 +44,10 @@ namespace App.Data
 
             var query = _context.detalleVenta
              .Where(detalle => detalle.pedido == Convert.ToInt32(search.TextToSearch))
+              .Include(detalle => detalle._producto)
               .ToList();
 
             var count = query.Count();
-
-            var query2 = _context.Producto.AsQueryable();
-            var resultado = query.Select(detalle =>
-            {
-                var producto = query2.FirstOrDefault(p => p.productoid == detalle.producto);
-                detalle._producto = producto;
-                return detalle;
-            }).ToList();
 
             var response = new Response<DetalleVenta>()
             {
@@ -78,16 +71,9 @@ namespace App.Data
             var pedido = _context.Pedido.SingleOrDefault(p => p.pedidoid == Convert.ToInt32(search.TextToSearch));
 
             var detalles = _context.detalleVenta
-            .Where(detalle => detalle.pedido == pedido.pedidoid)
-             .ToList();
-            var productos = _context.Producto.AsQueryable();
-
-            var resultado = detalles.Select(detalle =>
-            {
-                var producto = productos.FirstOrDefault(p => p.productoid == detalle.producto);
-                detalle._producto = producto;
-                return detalle;
-            }).ToList();
+             .Where(detalle => detalle.pedido == pedido.pedidoid)
+              .Include(detalle => detalle._producto)
+              .ToList();
 
             pedido._venta = detalles;
 
@@ -131,6 +117,7 @@ namespace App.Data
                         tipo_comprobante = "FAC",
                         credito = pedido._factura.montototal,
                         saldo = pedido._factura.montototal,
+                        nro_comprobante = pedido._factura.nrofactura
 
                     };
                     Factura factura = new Factura();
@@ -144,26 +131,6 @@ namespace App.Data
                
             }
             return false;
-        }
-        public Pedido ObtenerFactura(Search search)
-        {
-            var pedido = _context.Pedido.SingleOrDefault(p => p.pedidoid == Convert.ToInt32(search.TextToSearch));
-
-            var detalles = _context.detalleVenta
-            .Where(detalle => detalle.pedido == pedido.pedidoid)
-             .ToList();
-            var productos = _context.Producto.AsQueryable();
-            pedido._factura = _context.Factura.SingleOrDefault(p => p.nrofactura == pedido.factura);
-            var resultado = detalles.Select(detalle =>
-            {
-                var producto = productos.FirstOrDefault(p => p.productoid == detalle.producto);
-                detalle._producto = producto;
-                return detalle;
-            }).ToList();
-
-            pedido._venta = detalles;
-
-            return pedido;
         }
         public Boolean Rechazar(Pedido pedido)
         {
@@ -193,6 +160,26 @@ namespace App.Data
                 return false;
             }
         }
+        public Pedido ObtenerFactura(Search search)
+        {
+            var pedido = _context.Pedido.SingleOrDefault(p => p.pedidoid == Convert.ToInt32(search.TextToSearch));
+
+            var detalles = _context.detalleVenta
+            .Where(detalle => detalle.pedido == pedido.pedidoid)
+             .ToList();
+            var productos = _context.Producto.AsQueryable();
+            pedido._factura = _context.Factura.SingleOrDefault(p => p.nrofactura == pedido.factura);
+            var resultado = detalles.Select(detalle =>
+            {
+                var producto = productos.FirstOrDefault(p => p.productoid == detalle.producto);
+                detalle._producto = producto;
+                return detalle;
+            }).ToList();
+
+            pedido._venta = detalles;
+
+            return pedido;
+        }
         public Boolean EnvioNuevo(Envio envioNuevo)
         {
             _context.Envio.Add(envioNuevo);
@@ -209,8 +196,7 @@ namespace App.Data
         {
             var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
             return envio;
-        }
-       
+        }    
         public Response<Cobro> MostrarCobros(Search search)
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
