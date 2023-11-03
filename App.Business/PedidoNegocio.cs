@@ -55,9 +55,6 @@ namespace App.Business
             return _pedidoRepositorio.DetalleEnvio(search);
         }
        
-        public Response<Cobro> MostrarCobros(Search search)
-        {
-            return _pedidoRepositorio.MostrarCobros(search);
-        }
+       
     }
 }

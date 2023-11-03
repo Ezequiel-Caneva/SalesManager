@@ -191,25 +191,7 @@ namespace App.Data
             var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
             return envio;
         }    
-        public Response<Cobro> MostrarCobros(Search search)
-        {
-            var skipRows = ((search.PageIndex - 1) * search.PageSize);
-
-            // Obtén todos los productos sin aplicar filtros
-            var query = _context.Cobro.AsQueryable();
-
-
-            var count = query.Count();
-            var response = new Response<Cobro>()
-            {
-                Items = query.Skip(skipRows)
-                             .Take(search.PageSize)
-                             .ToList(),
-                Total = count
-            };
-
-            return response;
-        }
+      
     }
    
 }

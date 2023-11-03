@@ -31,8 +31,8 @@
             txt6 = new Label();
             dgvCobros = new DataGridView();
             txt7 = new Label();
-            cbRubro = new ComboBox();
-            cbProducto = new ComboBox();
+            cbCliente = new ComboBox();
+            cbFactura = new ComboBox();
             label1 = new Label();
             txt3 = new Label();
             txt1 = new Label();
@@ -79,21 +79,21 @@
             txt7.TabIndex = 100;
             txt7.Text = "Cliente:";
             // 
-            // cbRubro
+            // cbCliente
             // 
-            cbRubro.FormattingEnabled = true;
-            cbRubro.Location = new Point(6, 67);
-            cbRubro.Name = "cbRubro";
-            cbRubro.Size = new Size(210, 23);
-            cbRubro.TabIndex = 98;
+            cbCliente.FormattingEnabled = true;
+            cbCliente.Location = new Point(6, 67);
+            cbCliente.Name = "cbCliente";
+            cbCliente.Size = new Size(210, 23);
+            cbCliente.TabIndex = 98;
             // 
-            // cbProducto
+            // cbFactura
             // 
-            cbProducto.FormattingEnabled = true;
-            cbProducto.Location = new Point(6, 111);
-            cbProducto.Name = "cbProducto";
-            cbProducto.Size = new Size(210, 23);
-            cbProducto.TabIndex = 97;
+            cbFactura.FormattingEnabled = true;
+            cbFactura.Location = new Point(6, 111);
+            cbFactura.Name = "cbFactura";
+            cbFactura.Size = new Size(210, 23);
+            cbFactura.TabIndex = 97;
             // 
             // label1
             // 
@@ -189,8 +189,8 @@
             Controls.Add(txt6);
             Controls.Add(dgvCobros);
             Controls.Add(txt7);
-            Controls.Add(cbRubro);
-            Controls.Add(cbProducto);
+            Controls.Add(cbCliente);
+            Controls.Add(cbFactura);
             Controls.Add(label1);
             Controls.Add(txt3);
             Controls.Add(txt1);
@@ -212,8 +212,8 @@
         private Label txt6;
         private DataGridView dgvCobros;
         private Label txt7;
-        private ComboBox cbRubro;
-        private ComboBox cbProducto;
+        private ComboBox cbCliente;
+        private ComboBox cbFactura;
         private Label label1;
         private Label txt3;
         private Label txt1;

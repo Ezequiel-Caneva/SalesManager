@@ -18,7 +18,10 @@ namespace App.Entities
         public decimal precioventa {  get; set; }
         public int stock { get; set; }
         public int rubro { get; set; }
-        public Rubro _Rubro { get; set; }    
+        public Rubro _Rubro { get; set; }
+
+        [NotMapped]
+        public int cantidadselec { get; set; }
 
     }
 }

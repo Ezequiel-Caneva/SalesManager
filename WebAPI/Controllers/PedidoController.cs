@@ -65,10 +65,6 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.DetalleEnvio(search);
         }
-        [HttpPost("MostrarCobros")]
-        public Response<Cobro> MostrarCobros(Search search)
-        {
-            return _pedidoNegocio.MostrarCobros(search);
-        }
+      
     }
 }

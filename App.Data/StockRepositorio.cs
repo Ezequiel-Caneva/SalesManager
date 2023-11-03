@@ -96,14 +96,10 @@ namespace App.Data
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
-            /* var obtenerproductos = ObtenerProductos();
-             var query = from m in obtenerproductos
-                         where m.nombre.Contains(search.TextToSearch)
-                         select m;
-            */
             var query = _context.Producto
-                      .Include(p => p._Rubro);
-                      
+                        .Include(p => p._Rubro)
+                        .Where(p => p.nombre.Contains(search.TextToSearch) || p._Rubro.categoria.Contains(search.TextToSearch));
+
             var count = query.Count();
             var response = new Response<Producto>()
             {

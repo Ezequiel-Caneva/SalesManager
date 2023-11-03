@@ -24,9 +24,9 @@ namespace App.Entities
         public decimal? debito { get; set; }
         public decimal credito { get; set; }
         public decimal? saldo { get; set; }
-    
 
-
-
+        public Factura _factura { get; set; }   
+        public Cliente _cliente {  get; set; }  
+   
     }
 }

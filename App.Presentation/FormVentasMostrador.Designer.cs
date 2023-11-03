@@ -36,36 +36,55 @@
             label1 = new Label();
             txtBuscar = new TextBox();
             btnBuscar = new FontAwesome.Sharp.IconButton();
-            iconButton3 = new FontAwesome.Sharp.IconButton();
-            iconButton4 = new FontAwesome.Sharp.IconButton();
+            btnAceptar = new FontAwesome.Sharp.IconButton();
             cbItemsPorPagina = new ComboBox();
             txtPagina = new TextBox();
             btnAnterior = new FontAwesome.Sharp.IconButton();
             btnSiguiente = new FontAwesome.Sharp.IconButton();
+            txtproductoselec = new Label();
+            txtlistado = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLista).BeginInit();
             SuspendLayout();
             // 
             // dgvProductos
             // 
-            dgvProductos.BackgroundColor = Color.White;
+            dgvProductos.AllowUserToAddRows = false;
+            dgvProductos.AllowUserToDeleteRows = false;
+            dgvProductos.AllowUserToResizeColumns = false;
+            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvProductos.BackgroundColor = Color.FromArgb(45, 66, 91);
+            dgvProductos.BorderStyle = BorderStyle.None;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Location = new Point(74, 37);
+            dgvProductos.Location = new Point(35, 37);
             dgvProductos.Name = "dgvProductos";
+            dgvProductos.ReadOnly = true;
+            dgvProductos.RowHeadersVisible = false;
             dgvProductos.RowTemplate.Height = 25;
-            dgvProductos.Size = new Size(436, 421);
+            dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvProductos.Size = new Size(493, 421);
             dgvProductos.TabIndex = 0;
             dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
             // dgvLista
             // 
-            dgvLista.BackgroundColor = Color.White;
+            dgvLista.AllowUserToAddRows = false;
+            dgvLista.AllowUserToDeleteRows = false;
+            dgvLista.AllowUserToResizeColumns = false;
+            dgvLista.AllowUserToResizeRows = false;
+            dgvLista.BackgroundColor = Color.FromArgb(45, 66, 91);
+            dgvLista.BorderStyle = BorderStyle.None;
             dgvLista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvLista.Location = new Point(595, 37);
             dgvLista.Name = "dgvLista";
+            dgvLista.ReadOnly = true;
+            dgvLista.RowHeadersVisible = false;
             dgvLista.RowTemplate.Height = 25;
+            dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvLista.Size = new Size(436, 421);
             dgvLista.TabIndex = 1;
+            dgvLista.CellContentClick += dgvLista_CellContentClick;
             // 
             // btnAgregar
             // 
@@ -95,13 +114,14 @@
             btnQuitar.Size = new Size(38, 31);
             btnQuitar.TabIndex = 86;
             btnQuitar.UseVisualStyleBackColor = false;
+            btnQuitar.Click += btnQuitar_Click;
             // 
             // txt6
             // 
             txt6.BackColor = Color.White;
             txt6.BorderStyle = BorderStyle.FixedSingle;
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt6.Location = new Point(74, 8);
+            txt6.Location = new Point(67, 8);
             txt6.Name = "txt6";
             txt6.Size = new Size(146, 23);
             txt6.TabIndex = 87;
@@ -141,30 +161,19 @@
             btnBuscar.Size = new Size(31, 23);
             btnBuscar.TabIndex = 90;
             btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // iconButton3
+            // btnAceptar
             // 
-            iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton3.IconColor = Color.Black;
-            iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton3.Location = new Point(803, 486);
-            iconButton3.Name = "iconButton3";
-            iconButton3.Size = new Size(105, 48);
-            iconButton3.TabIndex = 91;
-            iconButton3.Text = "Cta Corrientes";
-            iconButton3.UseVisualStyleBackColor = true;
-            // 
-            // iconButton4
-            // 
-            iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            iconButton4.IconColor = Color.Black;
-            iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton4.Location = new Point(924, 486);
-            iconButton4.Name = "iconButton4";
-            iconButton4.Size = new Size(107, 48);
-            iconButton4.TabIndex = 92;
-            iconButton4.Text = "Efectivo";
-            iconButton4.UseVisualStyleBackColor = true;
+            btnAceptar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnAceptar.IconColor = Color.Black;
+            btnAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnAceptar.Location = new Point(924, 484);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(107, 48);
+            btnAceptar.TabIndex = 92;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
             // 
             // cbItemsPorPagina
             // 
@@ -174,6 +183,7 @@
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 96;
+            cbItemsPorPagina.SelectedIndexChanged += cbItemsPorPagina_SelectedIndexChanged;
             // 
             // txtPagina
             // 
@@ -182,6 +192,7 @@
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 95;
+            txtPagina.TextChanged += txtPagina_TextChanged;
             // 
             // btnAnterior
             // 
@@ -195,6 +206,7 @@
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 94;
             btnAnterior.UseVisualStyleBackColor = true;
+            btnAnterior.Click += btnAnterior_Click;
             // 
             // btnSiguiente
             // 
@@ -207,6 +219,25 @@
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 93;
             btnSiguiente.UseVisualStyleBackColor = true;
+            btnSiguiente.Click += btnSiguiente_Click;
+            // 
+            // txtproductoselec
+            // 
+            txtproductoselec.AutoSize = true;
+            txtproductoselec.ForeColor = SystemColors.Control;
+            txtproductoselec.Location = new Point(12, 37);
+            txtproductoselec.Name = "txtproductoselec";
+            txtproductoselec.Size = new Size(0, 15);
+            txtproductoselec.TabIndex = 97;
+            // 
+            // txtlistado
+            // 
+            txtlistado.AutoSize = true;
+            txtlistado.ForeColor = Color.White;
+            txtlistado.Location = new Point(931, 10);
+            txtlistado.Name = "txtlistado";
+            txtlistado.Size = new Size(0, 15);
+            txtlistado.TabIndex = 98;
             // 
             // FormVentasMostrador
             // 
@@ -214,12 +245,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1067, 559);
+            Controls.Add(txtlistado);
+            Controls.Add(txtproductoselec);
             Controls.Add(cbItemsPorPagina);
             Controls.Add(txtPagina);
             Controls.Add(btnAnterior);
             Controls.Add(btnSiguiente);
-            Controls.Add(iconButton4);
-            Controls.Add(iconButton3);
+            Controls.Add(btnAceptar);
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(label1);
@@ -248,10 +280,12 @@
         private TextBox txtBuscar;
         private FontAwesome.Sharp.IconButton btnBuscar;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton btnAceptar;
         private ComboBox cbItemsPorPagina;
         private TextBox txtPagina;
         private FontAwesome.Sharp.IconButton btnAnterior;
         private FontAwesome.Sharp.IconButton btnSiguiente;
+        private Label txtproductoselec;
+        private Label txtlistado;
     }
 }
