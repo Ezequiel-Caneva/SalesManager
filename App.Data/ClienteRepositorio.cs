@@ -82,19 +82,12 @@ namespace App.Data
             }
 
             return false; // Producto no encontrado
-
-
         }
-
         public Response<Cliente> MostrarCliente(Search search)
         {
-
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
-
             // Obtén todos los productos sin aplicar filtros
             var query = _context.Cliente.AsQueryable();
-
-
             var count = query.Count();
             var response = new Response<Cliente>()
             {
@@ -106,7 +99,6 @@ namespace App.Data
 
             return response;
         }
-     
-
+   
     }
 }

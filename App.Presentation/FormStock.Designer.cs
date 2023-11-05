@@ -74,33 +74,33 @@
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(299, 622);
+            labelcontenedor.Size = new Size(291, 622);
             labelcontenedor.TabIndex = 0;
             // 
             // txtNombreProducto
             // 
-            txtNombreProducto.Location = new Point(39, 235);
+            txtNombreProducto.Location = new Point(39, 247);
             txtNombreProducto.Name = "txtNombreProducto";
             txtNombreProducto.Size = new Size(216, 23);
             txtNombreProducto.TabIndex = 1;
             // 
             // txtCantidadProducto
             // 
-            txtCantidadProducto.Location = new Point(39, 279);
+            txtCantidadProducto.Location = new Point(39, 291);
             txtCantidadProducto.Name = "txtCantidadProducto";
             txtCantidadProducto.Size = new Size(216, 23);
             txtCantidadProducto.TabIndex = 2;
             // 
             // txtPrecioProducto
             // 
-            txtPrecioProducto.Location = new Point(39, 323);
+            txtPrecioProducto.Location = new Point(39, 335);
             txtPrecioProducto.Name = "txtPrecioProducto";
             txtPrecioProducto.Size = new Size(216, 23);
             txtPrecioProducto.TabIndex = 3;
             // 
             // txtCodigoProducto
             // 
-            txtCodigoProducto.Location = new Point(39, 367);
+            txtCodigoProducto.Location = new Point(39, 379);
             txtCodigoProducto.Name = "txtCodigoProducto";
             txtCodigoProducto.Size = new Size(216, 23);
             txtCodigoProducto.TabIndex = 5;
@@ -110,7 +110,7 @@
             Texto1.AutoSize = true;
             Texto1.BackColor = Color.FromArgb(40, 60, 90);
             Texto1.ForeColor = Color.White;
-            Texto1.Location = new Point(39, 217);
+            Texto1.Location = new Point(39, 229);
             Texto1.Name = "Texto1";
             Texto1.Size = new Size(125, 15);
             Texto1.TabIndex = 6;
@@ -121,7 +121,7 @@
             Texto2.AutoSize = true;
             Texto2.BackColor = Color.FromArgb(40, 60, 90);
             Texto2.ForeColor = Color.White;
-            Texto2.Location = new Point(39, 261);
+            Texto2.Location = new Point(39, 273);
             Texto2.Name = "Texto2";
             Texto2.Size = new Size(58, 15);
             Texto2.TabIndex = 7;
@@ -132,7 +132,7 @@
             Texto3.AutoSize = true;
             Texto3.BackColor = Color.FromArgb(40, 60, 90);
             Texto3.ForeColor = Color.White;
-            Texto3.Location = new Point(39, 305);
+            Texto3.Location = new Point(39, 317);
             Texto3.Name = "Texto3";
             Texto3.Size = new Size(91, 15);
             Texto3.TabIndex = 8;
@@ -143,7 +143,7 @@
             Texto4.AutoSize = true;
             Texto4.BackColor = Color.FromArgb(40, 60, 90);
             Texto4.ForeColor = Color.White;
-            Texto4.Location = new Point(39, 393);
+            Texto4.Location = new Point(39, 405);
             Texto4.Name = "Texto4";
             Texto4.Size = new Size(42, 15);
             Texto4.TabIndex = 9;
@@ -154,7 +154,7 @@
             Texto5.AutoSize = true;
             Texto5.BackColor = Color.FromArgb(40, 60, 90);
             Texto5.ForeColor = Color.White;
-            Texto5.Location = new Point(39, 349);
+            Texto5.Location = new Point(39, 361);
             Texto5.Name = "Texto5";
             Texto5.Size = new Size(49, 15);
             Texto5.TabIndex = 10;
@@ -166,9 +166,9 @@
             Texto6.BorderStyle = BorderStyle.FixedSingle;
             Texto6.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Texto6.ForeColor = Color.White;
-            Texto6.Location = new Point(0, 184);
+            Texto6.Location = new Point(0, 196);
             Texto6.Name = "Texto6";
-            Texto6.Size = new Size(299, 27);
+            Texto6.Size = new Size(291, 27);
             Texto6.TabIndex = 11;
             Texto6.Text = "Gestionar Producto";
             Texto6.TextAlign = ContentAlignment.MiddleCenter;
@@ -183,7 +183,7 @@
             btnAgregarProducto.IconColor = Color.Black;
             btnAgregarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarProducto.IconSize = 16;
-            btnAgregarProducto.Location = new Point(39, 449);
+            btnAgregarProducto.Location = new Point(39, 461);
             btnAgregarProducto.Name = "btnAgregarProducto";
             btnAgregarProducto.Size = new Size(216, 23);
             btnAgregarProducto.TabIndex = 12;
@@ -203,7 +203,7 @@
             btnEditarProducto.IconColor = Color.Black;
             btnEditarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditarProducto.IconSize = 16;
-            btnEditarProducto.Location = new Point(39, 478);
+            btnEditarProducto.Location = new Point(39, 490);
             btnEditarProducto.Name = "btnEditarProducto";
             btnEditarProducto.Size = new Size(216, 23);
             btnEditarProducto.TabIndex = 13;
@@ -223,7 +223,7 @@
             btnEliminarProducto.IconColor = Color.Black;
             btnEliminarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarProducto.IconSize = 16;
-            btnEliminarProducto.Location = new Point(39, 507);
+            btnEliminarProducto.Location = new Point(39, 519);
             btnEliminarProducto.Name = "btnEliminarProducto";
             btnEliminarProducto.Size = new Size(216, 23);
             btnEliminarProducto.TabIndex = 14;
@@ -253,7 +253,7 @@
             dgvProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProducto.EnableHeadersVisualStyles = false;
             dgvProducto.GridColor = Color.SteelBlue;
-            dgvProducto.Location = new Point(419, 52);
+            dgvProducto.Location = new Point(349, 63);
             dgvProducto.Name = "dgvProducto";
             dgvProducto.ReadOnly = true;
             dgvProducto.RowHeadersVisible = false;
@@ -265,15 +265,14 @@
             dgvProducto.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvProducto.RowTemplate.Height = 25;
             dgvProducto.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProducto.Size = new Size(778, 478);
+            dgvProducto.Size = new Size(795, 478);
             dgvProducto.TabIndex = 15;
             dgvProducto.CellContentClick += dgvProducto_CellContentClick;
-        
             // 
             // cbRubro
             // 
             cbRubro.FormattingEnabled = true;
-            cbRubro.Location = new Point(39, 411);
+            cbRubro.Location = new Point(39, 423);
             cbRubro.Name = "cbRubro";
             cbRubro.Size = new Size(216, 23);
             cbRubro.TabIndex = 16;
@@ -284,9 +283,9 @@
             Texto7.BorderStyle = BorderStyle.FixedSingle;
             Texto7.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Texto7.ForeColor = Color.White;
-            Texto7.Location = new Point(0, 9);
+            Texto7.Location = new Point(0, 25);
             Texto7.Name = "Texto7";
-            Texto7.Size = new Size(299, 27);
+            Texto7.Size = new Size(291, 27);
             Texto7.TabIndex = 17;
             Texto7.Text = "Gestionar Rubro";
             Texto7.TextAlign = ContentAlignment.MiddleCenter;
@@ -296,7 +295,7 @@
             Texto8.AutoSize = true;
             Texto8.BackColor = Color.FromArgb(40, 60, 90);
             Texto8.ForeColor = Color.White;
-            Texto8.Location = new Point(39, 46);
+            Texto8.Location = new Point(39, 58);
             Texto8.Name = "Texto8";
             Texto8.Size = new Size(61, 15);
             Texto8.TabIndex = 20;
@@ -304,7 +303,7 @@
             // 
             // txtCategoria
             // 
-            txtCategoria.Location = new Point(39, 65);
+            txtCategoria.Location = new Point(39, 77);
             txtCategoria.Name = "txtCategoria";
             txtCategoria.Size = new Size(216, 23);
             txtCategoria.TabIndex = 18;
@@ -314,7 +313,7 @@
             label1.BackColor = Color.FromArgb(45, 66, 91);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(419, 23);
+            label1.Location = new Point(349, 37);
             label1.Name = "label1";
             label1.Size = new Size(149, 23);
             label1.TabIndex = 25;
@@ -327,7 +326,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(918, 532);
+            btnSiguiente.Location = new Point(918, 546);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 27;
@@ -341,7 +340,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(840, 532);
+            btnAnterior.Location = new Point(840, 545);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 28;
@@ -351,7 +350,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(882, 532);
+            txtPagina.Location = new Point(882, 546);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 29;
@@ -361,7 +360,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(969, 532);
+            cbItemsPorPagina.Location = new Point(972, 547);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 30;
@@ -381,7 +380,7 @@
             btnEliminarRubro.IconColor = Color.Black;
             btnEliminarRubro.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarRubro.IconSize = 16;
-            btnEliminarRubro.Location = new Point(39, 152);
+            btnEliminarRubro.Location = new Point(39, 164);
             btnEliminarRubro.Name = "btnEliminarRubro";
             btnEliminarRubro.Size = new Size(216, 23);
             btnEliminarRubro.TabIndex = 34;
@@ -401,7 +400,7 @@
             btnEditarRubro.IconColor = Color.Black;
             btnEditarRubro.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditarRubro.IconSize = 16;
-            btnEditarRubro.Location = new Point(39, 123);
+            btnEditarRubro.Location = new Point(39, 135);
             btnEditarRubro.Name = "btnEditarRubro";
             btnEditarRubro.Size = new Size(216, 23);
             btnEditarRubro.TabIndex = 33;
@@ -421,7 +420,7 @@
             btnAgregarRubro.IconColor = Color.Black;
             btnAgregarRubro.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarRubro.IconSize = 16;
-            btnAgregarRubro.Location = new Point(39, 94);
+            btnAgregarRubro.Location = new Point(39, 106);
             btnAgregarRubro.Name = "btnAgregarRubro";
             btnAgregarRubro.Size = new Size(216, 23);
             btnAgregarRubro.TabIndex = 32;
@@ -438,7 +437,7 @@
             btnMostrarProductos.IconChar = FontAwesome.Sharp.IconChar.None;
             btnMostrarProductos.IconColor = Color.Black;
             btnMostrarProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMostrarProductos.Location = new Point(319, 64);
+            btnMostrarProductos.Location = new Point(1150, 65);
             btnMostrarProductos.Name = "btnMostrarProductos";
             btnMostrarProductos.Size = new Size(94, 23);
             btnMostrarProductos.TabIndex = 35;
@@ -453,7 +452,7 @@
             btnMostrarRubros.IconChar = FontAwesome.Sharp.IconChar.None;
             btnMostrarRubros.IconColor = Color.Black;
             btnMostrarRubros.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnMostrarRubros.Location = new Point(319, 94);
+            btnMostrarRubros.Location = new Point(1150, 94);
             btnMostrarRubros.Name = "btnMostrarRubros";
             btnMostrarRubros.Size = new Size(94, 23);
             btnMostrarRubros.TabIndex = 36;
@@ -469,7 +468,7 @@
             btnBuscar.IconColor = Color.White;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBuscar.IconSize = 24;
-            btnBuscar.Location = new Point(1023, 23);
+            btnBuscar.Location = new Point(1023, 34);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(31, 23);
             btnBuscar.TabIndex = 92;
@@ -479,7 +478,7 @@
             // txtBuscar
             // 
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
-            txtBuscar.Location = new Point(803, 23);
+            txtBuscar.Location = new Point(803, 34);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(214, 23);
             txtBuscar.TabIndex = 91;
@@ -489,7 +488,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1227, 622);
+            ClientSize = new Size(1281, 622);
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(btnMostrarRubros);

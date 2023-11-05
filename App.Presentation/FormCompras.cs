@@ -33,7 +33,7 @@ namespace App.Presentation
             productos = new List<Producto>();
             rubro = new List<Rubro>();
             _currentPage = 1;
-            _currentItemsPerPage = 10;
+            _currentItemsPerPage = 25;
         }
 
         private void FormCompras_Load(object sender, EventArgs e)

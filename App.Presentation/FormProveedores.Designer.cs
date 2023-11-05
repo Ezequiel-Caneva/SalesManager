@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -45,6 +46,12 @@
             txt2 = new Label();
             txt4 = new Label();
             dgvProveedores = new DataGridView();
+            proveedorid = new DataGridViewTextBoxColumn();
+            razonsocial = new DataGridViewTextBoxColumn();
+            nombre = new DataGridViewTextBoxColumn();
+            telefono = new DataGridViewTextBoxColumn();
+            direccion = new DataGridViewTextBoxColumn();
+            proveedorBindingSource = new BindingSource(components);
             txt6 = new Label();
             cbItemsPorPagina = new ComboBox();
             txtPagina = new TextBox();
@@ -53,6 +60,7 @@
             iconButton2 = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvProveedores).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)proveedorBindingSource).BeginInit();
             SuspendLayout();
             // 
             // labelcontenedor
@@ -64,7 +72,6 @@
             labelcontenedor.Name = "labelcontenedor";
             labelcontenedor.Size = new Size(291, 619);
             labelcontenedor.TabIndex = 1;
-      
             // 
             // btnEliminar
             // 
@@ -143,7 +150,6 @@
             txtNombreProv.Name = "txtNombreProv";
             txtNombreProv.Size = new Size(210, 23);
             txtNombreProv.TabIndex = 35;
-          
             // 
             // Texto5
             // 
@@ -151,13 +157,12 @@
             Texto5.BorderStyle = BorderStyle.FixedSingle;
             Texto5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Texto5.ForeColor = Color.White;
-            Texto5.Location = new Point(0, 20);
+            Texto5.Location = new Point(0, 25);
             Texto5.Name = "Texto5";
             Texto5.Size = new Size(291, 27);
             Texto5.TabIndex = 40;
             Texto5.Text = "Agregar Proveedor";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
-    
             // 
             // txtRzProv
             // 
@@ -165,7 +170,6 @@
             txtRzProv.Name = "txtRzProv";
             txtRzProv.Size = new Size(210, 23);
             txtRzProv.TabIndex = 41;
-           
             // 
             // txtDirecProv
             // 
@@ -173,7 +177,6 @@
             txtDirecProv.Name = "txtDirecProv";
             txtDirecProv.Size = new Size(210, 23);
             txtDirecProv.TabIndex = 42;
-           
             // 
             // txtTelProv
             // 
@@ -181,7 +184,6 @@
             txtTelProv.Name = "txtTelProv";
             txtTelProv.Size = new Size(210, 23);
             txtTelProv.TabIndex = 43;
-      
             // 
             // txt1
             // 
@@ -192,7 +194,7 @@
             txt1.Name = "txt1";
             txt1.Size = new Size(76, 15);
             txt1.TabIndex = 44;
-            txt1.Text = "Razon Social:";  
+            txt1.Text = "Razon Social:";
             // 
             // txt2
             // 
@@ -204,7 +206,6 @@
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 45;
             txt2.Text = "Direccion:";
-           
             // 
             // txt4
             // 
@@ -216,11 +217,11 @@
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 46;
             txt4.Text = "Telefono:";
-           
             // 
             // dgvProveedores
             // 
             dgvProveedores.AllowUserToDeleteRows = false;
+            dgvProveedores.AutoGenerateColumns = false;
             dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvProveedores.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvProveedores.BackgroundColor = Color.FromArgb(45, 66, 91);
@@ -235,9 +236,11 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvProveedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProveedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvProveedores.Columns.AddRange(new DataGridViewColumn[] { proveedorid, razonsocial, nombre, telefono, direccion });
+            dgvProveedores.DataSource = proveedorBindingSource;
             dgvProveedores.EnableHeadersVisualStyles = false;
             dgvProveedores.GridColor = Color.SteelBlue;
-            dgvProveedores.Location = new Point(328, 54);
+            dgvProveedores.Location = new Point(349, 63);
             dgvProveedores.Name = "dgvProveedores";
             dgvProveedores.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -260,20 +263,62 @@
             dgvProveedores.Size = new Size(577, 425);
             dgvProveedores.TabIndex = 47;
             dgvProveedores.CellContentClick += dgvProveedores_CellContentClick;
-         
+            // 
+            // proveedorid
+            // 
+            proveedorid.DataPropertyName = "proveedorid";
+            proveedorid.HeaderText = "Id";
+            proveedorid.Name = "proveedorid";
+            proveedorid.ReadOnly = true;
+            proveedorid.Width = 48;
+            // 
+            // razonsocial
+            // 
+            razonsocial.DataPropertyName = "razonsocial";
+            razonsocial.HeaderText = "Razon social";
+            razonsocial.Name = "razonsocial";
+            razonsocial.ReadOnly = true;
+            razonsocial.Width = 123;
+            // 
+            // nombre
+            // 
+            nombre.DataPropertyName = "nombre";
+            nombre.HeaderText = "Nombre";
+            nombre.Name = "nombre";
+            nombre.ReadOnly = true;
+            nombre.Width = 92;
+            // 
+            // telefono
+            // 
+            telefono.DataPropertyName = "telefono";
+            telefono.HeaderText = "Teléfono";
+            telefono.Name = "telefono";
+            telefono.ReadOnly = true;
+            telefono.Width = 95;
+            // 
+            // direccion
+            // 
+            direccion.DataPropertyName = "direccion";
+            direccion.HeaderText = "Direccion";
+            direccion.Name = "direccion";
+            direccion.ReadOnly = true;
+            direccion.Width = 104;
+            // 
+            // proveedorBindingSource
+            // 
+            proveedorBindingSource.DataSource = typeof(Entities.Proveedor);
             // 
             // txt6
             // 
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(301, 23);
+            txt6.Location = new Point(349, 37);
             txt6.Name = "txt6";
-            txt6.Size = new Size(227, 23);
+            txt6.Size = new Size(193, 23);
             txt6.TabIndex = 48;
             txt6.Text = "Lista de Proveedores";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
-            
             // 
             // cbItemsPorPagina
             // 
@@ -329,7 +374,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(825, 25);
+            iconButton2.Location = new Point(781, 37);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
@@ -338,7 +383,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(605, 25);
+            textBox1.Location = new Point(561, 37);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;
@@ -374,6 +419,7 @@
             Text = "FormProveedores";
             Load += FormProveedores_Load;
             ((System.ComponentModel.ISupportInitialize)dgvProveedores).EndInit();
+            ((System.ComponentModel.ISupportInitialize)proveedorBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -400,5 +446,11 @@
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private FontAwesome.Sharp.IconButton iconButton2;
         private TextBox textBox1;
+        private BindingSource proveedorBindingSource;
+        private DataGridViewTextBoxColumn proveedorid;
+        private DataGridViewTextBoxColumn razonsocial;
+        private DataGridViewTextBoxColumn nombre;
+        private DataGridViewTextBoxColumn telefono;
+        private DataGridViewTextBoxColumn direccion;
     }
 }

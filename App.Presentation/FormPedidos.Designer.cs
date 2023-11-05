@@ -153,7 +153,7 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(117, 33);
+            txt6.Location = new Point(117, 42);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
             txt6.TabIndex = 70;
@@ -345,7 +345,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(660, 33);
+            iconButton2.Location = new Point(663, 42);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
@@ -354,7 +354,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(443, 33);
+            textBox1.Location = new Point(443, 42);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;

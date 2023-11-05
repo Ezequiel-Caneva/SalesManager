@@ -109,10 +109,9 @@ namespace App.Data
                         cliente = pedido.cliente,
                         fecha = DateTime.Now,
                         tipo_comprobante = "FAC",
-                        credito = pedido._factura.montototal,
+                        debito = pedido._factura.montototal,
                         saldo = pedido._factura.montototal,
                         nro_comprobante = pedido._factura.nrofactura
-
                     };
                     Factura factura = new Factura();
                     factura = pedido._factura;

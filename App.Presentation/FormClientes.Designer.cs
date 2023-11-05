@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txt4 = new Label();
             txt2 = new Label();
             txt1 = new Label();
@@ -71,7 +71,6 @@
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 59;
             txt4.Text = "Telefono:";
-            
             // 
             // txt2
             // 
@@ -83,7 +82,6 @@
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 58;
             txt2.Text = "Direccion:";
-            
             // 
             // txt1
             // 
@@ -95,7 +93,6 @@
             txt1.Size = new Size(28, 15);
             txt1.TabIndex = 57;
             txt1.Text = "Dni:";
-           
             // 
             // txtTel
             // 
@@ -103,7 +100,6 @@
             txtTel.Name = "txtTel";
             txtTel.Size = new Size(210, 23);
             txtTel.TabIndex = 56;
-         
             // 
             // txtDirec
             // 
@@ -111,7 +107,6 @@
             txtDirec.Name = "txtDirec";
             txtDirec.Size = new Size(210, 23);
             txtDirec.TabIndex = 55;
-          
             // 
             // txtDni
             // 
@@ -119,7 +114,6 @@
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(210, 23);
             txtDni.TabIndex = 54;
-           
             // 
             // Texto5
             // 
@@ -204,7 +198,6 @@
             Text1.Size = new Size(54, 15);
             Text1.TabIndex = 49;
             Text1.Text = "Nombre:";
-        
             // 
             // txtNombre
             // 
@@ -212,7 +205,6 @@
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(210, 23);
             txtNombre.TabIndex = 48;
-           
             // 
             // txtEmail
             // 
@@ -220,7 +212,6 @@
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(210, 23);
             txtEmail.TabIndex = 60;
-            
             // 
             // txtCiudad
             // 
@@ -228,7 +219,6 @@
             txtCiudad.Name = "txtCiudad";
             txtCiudad.Size = new Size(210, 23);
             txtCiudad.TabIndex = 61;
-           
             // 
             // label1
             // 
@@ -240,7 +230,6 @@
             label1.Size = new Size(39, 15);
             label1.TabIndex = 62;
             label1.Text = "Email:";
-            
             // 
             // label2
             // 
@@ -252,7 +241,6 @@
             label2.Size = new Size(48, 15);
             label2.TabIndex = 63;
             label2.Text = "Ciudad:";
-           
             // 
             // label3
             // 
@@ -264,7 +252,6 @@
             label3.Size = new Size(84, 15);
             label3.TabIndex = 65;
             label3.Text = "Codigo Postal:";
-            
             // 
             // txtCodPostal
             // 
@@ -272,7 +259,6 @@
             txtCodPostal.Name = "txtCodPostal";
             txtCodPostal.Size = new Size(210, 23);
             txtCodPostal.TabIndex = 64;
-            
             // 
             // dgvClientes
             // 
@@ -284,40 +270,39 @@
             dgvClientes.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvClientes.BorderStyle = BorderStyle.None;
             dgvClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.EnableHeadersVisualStyles = false;
             dgvClientes.GridColor = Color.SteelBlue;
-            dgvClientes.Location = new Point(336, 66);
+            dgvClientes.Location = new Point(349, 63);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvClientes.RowTemplate.Height = 25;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(860, 425);
             dgvClientes.TabIndex = 75;
             dgvClientes.CellContentClick += dgvClientes_CellContentClick;
-           
             // 
             // cbItemsPorPagina
             // 
@@ -370,9 +355,9 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(374, 30);
+            txt6.Location = new Point(349, 37);
             txt6.Name = "txt6";
-            txt6.Size = new Size(227, 23);
+            txt6.Size = new Size(152, 23);
             txt6.TabIndex = 70;
             txt6.Text = "Lista de Clientes";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
@@ -385,7 +370,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(1141, 30);
+            iconButton2.Location = new Point(1091, 37);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
@@ -394,10 +379,11 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(921, 30);
+            textBox1.Location = new Point(868, 37);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // labelcontenedor
             // 

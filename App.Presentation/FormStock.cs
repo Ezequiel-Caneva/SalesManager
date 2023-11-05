@@ -32,7 +32,7 @@ namespace App.Presentation
             _client.BaseAddress = _baseAddress;
             rubros = new List<Rubro>();
             _currentPage = 1;
-            _currentItemsPerPage = 10;
+            _currentItemsPerPage = 25;
         }
 
         private void FormStock_Load(object sender, EventArgs e)
@@ -303,7 +303,7 @@ namespace App.Presentation
                 }
             }
         }
-     
+
         //fin Datagriedview
 
 
@@ -340,6 +340,7 @@ namespace App.Presentation
                     var result = JsonConvert.DeserializeObject<Response<Producto>>(jsonToDeserialize);
                     dgvProducto.DataSource = result.Items;
                     dgvProducto.Columns["_Rubro"].Visible = false;
+                    dgvProducto.Columns["cantidadselec"].Visible = false;
 
                     dgvProducto.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     label1.Text = "Lista de productos";

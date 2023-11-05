@@ -28,68 +28,69 @@ namespace App.Presentation
             clientes = new List<Cliente>();
             facturas = new List<Factura>();
             _currentPage = 1;
-            _currentItemsPerPage = 10;
+            _currentItemsPerPage = 25;
         }
 
         private void FormVentas_Load(object sender, EventArgs e)
         {
-            List<Cobro> cobros = MostrarCobros("",null);
-            dgvCobros.DataSource = cobros;
-          
-            if(cbCliente.Text != null)
-            {
-                cobros = MostrarCobros(cbCliente.Text,null);
-                dgvCobros.DataSource = cobros;
-            }
-            cbCliente.SelectedIndexChanged += (sender, e) =>
-            {
-                // Obtiene el cliente seleccionado
-                Cliente clienteSeleccionado = (Cliente)cbCliente.SelectedItem;
 
-                if (clienteSeleccionado != null)
-                {
-                    int clienteIdSeleccionado = clienteSeleccionado.clienteid;
-
-                    // Filtra los cobros basados en el cliente seleccionado
-                    List<Cobro> cobrosFiltrados = cobros.Where(c => c.cliente == clienteIdSeleccionado).ToList();
-
-                    // Muestra los cobros en el DataGridView
-                    dgvCobros.DataSource = cobrosFiltrados;
-
-                    // Filtra las facturas basadas en los cobros filtrados
-                    List<Factura> facturasFiltradas = facturas.Where(f => cobrosFiltrados.Any(c => c.nrofactura == f.nrofactura)).ToList();
-
-                    // Actualiza el contenido del ComboBox de facturas con las facturas filtradas
-                    cbFactura.DisplayMember = "nrofactura";
-                    cbFactura.ValueMember = "nrofactura";
-                    cbFactura.DataSource = facturasFiltradas;
-                }
-            };
-            foreach (var cobro in cobros)
-            {
-
-                Cliente cliente = cobro._cliente;
-                Factura factura = cobro._factura;
-
-                clientes.Add(cliente);
-                facturas.Add(factura);
-            }
-
-            cbCliente.DisplayMember = "nombre";
-            cbCliente.ValueMember = "clienteid";
-            cbCliente.DataSource = clientes;
-            cbFactura.DisplayMember = "nrofactura";
-            cbFactura.ValueMember = "nrofactura";
-            cbFactura.DataSource = facturas;
-        }
-        public List<Cobro> MostrarCobros(string cliente,int? factura)
-        {
             Search search = new Search()
             {
                 PageIndex = _currentPage,
                 PageSize = _currentItemsPerPage,
-                TextToSearch = cliente,
+                TextToSearch = "",
             };
+            List<Cobro> cobros = MostrarCobros(search);
+
+            // Inicializa las listas de clientes y facturas
+            List<string> nombresClientes = cobros.Select(c => c._cliente.nombre).Distinct().ToList();
+            List<Factura> facturas = cobros.Select(c => c._factura).ToList();
+
+            dgvCobros.DataSource = cobros;
+
+            cbCliente.SelectedIndexChanged += (sender, e) =>
+            {
+
+                string nombreClienteSeleccionado = cbCliente.SelectedItem.ToString();
+
+                // Filtra los cobros basados en el nombre del cliente seleccionado
+                List<Cobro> cobrosFiltrados = cobros.Where(c => c._cliente.nombre == nombreClienteSeleccionado).ToList();
+
+                // Muestra los cobros en el DataGridView
+                dgvCobros.DataSource = cobrosFiltrados;
+
+                // Filtra las facturas basadas en los cobros filtrados
+                List<Factura> facturasFiltradas = facturas.Where(f => cobrosFiltrados.Any(c => c.nrofactura == f.nrofactura)).ToList();
+
+                // Actualiza el contenido del ComboBox de facturas con las facturas filtradas
+                cbFactura.DisplayMember = "nrofactura";
+                cbFactura.ValueMember = "nrofactura";
+                cbFactura.DataSource = facturasFiltradas;
+            };
+
+            cbCliente.DisplayMember = "nombre";
+            cbCliente.ValueMember = "clienteid";
+            cbCliente.DataSource = nombresClientes;
+
+            cbFactura.DisplayMember = "nrofactura";
+            cbFactura.ValueMember = "nrofactura";
+            cbFactura.DataSource = facturas;
+
+            cbFactura.SelectedIndexChanged += (sender, e) =>
+            {
+                string nombreCliente = cbCliente.SelectedValue.ToString();
+                int numeroFactura = (int)cbFactura.SelectedValue;
+                search.TextToSearch = nombreCliente;
+                search.num = numeroFactura;
+                List<Cobro> cobro = MostrarCobros(search);
+                dgvCobros.DataSource = cobro;
+
+            };
+            dgvCobros.Columns["_cliente"].Visible = false;
+            dgvCobros.Columns["_factura"].Visible = false;
+        }
+        public List<Cobro> MostrarCobros(Search search)
+        {
             string json = JsonConvert.SerializeObject(search);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Cobro/MostrarCobros", content).Result;
@@ -98,5 +99,9 @@ namespace App.Presentation
             return result.Items;
         }
 
+        private void btnCobrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

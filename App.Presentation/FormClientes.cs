@@ -24,7 +24,7 @@ namespace App.Presentation
             InitializeComponent();
             _client = new HttpClient();
             _client.BaseAddress = _baseAddress;
-            _currentItemsPerPage = 10;
+            _currentItemsPerPage = 25;
             _currentPage = 1;
         }
 
@@ -199,7 +199,9 @@ namespace App.Presentation
             dgvClientes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
- 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

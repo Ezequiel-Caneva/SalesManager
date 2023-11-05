@@ -25,7 +25,7 @@ namespace App.Presentation
             _client = new HttpClient();
             _client.BaseAddress = _baseAddress;
             _currentPage = 1;
-            _currentItemsPerPage = 10;
+            _currentItemsPerPage = 25;
 
         }
 
@@ -183,6 +183,6 @@ namespace App.Presentation
             }
         }
 
-     
+
     }
 }

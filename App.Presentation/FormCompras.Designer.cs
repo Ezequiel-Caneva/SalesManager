@@ -109,9 +109,9 @@
             Texto5.BorderStyle = BorderStyle.FixedSingle;
             Texto5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             Texto5.ForeColor = Color.White;
-            Texto5.Location = new Point(0, 18);
+            Texto5.Location = new Point(0, 25);
             Texto5.Name = "Texto5";
-            Texto5.Size = new Size(311, 27);
+            Texto5.Size = new Size(291, 27);
             Texto5.TabIndex = 53;
             Texto5.Text = "Cargar Compras";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
@@ -183,7 +183,7 @@
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(311, 682);
+            labelcontenedor.Size = new Size(291, 682);
             labelcontenedor.TabIndex = 1;
             // 
             // label1
@@ -264,9 +264,9 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(349, 34);
+            txt6.Location = new Point(349, 37);
             txt6.Name = "txt6";
-            txt6.Size = new Size(227, 23);
+            txt6.Size = new Size(163, 23);
             txt6.TabIndex = 64;
             txt6.Text = "Lista de Compras";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
@@ -336,7 +336,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(927, 34);
+            iconButton2.Location = new Point(936, 37);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
@@ -345,7 +345,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(707, 34);
+            textBox1.Location = new Point(718, 37);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;

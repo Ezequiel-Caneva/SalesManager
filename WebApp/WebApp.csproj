@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -44,10 +44,6 @@
 
   <ItemGroup>
     <None Remove="Views\Shared\_Layout.cshtml.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\NewFolder\" />
   </ItemGroup>
 
 </Project>

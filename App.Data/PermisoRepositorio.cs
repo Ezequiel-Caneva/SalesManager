@@ -28,8 +28,6 @@ namespace App.Data
                 Items = permisos,
                 Total = count
             };
-
-
             return response;
         }
     }

@@ -27,7 +27,6 @@ namespace App.Business
         {  
             return _proveedorRepositorio.EliminarProveedor(proveedorid);
         }
-
             public Response<Proveedor> MostrarProveedores(Search search)
         {
             return _proveedorRepositorio.MostrarProveedores(search);
@@ -36,7 +35,5 @@ namespace App.Business
         {
             return _proveedorRepositorio.ObtenerProveedores();
         }
-
     }
-
 }
