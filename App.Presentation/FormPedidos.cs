@@ -47,6 +47,8 @@ namespace App.Presentation
             btnDespachar.Visible = false;
             btnFactura.Visible = false;
             dgvDetalle.Visible = false;
+            filtro = "Pendiente";
+            filtrar(filtro);
 
         }
 
@@ -326,7 +328,7 @@ namespace App.Presentation
             dgvDetalle.Visible = true;
             if (e.RowIndex >= 0) // Asegúrate de que se haya hecho clic en una fila válida
             {
-                pedidoId = (int)dgvPedidos.Rows[e.RowIndex].Cells["pedidoId"].Value;
+                pedidoId = (int)dgvPedidos.Rows[e.RowIndex].Cells["Id"].Value;
 
                 // Aquí, consulta y carga los detalles del pedido correspondiente en el dgvDetalle.
                 // Puedes utilizar Entity Framework o tu método de acceso a datos para obtener los detalles.
@@ -413,7 +415,6 @@ namespace App.Presentation
             var result = JsonConvert.DeserializeObject<Response<Pedido>>(jsonToDeserialize);
             BindingList<Pedido> bindingList = new BindingList<Pedido>(result.Items);
             dgvPedidos.DataSource = bindingList;
-            dgvPedidos.Columns["_factura"].Visible = false;
             dgvPedidos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
         public Boolean CambiarEstado(Pedido pedido)

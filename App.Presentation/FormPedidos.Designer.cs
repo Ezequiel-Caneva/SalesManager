@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
@@ -35,6 +36,13 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvPedidos = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
+            fecha = new DataGridViewTextBoxColumn();
+            estado = new DataGridViewTextBoxColumn();
+            factura = new DataGridViewTextBoxColumn();
+            vendedor = new DataGridViewTextBoxColumn();
+            cliente = new DataGridViewTextBoxColumn();
+            pedidoBindingSource = new BindingSource(components);
             cbItemsPorPagina = new ComboBox();
             txtPagina = new TextBox();
             btnAnterior = new FontAwesome.Sharp.IconButton();
@@ -53,12 +61,14 @@
             iconButton2 = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pedidoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
             SuspendLayout();
             // 
             // dgvPedidos
             // 
             dgvPedidos.AllowUserToDeleteRows = false;
+            dgvPedidos.AutoGenerateColumns = false;
             dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvPedidos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvPedidos.BackgroundColor = Color.FromArgb(45, 66, 91);
@@ -66,15 +76,17 @@
             dgvPedidos.CausesValidation = false;
             dgvPedidos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dgvPedidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvPedidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPedidos.Columns.AddRange(new DataGridViewColumn[] { Id, fecha, estado, factura, vendedor, cliente });
             dgvPedidos.Cursor = Cursors.Hand;
+            dgvPedidos.DataSource = pedidoBindingSource;
             dgvPedidos.EnableHeadersVisualStyles = false;
             dgvPedidos.GridColor = Color.SteelBlue;
             dgvPedidos.Location = new Point(117, 68);
@@ -90,6 +102,7 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvPedidos.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvPedidos.RowHeadersVisible = false;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
             dataGridViewCellStyle3.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = Color.White;
@@ -101,6 +114,58 @@
             dgvPedidos.Size = new Size(590, 425);
             dgvPedidos.TabIndex = 75;
             dgvPedidos.CellClick += dgvPedidos_CellClick;
+            // 
+            // Id
+            // 
+            Id.DataPropertyName = "pedidoid";
+            Id.HeaderText = "N° Pedido";
+            Id.Name = "Id";
+            Id.ReadOnly = true;
+            Id.Width = 106;
+            // 
+            // fecha
+            // 
+            fecha.DataPropertyName = "fecha";
+            fecha.HeaderText = "Fecha";
+            fecha.Name = "fecha";
+            fecha.ReadOnly = true;
+            fecha.Width = 79;
+            // 
+            // estado
+            // 
+            estado.DataPropertyName = "estado";
+            estado.HeaderText = "Estado";
+            estado.Name = "estado";
+            estado.ReadOnly = true;
+            estado.Width = 82;
+            // 
+            // factura
+            // 
+            factura.DataPropertyName = "factura";
+            factura.HeaderText = "Factura";
+            factura.Name = "factura";
+            factura.ReadOnly = true;
+            factura.Width = 89;
+            // 
+            // vendedor
+            // 
+            vendedor.DataPropertyName = "vendedor";
+            vendedor.HeaderText = "Vendedor";
+            vendedor.Name = "vendedor";
+            vendedor.ReadOnly = true;
+            vendedor.Width = 108;
+            // 
+            // cliente
+            // 
+            cliente.DataPropertyName = "cliente";
+            cliente.HeaderText = "Cliente";
+            cliente.Name = "cliente";
+            cliente.ReadOnly = true;
+            cliente.Width = 85;
+            // 
+            // pedidoBindingSource
+            // 
+            pedidoBindingSource.DataSource = typeof(Entities.Pedido);
             // 
             // cbItemsPorPagina
             // 
@@ -239,6 +304,7 @@
             dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
             dgvDetalle.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvDetalle.RowHeadersVisible = false;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle6.BackColor = Color.FromArgb(45, 66, 91);
             dataGridViewCellStyle6.Font = new Font("Century Gothic", 10F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle6.ForeColor = Color.White;
@@ -247,7 +313,7 @@
             dgvDetalle.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvDetalle.RowTemplate.Height = 25;
             dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDetalle.Size = new Size(451, 425);
+            dgvDetalle.Size = new Size(511, 425);
             dgvDetalle.TabIndex = 79;
             // 
             // btnConfirmar
@@ -364,7 +430,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1261, 624);
+            ClientSize = new Size(1339, 624);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(btnVer);
@@ -386,6 +452,7 @@
             Text = "FormPedidos";
             Load += FormPedidos_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pedidoBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -410,5 +477,12 @@
         private FontAwesome.Sharp.IconButton btnVer;
         private FontAwesome.Sharp.IconButton iconButton2;
         private TextBox textBox1;
+        private DataGridViewTextBoxColumn Id;
+        private DataGridViewTextBoxColumn fecha;
+        private DataGridViewTextBoxColumn estado;
+        private DataGridViewTextBoxColumn factura;
+        private DataGridViewTextBoxColumn vendedor;
+        private DataGridViewTextBoxColumn cliente;
+        private BindingSource pedidoBindingSource;
     }
 }

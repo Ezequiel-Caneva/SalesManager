@@ -282,9 +282,9 @@
             dgvCompras.BorderStyle = BorderStyle.None;
             dgvCompras.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle1.BackColor = Color.White;
             dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
@@ -296,6 +296,7 @@
             dgvCompras.Name = "dgvCompras";
             dgvCompras.ReadOnly = true;
             dgvCompras.RowHeadersVisible = false;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
             dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = Color.White;
@@ -304,7 +305,7 @@
             dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvCompras.RowTemplate.Height = 25;
             dgvCompras.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCompras.Size = new Size(618, 425);
+            dgvCompras.Size = new Size(872, 425);
             dgvCompras.TabIndex = 69;
             dgvCompras.CellContentClick += dgvCompras_CellContentClick;
             dgvCompras.CellContentDoubleClick += dgvCompras_CellContentDoubleClick;

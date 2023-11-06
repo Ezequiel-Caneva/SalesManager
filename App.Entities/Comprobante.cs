@@ -14,6 +14,6 @@ namespace App.Entities
         [Key]
         public int nro_comprobante {set; get; }
         public int pago {set; get; }
-        Comprobante() { }
+    
     }
 }

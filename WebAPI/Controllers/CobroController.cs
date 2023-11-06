@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using App.Business;
 using App.Entities;
+using App.Data;
+
 namespace WebAPI.Controllers
 {
     [Route("api/Cobro")]
@@ -16,6 +18,11 @@ namespace WebAPI.Controllers
         public Response<Cobro> MostrarCobros(Search search)
         {
             return _cobroNegocio.MostrarCobros(search);
+        }
+        [HttpPost("AgregarPago")]
+        public Boolean AgregarPago(Cobro cobro)
+        {
+            return _cobroNegocio.AgregarPago(cobro);
         }
     }
 }

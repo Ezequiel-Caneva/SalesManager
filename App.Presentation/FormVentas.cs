@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media;
 
 namespace App.Presentation
 {
@@ -20,6 +21,7 @@ namespace App.Presentation
         private int _currentPage;
         List<Cliente> clientes;
         List<Factura> facturas;
+        List<Cobro> cobros;
         public FormVentas()
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace App.Presentation
             _client.BaseAddress = _baseAddress;
             clientes = new List<Cliente>();
             facturas = new List<Factura>();
+            cobros = new List<Cobro>(); 
             _currentPage = 1;
             _currentItemsPerPage = 25;
         }
@@ -40,11 +43,11 @@ namespace App.Presentation
                 PageSize = _currentItemsPerPage,
                 TextToSearch = "",
             };
-            List<Cobro> cobros = MostrarCobros(search);
+            cobros = MostrarCobros(search);
 
             // Inicializa las listas de clientes y facturas
             List<string> nombresClientes = cobros.Select(c => c._cliente.nombre).Distinct().ToList();
-            List<Factura> facturas = cobros.Select(c => c._factura).ToList();
+            facturas = cobros.Select(c => c._factura).ToList();
 
             dgvCobros.DataSource = cobros;
 
@@ -86,8 +89,7 @@ namespace App.Presentation
                 dgvCobros.DataSource = cobro;
 
             };
-            dgvCobros.Columns["_cliente"].Visible = false;
-            dgvCobros.Columns["_factura"].Visible = false;
+
         }
         public List<Cobro> MostrarCobros(Search search)
         {
@@ -101,7 +103,92 @@ namespace App.Presentation
 
         private void btnCobrar_Click(object sender, EventArgs e)
         {
+            Random random = new Random();
+            int numero = random.Next(1, 1000);
 
+            int numeroFacturaSeleccionado = (int)cbFactura.SelectedValue;
+            var cobrosFactura = cobros.Where(c => c.nrofactura == numeroFacturaSeleccionado).ToList();
+            decimal? saldoFactura = cobrosFactura.Sum(c => c.saldo);
+            decimal? montoPago = Convert.ToInt32(txtMonto.Text);
+            var selecCobro = new Cobro();
+            if (montoPago > saldoFactura)
+            {
+                // El pago excede el saldo de la factura.
+                MessageBox.Show("El pago excede el saldo de la factura.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+            }
+            else
+            {
+                foreach (var cobrar in cobrosFactura)
+                {
+                    if (montoPago <= cobrar.saldo)
+                    {
+                        // El pago se puede aplicar completamente a este cobro.
+                        cobrar.saldo -= montoPago;
+                        break;
+                    }
+                    else
+                    {
+                        // El pago cubre este cobro por completo, y aún queda monto por pagar.
+                        montoPago -= cobrar.saldo;
+                        cobrar.saldo = 0;
+                    }
+                }
+
+                // Actualiza el saldo total de la factura.
+                saldoFactura = cobrosFactura.Sum(c => c.saldo);
+
+                // Puedes imprimir el saldo restante después del pago.
+                MessageBox.Show("Saldo restante de la factura: " + saldoFactura, "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+ 
+            }
+            string nombreClienteSeleccionado = cbCliente.SelectedValue.ToString();
+            var cliente = cobros.FirstOrDefault(c => c._cliente.nombre == nombreClienteSeleccionado);      
+            int clienteid = cliente._cliente.clienteid;
+            decimal monto;
+            if (decimal.TryParse(txtMonto.Text, out monto))
+            {
+                // La conversión fue exitosa, ahora puedes crear el objeto 'Cobro'.
+                Cobro cobro = new Cobro()
+                {
+                    fecha = DateTime.Now,
+                    nrofactura = (int)cbFactura.SelectedValue,
+                    cliente = clienteid,
+                    tipo_comprobante = "CP",
+                    nro_comprobante = numero,
+                    metodopago = cbMetodo.Text,
+                    credito = monto,
+                    saldo = saldoFactura
+                };
+                string data = JsonConvert.SerializeObject(cobro);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Cobro/AgregarPago", content).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    bool pago = JsonConvert.DeserializeObject<bool>(response.Content.ReadAsStringAsync().Result);
+                    if (pago == true)
+                    {
+                        MessageBox.Show("Pago Correcto", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al realizar Pago", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al realizar Pago1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                // Realiza la operación con el objeto 'cobro' como se requiera.
+            }
+            else
+            {
+                // El valor en 'txtMonto.Text' no es un número válido.
+                MessageBox.Show("El valor ingresado en 'txtMonto' no es válido.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+           
         }
     }
 }

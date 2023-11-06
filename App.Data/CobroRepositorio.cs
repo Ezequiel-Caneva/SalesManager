@@ -48,5 +48,11 @@ namespace App.Data
 
             return response;
         }
+        public Boolean AgregarPago(Cobro cobro)
+        {
+            _context.Cobro.Add(cobro);
+            _context.SaveChanges();
+            return true;
+        }
     }
 }

@@ -28,20 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             txt6 = new Label();
             dgvCobros = new DataGridView();
+            fecha = new DataGridViewTextBoxColumn();
+            pagoid = new DataGridViewTextBoxColumn();
+            nrofactura = new DataGridViewTextBoxColumn();
+            cliente = new DataGridViewTextBoxColumn();
+            tipo_comprobante = new DataGridViewTextBoxColumn();
+            nro_comprobante = new DataGridViewTextBoxColumn();
+            metodopago = new DataGridViewTextBoxColumn();
+            debito = new DataGridViewTextBoxColumn();
+            credito = new DataGridViewTextBoxColumn();
+            saldo = new DataGridViewTextBoxColumn();
+            cobroBindingSource = new BindingSource(components);
             txt7 = new Label();
             cbCliente = new ComboBox();
             cbFactura = new ComboBox();
             label1 = new Label();
             txt3 = new Label();
             txt1 = new Label();
-            txtPrecioComp = new TextBox();
-            txtCantidad = new TextBox();
+            txtMonto = new TextBox();
             Texto5 = new Label();
             btnCobrar = new FontAwesome.Sharp.IconButton();
             labelcontenedor = new Label();
+            cbMetodo = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvCobros).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)cobroBindingSource).BeginInit();
             SuspendLayout();
             // 
             // txt6
@@ -49,7 +64,7 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(349, 37);
+            txt6.Location = new Point(310, 37);
             txt6.Name = "txt6";
             txt6.Size = new Size(227, 23);
             txt6.TabIndex = 102;
@@ -59,15 +74,112 @@
             // dgvCobros
             // 
             dgvCobros.AllowUserToDeleteRows = false;
-            dgvCobros.BackgroundColor = Color.White;
+            dgvCobros.AutoGenerateColumns = false;
+            dgvCobros.BackgroundColor = Color.FromArgb(45, 66, 91);
+            dgvCobros.BorderStyle = BorderStyle.None;
+            dgvCobros.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvCobros.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvCobros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCobros.Location = new Point(349, 63);
+            dgvCobros.Columns.AddRange(new DataGridViewColumn[] { fecha, pagoid, nrofactura, cliente, tipo_comprobante, nro_comprobante, metodopago, debito, credito, saldo });
+            dgvCobros.DataSource = cobroBindingSource;
+            dgvCobros.EnableHeadersVisualStyles = false;
+            dgvCobros.GridColor = Color.SteelBlue;
+            dgvCobros.Location = new Point(323, 63);
             dgvCobros.Name = "dgvCobros";
             dgvCobros.ReadOnly = true;
+            dgvCobros.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dgvCobros.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvCobros.RowTemplate.Height = 25;
             dgvCobros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCobros.Size = new Size(945, 407);
+            dgvCobros.Size = new Size(1029, 407);
             dgvCobros.TabIndex = 101;
+            // 
+            // fecha
+            // 
+            fecha.DataPropertyName = "fecha";
+            fecha.HeaderText = "Fecha";
+            fecha.Name = "fecha";
+            fecha.ReadOnly = true;
+            // 
+            // pagoid
+            // 
+            pagoid.DataPropertyName = "pagoid";
+            pagoid.HeaderText = "N° Pago";
+            pagoid.Name = "pagoid";
+            pagoid.ReadOnly = true;
+            // 
+            // nrofactura
+            // 
+            nrofactura.DataPropertyName = "nrofactura";
+            nrofactura.HeaderText = "N° Fac";
+            nrofactura.Name = "nrofactura";
+            nrofactura.ReadOnly = true;
+            // 
+            // cliente
+            // 
+            cliente.DataPropertyName = "cliente";
+            cliente.HeaderText = "Cliente";
+            cliente.Name = "cliente";
+            cliente.ReadOnly = true;
+            // 
+            // tipo_comprobante
+            // 
+            tipo_comprobante.DataPropertyName = "tipo_comprobante";
+            tipo_comprobante.HeaderText = "Tipo";
+            tipo_comprobante.Name = "tipo_comprobante";
+            tipo_comprobante.ReadOnly = true;
+            // 
+            // nro_comprobante
+            // 
+            nro_comprobante.DataPropertyName = "nro_comprobante";
+            nro_comprobante.HeaderText = "N° Com";
+            nro_comprobante.Name = "nro_comprobante";
+            nro_comprobante.ReadOnly = true;
+            // 
+            // metodopago
+            // 
+            metodopago.DataPropertyName = "metodopago";
+            metodopago.HeaderText = "Metodo";
+            metodopago.Name = "metodopago";
+            metodopago.ReadOnly = true;
+            // 
+            // debito
+            // 
+            debito.DataPropertyName = "debito";
+            debito.HeaderText = "Debito";
+            debito.Name = "debito";
+            debito.ReadOnly = true;
+            // 
+            // credito
+            // 
+            credito.DataPropertyName = "credito";
+            credito.HeaderText = "Credito";
+            credito.Name = "credito";
+            credito.ReadOnly = true;
+            // 
+            // saldo
+            // 
+            saldo.DataPropertyName = "saldo";
+            saldo.HeaderText = "Saldo";
+            saldo.Name = "saldo";
+            saldo.ReadOnly = true;
+            // 
+            // cobroBindingSource
+            // 
+            cobroBindingSource.DataSource = typeof(Entities.Cobro);
             // 
             // txt7
             // 
@@ -83,6 +195,7 @@
             // cbCliente
             // 
             cbCliente.FormattingEnabled = true;
+            cbCliente.Items.AddRange(new object[] { "All" });
             cbCliente.Location = new Point(31, 93);
             cbCliente.Name = "cbCliente";
             cbCliente.Size = new Size(210, 23);
@@ -91,6 +204,7 @@
             // cbFactura
             // 
             cbFactura.FormattingEnabled = true;
+            cbFactura.Items.AddRange(new object[] { "All" });
             cbFactura.Location = new Point(31, 137);
             cbFactura.Name = "cbFactura";
             cbFactura.Size = new Size(210, 23);
@@ -129,19 +243,12 @@
             txt1.TabIndex = 93;
             txt1.Text = "Monto a Abonar:";
             // 
-            // txtPrecioComp
+            // txtMonto
             // 
-            txtPrecioComp.Location = new Point(31, 225);
-            txtPrecioComp.Name = "txtPrecioComp";
-            txtPrecioComp.Size = new Size(210, 23);
-            txtPrecioComp.TabIndex = 92;
-            // 
-            // txtCantidad
-            // 
-            txtCantidad.Location = new Point(32, 181);
-            txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(210, 23);
-            txtCantidad.TabIndex = 91;
+            txtMonto.Location = new Point(32, 181);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(210, 23);
+            txtMonto.TabIndex = 91;
             // 
             // Texto5
             // 
@@ -186,12 +293,22 @@
             labelcontenedor.Size = new Size(291, 579);
             labelcontenedor.TabIndex = 88;
             // 
+            // cbMetodo
+            // 
+            cbMetodo.FormattingEnabled = true;
+            cbMetodo.Items.AddRange(new object[] { " ", "Efectivo", "Credito", "Cheque", "Deposito", "Debito", "Transferencia" });
+            cbMetodo.Location = new Point(32, 225);
+            cbMetodo.Name = "cbMetodo";
+            cbMetodo.Size = new Size(210, 23);
+            cbMetodo.TabIndex = 103;
+            // 
             // FormVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1362, 579);
+            ClientSize = new Size(1404, 579);
+            Controls.Add(cbMetodo);
             Controls.Add(txt6);
             Controls.Add(dgvCobros);
             Controls.Add(txt7);
@@ -200,8 +317,7 @@
             Controls.Add(label1);
             Controls.Add(txt3);
             Controls.Add(txt1);
-            Controls.Add(txtPrecioComp);
-            Controls.Add(txtCantidad);
+            Controls.Add(txtMonto);
             Controls.Add(Texto5);
             Controls.Add(btnCobrar);
             Controls.Add(labelcontenedor);
@@ -209,6 +325,7 @@
             Text = "FormVentas";
             Load += FormVentas_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCobros).EndInit();
+            ((System.ComponentModel.ISupportInitialize)cobroBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -223,10 +340,21 @@
         private Label label1;
         private Label txt3;
         private Label txt1;
-        private TextBox txtPrecioComp;
-        private TextBox txtCantidad;
+        private TextBox txtMonto;
         private Label Texto5;
         private FontAwesome.Sharp.IconButton btnCobrar;
         private Label labelcontenedor;
+        private DataGridViewTextBoxColumn fecha;
+        private DataGridViewTextBoxColumn pagoid;
+        private DataGridViewTextBoxColumn nrofactura;
+        private DataGridViewTextBoxColumn cliente;
+        private DataGridViewTextBoxColumn tipo_comprobante;
+        private DataGridViewTextBoxColumn nro_comprobante;
+        private DataGridViewTextBoxColumn metodopago;
+        private DataGridViewTextBoxColumn debito;
+        private DataGridViewTextBoxColumn credito;
+        private DataGridViewTextBoxColumn saldo;
+        private BindingSource cobroBindingSource;
+        private ComboBox cbMetodo;
     }
 }
