@@ -28,6 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             dgvProductos = new DataGridView();
             dgvLista = new DataGridView();
             btnAgregar = new FontAwesome.Sharp.IconButton();
@@ -56,14 +61,28 @@
             dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvProductos.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvProductos.BorderStyle = BorderStyle.None;
+            dgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProductos.Location = new Point(35, 37);
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersVisible = false;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvProductos.RowTemplate.Height = 25;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductos.Size = new Size(493, 421);
+            dgvProductos.Size = new Size(660, 421);
             dgvProductos.TabIndex = 0;
             dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
@@ -75,14 +94,36 @@
             dgvLista.AllowUserToResizeRows = false;
             dgvLista.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvLista.BorderStyle = BorderStyle.None;
+            dgvLista.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvLista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLista.Location = new Point(595, 37);
+            dgvLista.Location = new Point(730, 37);
             dgvLista.Name = "dgvLista";
             dgvLista.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvLista.RowHeadersVisible = false;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle5;
             dgvLista.RowTemplate.Height = 25;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLista.Size = new Size(436, 421);
+            dgvLista.Size = new Size(523, 421);
             dgvLista.TabIndex = 1;
             dgvLista.CellContentClick += dgvLista_CellContentClick;
             // 
@@ -94,7 +135,7 @@
             btnAgregar.IconColor = SystemColors.ActiveCaptionText;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 28;
-            btnAgregar.Location = new Point(534, 48);
+            btnAgregar.Location = new Point(657, 48);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(38, 31);
             btnAgregar.TabIndex = 85;
@@ -109,7 +150,7 @@
             btnQuitar.IconColor = SystemColors.ActiveCaptionText;
             btnQuitar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnQuitar.IconSize = 28;
-            btnQuitar.Location = new Point(534, 85);
+            btnQuitar.Location = new Point(657, 85);
             btnQuitar.Name = "btnQuitar";
             btnQuitar.Size = new Size(38, 31);
             btnQuitar.TabIndex = 86;
@@ -118,10 +159,10 @@
             // 
             // txt6
             // 
-            txt6.BackColor = Color.White;
-            txt6.BorderStyle = BorderStyle.FixedSingle;
+            txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            txt6.Location = new Point(67, 8);
+            txt6.ForeColor = Color.White;
+            txt6.Location = new Point(25, 8);
             txt6.Name = "txt6";
             txt6.Size = new Size(146, 23);
             txt6.TabIndex = 87;
@@ -130,10 +171,10 @@
             // 
             // label1
             // 
-            label1.BackColor = Color.White;
-            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.BackColor = Color.FromArgb(45, 66, 91);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(595, 8);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(730, 11);
             label1.Name = "label1";
             label1.Size = new Size(151, 23);
             label1.TabIndex = 88;
@@ -143,20 +184,21 @@
             // txtBuscar
             // 
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
-            txtBuscar.Location = new Point(259, 10);
+            txtBuscar.Location = new Point(353, 8);
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(214, 23);
             txtBuscar.TabIndex = 89;
             // 
             // btnBuscar
             // 
-            btnBuscar.BackColor = SystemColors.MenuHighlight;
+            btnBuscar.BackColor = Color.FromArgb(45, 66, 91);
             btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.ForeColor = Color.White;
             btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            btnBuscar.IconColor = SystemColors.ActiveCaptionText;
+            btnBuscar.IconColor = Color.White;
             btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnBuscar.IconSize = 24;
-            btnBuscar.Location = new Point(479, 10);
+            btnBuscar.Location = new Point(572, 8);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(31, 23);
             btnBuscar.TabIndex = 90;
@@ -168,7 +210,7 @@
             btnAceptar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnAceptar.IconColor = Color.Black;
             btnAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAceptar.Location = new Point(924, 484);
+            btnAceptar.Location = new Point(1146, 484);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(107, 48);
             btnAceptar.TabIndex = 92;
@@ -179,7 +221,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(480, 464);
+            cbItemsPorPagina.Location = new Point(574, 462);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 96;
@@ -188,7 +230,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(393, 464);
+            txtPagina.Location = new Point(487, 462);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 95;
@@ -201,7 +243,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(351, 464);
+            btnAnterior.Location = new Point(445, 462);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 94;
@@ -214,7 +256,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(429, 464);
+            btnSiguiente.Location = new Point(523, 462);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 93;
@@ -244,7 +286,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1067, 559);
+            ClientSize = new Size(1297, 559);
             Controls.Add(txtlistado);
             Controls.Add(txtproductoselec);
             Controls.Add(cbItemsPorPagina);

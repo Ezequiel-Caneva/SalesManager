@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
     public class UsuarioController : ControllerBase
     {
         private UsuarioNegocio _usuarionegocio;
-       
+
         public UsuarioController(UsuarioNegocio usuarionegocio)
         {
             _usuarionegocio = usuarionegocio;
@@ -27,7 +27,22 @@ namespace WebAPI.Controllers
         {
             return _usuarionegocio.LogeoUsuario(request);
         }
-      
+        [HttpPost("CrearUsuario")]
+        public void CrearUsuario(Usuario usuario)
+        {
+            _usuarionegocio.CrearUsuario(usuario);
+        }
+        [HttpPost("RegistrarVendedor")]
+        public void RegistrarVendedor(Vendedor vendedor)
+        {
+            _usuarionegocio.RegistrarVendedor(vendedor);
+        }
+        [HttpPost("MostrarVendedores")]
+        public Response<Vendedor> MostrarVendedores(Search search)
+        {
+            return _usuarionegocio.MostrarVendedores(search);
+        }
+
     }
 }
 

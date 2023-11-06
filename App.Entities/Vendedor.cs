@@ -14,6 +14,7 @@ namespace App.Entities
         [Key]
         public int vendedorid { get; set; }
         public string zona {  get; set; }
-
+        public int usuarioid { get; set; }
+        public Usuario? usuario{ get; set; }
     }
 }

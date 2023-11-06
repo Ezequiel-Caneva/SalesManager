@@ -1,9 +1,11 @@
 ﻿using App.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Data.SqlClient.DataClassification;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,28 +22,24 @@ namespace App.Data
         }
 
         // Inicio de registro
-        public void CrearUsuario(int dni, string username, string password, string email, int rol)
+        public void CrearUsuario(Usuario usuario)
         {
+
             // Genera un salt único para el usuario
             byte[] salt = GenerateSalt();
 
             // Calcula el hash de la contraseña con el salt
-            byte[] passwordHash = GeneratePasswordHash(password, salt);
+            byte[] passwordHash = GeneratePasswordHash(usuario.contraseniahash, salt);
 
             string passwordHashString = BitConverter.ToString(passwordHash).Replace("-", "");
             string saltString = BitConverter.ToString(salt).Replace("-", "");
             // Crea una nueva instancia de la entidad Usuario y asigna los valores
-            var newUser = new Usuario
-            {
-                dni = dni,
-                usuario = username,
-                contraseniahash = passwordHashString,
-                contraseniasalt = saltString,
-                email = email,
-                rol = rol
-            };
+            usuario.contraseniahash = passwordHashString;
+            usuario.contraseniasalt = saltString;
+                
+            
             // Agrega el nuevo usuario al contexto y guarda los cambios en la base de datos
-            _context.Usuario.Add(newUser);
+            _context.Usuario.Add(usuario);
             _context.SaveChanges();
         }
         public byte[] GenerateSalt()
@@ -97,6 +95,29 @@ namespace App.Data
             return bytes;
         }
         //Fin de logeo 
+        public void RegistrarVendedor(Vendedor vendedor)
+        {
+            _context.Vendedor.Add(vendedor);
+            _context.SaveChanges();
+        }
+        public Response<Vendedor> MostrarVendedores(Search search)
+        {
+            var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
+            // Obtén todos los productos sin aplicar filtros
+            var query = _context.Vendedor.AsQueryable()
+                        .Include(p => p.usuario);
+
+            var count = query.Count();
+            var response = new Response<Vendedor>()
+            {
+                Items = query.Skip(skipRows)
+                             .Take(search.PageSize)
+                             .ToList(),
+                Total = count
+            };
+
+            return response;
+        }
     }
 }

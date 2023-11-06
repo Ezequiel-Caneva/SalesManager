@@ -217,18 +217,18 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(938, 494);
+            cbItemsPorPagina.Location = new Point(1191, 491);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
-            cbItemsPorPagina.Size = new Size(29, 23);
+            cbItemsPorPagina.Size = new Size(31, 23);
             cbItemsPorPagina.TabIndex = 68;
             cbItemsPorPagina.SelectedIndexChanged += cbItemsPorPagina_SelectedIndexChanged;
             // 
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(851, 494);
+            txtPagina.Location = new Point(1104, 491);
             txtPagina.Name = "txtPagina";
-            txtPagina.Size = new Size(30, 23);
+            txtPagina.Size = new Size(32, 23);
             txtPagina.TabIndex = 67;
             txtPagina.TextChanged += txtPagina_TextChanged;
             // 
@@ -239,9 +239,9 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(809, 494);
+            btnAnterior.Location = new Point(1062, 491);
             btnAnterior.Name = "btnAnterior";
-            btnAnterior.Size = new Size(36, 23);
+            btnAnterior.Size = new Size(38, 23);
             btnAnterior.TabIndex = 66;
             btnAnterior.UseVisualStyleBackColor = true;
             btnAnterior.Click += btnAnterior_Click;
@@ -252,9 +252,9 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(887, 494);
+            btnSiguiente.Location = new Point(1140, 491);
             btnSiguiente.Name = "btnSiguiente";
-            btnSiguiente.Size = new Size(34, 23);
+            btnSiguiente.Size = new Size(36, 23);
             btnSiguiente.TabIndex = 65;
             btnSiguiente.UseVisualStyleBackColor = true;
             btnSiguiente.Click += btnSiguiente_Click;
@@ -305,7 +305,7 @@
             dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvCompras.RowTemplate.Height = 25;
             dgvCompras.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCompras.Size = new Size(872, 425);
+            dgvCompras.Size = new Size(924, 425);
             dgvCompras.TabIndex = 69;
             dgvCompras.CellContentClick += dgvCompras_CellContentClick;
             dgvCompras.CellContentDoubleClick += dgvCompras_CellContentDoubleClick;
@@ -337,18 +337,18 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(936, 37);
+            iconButton2.Location = new Point(1189, 34);
             iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(31, 23);
+            iconButton2.Size = new Size(33, 23);
             iconButton2.TabIndex = 92;
             iconButton2.UseVisualStyleBackColor = false;
             // 
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(718, 37);
+            textBox1.Location = new Point(971, 34);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 23);
+            textBox1.Size = new Size(216, 23);
             textBox1.TabIndex = 91;
             // 
             // FormCompras
@@ -356,7 +356,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1233, 682);
+            ClientSize = new Size(1299, 682);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(txt7);

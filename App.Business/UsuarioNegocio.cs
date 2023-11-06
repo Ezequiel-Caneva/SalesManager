@@ -18,15 +18,23 @@ namespace App.Business
         {
             _usuarioRepositorio = usuarioRepositorio;
         }
-        public void CrearUsuario(int dni, string username, string password, string email, int rol)
+        public void CrearUsuario(Usuario usuario)
         {
-            _usuarioRepositorio.CrearUsuario(dni,username,password,email, rol);
+            _usuarioRepositorio.CrearUsuario(usuario);
         }
         public Usuario LogeoUsuario(LoginRequest request)
         {
             return _usuarioRepositorio.LogeoUsuario(request);
         }
-   
+        public void RegistrarVendedor(Vendedor vendedor)
+        {
+            _usuarioRepositorio.RegistrarVendedor(vendedor);
+        }
+        public Response<Vendedor> MostrarVendedores(Search search)
+        {
+            return _usuarioRepositorio.MostrarVendedores(search);
+        }
+
 
 
     }
