@@ -108,40 +108,23 @@ namespace App.Presentation
 
             int numeroFacturaSeleccionado = (int)cbFactura.SelectedValue;
             var cobrosFactura = cobros.Where(c => c.nrofactura == numeroFacturaSeleccionado).ToList();
-            decimal? saldoFactura = cobrosFactura.Sum(c => c.saldo);
+            decimal? saldoFactura = cobrosFactura.Min(c => c.saldo);
             decimal? montoPago = Convert.ToInt32(txtMonto.Text);
             var selecCobro = new Cobro();
             if (montoPago > saldoFactura)
             {
                 // El pago excede el saldo de la factura.
                 MessageBox.Show("El pago excede el saldo de la factura.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
             }
             else
             {
-                foreach (var cobrar in cobrosFactura)
-                {
-                    if (montoPago <= cobrar.saldo)
-                    {
-                        // El pago se puede aplicar completamente a este cobro.
-                        cobrar.saldo -= montoPago;
-                        break;
-                    }
-                    else
-                    {
-                        // El pago cubre este cobro por completo, y aún queda monto por pagar.
-                        montoPago -= cobrar.saldo;
-                        cobrar.saldo = 0;
-                    }
-                }
-
-                // Actualiza el saldo total de la factura.
-                saldoFactura = cobrosFactura.Sum(c => c.saldo);
-
+                saldoFactura = saldoFactura - montoPago;
                 // Puedes imprimir el saldo restante después del pago.
                 MessageBox.Show("Saldo restante de la factura: " + saldoFactura, "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
- 
+
             }
+            
             string nombreClienteSeleccionado = cbCliente.SelectedValue.ToString();
             var cliente = cobros.FirstOrDefault(c => c._cliente.nombre == nombreClienteSeleccionado);      
             int clienteid = cliente._cliente.clienteid;
