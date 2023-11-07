@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileApp.MainPage">
+
+    <Grid>
+        <!-- Capa inferior: la imagen de fondo -->
+        <Image Source="https://e1.pxfuel.com/desktop-wallpaper/775/366/desktop-wallpaper-motorbikes-motorbike.jpg"
+               Aspect="AspectFill" />
+
+        <!-- Capa superior: contenido -->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Fila 0: Centrar el nombre en la parte superior -->
+            <Frame BackgroundColor="WhiteSmoke" CornerRadius="30" HorizontalOptions="Fill" VerticalOptions="Fill">
+                <Label Text="MotoPartesExpress" FontSize="24" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
+            </Frame>
+
+            <!-- Fila 1: Contenido en la parte inferior -->
+            <Frame BackgroundColor="LightYellow" Grid.Row="4" Padding="10" CornerRadius="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout>
+                    <Label Text="Ingrese su número de documento para acceder" TextColor="Black" FontSize="15" HorizontalOptions="Center"/>
+                    <Entry Placeholder="12345678" HorizontalOptions="Center" FontSize="15"/>
+                    <Button Text="Ingresar" TextTransform="None" TextColor="White" BackgroundColor="Black" FontSize="15" HeightRequest="40" CornerRadius="20" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>
+
