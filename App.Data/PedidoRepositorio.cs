@@ -57,7 +57,6 @@ namespace App.Data
                 Total = count
             };
             return response;
-
         }
     
         public Pedido ObtenerPedido(Search search)

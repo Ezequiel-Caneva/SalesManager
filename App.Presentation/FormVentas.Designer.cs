@@ -64,17 +64,18 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(310, 37);
+            txt6.Location = new Point(215, 2);
             txt6.Name = "txt6";
-            txt6.Size = new Size(227, 23);
+            txt6.Size = new Size(188, 23);
             txt6.TabIndex = 102;
-            txt6.Text = "Deudas del Cliente:";
+            txt6.Text = "Deudas del Cliente";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // dgvCobros
             // 
             dgvCobros.AllowUserToDeleteRows = false;
             dgvCobros.AutoGenerateColumns = false;
+            dgvCobros.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCobros.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvCobros.BorderStyle = BorderStyle.None;
             dgvCobros.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -90,8 +91,8 @@
             dgvCobros.Columns.AddRange(new DataGridViewColumn[] { fecha, pagoid, nrofactura, cliente, tipo_comprobante, nro_comprobante, metodopago, debito, credito, saldo });
             dgvCobros.DataSource = cobroBindingSource;
             dgvCobros.EnableHeadersVisualStyles = false;
-            dgvCobros.GridColor = Color.SteelBlue;
-            dgvCobros.Location = new Point(323, 63);
+            dgvCobros.GridColor = Color.White;
+            dgvCobros.Location = new Point(215, 31);
             dgvCobros.Name = "dgvCobros";
             dgvCobros.ReadOnly = true;
             dgvCobros.RowHeadersVisible = false;
@@ -104,7 +105,7 @@
             dgvCobros.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvCobros.RowTemplate.Height = 25;
             dgvCobros.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCobros.Size = new Size(1029, 407);
+            dgvCobros.Size = new Size(1034, 494);
             dgvCobros.TabIndex = 101;
             // 
             // fecha
@@ -186,7 +187,7 @@
             txt7.AutoSize = true;
             txt7.BackColor = Color.FromArgb(40, 60, 90);
             txt7.ForeColor = Color.White;
-            txt7.Location = new Point(32, 73);
+            txt7.Location = new Point(-3, 73);
             txt7.Name = "txt7";
             txt7.Size = new Size(47, 15);
             txt7.TabIndex = 100;
@@ -196,7 +197,7 @@
             // 
             cbCliente.FormattingEnabled = true;
             cbCliente.Items.AddRange(new object[] { "All" });
-            cbCliente.Location = new Point(31, 93);
+            cbCliente.Location = new Point(-1, 91);
             cbCliente.Name = "cbCliente";
             cbCliente.Size = new Size(210, 23);
             cbCliente.TabIndex = 98;
@@ -205,7 +206,7 @@
             // 
             cbFactura.FormattingEnabled = true;
             cbFactura.Items.AddRange(new object[] { "All" });
-            cbFactura.Location = new Point(31, 137);
+            cbFactura.Location = new Point(-1, 135);
             cbFactura.Name = "cbFactura";
             cbFactura.Size = new Size(210, 23);
             cbFactura.TabIndex = 97;
@@ -215,7 +216,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(40, 60, 90);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(29, 119);
+            label1.Location = new Point(-3, 117);
             label1.Name = "label1";
             label1.Size = new Size(49, 15);
             label1.TabIndex = 96;
@@ -226,7 +227,7 @@
             txt3.AutoSize = true;
             txt3.BackColor = Color.FromArgb(40, 60, 90);
             txt3.ForeColor = Color.White;
-            txt3.Location = new Point(30, 207);
+            txt3.Location = new Point(-2, 205);
             txt3.Name = "txt3";
             txt3.Size = new Size(98, 15);
             txt3.TabIndex = 94;
@@ -237,7 +238,7 @@
             txt1.AutoSize = true;
             txt1.BackColor = Color.FromArgb(40, 60, 90);
             txt1.ForeColor = Color.White;
-            txt1.Location = new Point(30, 163);
+            txt1.Location = new Point(-2, 161);
             txt1.Name = "txt1";
             txt1.Size = new Size(97, 15);
             txt1.TabIndex = 93;
@@ -245,7 +246,7 @@
             // 
             // txtMonto
             // 
-            txtMonto.Location = new Point(32, 181);
+            txtMonto.Location = new Point(0, 179);
             txtMonto.Name = "txtMonto";
             txtMonto.Size = new Size(210, 23);
             txtMonto.TabIndex = 91;
@@ -258,7 +259,7 @@
             Texto5.ForeColor = Color.White;
             Texto5.Location = new Point(0, 25);
             Texto5.Name = "Texto5";
-            Texto5.Size = new Size(291, 27);
+            Texto5.Size = new Size(210, 27);
             Texto5.TabIndex = 90;
             Texto5.Text = "Cobrar ";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
@@ -273,7 +274,7 @@
             btnCobrar.IconColor = Color.Black;
             btnCobrar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCobrar.IconSize = 16;
-            btnCobrar.Location = new Point(32, 264);
+            btnCobrar.Location = new Point(0, 262);
             btnCobrar.Name = "btnCobrar";
             btnCobrar.Size = new Size(210, 31);
             btnCobrar.TabIndex = 89;
@@ -290,14 +291,14 @@
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(291, 579);
+            labelcontenedor.Size = new Size(210, 579);
             labelcontenedor.TabIndex = 88;
             // 
             // cbMetodo
             // 
             cbMetodo.FormattingEnabled = true;
             cbMetodo.Items.AddRange(new object[] { " ", "Efectivo", "Credito", "Cheque", "Deposito", "Debito", "Transferencia" });
-            cbMetodo.Location = new Point(32, 225);
+            cbMetodo.Location = new Point(0, 223);
             cbMetodo.Name = "cbMetodo";
             cbMetodo.Size = new Size(210, 23);
             cbMetodo.TabIndex = 103;

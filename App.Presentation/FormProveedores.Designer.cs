@@ -70,7 +70,7 @@
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(291, 619);
+            labelcontenedor.Size = new Size(210, 619);
             labelcontenedor.TabIndex = 1;
             // 
             // btnEliminar
@@ -83,7 +83,7 @@
             btnEliminar.IconColor = Color.Black;
             btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminar.IconSize = 16;
-            btnEliminar.Location = new Point(45, 326);
+            btnEliminar.Location = new Point(0, 324);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(210, 23);
             btnEliminar.TabIndex = 39;
@@ -103,7 +103,7 @@
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditar.IconSize = 16;
-            btnEditar.Location = new Point(45, 297);
+            btnEditar.Location = new Point(0, 295);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(210, 23);
             btnEditar.TabIndex = 38;
@@ -123,7 +123,7 @@
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 16;
-            btnAgregar.Location = new Point(45, 268);
+            btnAgregar.Location = new Point(0, 266);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(210, 23);
             btnAgregar.TabIndex = 37;
@@ -138,7 +138,7 @@
             Text1.AutoSize = true;
             Text1.BackColor = Color.FromArgb(40, 60, 90);
             Text1.ForeColor = Color.White;
-            Text1.Location = new Point(46, 67);
+            Text1.Location = new Point(0, 67);
             Text1.Name = "Text1";
             Text1.Size = new Size(54, 15);
             Text1.TabIndex = 36;
@@ -146,7 +146,7 @@
             // 
             // txtNombreProv
             // 
-            txtNombreProv.Location = new Point(45, 85);
+            txtNombreProv.Location = new Point(0, 85);
             txtNombreProv.Name = "txtNombreProv";
             txtNombreProv.Size = new Size(210, 23);
             txtNombreProv.TabIndex = 35;
@@ -159,28 +159,28 @@
             Texto5.ForeColor = Color.White;
             Texto5.Location = new Point(0, 25);
             Texto5.Name = "Texto5";
-            Texto5.Size = new Size(291, 27);
+            Texto5.Size = new Size(210, 27);
             Texto5.TabIndex = 40;
             Texto5.Text = "Agregar Proveedor";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // txtRzProv
             // 
-            txtRzProv.Location = new Point(45, 129);
+            txtRzProv.Location = new Point(0, 127);
             txtRzProv.Name = "txtRzProv";
             txtRzProv.Size = new Size(210, 23);
             txtRzProv.TabIndex = 41;
             // 
             // txtDirecProv
             // 
-            txtDirecProv.Location = new Point(45, 173);
+            txtDirecProv.Location = new Point(0, 171);
             txtDirecProv.Name = "txtDirecProv";
             txtDirecProv.Size = new Size(210, 23);
             txtDirecProv.TabIndex = 42;
             // 
             // txtTelProv
             // 
-            txtTelProv.Location = new Point(45, 217);
+            txtTelProv.Location = new Point(0, 215);
             txtTelProv.Name = "txtTelProv";
             txtTelProv.Size = new Size(210, 23);
             txtTelProv.TabIndex = 43;
@@ -190,7 +190,7 @@
             txt1.AutoSize = true;
             txt1.BackColor = Color.FromArgb(40, 60, 90);
             txt1.ForeColor = Color.White;
-            txt1.Location = new Point(45, 111);
+            txt1.Location = new Point(0, 109);
             txt1.Name = "txt1";
             txt1.Size = new Size(76, 15);
             txt1.TabIndex = 44;
@@ -201,7 +201,7 @@
             txt2.AutoSize = true;
             txt2.BackColor = Color.FromArgb(40, 60, 90);
             txt2.ForeColor = Color.White;
-            txt2.Location = new Point(45, 155);
+            txt2.Location = new Point(0, 153);
             txt2.Name = "txt2";
             txt2.Size = new Size(60, 15);
             txt2.TabIndex = 45;
@@ -212,7 +212,7 @@
             txt4.AutoSize = true;
             txt4.BackColor = Color.FromArgb(40, 60, 90);
             txt4.ForeColor = Color.White;
-            txt4.Location = new Point(45, 199);
+            txt4.Location = new Point(0, 197);
             txt4.Name = "txt4";
             txt4.Size = new Size(55, 15);
             txt4.TabIndex = 46;
@@ -221,9 +221,9 @@
             // dgvProveedores
             // 
             dgvProveedores.AllowUserToDeleteRows = false;
+            dgvProveedores.AllowUserToResizeColumns = false;
             dgvProveedores.AutoGenerateColumns = false;
-            dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvProveedores.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProveedores.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvProveedores.BorderStyle = BorderStyle.None;
             dgvProveedores.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -239,8 +239,8 @@
             dgvProveedores.Columns.AddRange(new DataGridViewColumn[] { proveedorid, razonsocial, nombre, telefono, direccion });
             dgvProveedores.DataSource = proveedorBindingSource;
             dgvProveedores.EnableHeadersVisualStyles = false;
-            dgvProveedores.GridColor = Color.SteelBlue;
-            dgvProveedores.Location = new Point(349, 63);
+            dgvProveedores.GridColor = Color.White;
+            dgvProveedores.Location = new Point(215, 31);
             dgvProveedores.Name = "dgvProveedores";
             dgvProveedores.ReadOnly = true;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
@@ -260,49 +260,49 @@
             dgvProveedores.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvProveedores.RowTemplate.Height = 25;
             dgvProveedores.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProveedores.Size = new Size(577, 425);
+            dgvProveedores.Size = new Size(1034, 494);
             dgvProveedores.TabIndex = 47;
             dgvProveedores.CellContentClick += dgvProveedores_CellContentClick;
             // 
             // proveedorid
             // 
             proveedorid.DataPropertyName = "proveedorid";
-            proveedorid.HeaderText = "Id";
+            proveedorid.FillWeight = 126.903557F;
+            proveedorid.HeaderText = "N° Proveedor";
             proveedorid.Name = "proveedorid";
             proveedorid.ReadOnly = true;
-            proveedorid.Width = 48;
             // 
             // razonsocial
             // 
             razonsocial.DataPropertyName = "razonsocial";
+            razonsocial.FillWeight = 93.27411F;
             razonsocial.HeaderText = "Razon social";
             razonsocial.Name = "razonsocial";
             razonsocial.ReadOnly = true;
-            razonsocial.Width = 123;
             // 
             // nombre
             // 
             nombre.DataPropertyName = "nombre";
+            nombre.FillWeight = 93.27411F;
             nombre.HeaderText = "Nombre";
             nombre.Name = "nombre";
             nombre.ReadOnly = true;
-            nombre.Width = 92;
             // 
             // telefono
             // 
             telefono.DataPropertyName = "telefono";
+            telefono.FillWeight = 93.27411F;
             telefono.HeaderText = "Teléfono";
             telefono.Name = "telefono";
             telefono.ReadOnly = true;
-            telefono.Width = 95;
             // 
             // direccion
             // 
             direccion.DataPropertyName = "direccion";
+            direccion.FillWeight = 93.27411F;
             direccion.HeaderText = "Direccion";
             direccion.Name = "direccion";
             direccion.ReadOnly = true;
-            direccion.Width = 104;
             // 
             // proveedorBindingSource
             // 
@@ -313,7 +313,7 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(349, 37);
+            txt6.Location = new Point(215, 2);
             txt6.Name = "txt6";
             txt6.Size = new Size(193, 23);
             txt6.TabIndex = 48;
@@ -324,7 +324,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(809, 498);
+            cbItemsPorPagina.Location = new Point(1221, 528);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 52;
@@ -333,7 +333,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(715, 498);
+            txtPagina.Location = new Point(1145, 528);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 51;
@@ -346,7 +346,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(673, 498);
+            btnAnterior.Location = new Point(1103, 528);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 50;
@@ -359,7 +359,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(751, 498);
+            btnSiguiente.Location = new Point(1181, 528);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 49;
@@ -374,7 +374,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(781, 37);
+            iconButton2.Location = new Point(1218, 6);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
@@ -383,7 +383,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(561, 37);
+            textBox1.Location = new Point(1002, 6);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;
@@ -393,7 +393,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1040, 619);
+            ClientSize = new Size(1254, 619);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(cbItemsPorPagina);

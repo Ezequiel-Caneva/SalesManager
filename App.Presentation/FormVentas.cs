@@ -29,7 +29,7 @@ namespace App.Presentation
             _client.BaseAddress = _baseAddress;
             clientes = new List<Cliente>();
             facturas = new List<Factura>();
-            cobros = new List<Cobro>(); 
+            cobros = new List<Cobro>();
             _currentPage = 1;
             _currentItemsPerPage = 25;
         }
@@ -124,9 +124,9 @@ namespace App.Presentation
                 MessageBox.Show("Saldo restante de la factura: " + saldoFactura, "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
-            
+
             string nombreClienteSeleccionado = cbCliente.SelectedValue.ToString();
-            var cliente = cobros.FirstOrDefault(c => c._cliente.nombre == nombreClienteSeleccionado);      
+            var cliente = cobros.FirstOrDefault(c => c._cliente.nombre == nombreClienteSeleccionado);
             int clienteid = cliente._cliente.clienteid;
             decimal monto;
             if (decimal.TryParse(txtMonto.Text, out monto))
@@ -171,7 +171,7 @@ namespace App.Presentation
                 // El valor en 'txtMonto.Text' no es un número válido.
                 MessageBox.Show("El valor ingresado en 'txtMonto' no es válido.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-           
+
         }
     }
 }

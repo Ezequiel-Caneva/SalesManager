@@ -69,8 +69,7 @@
             // 
             dgvPedidos.AllowUserToDeleteRows = false;
             dgvPedidos.AutoGenerateColumns = false;
-            dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvPedidos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPedidos.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvPedidos.BorderStyle = BorderStyle.None;
             dgvPedidos.CausesValidation = false;
@@ -88,8 +87,8 @@
             dgvPedidos.Cursor = Cursors.Hand;
             dgvPedidos.DataSource = pedidoBindingSource;
             dgvPedidos.EnableHeadersVisualStyles = false;
-            dgvPedidos.GridColor = Color.SteelBlue;
-            dgvPedidos.Location = new Point(117, 68);
+            dgvPedidos.GridColor = Color.White;
+            dgvPedidos.Location = new Point(101, 31);
             dgvPedidos.Name = "dgvPedidos";
             dgvPedidos.ReadOnly = true;
             dgvPedidos.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -111,57 +110,57 @@
             dgvPedidos.RowsDefaultCellStyle = dataGridViewCellStyle3;
             dgvPedidos.RowTemplate.Height = 25;
             dgvPedidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvPedidos.Size = new Size(590, 425);
+            dgvPedidos.Size = new Size(597, 425);
             dgvPedidos.TabIndex = 75;
             dgvPedidos.CellClick += dgvPedidos_CellClick;
             // 
             // Id
             // 
             Id.DataPropertyName = "pedidoid";
+            Id.FillWeight = 106.711411F;
             Id.HeaderText = "N° Pedido";
             Id.Name = "Id";
             Id.ReadOnly = true;
-            Id.Width = 106;
             // 
             // fecha
             // 
             fecha.DataPropertyName = "fecha";
+            fecha.FillWeight = 77.74766F;
             fecha.HeaderText = "Fecha";
             fecha.Name = "fecha";
             fecha.ReadOnly = true;
-            fecha.Width = 79;
             // 
             // estado
             // 
             estado.DataPropertyName = "estado";
+            estado.FillWeight = 82.83483F;
             estado.HeaderText = "Estado";
             estado.Name = "estado";
             estado.ReadOnly = true;
-            estado.Width = 82;
             // 
             // factura
             // 
             factura.DataPropertyName = "factura";
+            factura.FillWeight = 91.46337F;
             factura.HeaderText = "Factura";
             factura.Name = "factura";
             factura.ReadOnly = true;
-            factura.Width = 89;
             // 
             // vendedor
             // 
             vendedor.DataPropertyName = "vendedor";
+            vendedor.FillWeight = 123.683823F;
             vendedor.HeaderText = "Vendedor";
             vendedor.Name = "vendedor";
             vendedor.ReadOnly = true;
-            vendedor.Width = 108;
             // 
             // cliente
             // 
             cliente.DataPropertyName = "cliente";
+            cliente.FillWeight = 117.5589F;
             cliente.HeaderText = "Cliente";
             cliente.Name = "cliente";
             cliente.ReadOnly = true;
-            cliente.Width = 85;
             // 
             // pedidoBindingSource
             // 
@@ -171,7 +170,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "1", "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(628, 499);
+            cbItemsPorPagina.Location = new Point(669, 462);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 74;
@@ -180,7 +179,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(550, 499);
+            txtPagina.Location = new Point(593, 462);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 73;
@@ -193,7 +192,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(508, 499);
+            btnAnterior.Location = new Point(551, 462);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 72;
@@ -206,7 +205,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(586, 500);
+            btnSiguiente.Location = new Point(629, 462);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 71;
@@ -218,9 +217,9 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(117, 42);
+            txt6.Location = new Point(101, 5);
             txt6.Name = "txt6";
-            txt6.Size = new Size(227, 23);
+            txt6.Size = new Size(186, 23);
             txt6.TabIndex = 70;
             txt6.Text = "Vizualizar Pedidos";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
@@ -232,7 +231,7 @@
             btnConfimado.IconChar = FontAwesome.Sharp.IconChar.None;
             btnConfimado.IconColor = Color.Black;
             btnConfimado.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnConfimado.Location = new Point(5, 97);
+            btnConfimado.Location = new Point(5, 60);
             btnConfimado.Name = "btnConfimado";
             btnConfimado.Size = new Size(90, 23);
             btnConfimado.TabIndex = 76;
@@ -247,7 +246,7 @@
             bntPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
             bntPendiente.IconColor = Color.White;
             bntPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            bntPendiente.Location = new Point(5, 68);
+            bntPendiente.Location = new Point(5, 31);
             bntPendiente.Name = "bntPendiente";
             bntPendiente.Size = new Size(90, 23);
             bntPendiente.TabIndex = 77;
@@ -262,7 +261,7 @@
             btnDespachado.IconChar = FontAwesome.Sharp.IconChar.None;
             btnDespachado.IconColor = Color.Black;
             btnDespachado.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDespachado.Location = new Point(5, 126);
+            btnDespachado.Location = new Point(5, 89);
             btnDespachado.Name = "btnDespachado";
             btnDespachado.Size = new Size(90, 23);
             btnDespachado.TabIndex = 78;
@@ -275,23 +274,23 @@
             dgvDetalle.AllowUserToDeleteRows = false;
             dgvDetalle.AllowUserToResizeColumns = false;
             dgvDetalle.AllowUserToResizeRows = false;
-            dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvDetalle.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDetalle.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvDetalle.BorderStyle = BorderStyle.None;
             dgvDetalle.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = SystemColors.HotTrack;
+            dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Century Gothic", 11F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.Window;
+            dataGridViewCellStyle4.ForeColor = Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             dgvDetalle.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dgvDetalle.EnableHeadersVisualStyles = false;
-            dgvDetalle.GridColor = Color.SteelBlue;
-            dgvDetalle.Location = new Point(798, 68);
+            dgvDetalle.GridColor = Color.White;
+            dgvDetalle.Location = new Point(800, 31);
             dgvDetalle.Name = "dgvDetalle";
             dgvDetalle.ReadOnly = true;
             dgvDetalle.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -313,53 +312,54 @@
             dgvDetalle.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvDetalle.RowTemplate.Height = 25;
             dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvDetalle.Size = new Size(511, 425);
+            dgvDetalle.Size = new Size(555, 425);
             dgvDetalle.TabIndex = 79;
             // 
             // btnConfirmar
             // 
-            btnConfirmar.BackColor = Color.DarkGreen;
-            btnConfirmar.FlatStyle = FlatStyle.Popup;
+            btnConfirmar.BackColor = Color.FromArgb(45, 66, 91);
             btnConfirmar.ForeColor = SystemColors.ControlLightLight;
             btnConfirmar.IconChar = FontAwesome.Sharp.IconChar.CheckCircle;
             btnConfirmar.IconColor = Color.Black;
             btnConfirmar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnConfirmar.IconSize = 28;
-            btnConfirmar.Location = new Point(734, 75);
+            btnConfirmar.IconSize = 1;
+            btnConfirmar.Location = new Point(704, 32);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(38, 34);
+            btnConfirmar.Size = new Size(90, 25);
             btnConfirmar.TabIndex = 80;
+            btnConfirmar.Text = "Aceptar";
             btnConfirmar.UseVisualStyleBackColor = false;
             btnConfirmar.Click += btnConfirmar_Click;
             // 
             // btnDespachar
             // 
-            btnDespachar.BackColor = SystemColors.MenuHighlight;
-            btnDespachar.FlatStyle = FlatStyle.Popup;
+            btnDespachar.BackColor = Color.FromArgb(45, 66, 91);
+            btnDespachar.ForeColor = Color.Transparent;
             btnDespachar.IconChar = FontAwesome.Sharp.IconChar.Dolly;
             btnDespachar.IconColor = SystemColors.ActiveCaptionText;
             btnDespachar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDespachar.IconSize = 28;
-            btnDespachar.Location = new Point(734, 75);
+            btnDespachar.IconSize = 1;
+            btnDespachar.Location = new Point(704, 32);
             btnDespachar.Name = "btnDespachar";
-            btnDespachar.Size = new Size(38, 34);
+            btnDespachar.Size = new Size(90, 23);
             btnDespachar.TabIndex = 81;
+            btnDespachar.Text = "Despachar";
             btnDespachar.UseVisualStyleBackColor = false;
             btnDespachar.Click += btnDespachar_Click;
             // 
             // btnCancelar
             // 
-            btnCancelar.BackColor = Color.FromArgb(192, 0, 0);
-            btnCancelar.FlatStyle = FlatStyle.Popup;
-            btnCancelar.ForeColor = SystemColors.ActiveCaptionText;
+            btnCancelar.BackColor = Color.FromArgb(45, 66, 91);
+            btnCancelar.ForeColor = Color.White;
             btnCancelar.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
-            btnCancelar.IconColor = Color.Black;
+            btnCancelar.IconColor = Color.White;
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancelar.IconSize = 28;
-            btnCancelar.Location = new Point(734, 115);
+            btnCancelar.IconSize = 1;
+            btnCancelar.Location = new Point(704, 61);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(38, 34);
+            btnCancelar.Size = new Size(90, 23);
             btnCancelar.TabIndex = 82;
+            btnCancelar.Text = "Rechazar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
@@ -374,32 +374,34 @@
             // 
             // btnFactura
             // 
-            btnFactura.BackColor = Color.CadetBlue;
-            btnFactura.FlatStyle = FlatStyle.Popup;
-            btnFactura.ForeColor = SystemColors.ActiveCaptionText;
+            btnFactura.BackColor = Color.FromArgb(45, 66, 91);
+            btnFactura.ForeColor = Color.WhiteSmoke;
             btnFactura.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
             btnFactura.IconColor = Color.Black;
             btnFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnFactura.IconSize = 28;
-            btnFactura.Location = new Point(734, 115);
+            btnFactura.IconSize = 1;
+            btnFactura.Location = new Point(704, 60);
             btnFactura.Name = "btnFactura";
-            btnFactura.Size = new Size(38, 34);
+            btnFactura.Size = new Size(90, 23);
             btnFactura.TabIndex = 83;
+            btnFactura.Text = "Ver Factura";
             btnFactura.UseVisualStyleBackColor = false;
             btnFactura.Click += btnFactura_Click;
             // 
             // btnVer
             // 
-            btnVer.BackColor = SystemColors.MenuHighlight;
-            btnVer.FlatStyle = FlatStyle.Popup;
-            btnVer.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            btnVer.BackColor = Color.FromArgb(45, 66, 91);
+            btnVer.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            btnVer.ForeColor = Color.White;
+            btnVer.IconChar = FontAwesome.Sharp.IconChar._0;
             btnVer.IconColor = SystemColors.ActiveCaptionText;
             btnVer.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnVer.IconSize = 28;
-            btnVer.Location = new Point(734, 75);
+            btnVer.IconSize = 1;
+            btnVer.Location = new Point(704, 33);
             btnVer.Name = "btnVer";
-            btnVer.Size = new Size(38, 34);
+            btnVer.Size = new Size(90, 24);
             btnVer.TabIndex = 84;
+            btnVer.Text = "Ver Envio";
             btnVer.UseVisualStyleBackColor = false;
             btnVer.Click += btnVer_Click;
             // 
@@ -411,7 +413,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(663, 42);
+            iconButton2.Location = new Point(663, 5);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
@@ -420,7 +422,7 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(443, 42);
+            textBox1.Location = new Point(443, 5);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;
@@ -430,7 +432,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1339, 624);
+            ClientSize = new Size(1423, 594);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(btnVer);
@@ -477,12 +479,12 @@
         private FontAwesome.Sharp.IconButton btnVer;
         private FontAwesome.Sharp.IconButton iconButton2;
         private TextBox textBox1;
+        private BindingSource pedidoBindingSource;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn fecha;
         private DataGridViewTextBoxColumn estado;
         private DataGridViewTextBoxColumn factura;
         private DataGridViewTextBoxColumn vendedor;
         private DataGridViewTextBoxColumn cliente;
-        private BindingSource pedidoBindingSource;
     }
 }

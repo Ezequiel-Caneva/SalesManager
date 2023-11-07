@@ -107,7 +107,20 @@ namespace App.Presentation
         }
         private void dgvCompras_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            MostrarCompras();
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dgvCompras.Rows[e.RowIndex];
+                _productoid = (int)selectedRow.Cells["productoid"].Value;
+                _proveedorid = (int)selectedRow.Cells["proveedorid"].Value;
+                txtCantidad.Text = selectedRow.Cells["cantidad"].Value.ToString();
+                txtPrecioComp.Text = selectedRow.Cells["preciocompra"].Value.ToString();
+                int productoId = (int)selectedRow.Cells["productoid"].Value;
+                int proveedorId = (int)selectedRow.Cells["proveedorid"].Value;
+
+                // Establecer los valores seleccionados de los ComboBox
+                cbProducto.SelectedValue = productoId;
+                CbProveedor.SelectedValue = proveedorId;
+            }
         }
 
         public void MostrarCompras()
@@ -128,20 +141,7 @@ namespace App.Presentation
         }
         private void dgvCompras_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow selectedRow = dgvCompras.Rows[e.RowIndex];
-                _productoid = (int)selectedRow.Cells["productoid"].Value;
-                _proveedorid = (int)selectedRow.Cells["proveedorid"].Value;
-                txtCantidad.Text = selectedRow.Cells["cantidad"].Value.ToString();
-                txtPrecioComp.Text = selectedRow.Cells["preciocompra"].Value.ToString();
-                int productoId = (int)selectedRow.Cells["productoid"].Value;
-                int proveedorId = (int)selectedRow.Cells["proveedorid"].Value;
 
-                // Establecer los valores seleccionados de los ComboBox
-                cbProducto.SelectedValue = productoId;
-                CbProveedor.SelectedValue = proveedorId;
-            }
         }
         public List<Proveedor> ObtenerProveedores()
         {

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txt4 = new Label();
             txt3 = new Label();
             txt1 = new Label();
@@ -49,11 +50,19 @@
             btnSiguiente = new FontAwesome.Sharp.IconButton();
             txt6 = new Label();
             dgvCompras = new DataGridView();
+            productoid = new DataGridViewTextBoxColumn();
+            nombreproducto = new DataGridViewTextBoxColumn();
+            cantidad = new DataGridViewTextBoxColumn();
+            preciocompra = new DataGridViewTextBoxColumn();
+            proveedorid = new DataGridViewTextBoxColumn();
+            proveedor = new DataGridViewTextBoxColumn();
+            detalleCompraBindingSource = new BindingSource(components);
             cbRubro = new ComboBox();
             txt7 = new Label();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCompras).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)detalleCompraBindingSource).BeginInit();
             SuspendLayout();
             // 
             // txt4
@@ -61,7 +70,7 @@
             txt4.AutoSize = true;
             txt4.BackColor = Color.FromArgb(40, 60, 90);
             txt4.ForeColor = Color.White;
-            txt4.Location = new Point(40, 237);
+            txt4.Location = new Point(0, 247);
             txt4.Name = "txt4";
             txt4.Size = new Size(64, 15);
             txt4.TabIndex = 59;
@@ -72,7 +81,7 @@
             txt3.AutoSize = true;
             txt3.BackColor = Color.FromArgb(40, 60, 90);
             txt3.ForeColor = Color.White;
-            txt3.Location = new Point(39, 193);
+            txt3.Location = new Point(-1, 203);
             txt3.Name = "txt3";
             txt3.Size = new Size(105, 15);
             txt3.TabIndex = 58;
@@ -83,7 +92,7 @@
             txt1.AutoSize = true;
             txt1.BackColor = Color.FromArgb(40, 60, 90);
             txt1.ForeColor = Color.WhiteSmoke;
-            txt1.Location = new Point(39, 149);
+            txt1.Location = new Point(-1, 159);
             txt1.Name = "txt1";
             txt1.Size = new Size(58, 15);
             txt1.TabIndex = 57;
@@ -91,14 +100,14 @@
             // 
             // txtPrecioComp
             // 
-            txtPrecioComp.Location = new Point(41, 211);
+            txtPrecioComp.Location = new Point(1, 221);
             txtPrecioComp.Name = "txtPrecioComp";
             txtPrecioComp.Size = new Size(209, 23);
             txtPrecioComp.TabIndex = 55;
             // 
             // txtCantidad
             // 
-            txtCantidad.Location = new Point(41, 167);
+            txtCantidad.Location = new Point(1, 177);
             txtCantidad.Name = "txtCantidad";
             txtCantidad.Size = new Size(209, 23);
             txtCantidad.TabIndex = 54;
@@ -111,7 +120,7 @@
             Texto5.ForeColor = Color.White;
             Texto5.Location = new Point(0, 25);
             Texto5.Name = "Texto5";
-            Texto5.Size = new Size(291, 27);
+            Texto5.Size = new Size(211, 27);
             Texto5.TabIndex = 53;
             Texto5.Text = "Cargar Compras";
             Texto5.TextAlign = ContentAlignment.MiddleCenter;
@@ -126,7 +135,7 @@
             btnEliminar.IconColor = Color.Black;
             btnEliminar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminar.IconSize = 16;
-            btnEliminar.Location = new Point(41, 357);
+            btnEliminar.Location = new Point(0, 367);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(210, 23);
             btnEliminar.TabIndex = 52;
@@ -146,7 +155,7 @@
             btnEditar.IconColor = Color.Black;
             btnEditar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditar.IconSize = 16;
-            btnEditar.Location = new Point(40, 328);
+            btnEditar.Location = new Point(0, 338);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(210, 23);
             btnEditar.TabIndex = 51;
@@ -166,7 +175,7 @@
             btnAgregar.IconColor = Color.Black;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 16;
-            btnAgregar.Location = new Point(41, 299);
+            btnAgregar.Location = new Point(0, 309);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(210, 23);
             btnAgregar.TabIndex = 50;
@@ -183,7 +192,7 @@
             labelcontenedor.Dock = DockStyle.Left;
             labelcontenedor.Location = new Point(0, 0);
             labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(291, 682);
+            labelcontenedor.Size = new Size(211, 594);
             labelcontenedor.TabIndex = 1;
             // 
             // label1
@@ -191,7 +200,7 @@
             label1.AutoSize = true;
             label1.BackColor = Color.FromArgb(40, 60, 90);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(38, 105);
+            label1.Location = new Point(-2, 115);
             label1.Name = "label1";
             label1.Size = new Size(59, 15);
             label1.TabIndex = 60;
@@ -200,7 +209,7 @@
             // cbProducto
             // 
             cbProducto.FormattingEnabled = true;
-            cbProducto.Location = new Point(40, 123);
+            cbProducto.Location = new Point(0, 133);
             cbProducto.Name = "cbProducto";
             cbProducto.Size = new Size(210, 23);
             cbProducto.TabIndex = 62;
@@ -208,7 +217,7 @@
             // CbProveedor
             // 
             CbProveedor.FormattingEnabled = true;
-            CbProveedor.Location = new Point(39, 255);
+            CbProveedor.Location = new Point(-1, 265);
             CbProveedor.Name = "CbProveedor";
             CbProveedor.Size = new Size(210, 23);
             CbProveedor.TabIndex = 63;
@@ -217,7 +226,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(1191, 491);
+            cbItemsPorPagina.Location = new Point(1218, 542);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(31, 23);
             cbItemsPorPagina.TabIndex = 68;
@@ -226,7 +235,8 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(1104, 491);
+            txtPagina.BorderStyle = BorderStyle.FixedSingle;
+            txtPagina.Location = new Point(1138, 543);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(32, 23);
             txtPagina.TabIndex = 67;
@@ -239,7 +249,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(1062, 491);
+            btnAnterior.Location = new Point(1094, 542);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(38, 23);
             btnAnterior.TabIndex = 66;
@@ -252,7 +262,7 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(1140, 491);
+            btnSiguiente.Location = new Point(1176, 542);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(36, 23);
             btnSiguiente.TabIndex = 65;
@@ -264,7 +274,7 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(349, 37);
+            txt6.Location = new Point(215, 2);
             txt6.Name = "txt6";
             txt6.Size = new Size(163, 23);
             txt6.TabIndex = 64;
@@ -276,44 +286,92 @@
             dgvCompras.AllowUserToDeleteRows = false;
             dgvCompras.AllowUserToResizeColumns = false;
             dgvCompras.AllowUserToResizeRows = false;
-            dgvCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgvCompras.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvCompras.AutoGenerateColumns = false;
+            dgvCompras.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCompras.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvCompras.BorderStyle = BorderStyle.None;
             dgvCompras.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvCompras.Columns.AddRange(new DataGridViewColumn[] { productoid, nombreproducto, cantidad, preciocompra, proveedorid, proveedor });
+            dgvCompras.DataSource = detalleCompraBindingSource;
             dgvCompras.EnableHeadersVisualStyles = false;
-            dgvCompras.GridColor = Color.SteelBlue;
-            dgvCompras.Location = new Point(349, 63);
+            dgvCompras.GridColor = Color.White;
+            dgvCompras.Location = new Point(215, 31);
             dgvCompras.Name = "dgvCompras";
             dgvCompras.ReadOnly = true;
             dgvCompras.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle6.SelectionForeColor = Color.White;
+            dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvCompras.RowTemplate.Height = 25;
             dgvCompras.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCompras.Size = new Size(924, 425);
+            dgvCompras.Size = new Size(1034, 494);
             dgvCompras.TabIndex = 69;
             dgvCompras.CellContentClick += dgvCompras_CellContentClick;
             dgvCompras.CellContentDoubleClick += dgvCompras_CellContentDoubleClick;
             // 
+            // productoid
+            // 
+            productoid.DataPropertyName = "productoid";
+            productoid.HeaderText = "N° Producto";
+            productoid.Name = "productoid";
+            productoid.ReadOnly = true;
+            // 
+            // nombreproducto
+            // 
+            nombreproducto.DataPropertyName = "nombreproducto";
+            nombreproducto.HeaderText = "Nombre Producto";
+            nombreproducto.Name = "nombreproducto";
+            nombreproducto.ReadOnly = true;
+            // 
+            // cantidad
+            // 
+            cantidad.DataPropertyName = "cantidad";
+            cantidad.HeaderText = "Cantidad";
+            cantidad.Name = "cantidad";
+            cantidad.ReadOnly = true;
+            // 
+            // preciocompra
+            // 
+            preciocompra.DataPropertyName = "preciocompra";
+            preciocompra.HeaderText = "Precio de Compra";
+            preciocompra.Name = "preciocompra";
+            preciocompra.ReadOnly = true;
+            // 
+            // proveedorid
+            // 
+            proveedorid.DataPropertyName = "proveedorid";
+            proveedorid.HeaderText = "N° Proveedor";
+            proveedorid.Name = "proveedorid";
+            proveedorid.ReadOnly = true;
+            // 
+            // proveedor
+            // 
+            proveedor.DataPropertyName = "proveedor";
+            proveedor.HeaderText = "Proveedor";
+            proveedor.Name = "proveedor";
+            proveedor.ReadOnly = true;
+            // 
+            // detalleCompraBindingSource
+            // 
+            detalleCompraBindingSource.DataSource = typeof(Entities.DetalleCompra);
+            // 
             // cbRubro
             // 
             cbRubro.FormattingEnabled = true;
-            cbRubro.Location = new Point(40, 79);
+            cbRubro.Location = new Point(0, 89);
             cbRubro.Name = "cbRubro";
             cbRubro.Size = new Size(210, 23);
             cbRubro.TabIndex = 63;
@@ -324,7 +382,7 @@
             txt7.AutoSize = true;
             txt7.BackColor = Color.FromArgb(40, 60, 90);
             txt7.ForeColor = Color.White;
-            txt7.Location = new Point(40, 61);
+            txt7.Location = new Point(0, 71);
             txt7.Name = "txt7";
             txt7.Size = new Size(42, 15);
             txt7.TabIndex = 70;
@@ -337,7 +395,7 @@
             iconButton2.IconColor = Color.White;
             iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(1189, 34);
+            iconButton2.Location = new Point(1218, 6);
             iconButton2.Name = "iconButton2";
             iconButton2.Size = new Size(33, 23);
             iconButton2.TabIndex = 92;
@@ -346,9 +404,9 @@
             // textBox1
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(971, 34);
+            textBox1.Location = new Point(1002, 6);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(216, 23);
+            textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;
             // 
             // FormCompras
@@ -356,7 +414,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1299, 682);
+            ClientSize = new Size(1285, 594);
             Controls.Add(iconButton2);
             Controls.Add(textBox1);
             Controls.Add(txt7);
@@ -384,6 +442,7 @@
             Text = "FormCompras";
             Load += FormCompras_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCompras).EndInit();
+            ((System.ComponentModel.ISupportInitialize)detalleCompraBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -413,5 +472,12 @@
         private Label txt7;
         private FontAwesome.Sharp.IconButton iconButton2;
         private TextBox textBox1;
+        private BindingSource detalleCompraBindingSource;
+        private DataGridViewTextBoxColumn productoid;
+        private DataGridViewTextBoxColumn nombreproducto;
+        private DataGridViewTextBoxColumn cantidad;
+        private DataGridViewTextBoxColumn preciocompra;
+        private DataGridViewTextBoxColumn proveedorid;
+        private DataGridViewTextBoxColumn proveedor;
     }
 }
