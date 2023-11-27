@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
             dgvProductos = new DataGridView();
             dgvLista = new DataGridView();
             btnAgregar = new FontAwesome.Sharp.IconButton();
@@ -48,6 +48,8 @@
             btnSiguiente = new FontAwesome.Sharp.IconButton();
             txtproductoselec = new Label();
             txtlistado = new Label();
+            label2 = new Label();
+            btnCtaCtes = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvProductos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvLista).BeginInit();
             SuspendLayout();
@@ -57,32 +59,33 @@
             dgvProductos.AllowUserToAddRows = false;
             dgvProductos.AllowUserToDeleteRows = false;
             dgvProductos.AllowUserToResizeColumns = false;
-            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvProductos.AllowUserToResizeRows = false;
+            dgvProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvProductos.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvProductos.BorderStyle = BorderStyle.None;
             dgvProductos.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dgvProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProductos.Location = new Point(35, 37);
+            dgvProductos.Location = new Point(5, 35);
             dgvProductos.Name = "dgvProductos";
             dgvProductos.ReadOnly = true;
             dgvProductos.RowHeadersVisible = false;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle7.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = Color.SteelBlue;
+            dgvProductos.RowsDefaultCellStyle = dataGridViewCellStyle7;
             dgvProductos.RowTemplate.Height = 25;
             dgvProductos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProductos.Size = new Size(660, 421);
+            dgvProductos.Size = new Size(598, 421);
             dgvProductos.TabIndex = 0;
             dgvProductos.CellContentClick += dgvProductos_CellContentClick;
             // 
@@ -92,38 +95,40 @@
             dgvLista.AllowUserToDeleteRows = false;
             dgvLista.AllowUserToResizeColumns = false;
             dgvLista.AllowUserToResizeRows = false;
+            dgvLista.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvLista.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvLista.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvLista.BorderStyle = BorderStyle.None;
             dgvLista.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = Color.White;
+            dataGridViewCellStyle8.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
+            dgvLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             dgvLista.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvLista.Location = new Point(730, 37);
+            dgvLista.Location = new Point(687, 37);
             dgvLista.Name = "dgvLista";
             dgvLista.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dgvLista.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dgvLista.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle5.ForeColor = Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
-            dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle10.ForeColor = Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = Color.SteelBlue;
+            dgvLista.RowsDefaultCellStyle = dataGridViewCellStyle10;
             dgvLista.RowTemplate.Height = 25;
             dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvLista.Size = new Size(523, 421);
+            dgvLista.Size = new Size(598, 421);
             dgvLista.TabIndex = 1;
             dgvLista.CellContentClick += dgvLista_CellContentClick;
             // 
@@ -135,7 +140,7 @@
             btnAgregar.IconColor = SystemColors.ActiveCaptionText;
             btnAgregar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregar.IconSize = 28;
-            btnAgregar.Location = new Point(657, 48);
+            btnAgregar.Location = new Point(623, 48);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(38, 31);
             btnAgregar.TabIndex = 85;
@@ -150,7 +155,7 @@
             btnQuitar.IconColor = SystemColors.ActiveCaptionText;
             btnQuitar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnQuitar.IconSize = 28;
-            btnQuitar.Location = new Point(657, 85);
+            btnQuitar.Location = new Point(623, 85);
             btnQuitar.Name = "btnQuitar";
             btnQuitar.Size = new Size(38, 31);
             btnQuitar.TabIndex = 86;
@@ -162,9 +167,9 @@
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(25, 8);
+            txt6.Location = new Point(5, 6);
             txt6.Name = "txt6";
-            txt6.Size = new Size(146, 23);
+            txt6.Size = new Size(133, 23);
             txt6.TabIndex = 87;
             txt6.Text = "Productos:";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
@@ -174,7 +179,7 @@
             label1.BackColor = Color.FromArgb(45, 66, 91);
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(730, 11);
+            label1.Location = new Point(687, 11);
             label1.Name = "label1";
             label1.Size = new Size(151, 23);
             label1.TabIndex = 88;
@@ -207,14 +212,16 @@
             // 
             // btnAceptar
             // 
+            btnAceptar.FlatStyle = FlatStyle.Popup;
+            btnAceptar.ForeColor = Color.White;
             btnAceptar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnAceptar.IconColor = Color.Black;
             btnAceptar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnAceptar.Location = new Point(1146, 484);
+            btnAceptar.Location = new Point(1178, 521);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(107, 48);
             btnAceptar.TabIndex = 92;
-            btnAceptar.Text = "Aceptar";
+            btnAceptar.Text = "C. Final.";
             btnAceptar.UseVisualStyleBackColor = true;
             // 
             // cbItemsPorPagina
@@ -281,12 +288,36 @@
             txtlistado.Size = new Size(0, 15);
             txtlistado.TabIndex = 98;
             // 
+            // label2
+            // 
+            label2.BackColor = Color.FromArgb(40, 60, 90);
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Location = new Point(609, -2);
+            label2.Name = "label2";
+            label2.Size = new Size(72, 584);
+            label2.TabIndex = 99;
+            // 
+            // btnCtaCtes
+            // 
+            btnCtaCtes.FlatStyle = FlatStyle.Popup;
+            btnCtaCtes.ForeColor = Color.White;
+            btnCtaCtes.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnCtaCtes.IconColor = Color.Black;
+            btnCtaCtes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnCtaCtes.Location = new Point(1065, 521);
+            btnCtaCtes.Name = "btnCtaCtes";
+            btnCtaCtes.Size = new Size(107, 48);
+            btnCtaCtes.TabIndex = 100;
+            btnCtaCtes.Text = "Cta.Cte.";
+            btnCtaCtes.UseVisualStyleBackColor = true;
+            // 
             // FormVentasMostrador
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1297, 559);
+            ClientSize = new Size(1338, 581);
+            Controls.Add(btnCtaCtes);
             Controls.Add(txtlistado);
             Controls.Add(txtproductoselec);
             Controls.Add(cbItemsPorPagina);
@@ -302,6 +333,7 @@
             Controls.Add(btnAgregar);
             Controls.Add(dgvLista);
             Controls.Add(dgvProductos);
+            Controls.Add(label2);
             Name = "FormVentasMostrador";
             Text = "FormVentasMostrador";
             Load += FormVentasMostrador_Load;
@@ -329,5 +361,7 @@
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private Label txtproductoselec;
         private Label txtlistado;
+        private Label label2;
+        private FontAwesome.Sharp.IconButton btnCtaCtes;
     }
 }

@@ -13,7 +13,7 @@ namespace App.Business
     {
         private readonly UsuarioRepositorio _usuarioRepositorio;
 
-        
+
         public UsuarioNegocio(UsuarioRepositorio usuarioRepositorio)
         {
             _usuarioRepositorio = usuarioRepositorio;
@@ -34,8 +34,14 @@ namespace App.Business
         {
             return _usuarioRepositorio.MostrarVendedores(search);
         }
+        public Response<Pedido> InformeVendedor(Search search)
+        {
+            return _usuarioRepositorio.InformeVendedor(search);
+        }
+        public Response<DetalleVenta> InformeProducto(Search search)
+        {
+            return _usuarioRepositorio.InformeProducto(search);
+        }
 
-
-
-    }
+    }   
 }

@@ -449,6 +449,7 @@
             iconButton2.Size = new Size(31, 23);
             iconButton2.TabIndex = 92;
             iconButton2.UseVisualStyleBackColor = false;
+            iconButton2.Click += iconButton2_Click;
             // 
             // textBox1
             // 

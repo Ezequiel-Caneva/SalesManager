@@ -75,6 +75,22 @@ namespace WebAPI.Controllers
             return _stocknegocio.MostrarRubro(search);
         }
 
+        [HttpPost("TraerProducto")]
+        public Producto TraerProducto(Search search)
+        {
+            return _stocknegocio.TraerProducto(search);
+        }
+        [HttpPost("Descontar")]
+        public Boolean Descontar(Search search)
+        {
+            return _stocknegocio.Descontar(search);
+        }
+        [HttpPost("SacarPromocion")]
+        public Boolean SacarPromocion(Search search)
+        {
+            return _stocknegocio.SacarPromocion(search);
+        }
+
 
 
     }

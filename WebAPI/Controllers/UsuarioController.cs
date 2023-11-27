@@ -1,4 +1,5 @@
 ﻿using App.Business;
+using App.Data;
 using App.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -41,6 +42,16 @@ namespace WebAPI.Controllers
         public Response<Vendedor> MostrarVendedores(Search search)
         {
             return _usuarionegocio.MostrarVendedores(search);
+        }
+        [HttpPost("InformeVendedor")]
+        public Response<Pedido> InformeVendedor(Search search)
+        {
+            return _usuarionegocio.InformeVendedor(search);
+        }
+        [HttpPost("InformeProducto")]
+        public Response<DetalleVenta> InformeProducto(Search search)
+        {
+            return _usuarionegocio.InformeProducto(search);
         }
 
     }

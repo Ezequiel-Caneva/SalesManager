@@ -15,10 +15,10 @@ namespace App.Data
     public class UsuarioRepositorio
     {
         private readonly Context _context;
-       
+
         public UsuarioRepositorio(Context context)
         {
-            _context = context;      
+            _context = context;
         }
 
         // Inicio de registro
@@ -36,8 +36,8 @@ namespace App.Data
             // Crea una nueva instancia de la entidad Usuario y asigna los valores
             usuario.contraseniahash = passwordHashString;
             usuario.contraseniasalt = saltString;
-                
-            
+
+
             // Agrega el nuevo usuario al contexto y guarda los cambios en la base de datos
             _context.Usuario.Add(usuario);
             _context.SaveChanges();
@@ -119,5 +119,45 @@ namespace App.Data
 
             return response;
         }
+        public Response<Pedido> InformeVendedor(Search search)
+        {
+            var skipRows = ((search.PageIndex - 1) * search.PageSize);
+            var query = _context.Pedido.Where(p => p.estado == search.TextToSearch || p.estado == search.TextToSearch2)
+                .Include(detalle => detalle._vendedor)
+                .ThenInclude(v => v.usuario)
+                .Include(detalle => detalle._factura)
+                .Include(detalle => detalle._cliente);
+
+
+            var count = query.Count();
+            var response = new Response<Pedido>()
+            {
+                Items = query.Skip(skipRows)
+                             .Take(search.PageSize)
+                             .ToList(),
+                Total = count
+            };
+            return response;
+        }
+        public Response<DetalleVenta> InformeProducto(Search search)
+        {
+            var skipRows = ((search.PageIndex - 1) * search.PageSize);
+
+            // Utilizar el tipo de respuesta correcto (Response<DetalleVenta>)
+            var query = _context.detalleVenta
+                .Include(detalle => detalle._producto);
+
+            var count = query.Count();
+
+            var response = new Response<DetalleVenta>()  // Corregir el tipo de respuesta
+            {
+                Items = query.Skip(skipRows)
+                             .Take(search.PageSize)
+                             .ToList(),
+                Total = count
+            };
+            return response;
+        }
+
     }
 }

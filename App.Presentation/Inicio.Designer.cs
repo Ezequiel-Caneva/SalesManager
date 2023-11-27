@@ -41,6 +41,7 @@
             menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             menuStrip2 = new MenuStrip();
             contenedor = new Panel();
+            menuVenta = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -59,13 +60,12 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ButtonHighlight;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuCompras, menuClientes, menuProveedores, menuStock, menuInformes, menuUsuarios });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuVenta, menuCompras, menuClientes, menuProveedores, menuStock, menuInformes, menuUsuarios });
             menuStrip1.Location = new Point(0, 58);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(1271, 73);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
-      
             // 
             // menuVentasMostrador
             // 
@@ -203,7 +203,6 @@
             menuStrip2.Size = new Size(1271, 58);
             menuStrip2.TabIndex = 2;
             menuStrip2.Text = "menuStrip2";
-           
             // 
             // contenedor
             // 
@@ -213,7 +212,20 @@
             contenedor.Name = "contenedor";
             contenedor.Size = new Size(1271, 608);
             contenedor.TabIndex = 3;
-        
+            // 
+            // menuVenta
+            // 
+            menuVenta.AutoSize = false;
+            menuVenta.IconChar = FontAwesome.Sharp.IconChar.Receipt;
+            menuVenta.IconColor = Color.Black;
+            menuVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuVenta.IconSize = 50;
+            menuVenta.ImageScaling = ToolStripItemImageScaling.None;
+            menuVenta.Name = "menuVenta";
+            menuVenta.Size = new Size(122, 69);
+            menuVenta.Text = "Ventas";
+            menuVenta.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuVenta.Click += menuVenta_Click;
             // 
             // Inicio
             // 
@@ -257,5 +269,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private FontAwesome.Sharp.IconMenuItem menuStock;
+        private FontAwesome.Sharp.IconMenuItem menuVenta;
     }
 }

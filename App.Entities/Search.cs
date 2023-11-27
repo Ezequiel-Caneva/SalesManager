@@ -10,6 +10,7 @@ namespace App.Entities
     public class Search
     {
         public string TextToSearch { get; set; }
+        public string? TextToSearch2 { get; set; }
 
         [DefaultValue(10)]
         public int PageSize { get; set; }

@@ -24,8 +24,7 @@ namespace App.Data
 
 
             var query = _context.Pedido.Where(p => p.estado == search.TextToSearch);
-
-
+                
             var count = query.Count();
 
             var response = new Response<Pedido>()

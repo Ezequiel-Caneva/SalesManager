@@ -21,8 +21,8 @@ namespace App.Business
         {
             return _stockRepositorio.ObtenerRubro();
         }
-        
-        
+
+
         public void AgregarProducto(Producto nuevoProducto)
         {
             _stockRepositorio.AgregarProducto(nuevoProducto);
@@ -61,6 +61,19 @@ namespace App.Business
         public List<Producto> ObtenerProductos()
         {
             return _stockRepositorio.ObtenerProductos();
+        }
+        public Producto TraerProducto(Search search)
+        {
+            return _stockRepositorio.TraerProducto(search);
+
+        }
+        public Boolean Descontar(Search search)
+        {
+            return _stockRepositorio.Descontar(search);
+        }
+           public Boolean SacarPromocion(Search search)
+        {
+            return _stockRepositorio.SacarPromocion(search);
         }
     }
 }

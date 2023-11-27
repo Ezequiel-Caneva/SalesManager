@@ -60,6 +60,8 @@
             btnVer = new FontAwesome.Sharp.IconButton();
             iconButton2 = new FontAwesome.Sharp.IconButton();
             textBox1 = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pedidoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
@@ -231,9 +233,9 @@
             btnConfimado.IconChar = FontAwesome.Sharp.IconChar.None;
             btnConfimado.IconColor = Color.Black;
             btnConfimado.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnConfimado.Location = new Point(5, 60);
+            btnConfimado.Location = new Point(-5, 69);
             btnConfimado.Name = "btnConfimado";
-            btnConfimado.Size = new Size(90, 23);
+            btnConfimado.Size = new Size(90, 31);
             btnConfimado.TabIndex = 76;
             btnConfimado.Text = "Confimado";
             btnConfimado.UseVisualStyleBackColor = false;
@@ -246,9 +248,9 @@
             bntPendiente.IconChar = FontAwesome.Sharp.IconChar.None;
             bntPendiente.IconColor = Color.White;
             bntPendiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            bntPendiente.Location = new Point(5, 31);
+            bntPendiente.Location = new Point(-5, 32);
             bntPendiente.Name = "bntPendiente";
-            bntPendiente.Size = new Size(90, 23);
+            bntPendiente.Size = new Size(90, 31);
             bntPendiente.TabIndex = 77;
             bntPendiente.Text = "Pendiente";
             bntPendiente.UseVisualStyleBackColor = false;
@@ -261,9 +263,9 @@
             btnDespachado.IconChar = FontAwesome.Sharp.IconChar.None;
             btnDespachado.IconColor = Color.Black;
             btnDespachado.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnDespachado.Location = new Point(5, 89);
+            btnDespachado.Location = new Point(-5, 106);
             btnDespachado.Name = "btnDespachado";
-            btnDespachado.Size = new Size(90, 23);
+            btnDespachado.Size = new Size(90, 31);
             btnDespachado.TabIndex = 78;
             btnDespachado.Text = "Despachado";
             btnDespachado.UseVisualStyleBackColor = false;
@@ -325,7 +327,7 @@
             btnConfirmar.IconSize = 1;
             btnConfirmar.Location = new Point(704, 32);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(90, 25);
+            btnConfirmar.Size = new Size(90, 31);
             btnConfirmar.TabIndex = 80;
             btnConfirmar.Text = "Aceptar";
             btnConfirmar.UseVisualStyleBackColor = false;
@@ -341,7 +343,7 @@
             btnDespachar.IconSize = 1;
             btnDespachar.Location = new Point(704, 32);
             btnDespachar.Name = "btnDespachar";
-            btnDespachar.Size = new Size(90, 23);
+            btnDespachar.Size = new Size(90, 31);
             btnDespachar.TabIndex = 81;
             btnDespachar.Text = "Despachar";
             btnDespachar.UseVisualStyleBackColor = false;
@@ -355,9 +357,9 @@
             btnCancelar.IconColor = Color.White;
             btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnCancelar.IconSize = 1;
-            btnCancelar.Location = new Point(704, 61);
+            btnCancelar.Location = new Point(704, 69);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(90, 23);
+            btnCancelar.Size = new Size(90, 31);
             btnCancelar.TabIndex = 82;
             btnCancelar.Text = "Rechazar";
             btnCancelar.UseVisualStyleBackColor = false;
@@ -380,9 +382,9 @@
             btnFactura.IconColor = Color.Black;
             btnFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnFactura.IconSize = 1;
-            btnFactura.Location = new Point(704, 60);
+            btnFactura.Location = new Point(704, 69);
             btnFactura.Name = "btnFactura";
-            btnFactura.Size = new Size(90, 23);
+            btnFactura.Size = new Size(90, 31);
             btnFactura.TabIndex = 83;
             btnFactura.Text = "Ver Factura";
             btnFactura.UseVisualStyleBackColor = false;
@@ -397,9 +399,9 @@
             btnVer.IconColor = SystemColors.ActiveCaptionText;
             btnVer.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnVer.IconSize = 1;
-            btnVer.Location = new Point(704, 33);
+            btnVer.Location = new Point(704, 32);
             btnVer.Name = "btnVer";
-            btnVer.Size = new Size(90, 24);
+            btnVer.Size = new Size(90, 31);
             btnVer.TabIndex = 84;
             btnVer.Text = "Ver Envio";
             btnVer.UseVisualStyleBackColor = false;
@@ -427,6 +429,24 @@
             textBox1.Size = new Size(214, 23);
             textBox1.TabIndex = 91;
             // 
+            // label1
+            // 
+            label1.BackColor = Color.FromArgb(40, 60, 90);
+            label1.BorderStyle = BorderStyle.FixedSingle;
+            label1.Location = new Point(-5, -2);
+            label1.Name = "label1";
+            label1.Size = new Size(90, 603);
+            label1.TabIndex = 93;
+            // 
+            // label2
+            // 
+            label2.BackColor = Color.FromArgb(40, 60, 90);
+            label2.BorderStyle = BorderStyle.FixedSingle;
+            label2.Location = new Point(704, -2);
+            label2.Name = "label2";
+            label2.Size = new Size(90, 603);
+            label2.TabIndex = 94;
+            // 
             // FormPedidos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -450,6 +470,8 @@
             Controls.Add(btnAnterior);
             Controls.Add(btnSiguiente);
             Controls.Add(txt6);
+            Controls.Add(label1);
+            Controls.Add(label2);
             Name = "FormPedidos";
             Text = "FormPedidos";
             Load += FormPedidos_Load;
@@ -486,5 +508,7 @@
         private DataGridViewTextBoxColumn factura;
         private DataGridViewTextBoxColumn vendedor;
         private DataGridViewTextBoxColumn cliente;
+        private Label label1;
+        private Label label2;
     }
 }

@@ -46,33 +46,43 @@ namespace App.Presentation
 
 
         //Productos
-        private void btnAgregarProducto_Click(object sender, EventArgs e)
+        private async void btnAgregarProducto_Click(object sender, EventArgs e)
         {
-            // Obtén el rubro seleccionado del ComboBox.
-            var rubroSeleccionado = (int)cbRubro.SelectedValue;
-
-            Producto nuevoProducto = new Producto
+            try
             {
-                nombre = txtNombreProducto.Text,
-                codigobarra = Convert.ToInt32(txtCodigoProducto.Text),
-                precioventa = Convert.ToDecimal(txtPrecioProducto.Text),
-                stock = Convert.ToInt32(txtCantidadProducto.Text),
-                rubro = rubroSeleccionado // Asigna el rubro seleccionado al producto.
-            };
-            string data = JsonConvert.SerializeObject(nuevoProducto);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/AgregarProducto", content).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                mostrarProductos = true;
-                MostrarProductosoRubro("");
-                MessageBox.Show("Producto agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var rubroSeleccionado = (int)cbRubro.SelectedValue;
 
+                Producto nuevoProducto = new Producto
+                {
+                    nombre = txtNombreProducto.Text,
+                    codigobarra = Convert.ToInt32(txtCodigoProducto.Text),
+                    precioventa = Convert.ToDecimal(txtPrecioProducto.Text),
+                    stock = Convert.ToInt32(txtCantidadProducto.Text),
+                    rubro = rubroSeleccionado,
+                    path = txtURL.Text,
+                    promocion = false
+                };
+
+                string data = JsonConvert.SerializeObject(nuevoProducto);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+                using (HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/Stock/AgregarProducto", content))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        mostrarProductos = true;
+                        MostrarProductosoRubro("");
+                        MessageBox.Show("Producto agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No se pudo agregar el producto. Código de estado: {response.StatusCode}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No se pudo agregar el producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show($"Error inesperado: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btnEditarProducto_Click(object sender, EventArgs e)
@@ -92,6 +102,7 @@ namespace App.Presentation
                         codigobarra = Convert.ToInt32(txtCodigoProducto.Text),
                         precioventa = Convert.ToDecimal(txtPrecioProducto.Text),
                         stock = Convert.ToInt32(txtCantidadProducto.Text),
+                        path = txtURL.Text,
                         rubro = rubroSeleccionado
                     };
                     string data = JsonConvert.SerializeObject(nuevoProducto);
@@ -148,52 +159,58 @@ namespace App.Presentation
         //Rubros
         private void btnAgregarRubro_Click(object sender, EventArgs e)
         {
-            Rubro nuevoRubro = new Rubro()
+            if (txtCategoria.Text != "")
             {
-                categoria = txtCategoria.Text
-            };
-            string data = JsonConvert.SerializeObject(nuevoRubro);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/AgregarRubro", content).Result;
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("Rubro agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                mostrarProductos = false;
-                MostrarProductosoRubro("");
+                Rubro nuevoRubro = new Rubro()
+                {
+                    categoria = txtCategoria.Text
+                };
+                string data = JsonConvert.SerializeObject(nuevoRubro);
+                StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/AgregarRubro", content).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Rubro agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    mostrarProductos = false;
+                    MostrarProductosoRubro("");
 
-            }
-            else
-            {
-                MessageBox.Show("No se pudo agregar el nuevo Rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el nuevo Rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
 
         }
         private void btnEditarRubro_Click(object sender, EventArgs e)
         {
-            if (dgvProducto.SelectedRows.Count > 0)
+            if (txtCategoria.Text != "")
             {
-                var confirmarEditar = MessageBox.Show("¿Seguro que desea editar el Rubro?", "Confirmar edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (confirmarEditar == DialogResult.Yes)
+                if (dgvProducto.SelectedRows.Count > 0)
                 {
-                    Rubro nuevoRubro = new Rubro()
+                    var confirmarEditar = MessageBox.Show("¿Seguro que desea editar el Rubro?", "Confirmar edición", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (confirmarEditar == DialogResult.Yes)
                     {
-                        rubroid = Convert.ToInt32(_rubroid),
-                        categoria = txtCategoria.Text
+                        Rubro nuevoRubro = new Rubro()
+                        {
+                            rubroid = Convert.ToInt32(_rubroid),
+                            categoria = txtCategoria.Text
 
-                    };
-                    string data = JsonConvert.SerializeObject(nuevoRubro);
-                    StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-                    HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EditarRubro", content).Result;
-                    if (response.IsSuccessStatusCode)
-                    {
+                        };
+                        string data = JsonConvert.SerializeObject(nuevoRubro);
+                        StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+                        HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/EditarRubro", content).Result;
+                        if (response.IsSuccessStatusCode)
+                        {
 
-                        MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        mostrarProductos = false;
-                        MostrarProductosoRubro("");
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo editar el rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Producto editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            mostrarProductos = false;
+                            MostrarProductosoRubro("");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo editar el rubro", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
             }
@@ -295,6 +312,17 @@ namespace App.Presentation
                     txtCantidadProducto.Text = selectedRow.Cells["stock"].Value.ToString();
                     int rubroId = (int)selectedRow.Cells["rubro"].Value;
                     cbRubro.SelectedValue = rubroId;
+                    object pathValue = selectedRow.Cells["path"].Value;
+
+                    if (pathValue != null)
+                    {
+                        txtURL.Text = pathValue.ToString();
+                    }
+                    else
+                    {
+                        // Si el valor es nulo, puedes decidir qué hacer, por ejemplo, asignar una cadena vacía.
+                        txtURL.Text = string.Empty;
+                    }
                 }
                 else
                 {
@@ -303,6 +331,70 @@ namespace App.Presentation
                 }
             }
         }
+        private void dgvProducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(mostrarProductos == true) { 
+            DataGridViewRow selectedRow = dgvProducto.Rows[e.RowIndex];
+            var promocionValue = selectedRow.Cells["promocion"].Value;
+            int idproducto = Convert.ToInt32(selectedRow.Cells["productoid"].Value.ToString());
+
+                if (promocionValue != null && promocionValue is bool)
+                {
+                    bool estaEnPromocion = (bool)promocionValue;
+                    if (estaEnPromocion)
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea sacar el producto de promoción?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            var search = new Search()
+                            {
+                                num = idproducto,
+                                TextToSearch = "",
+                                PageIndex = 0,
+                                PageSize = 0,
+                            };
+                            string json = JsonConvert.SerializeObject(search);
+                            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Stock/SacarPromocion", content).Result;
+                            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+                            var resultado = JsonConvert.DeserializeObject<Boolean>(jsonToDeserialize);
+                            if (response.IsSuccessStatusCode && resultado == true)
+                            {
+
+                                MessageBox.Show("Se saco el producto de promocion", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                mostrarProductos = true;
+                                MostrarProductosoRubro("");
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al sacar el producto de promocion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        DialogResult result = MessageBox.Show("¿Desea agregar el producto a promoción?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            Form promocion = new subpromocion(idproducto);
+                            promocion.ShowDialog();
+                            mostrarProductos = true;
+                            MostrarProductosoRubro("");
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
 
         //fin Datagriedview
 
@@ -367,7 +459,7 @@ namespace App.Presentation
 
         }
 
-
+     
 
 
 

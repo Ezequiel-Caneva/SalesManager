@@ -25,7 +25,8 @@ namespace App.Data
         public DbSet<Factura> Factura { get; set; }
         public DbSet<Envio> Envio { get; set; }
         public DbSet<Cobro> Cobro { get; set; }
-        public DbSet<Vendedor> Vendedor { get; set; }   
+        public DbSet<Vendedor> Vendedor { get; set; }
+        public DbSet<Promocion> Promocion { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configura la cadena de conexión a la base de datos
@@ -52,6 +53,10 @@ namespace App.Data
                  .HasOne(p => p._cliente)
                 .WithMany()
                 .HasForeignKey(p => p.cliente);
+            modelBuilder.Entity<Pedido>()
+                .HasOne(p => p._vendedor)
+               .WithMany()
+               .HasForeignKey(p => p.vendedor);
             modelBuilder.Entity<Cobro>()
                  .HasOne(p => p._cliente)
                 .WithMany()

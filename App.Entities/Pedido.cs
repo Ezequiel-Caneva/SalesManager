@@ -18,6 +18,7 @@ namespace App.Entities
         public int? factura { get; set; }    
         public int? vendedor { get; set; }   
         public int? cliente { get; set; }
+        public Vendedor? _vendedor { get; set; }
         [NotMapped]
         public List<DetalleVenta>? _venta {  get; set; } 
         [NotMapped]

@@ -46,6 +46,7 @@ namespace App.Data
                 productoExistente.precioventa = editadoProducto.precioventa;
                 productoExistente.stock = editadoProducto.stock;
                 productoExistente.rubro = editadoProducto.rubro;
+                productoExistente.path = editadoProducto.path;
 
                 // Guarda los cambios en la base de datos
                 _context.SaveChanges();
@@ -141,6 +142,45 @@ namespace App.Data
 
             return response;
         }
+        public Producto TraerProducto(Search search)
+        {
+            var producto = _context.Producto.SingleOrDefault(p => p.productoid == search.num);
+       
+            return producto;
+        } 
+        public Boolean Descontar(Search search)
+        {
+            var producto = _context.Producto.SingleOrDefault(p => p.productoid == search.num);
 
+            if (producto != null)
+            {
+                producto.promocion = true;
+                var promocion = new Promocion();
+                promocion.descuento = Convert.ToInt32(search.TextToSearch);
+                promocion.preciodescuento = (producto.precioventa * Convert.ToInt32(search.TextToSearch)) / 100;
+                promocion.estado = true;
+                promocion.productoid = producto.productoid;
+                _context.Promocion.Add(promocion);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+
+        }
+        public Boolean SacarPromocion(Search search)
+        {
+            var producto = _context.Producto.SingleOrDefault(p => p.productoid == search.num);
+            var promocion = _context.Promocion.SingleOrDefault(p => p.productoid == search.num);
+
+            if (producto != null && promocion != null)
+            {
+                producto.promocion = false;
+                _context.Promocion.Remove(promocion);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
+
+        }
     }
 }

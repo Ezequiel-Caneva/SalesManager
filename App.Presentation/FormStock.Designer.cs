@@ -64,6 +64,8 @@
             btnMostrarRubros = new FontAwesome.Sharp.IconButton();
             btnBuscar = new FontAwesome.Sharp.IconButton();
             txtBuscar = new TextBox();
+            txtURL = new TextBox();
+            lbURL = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvProducto).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productoBindingSource).BeginInit();
             SuspendLayout();
@@ -184,7 +186,7 @@
             btnAgregarProducto.IconColor = Color.Black;
             btnAgregarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAgregarProducto.IconSize = 16;
-            btnAgregarProducto.Location = new Point(0, 461);
+            btnAgregarProducto.Location = new Point(-1, 493);
             btnAgregarProducto.Name = "btnAgregarProducto";
             btnAgregarProducto.Size = new Size(210, 23);
             btnAgregarProducto.TabIndex = 12;
@@ -204,7 +206,7 @@
             btnEditarProducto.IconColor = Color.Black;
             btnEditarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEditarProducto.IconSize = 16;
-            btnEditarProducto.Location = new Point(0, 490);
+            btnEditarProducto.Location = new Point(-1, 522);
             btnEditarProducto.Name = "btnEditarProducto";
             btnEditarProducto.Size = new Size(210, 23);
             btnEditarProducto.TabIndex = 13;
@@ -224,7 +226,7 @@
             btnEliminarProducto.IconColor = Color.Black;
             btnEliminarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnEliminarProducto.IconSize = 16;
-            btnEliminarProducto.Location = new Point(0, 519);
+            btnEliminarProducto.Location = new Point(-1, 551);
             btnEliminarProducto.Name = "btnEliminarProducto";
             btnEliminarProducto.Size = new Size(210, 23);
             btnEliminarProducto.TabIndex = 14;
@@ -278,6 +280,7 @@
             dgvProducto.Size = new Size(1034, 494);
             dgvProducto.TabIndex = 15;
             dgvProducto.CellContentClick += dgvProducto_CellContentClick;
+            dgvProducto.CellContentDoubleClick += dgvProducto_CellContentDoubleClick;
             // 
             // cbRubro
             // 
@@ -493,12 +496,32 @@
             txtBuscar.Size = new Size(214, 23);
             txtBuscar.TabIndex = 91;
             // 
+            // txtURL
+            // 
+            txtURL.Location = new Point(-1, 464);
+            txtURL.Name = "txtURL";
+            txtURL.Size = new Size(210, 23);
+            txtURL.TabIndex = 93;
+            // 
+            // lbURL
+            // 
+            lbURL.AutoSize = true;
+            lbURL.BackColor = Color.FromArgb(40, 60, 90);
+            lbURL.ForeColor = Color.White;
+            lbURL.Location = new Point(-1, 449);
+            lbURL.Name = "lbURL";
+            lbURL.Size = new Size(74, 15);
+            lbURL.TabIndex = 94;
+            lbURL.Text = "Imagen URL:";
+            // 
             // FormStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1375, 622);
+            Controls.Add(lbURL);
+            Controls.Add(txtURL);
             Controls.Add(btnBuscar);
             Controls.Add(txtBuscar);
             Controls.Add(btnMostrarRubros);
@@ -574,5 +597,7 @@
         private FontAwesome.Sharp.IconButton btnMostrarRubros;
         private FontAwesome.Sharp.IconButton btnBuscar;
         private TextBox txtBuscar;
+        private TextBox txtURL;
+        private Label lbURL;
     }
 }
