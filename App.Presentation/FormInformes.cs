@@ -59,24 +59,26 @@ namespace App.Presentation
 
         private void btnVendedores_Click(object sender, EventArgs e)
         {
-            monthCalendar1.Visible = false;
-            btnSeleccionar.Visible = false;
-            label2.Visible = false;
-            label3.Visible = false;
+            mostrar = "vendedor";
+            monthCalendar1.Visible = true;
+            btnSeleccionar.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
             var result = traerInfomacion();
             var informe = result.Items
-            .Where(p => p._vendedor != null)
-            .GroupBy(p => p._vendedor.vendedorid)
-            .Select(group => new
-            {
-                VendedorId = group.Key,
-                Dni = group.FirstOrDefault()?._vendedor?.usuario.dni,
-                NombreVendedor = group.FirstOrDefault()?._vendedor?.usuario.usuario,
-                Zona = group.FirstOrDefault()?._vendedor?.zona,
-                CantidadVentas = group.Count()
-            })
-            .OrderByDescending(x => x.CantidadVentas)
-            .ToList();
+                .Where(p => p._vendedor != null)
+                .GroupBy(p => p._vendedor.vendedorid)
+                .Select(group => new
+                {
+                    VendedorId = group.Key,
+                    Dni = group.FirstOrDefault()?._vendedor?.usuario.dni,
+                    NombreVendedor = group.FirstOrDefault()?._vendedor?.usuario.usuario,
+                    Zona = group.FirstOrDefault()?._vendedor?.zona,
+                    CantidadVentas = group.Count(),
+                    TotalVendido = group.Sum(p => p._factura.montototal)
+                })
+                .OrderByDescending(x => x.CantidadVentas)
+                .ToList();
 
             // Mostrar el informe en el DataGridView
             dgvInformes.DataSource = informe;
@@ -165,6 +167,36 @@ namespace App.Presentation
                 .ToList();
 
                 // Mostrar el informe en el DataGridView
+                dgvInformes.DataSource = informe;
+                dgvInformes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
+            else if(mostrar == "vendedor")
+            {
+
+                if (primeraFechaSeleccionada)
+                {
+                    // Informar al usuario que debe seleccionar un rango completo de fechas.
+                    MessageBox.Show("Por favor, seleccione tanto la fecha de inicio como la de fin.");
+                    return;
+                }
+                label2.Visible = true;
+                label3.Visible = true;
+
+                var result = traerInfomacion();
+                var informe = result.Items
+                    .Where(p => p._vendedor != null && p.fecha >= fechaInicio && p.fecha <= fechaFin)
+                    .GroupBy(p => new { p._vendedor.vendedorid, p._vendedor.usuario.dni, p._vendedor.usuario.usuario, p._vendedor.zona })
+                    .Select(group => new
+                    {
+                        VendedorId = group.Key.vendedorid,
+                        Dni = group.Key.dni,
+                        NombreVendedor = group.Key.usuario,
+                        Zona = group.Key.zona,
+                        CantidadVentas = group.Count(),
+                        TotalVendido = group.Sum(p => p._factura?.montototal ?? 0)
+                    })
+                    .OrderByDescending(x => x.CantidadVentas)
+                    .ToList();
                 dgvInformes.DataSource = informe;
                 dgvInformes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
