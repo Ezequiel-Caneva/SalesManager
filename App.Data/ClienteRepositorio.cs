@@ -48,6 +48,7 @@ namespace App.Data
                     clienteExistente.dni = editarCliente.dni;   
                     clienteExistente.ciudad = editarCliente.ciudad;
                     clienteExistente.codigopostal = editarCliente.codigopostal;
+                    clienteExistente.direccion = editarCliente.direccion;
                     clienteExistente.telefono = editarCliente.telefono;
                     if (clienteExistente.email != editarCliente.email)  
                     {
