@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace App.Presentation
 {
@@ -155,7 +156,7 @@ namespace App.Presentation
                     if (pago == true)
                     {
                         MessageBox.Show("Pago Correcto", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                         Search search = new Search()
                         {
                             PageIndex = _currentPage,
@@ -184,6 +185,49 @@ namespace App.Presentation
                 MessageBox.Show("El valor ingresado en 'txtMonto' no es válido.", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
+        }
+        public void ExportarExcel(DataGridView tabla)
+        {
+            try
+            {
+                // Crear una aplicación de Excel.
+                Excel.Application excelApp = new Excel.Application();
+                excelApp.Visible = true;
+
+                // Crear un nuevo libro de Excel y hoja de trabajo.
+                Excel.Workbook workbook = excelApp.Workbooks.Add();
+                Excel.Worksheet worksheet = workbook.Sheets[1];
+
+                // Encabezados de columna.
+                for (int i = 0; i < tabla.Columns.Count; i++)
+                {
+                    worksheet.Cells[1, i + 1] = tabla.Columns[i].HeaderText;
+                }
+
+                // Datos del DataGridView.
+                for (int i = 0; i < tabla.Rows.Count; i++)
+                {
+                    for (int j = 0; j < tabla.Columns.Count; j++)
+                    {
+                        object valorCelda = tabla.Rows[i].Cells[j].Value;
+                        worksheet.Cells[i + 2, j + 1] = valorCelda != null ? valorCelda.ToString() : string.Empty;
+                    }
+                }
+
+                // Liberar recursos.
+                workbook.Close();
+                excelApp.Quit();
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar a Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ExportarExcel(dgvCobros);
         }
     }
 }

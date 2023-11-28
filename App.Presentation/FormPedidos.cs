@@ -17,7 +17,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using iTextSharp.tool.xml;
 using System.IO;
-
+using Excel = Microsoft.Office.Interop.Excel;
 namespace App.Presentation
 {
     public partial class FormPedidos : Form
@@ -47,6 +47,7 @@ namespace App.Presentation
             btnDespachar.Visible = false;
             btnFactura.Visible = false;
             dgvDetalle.Visible = false;
+            btnExportar.Visible = false;
             filtro = "Pendiente";
             filtrar(filtro);
 
@@ -60,11 +61,13 @@ namespace App.Presentation
             btnDespachar.Visible = false;
             btnFactura.Visible = false;
             filtro = "Pendiente";
+            btnExportar.Visible = false;
             filtrar(filtro);
 
         }
         private void btnConfimado_Click(object sender, EventArgs e)
         {
+            btnExportar.Visible = true;
             btnConfirmar.Visible = false;
             btnCancelar.Visible = false;
             btnDespachar.Visible = true;
@@ -439,8 +442,46 @@ namespace App.Presentation
             return cambiado;
         }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ExportarExcel(dgvPedidos);
+        }
+        public void ExportarExcel(DataGridView tabla)
+        {
+            try
+            {
+                // Crear una aplicación de Excel.
+                Excel.Application excelApp = new Excel.Application();
+                excelApp.Visible = true;
 
+                // Crear un nuevo libro de Excel y hoja de trabajo.
+                Excel.Workbook workbook = excelApp.Workbooks.Add();
+                Excel.Worksheet worksheet = workbook.Sheets[1];
 
+                // Encabezados de columna.
+                for (int i = 0; i < tabla.Columns.Count; i++)
+                {
+                    worksheet.Cells[1, i + 1] = tabla.Columns[i].HeaderText;
+                }
 
+                // Datos del DataGridView.
+                for (int i = 0; i < tabla.Rows.Count; i++)
+                {
+                    for (int j = 0; j < tabla.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = tabla.Rows[i].Cells[j].Value.ToString();
+                    }
+                }
+
+                // Liberar recursos.
+                workbook.Close();
+                excelApp.Quit();
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar a Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

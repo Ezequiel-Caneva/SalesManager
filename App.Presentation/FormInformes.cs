@@ -170,7 +170,7 @@ namespace App.Presentation
                 dgvInformes.DataSource = informe;
                 dgvInformes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
-            else if(mostrar == "vendedor")
+            else if (mostrar == "vendedor")
             {
 
                 if (primeraFechaSeleccionada)
@@ -242,7 +242,8 @@ namespace App.Presentation
             {
                 ProductoId = group.Key,
                 NombreProducto = group.FirstOrDefault()?._producto.nombre,
-                CantidadesVendidas = group.Sum(detalle => detalle.cantidad) // Sumar la cantidad de cada producto vendido
+                CantidadesVendidas = group.Sum(detalle => detalle.cantidad),
+
             })
             .OrderByDescending(x => x.CantidadesVendidas)
             .ToList();
@@ -279,7 +280,7 @@ namespace App.Presentation
                     {
                         worksheet.Cells[i + 2, j + 1] = tabla.Rows[i].Cells[j].Value.ToString();
                     }
-                }            
+                }
 
                 // Liberar recursos.
                 workbook.Close();
@@ -292,6 +293,36 @@ namespace App.Presentation
             }
         }
 
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+
+            Search search = new Search()
+            {
+                PageIndex = 1,
+                PageSize = 40,
+                TextToSearch = "",
+                TextToSearch2 = "",
+            };
+            string json = JsonConvert.SerializeObject(search);
+            StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Usuario/InformeProducto", content).Result;
+            var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
+            var result = JsonConvert.DeserializeObject<Response<DetalleVenta>>(jsonToDeserialize);
+
+            var informe = result.Items
+            .Where(detalle => detalle._pedido != null)
+            .GroupBy(detalle => detalle.cantidad)
+            .Select(group => new
+            {
+                
+                NombreCliente = group.FirstOrDefault()?._pedido._cliente.nombre,
+                CantidadesCompradas = group.Sum(detalle => detalle.cantidad) // Sumar la cantidad de cada producto vendido
+            })
+            .OrderByDescending(x => x.CantidadesCompradas)
+            .ToList();
+            dgvInformes.DataSource = informe;
+            dgvInformes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
     }
-    
+
 }

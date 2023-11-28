@@ -23,8 +23,9 @@ namespace App.Entities
         public DateTime? fecha { set; get; }
 
         public Producto? _producto { set; get; } = null;
+        public Pedido? _pedido { set; get; } = null;
 
-       
+
     }
 }
        

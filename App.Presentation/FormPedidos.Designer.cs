@@ -60,6 +60,7 @@
             btnVer = new FontAwesome.Sharp.IconButton();
             label1 = new Label();
             label2 = new Label();
+            btnExportar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pedidoBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
@@ -425,12 +426,28 @@
             label2.Size = new Size(90, 603);
             label2.TabIndex = 94;
             // 
+            // btnExportar
+            // 
+            btnExportar.BackColor = Color.FromArgb(45, 66, 91);
+            btnExportar.ForeColor = Color.White;
+            btnExportar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnExportar.IconColor = Color.Black;
+            btnExportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnExportar.Location = new Point(704, 106);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(90, 31);
+            btnExportar.TabIndex = 104;
+            btnExportar.Text = "Exportar";
+            btnExportar.UseVisualStyleBackColor = false;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // FormPedidos
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1423, 594);
+            Controls.Add(btnExportar);
             Controls.Add(btnVer);
             Controls.Add(btnFactura);
             Controls.Add(btnCancelar);
@@ -484,5 +501,6 @@
         private DataGridViewTextBoxColumn cliente;
         private Label label1;
         private Label label2;
+        private FontAwesome.Sharp.IconButton btnExportar;
     }
 }

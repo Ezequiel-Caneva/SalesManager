@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             btnVendedores = new FontAwesome.Sharp.IconButton();
             bntVentas = new FontAwesome.Sharp.IconButton();
             btnProductos = new FontAwesome.Sharp.IconButton();
@@ -41,6 +41,7 @@
             label2 = new Label();
             label3 = new Label();
             btnExportar = new FontAwesome.Sharp.IconButton();
+            btnClientes = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvInformes).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             btnVendedores.IconChar = FontAwesome.Sharp.IconChar.None;
             btnVendedores.IconColor = Color.Black;
             btnVendedores.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnVendedores.Location = new Point(46, 107);
+            btnVendedores.Location = new Point(46, 70);
             btnVendedores.Name = "btnVendedores";
             btnVendedores.Size = new Size(190, 31);
             btnVendedores.TabIndex = 96;
@@ -81,9 +82,9 @@
             btnProductos.IconChar = FontAwesome.Sharp.IconChar.None;
             btnProductos.IconColor = Color.Black;
             btnProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnProductos.Location = new Point(46, 70);
+            btnProductos.Location = new Point(46, 107);
             btnProductos.Name = "btnProductos";
-            btnProductos.Size = new Size(190, 31);
+            btnProductos.Size = new Size(190, 30);
             btnProductos.TabIndex = 94;
             btnProductos.Text = "Productos";
             btnProductos.UseVisualStyleBackColor = false;
@@ -95,7 +96,7 @@
             label1.BorderStyle = BorderStyle.FixedSingle;
             label1.Location = new Point(0, -1);
             label1.Name = "label1";
-            label1.Size = new Size(284, 722);
+            label1.Size = new Size(284, 576);
             label1.TabIndex = 97;
             label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
@@ -108,34 +109,34 @@
             dgvInformes.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvInformes.BorderStyle = BorderStyle.None;
             dgvInformes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvInformes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvInformes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvInformes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInformes.EnableHeadersVisualStyles = false;
             dgvInformes.GridColor = Color.White;
             dgvInformes.Location = new Point(314, 12);
             dgvInformes.Name = "dgvInformes";
             dgvInformes.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvInformes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvInformes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvInformes.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dgvInformes.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dgvInformes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvInformes.RowTemplate.Height = 25;
             dgvInformes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvInformes.Size = new Size(817, 519);
@@ -145,7 +146,7 @@
             // monthCalendar1
             // 
             monthCalendar1.BackColor = Color.White;
-            monthCalendar1.Location = new Point(18, 164);
+            monthCalendar1.Location = new Point(18, 191);
             monthCalendar1.MaxSelectionCount = 90;
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 99;
@@ -157,7 +158,7 @@
             btnSeleccionar.IconChar = FontAwesome.Sharp.IconChar.None;
             btnSeleccionar.IconColor = Color.Black;
             btnSeleccionar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSeleccionar.Location = new Point(156, 338);
+            btnSeleccionar.Location = new Point(166, 365);
             btnSeleccionar.Name = "btnSeleccionar";
             btnSeleccionar.Size = new Size(100, 38);
             btnSeleccionar.TabIndex = 100;
@@ -198,12 +199,28 @@
             btnExportar.UseVisualStyleBackColor = false;
             btnExportar.Click += btnExportar_Click;
             // 
+            // btnClientes
+            // 
+            btnClientes.BackColor = Color.FromArgb(45, 66, 91);
+            btnClientes.ForeColor = Color.White;
+            btnClientes.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnClientes.IconColor = Color.Black;
+            btnClientes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnClientes.Location = new Point(46, 143);
+            btnClientes.Name = "btnClientes";
+            btnClientes.Size = new Size(190, 31);
+            btnClientes.TabIndex = 104;
+            btnClientes.Text = "Clientes";
+            btnClientes.UseVisualStyleBackColor = false;
+            btnClientes.Click += btnClientes_Click;
+            // 
             // FormInformes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1254, 570);
+            Controls.Add(btnClientes);
             Controls.Add(btnExportar);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -234,5 +251,6 @@
         private Label label2;
         private Label label3;
         private FontAwesome.Sharp.IconButton btnExportar;
+        private FontAwesome.Sharp.IconButton btnClientes;
     }
 }

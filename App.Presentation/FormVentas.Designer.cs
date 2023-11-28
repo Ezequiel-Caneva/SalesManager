@@ -55,6 +55,7 @@
             btnCobrar = new FontAwesome.Sharp.IconButton();
             labelcontenedor = new Label();
             cbMetodo = new ComboBox();
+            btnExportar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvCobros).BeginInit();
             ((System.ComponentModel.ISupportInitialize)cobroBindingSource).BeginInit();
             SuspendLayout();
@@ -303,12 +304,28 @@
             cbMetodo.Size = new Size(210, 23);
             cbMetodo.TabIndex = 103;
             // 
+            // btnExportar
+            // 
+            btnExportar.BackColor = Color.FromArgb(45, 66, 91);
+            btnExportar.ForeColor = Color.White;
+            btnExportar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnExportar.IconColor = Color.Black;
+            btnExportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnExportar.Location = new Point(1255, 31);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(103, 38);
+            btnExportar.TabIndex = 104;
+            btnExportar.Text = "Exportar a Excel";
+            btnExportar.UseVisualStyleBackColor = false;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // FormVentas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1335, 579);
+            ClientSize = new Size(1370, 579);
+            Controls.Add(btnExportar);
             Controls.Add(cbMetodo);
             Controls.Add(txt6);
             Controls.Add(dgvCobros);
@@ -357,5 +374,6 @@
         private DataGridViewTextBoxColumn saldo;
         private BindingSource cobroBindingSource;
         private ComboBox cbMetodo;
+        private FontAwesome.Sharp.IconButton btnExportar;
     }
 }

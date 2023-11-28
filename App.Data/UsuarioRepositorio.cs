@@ -127,8 +127,7 @@ namespace App.Data
                 .ThenInclude(v => v.usuario)
                 .Include(detalle => detalle._factura)
                 .Include(detalle => detalle._cliente);
-
-
+               
             var count = query.Count();
             var response = new Response<Pedido>()
             {
@@ -145,8 +144,9 @@ namespace App.Data
 
             // Utilizar el tipo de respuesta correcto (Response<DetalleVenta>)
             var query = _context.detalleVenta
-                .Include(detalle => detalle._producto);
-
+                .Include(detalle => detalle._producto)
+                .Include(detalle => detalle._pedido)
+                .ThenInclude(v => v._cliente);
             var count = query.Count();
 
             var response = new Response<DetalleVenta>()  // Corregir el tipo de respuesta
