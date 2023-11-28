@@ -31,7 +31,7 @@ namespace App.Presentation
             facturas = new List<Factura>();
             cobros = new List<Cobro>();
             _currentPage = 1;
-            _currentItemsPerPage = 25;
+            _currentItemsPerPage = 200;
         }
 
         private void FormVentas_Load(object sender, EventArgs e)
