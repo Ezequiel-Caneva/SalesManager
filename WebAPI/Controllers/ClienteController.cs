@@ -34,7 +34,12 @@ namespace WebAPI.Controllers
         {
             return _clienteNegocio.EliminarCliente(clienteid);
         }
-    
+        [HttpPost("TraerCliente")]
+        public Cliente TraerCliente(Search search)
+        {
+            return _clienteNegocio.TraerCliente(search);
+        }
+
 
 
     }

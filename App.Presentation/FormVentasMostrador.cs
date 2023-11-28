@@ -24,8 +24,9 @@ namespace App.Presentation
         private Producto _producto;
         private int productoid;
         private int _listadoid;
+        Usuario _usuario;
 
-        public FormVentasMostrador()
+        public FormVentasMostrador(Usuario usuarioLogeado)
         {
             InitializeComponent();
             _client = new HttpClient();
@@ -35,6 +36,7 @@ namespace App.Presentation
             _productos = new List<Producto>();
             _productosListados = new List<Producto>();
             _producto = new Producto();
+            _usuario = new Usuario();
 
 
         }
@@ -50,6 +52,9 @@ namespace App.Presentation
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+          
+            
+
             Producto productoEncontrado = _productos.FirstOrDefault(p => p.productoid == productoid);
             int cantidadSeleccionada = 0;
             if (productoEncontrado != null)
@@ -204,6 +209,16 @@ namespace App.Presentation
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
             _productos = FiltrarProductos("");
             Mostrar(_productos);
+        }
+
+        private void btnCtaCtes_Click(object sender, EventArgs e)
+        {
+            if(_productosListados != null)
+            {
+                Form ventasMostrador = new subVentasMostrador(_productosListados, _usuario);
+                ventasMostrador.ShowDialog();
+
+            }
         }
     }
 }

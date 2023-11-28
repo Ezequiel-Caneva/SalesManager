@@ -29,7 +29,7 @@ namespace App.Business
         public Pedido ObtenerPedido(Search search)
         {
             return _pedidoRepositorio.ObtenerPedido(search);
-        }  
+        }
         public Boolean Confirmar(Pedido pedido)
         {
             return _pedidoRepositorio.Confirmar(pedido);
@@ -54,7 +54,11 @@ namespace App.Business
         {
             return _pedidoRepositorio.DetalleEnvio(search);
         }
-       
-       
+        public Boolean AgregarPedido(Pedido pedido)
+        {
+            return _pedidoRepositorio.AgregarPedido(pedido);
+
+        }
+
     }
 }

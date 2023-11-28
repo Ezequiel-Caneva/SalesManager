@@ -158,6 +158,11 @@ namespace App.Data
             };
             return response;
         }
+        public Vendedor TraerVendedor(Usuario usuario)
+        {
+            var vendedor = _context.Vendedor.SingleOrDefault(p => p.usuarioid == usuario.dni);
+            return vendedor;
+        }
 
     }
 }

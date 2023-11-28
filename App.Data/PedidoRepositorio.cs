@@ -187,8 +187,34 @@ namespace App.Data
         {
             var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
             return envio;
-        }    
-      
+        }
+        public Boolean AgregarPedido(Pedido pedido)
+        {
+        
+                _context.Pedido.Add(pedido);
+                _context.Factura.Add(pedido._factura);
+                _context.SaveChanges();
+
+                int pedidoidGenerado = pedido.pedidoid;
+                foreach (var detalleventa in pedido._venta)
+                {
+                    detalleventa.pedido = pedidoidGenerado;
+                     detalleventa._producto = null;
+                    _context.detalleVenta.Add(detalleventa);
+
+                }
+                
+                foreach (var detalleventa in pedido._venta)
+                {
+                    var producto = _context.Producto.FirstOrDefault(u => u.productoid == detalleventa.producto);
+                     producto.stock = producto.stock - detalleventa.cantidad;
+                }
+                _context.SaveChanges();
+
+                return true;
+
+        }
+
     }
    
 }

@@ -31,6 +31,10 @@ namespace App.Business
         {
             return _clienteRepositorio.EliminarCliente(clienteid);
         }
+        public Cliente TraerCliente(Search search)
+        {
+            return _clienteRepositorio.TraerCliente(search);
+        }
 
     }
 }

@@ -308,7 +308,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1404, 579);
+            ClientSize = new Size(1335, 579);
             Controls.Add(cbMetodo);
             Controls.Add(txt6);
             Controls.Add(dgvCobros);

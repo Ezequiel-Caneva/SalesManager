@@ -42,6 +42,10 @@ namespace App.Business
         {
             return _usuarioRepositorio.InformeProducto(search);
         }
-
+        public Vendedor TraerVendedor(Usuario usuario)
+        {
+            return _usuarioRepositorio.TraerVendedor(usuario);
+        }
+       
     }   
 }

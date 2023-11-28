@@ -53,6 +53,11 @@ namespace WebAPI.Controllers
         {
             return _usuarionegocio.InformeProducto(search);
         }
+        [HttpPost("TraerVendedor")]
+        public Vendedor TraerVendedor(Usuario usuario)
+        {
+            return _usuarionegocio.TraerVendedor(usuario);
+        }
 
     }
 }

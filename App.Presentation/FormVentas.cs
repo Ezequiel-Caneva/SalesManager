@@ -56,7 +56,7 @@ namespace App.Presentation
 
                 string nombreClienteSeleccionado = cbCliente.SelectedItem.ToString();
 
-                // Filtra los cobros basados en el nombre del cliente seleccionado
+
                 List<Cobro> cobrosFiltrados = cobros.Where(c => c._cliente.nombre == nombreClienteSeleccionado).ToList();
 
                 // Muestra los cobros en el DataGridView
@@ -98,7 +98,7 @@ namespace App.Presentation
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Cobro/MostrarCobros", content).Result;
             var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
             var result = JsonConvert.DeserializeObject<Response<Cobro>>(jsonToDeserialize);
-            return result.Items; 
+            return result.Items;
         }
 
         private void btnCobrar_Click(object sender, EventArgs e)

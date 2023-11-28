@@ -56,7 +56,7 @@ namespace App.Presentation
 
         private void menuVentasMostrador_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new FormVentasMostrador());
+            AbrirFormulario((IconMenuItem)sender, new FormVentasMostrador(_usuarioLogeado));
         }
         private void menuPedidos_Click(object sender, EventArgs e)
         {

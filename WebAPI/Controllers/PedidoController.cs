@@ -65,6 +65,11 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.DetalleEnvio(search);
         }
-      
+        [HttpPost("AgregarPedido")]
+        public Boolean AgregarPedido(Pedido pedido)
+        {
+            return _pedidoNegocio.AgregarPedido(pedido);
+        }
+
     }
 }

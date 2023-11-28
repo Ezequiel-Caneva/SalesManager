@@ -99,6 +99,11 @@ namespace App.Data
 
             return response;
         }
-   
+        public Cliente TraerCliente(Search search)
+        {
+            var cliente = _context.Cliente.SingleOrDefault(p => p.dni == search.TextToSearch);
+            return cliente;
+        }
+
     }
 }
