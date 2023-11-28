@@ -40,6 +40,7 @@
             btnSeleccionar = new FontAwesome.Sharp.IconButton();
             label2 = new Label();
             label3 = new Label();
+            btnExportar = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvInformes).BeginInit();
             SuspendLayout();
             // 
@@ -182,12 +183,28 @@
             label3.Size = new Size(0, 15);
             label3.TabIndex = 102;
             // 
+            // btnExportar
+            // 
+            btnExportar.BackColor = Color.FromArgb(45, 66, 91);
+            btnExportar.ForeColor = Color.White;
+            btnExportar.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnExportar.IconColor = Color.Black;
+            btnExportar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnExportar.Location = new Point(1142, 12);
+            btnExportar.Name = "btnExportar";
+            btnExportar.Size = new Size(100, 38);
+            btnExportar.TabIndex = 103;
+            btnExportar.Text = "Exportar a Excel";
+            btnExportar.UseVisualStyleBackColor = false;
+            btnExportar.Click += btnExportar_Click;
+            // 
             // FormInformes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1191, 716);
+            ClientSize = new Size(1254, 570);
+            Controls.Add(btnExportar);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(btnSeleccionar);
@@ -216,5 +233,6 @@
         private FontAwesome.Sharp.IconButton btnSeleccionar;
         private Label label2;
         private Label label3;
+        private FontAwesome.Sharp.IconButton btnExportar;
     }
 }

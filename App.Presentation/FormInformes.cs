@@ -1,4 +1,5 @@
 ﻿using App.Entities;
+using iTextSharp.text.pdf;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,10 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 
 namespace App.Presentation
@@ -22,6 +27,8 @@ namespace App.Presentation
         private DateTime fechaFin;
         private bool primeraFechaSeleccionada = false;
         string mostrar;
+
+
         public FormInformes()
         {
             InitializeComponent();
@@ -95,7 +102,7 @@ namespace App.Presentation
                 {
                     Fecha = p.fecha.ToString(),
                     VentaId = p.pedidoid,
-                    NombreVendedor= p._vendedor?.usuario.usuario,
+                    NombreVendedor = p._vendedor?.usuario.usuario,
                     NombreCliente = p._cliente?.nombre,
                     DniCliente = p._cliente?.dni,
                     MontoTotal = p._factura?.montototal,
@@ -139,16 +146,16 @@ namespace App.Presentation
                 }
                 label2.Visible = true;
                 label3.Visible = true;
-               
-               
+
+
                 var result = traerInfomacion();
                 var informe = result.Items
                 .Where(p => p._vendedor != null && p.fecha >= fechaInicio && p.fecha <= fechaFin)
                 .Select(p => new
                 {
                     Fecha = p.fecha.ToString(),
-                    VentaId = p.pedidoid,       
-                    NombreVendedor = p._vendedor?.usuario.usuario,               
+                    VentaId = p.pedidoid,
+                    NombreVendedor = p._vendedor?.usuario.usuario,
                     NombreCliente = p._cliente?.nombre,
                     DniCliente = p._cliente?.dni,
 
@@ -181,21 +188,21 @@ namespace App.Presentation
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-            
-           Search search = new Search()
-               {
-                     PageIndex = 1,
-                     PageSize = 40,
-                     TextToSearch = "",
-                     TextToSearch2 = "",
-               };
+
+            Search search = new Search()
+            {
+                PageIndex = 1,
+                PageSize = 40,
+                TextToSearch = "",
+                TextToSearch2 = "",
+            };
             string json = JsonConvert.SerializeObject(search);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Usuario/InformeProducto", content).Result;
             var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
             var result = JsonConvert.DeserializeObject<Response<DetalleVenta>>(jsonToDeserialize);
 
-           
+
             var informe = result.Items
             .Where(detalle => detalle._producto != null)
             .GroupBy(detalle => detalle.producto)
@@ -210,5 +217,49 @@ namespace App.Presentation
             dgvInformes.DataSource = informe;
             dgvInformes.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            ExportarExcel(dgvInformes);
+        }
+        public void ExportarExcel(DataGridView tabla)
+        {
+            try
+            {
+                // Crear una aplicación de Excel.
+                Excel.Application excelApp = new Excel.Application();
+                excelApp.Visible = true;
+
+                // Crear un nuevo libro de Excel y hoja de trabajo.
+                Excel.Workbook workbook = excelApp.Workbooks.Add();
+                Excel.Worksheet worksheet = workbook.Sheets[1];
+
+                // Encabezados de columna.
+                for (int i = 0; i < tabla.Columns.Count; i++)
+                {
+                    worksheet.Cells[1, i + 1] = tabla.Columns[i].HeaderText;
+                }
+
+                // Datos del DataGridView.
+                for (int i = 0; i < tabla.Rows.Count; i++)
+                {
+                    for (int j = 0; j < tabla.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1] = tabla.Rows[i].Cells[j].Value.ToString();
+                    }
+                }            
+
+                // Liberar recursos.
+                workbook.Close();
+                excelApp.Quit();
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(excelApp);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al exportar a Excel: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
+    
 }
