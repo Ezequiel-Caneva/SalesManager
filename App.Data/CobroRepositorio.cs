@@ -45,7 +45,6 @@ namespace App.Data
                              .ToList(),
                 Total = count
             };
-
             return response;
         }
         public Boolean AgregarPago(Cobro cobro)

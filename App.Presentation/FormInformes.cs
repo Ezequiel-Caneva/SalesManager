@@ -135,16 +135,17 @@ namespace App.Presentation
                 label3.Text = fechaFin.ToString();
                 var result = traerInfomacion();
                 var informe = result.Items
-                    .Where(p => p._vendedor != null && p.fecha >= fechaInicio && p.fecha <= fechaFin)
-                    .GroupBy(p => p._vendedor.vendedorid)
-                    .Select(group => new
-                    {
-                        VendedorId = group.Key,
-                        NombreVendedor = group.FirstOrDefault()?._vendedor?.usuario,
-                        TotalVentas = group.Count()
-                    })
-                    .OrderByDescending(x => x.TotalVentas)
-                    .ToList();
+                .Where(p => p._vendedor != null && p.fecha >= fechaInicio && p.fecha <= fechaFin)
+                .Select(p => new
+                {
+                    VentaId = p.pedidoid,
+                    NombreVendedor = p._vendedor?.usuario.usuario,
+                    NombreCliente = p._cliente?.nombre,
+
+                    MontoTotal = p._factura?.montototal,
+                })
+                .OrderByDescending(x => x.VentaId) // Opcional: puedes cambiar a otra propiedad para ordenar
+                .ToList();
 
                 // Mostrar el informe en el DataGridView
                 dgvInformes.DataSource = informe;
@@ -164,8 +165,6 @@ namespace App.Presentation
                 fechaFin = e.Start;
                 primeraFechaSeleccionada = false;
             }
-
-
         }
 
         private void btnProductos_Click(object sender, EventArgs e)

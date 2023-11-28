@@ -30,7 +30,7 @@ namespace App.Presentation
 
         private void FormClientes_Load(object sender, EventArgs e)
         {
-            MostrarCliente();
+            MostrarCliente("");
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -53,7 +53,7 @@ namespace App.Presentation
                 bool clienteAgregado = JsonConvert.DeserializeObject<bool>(response.Content.ReadAsStringAsync().Result);
                 if (clienteAgregado == true)
                 {
-                    MostrarCliente();
+                    MostrarCliente("");
                     MessageBox.Show("Cliente agregada correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 }
@@ -91,7 +91,7 @@ namespace App.Presentation
                 bool clienteAgregado = JsonConvert.DeserializeObject<bool>(response.Content.ReadAsStringAsync().Result);
                 if (clienteAgregado == true)
                 {
-                    MostrarCliente();
+                    MostrarCliente("");
                     MessageBox.Show("Cliente Editado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
@@ -137,7 +137,7 @@ namespace App.Presentation
             if (response.IsSuccessStatusCode && eliminacionExitosa == true)
             {
                 MessageBox.Show("Producto eliminado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MostrarCliente();
+                MostrarCliente("");
             }
             else
             {
@@ -151,7 +151,7 @@ namespace App.Presentation
             {
                 _currentPage--;
                 txtPagina.Text = _currentPage.ToString();
-                MostrarCliente();
+                MostrarCliente("");
             }
         }
 
@@ -167,28 +167,28 @@ namespace App.Presentation
             {
                 _currentPage = 1;
             }
-            MostrarCliente();
+            MostrarCliente("");
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             _currentPage++;
             txtPagina.Text = _currentPage.ToString();
-            MostrarCliente();
+            MostrarCliente("");
         }
 
         private void cbItemsPorPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
-            MostrarCliente();
+            MostrarCliente("");
         }
-        public void MostrarCliente()
+        public void MostrarCliente(string buscar)
         {
             Search search = new Search()
             {
                 PageIndex = _currentPage,
                 PageSize = _currentItemsPerPage,
-                TextToSearch = "",
+                TextToSearch = buscar,
             };
             string json = JsonConvert.SerializeObject(search);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -206,7 +206,7 @@ namespace App.Presentation
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
-
+            MostrarCliente(txtBusar.Text);
         }
     }
 }

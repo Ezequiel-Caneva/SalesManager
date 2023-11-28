@@ -52,37 +52,50 @@ namespace App.Presentation
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-          
-            
 
-            Producto productoEncontrado = _productos.FirstOrDefault(p => p.productoid == productoid);
-            int cantidadSeleccionada = 0;
-            if (productoEncontrado != null)
+
+            if (productoid != 0)
             {
-                // Mostrar el cuadro de diálogo para seleccionar la cantidad
-                using (CantidadForm cantidadForm = new CantidadForm())
+                Producto productoEncontrado = _productos.FirstOrDefault(p => p.productoid == productoid);
+                int cantidadSeleccionada = 0;
+                if (productoEncontrado != null)
                 {
-                    if (cantidadForm.ShowDialog() == DialogResult.OK)
+                    // Mostrar el cuadro de diálogo para seleccionar la cantidad
+                    using (CantidadForm cantidadForm = new CantidadForm())
                     {
-                        cantidadSeleccionada = cantidadForm.CantidadSeleccionada;
-                        MessageBox.Show($"Producto: {productoEncontrado.nombre}\n Cantidad seleccionada: {cantidadSeleccionada}", "Detalle del producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (cantidadForm.ShowDialog() == DialogResult.OK)
+                        {
+                            cantidadSeleccionada = cantidadForm.CantidadSeleccionada;
+                            MessageBox.Show($"Producto: {productoEncontrado.nombre}\n Cantidad seleccionada: {cantidadSeleccionada}", "Detalle del producto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Producto no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                productoEncontrado.cantidadselec = cantidadSeleccionada;
+                _productosListados.Add(productoEncontrado);
+                listar(_productosListados);
             }
             else
             {
-                MessageBox.Show("Producto no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            productoEncontrado.cantidadselec = cantidadSeleccionada;
-            _productosListados.Add(productoEncontrado);
-            listar(_productosListados);
 
         }
         private void btnQuitar_Click(object sender, EventArgs e)
         {
-            Producto productoEncontrado = _productos.FirstOrDefault(p => p.productoid == _listadoid);
-            _productosListados.Remove(productoEncontrado);
-            listar(_productosListados);
+            if (productoid != null)
+            {
+                Producto productoEncontrado = _productos.FirstOrDefault(p => p.productoid == _listadoid);
+                _productosListados.Remove(productoEncontrado);
+                listar(_productosListados);
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un producto", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void dgvProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)

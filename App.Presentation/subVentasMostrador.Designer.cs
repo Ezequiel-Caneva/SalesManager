@@ -109,7 +109,7 @@
             // cbEnvio
             // 
             cbEnvio.FormattingEnabled = true;
-            cbEnvio.Items.AddRange(new object[] { " ", "Si ", "No" });
+            cbEnvio.Items.AddRange(new object[] { " ", "Si", "No" });
             cbEnvio.Location = new Point(113, 185);
             cbEnvio.Name = "cbEnvio";
             cbEnvio.Size = new Size(210, 23);

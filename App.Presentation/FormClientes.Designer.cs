@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             txt4 = new Label();
             txt2 = new Label();
             txt1 = new Label();
@@ -65,8 +65,8 @@
             btnAnterior = new FontAwesome.Sharp.IconButton();
             btnSiguiente = new FontAwesome.Sharp.IconButton();
             txt6 = new Label();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
+            txtBusar = new TextBox();
             labelcontenedor = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvClientes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)clienteBindingSource).BeginInit();
@@ -281,14 +281,14 @@
             dgvClientes.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvClientes.BorderStyle = BorderStyle.None;
             dgvClientes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgvClientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgvClientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvClientes.Columns.AddRange(new DataGridViewColumn[] { clienteid, nombre, dni, direccion, telefono, email, ciudad, codigopostal });
             dgvClientes.DataSource = clienteBindingSource;
@@ -297,20 +297,20 @@
             dgvClientes.Location = new Point(215, 31);
             dgvClientes.Name = "dgvClientes";
             dgvClientes.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle5.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            dgvClientes.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             dgvClientes.RowHeadersVisible = false;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
-            dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle6.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = Color.SteelBlue;
+            dgvClientes.RowsDefaultCellStyle = dataGridViewCellStyle6;
             dgvClientes.RowTemplate.Height = 25;
             dgvClientes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvClientes.Size = new Size(1034, 494);
@@ -435,30 +435,30 @@
             txt6.Text = "Lista de Clientes";
             txt6.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // iconButton2
+            // btnBuscar
             // 
-            iconButton2.BackColor = Color.FromArgb(45, 66, 91);
-            iconButton2.FlatStyle = FlatStyle.Popup;
-            iconButton2.ForeColor = Color.White;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(1218, 6);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(31, 23);
-            iconButton2.TabIndex = 92;
-            iconButton2.UseVisualStyleBackColor = false;
-            iconButton2.Click += iconButton2_Click;
+            btnBuscar.BackColor = Color.FromArgb(45, 66, 91);
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.ForeColor = Color.White;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            btnBuscar.IconColor = Color.White;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 24;
+            btnBuscar.Location = new Point(1218, 6);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(31, 23);
+            btnBuscar.TabIndex = 92;
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += iconButton2_Click;
             // 
-            // textBox1
+            // txtBusar
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(1002, 6);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 23);
-            textBox1.TabIndex = 91;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtBusar.BorderStyle = BorderStyle.FixedSingle;
+            txtBusar.Location = new Point(1002, 6);
+            txtBusar.Name = "txtBusar";
+            txtBusar.Size = new Size(214, 23);
+            txtBusar.TabIndex = 91;
+            txtBusar.TextChanged += textBox1_TextChanged;
             // 
             // labelcontenedor
             // 
@@ -476,8 +476,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1285, 594);
-            Controls.Add(iconButton2);
-            Controls.Add(textBox1);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtBusar);
             Controls.Add(dgvClientes);
             Controls.Add(cbItemsPorPagina);
             Controls.Add(txtPagina);
@@ -538,8 +538,8 @@
         private FontAwesome.Sharp.IconButton btnAnterior;
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private Label txt6;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private TextBox textBox1;
+        private FontAwesome.Sharp.IconButton btnBuscar;
+        private TextBox txtBusar;
         private Label labelcontenedor;
         private BindingSource clienteBindingSource;
         private DataGridViewTextBoxColumn clienteid;

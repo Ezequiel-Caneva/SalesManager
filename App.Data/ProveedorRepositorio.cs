@@ -55,9 +55,8 @@ namespace App.Data
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
             // Obtén todos los productos sin aplicar filtros
-            var query = _context.Proveedor.AsQueryable();
-
-
+            var query = _context.Proveedor.AsQueryable()
+                 .Where(p => p.nombre.Contains(search.TextToSearch) || p.direccion.Contains(search.TextToSearch) || p.razonsocial.Contains(search.TextToSearch) || p.telefono.Contains(search.TextToSearch));
             var count = query.Count();
             var response = new Response<Proveedor>()
             {

@@ -135,7 +135,7 @@ namespace App.Presentation
                 cobro2.nrofactura = numero;
                 cobro2.fecha = DateTime.Now;
                 cobro2.tipo_comprobante = "CP";
-                cobro2.debito = Convert.ToInt32(txtMonto.Text);
+                cobro2.credito = Convert.ToInt32(txtMonto.Text);
                 cobro2.saldo = montoTotal - Convert.ToInt32(txtMonto.Text);
                 cobro2.metodopago = cbMetodo.Text;
                 cobro2.nro_comprobante = random.Next(1000, 2000);
@@ -151,8 +151,16 @@ namespace App.Presentation
             pedido._factura = factura;
             pedido.fecha = DateTime.Now;
             pedido.factura = factura.nrofactura;
-            if(cbEnvio.Text == "Si"){
-                pedido.estado = "Confirmado";
+            if (cbEnvio.SelectedItem != null)
+            {
+                if (cbEnvio.SelectedItem.ToString() == "Si")
+                {
+                    pedido.estado = "Confirmado";
+                }
+                else
+                {
+                    pedido.estado = "Vendido";
+                }
             }
             else
             {
@@ -164,12 +172,12 @@ namespace App.Presentation
             var jsonToDeserialize = response.Content.ReadAsStringAsync().Result;
             var  result = JsonConvert.DeserializeObject<Boolean>(jsonToDeserialize);
             if (result == true) {
-                MessageBox.Show("OK", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MessageBox.Show("Venta realizada con exito", "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {
-
-                MessageBox.Show("No se pudo realizar la venta", "Error", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                MessageBox.Show("No se pudo realizar la venta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
           
             AgregarCobro(cobro);

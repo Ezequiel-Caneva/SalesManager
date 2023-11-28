@@ -64,7 +64,10 @@ namespace App.Presentation
 
                 // Filtra las facturas basadas en los cobros filtrados
                 List<Factura> facturasFiltradas = facturas.Where(f => cobrosFiltrados.Any(c => c.nrofactura == f.nrofactura)).ToList();
-
+                facturasFiltradas = facturasFiltradas
+                .GroupBy(f => f.nrofactura)
+                .Select(group => group.First())
+                .ToList();
                 // Actualiza el contenido del ComboBox de facturas con las facturas filtradas
                 cbFactura.DisplayMember = "nrofactura";
                 cbFactura.ValueMember = "nrofactura";
@@ -152,7 +155,16 @@ namespace App.Presentation
                     if (pago == true)
                     {
                         MessageBox.Show("Pago Correcto", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                    
+                        Search search = new Search()
+                        {
+                            PageIndex = _currentPage,
+                            PageSize = _currentItemsPerPage,
+                            TextToSearch = "",
+                            num = (int)cbFactura.SelectedValue,
+                        };
+                        cobros = MostrarCobros(search);
+                        dgvCobros.DataSource = cobros;
                     }
                     else
                     {

@@ -31,7 +31,7 @@ namespace App.Presentation
 
         private void FormProveedores_Load(object sender, EventArgs e)
         {
-            MostrarProveedores();
+            MostrarProveedores("");
 
         }
 
@@ -51,7 +51,7 @@ namespace App.Presentation
             if (response.IsSuccessStatusCode)
             {
                 MessageBox.Show("Producto agregado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MostrarProveedores();
+                MostrarProveedores("");
 
             }
             else
@@ -82,7 +82,7 @@ namespace App.Presentation
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Proveedor editado ecorrectamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        MostrarProveedores();
+                        MostrarProveedores("");
                     }
                     else
                     {
@@ -91,13 +91,13 @@ namespace App.Presentation
                 }
             }
         }
-        public void MostrarProveedores()
+        public void MostrarProveedores(string buscar)
         {
             Search search = new Search()
             {
                 PageIndex = _currentPage,
                 PageSize = _currentItemsPerPage,
-                TextToSearch = "",
+                TextToSearch = buscar,
             };
             string json = JsonConvert.SerializeObject(search);
             StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -114,7 +114,7 @@ namespace App.Presentation
             {
                 _currentPage--;
                 txtPagina.Text = _currentPage.ToString();
-                MostrarProveedores();
+                MostrarProveedores("");
             }
         }
 
@@ -130,20 +130,20 @@ namespace App.Presentation
             {
                 _currentPage = 1;
             }
-            MostrarProveedores();
+            MostrarProveedores("");
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
             _currentPage++;
             txtPagina.Text = _currentPage.ToString();
-            MostrarProveedores();
+            MostrarProveedores("");
         }
 
         private void cbItemsPorPagina_SelectedIndexChanged(object sender, EventArgs e)
         {
             _currentItemsPerPage = int.Parse(cbItemsPorPagina.SelectedItem.ToString()!);
-            MostrarProveedores();
+            MostrarProveedores("");
         }
         private void dgvProveedores_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -175,7 +175,7 @@ namespace App.Presentation
             if (response.IsSuccessStatusCode && eliminacionExitosa == true)
             {
                 MessageBox.Show("Producto eliminado correctamente", "Correcto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                MostrarProveedores();
+                MostrarProveedores("");
             }
             else
             {
@@ -183,6 +183,9 @@ namespace App.Presentation
             }
         }
 
-
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            MostrarProveedores(txtBuscar.Text);
+        }
     }
 }

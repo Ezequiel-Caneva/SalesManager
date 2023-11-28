@@ -266,5 +266,10 @@ namespace App.Presentation
                 MessageBox.Show("No se pudo eliminar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

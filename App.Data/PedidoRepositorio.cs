@@ -23,8 +23,13 @@ namespace App.Data
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
 
 
-            var query = _context.Pedido.Where(p => p.estado == search.TextToSearch);
-                
+            var query = _context.Pedido.Where(p => p.estado == search.TextToSearch || p.estado == search.TextToSearch2).
+               
+                Include(detalle => detalle._cliente).
+                Include(detalle => detalle._factura);
+
+
+
             var count = query.Count();
 
             var response = new Response<Pedido>()

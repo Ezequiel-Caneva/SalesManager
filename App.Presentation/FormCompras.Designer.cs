@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             txt4 = new Label();
             txt3 = new Label();
             txt1 = new Label();
@@ -58,8 +58,8 @@
             detalleCompraBindingSource = new BindingSource(components);
             cbRubro = new ComboBox();
             txt7 = new Label();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
+            btnBuscar = new FontAwesome.Sharp.IconButton();
+            txtBuscar = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvCompras).BeginInit();
             ((System.ComponentModel.ISupportInitialize)detalleCompraBindingSource).BeginInit();
             SuspendLayout();
@@ -270,14 +270,14 @@
             dgvCompras.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvCompras.BorderStyle = BorderStyle.None;
             dgvCompras.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dgvCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dgvCompras.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvCompras.Columns.AddRange(new DataGridViewColumn[] { productoid, nombreproducto, cantidad, preciocompra, proveedorid, proveedor });
             dgvCompras.DataSource = detalleCompraBindingSource;
@@ -287,13 +287,13 @@
             dgvCompras.Name = "dgvCompras";
             dgvCompras.ReadOnly = true;
             dgvCompras.RowHeadersVisible = false;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle4.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle4.SelectionForeColor = Color.White;
+            dgvCompras.RowsDefaultCellStyle = dataGridViewCellStyle4;
             dgvCompras.RowTemplate.Height = 25;
             dgvCompras.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvCompras.Size = new Size(1034, 494);
@@ -367,26 +367,27 @@
             txt7.TabIndex = 70;
             txt7.Text = "Rubro:";
             // 
-            // iconButton2
+            // btnBuscar
             // 
-            iconButton2.FlatStyle = FlatStyle.Popup;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(1218, 6);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(33, 23);
-            iconButton2.TabIndex = 92;
-            iconButton2.UseVisualStyleBackColor = false;
+            btnBuscar.FlatStyle = FlatStyle.Popup;
+            btnBuscar.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
+            btnBuscar.IconColor = Color.White;
+            btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnBuscar.IconSize = 24;
+            btnBuscar.Location = new Point(1218, 6);
+            btnBuscar.Name = "btnBuscar";
+            btnBuscar.Size = new Size(33, 23);
+            btnBuscar.TabIndex = 92;
+            btnBuscar.UseVisualStyleBackColor = false;
+            btnBuscar.Click += btnBuscar_Click;
             // 
-            // textBox1
+            // txtBuscar
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(1002, 6);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 23);
-            textBox1.TabIndex = 91;
+            txtBuscar.BorderStyle = BorderStyle.FixedSingle;
+            txtBuscar.Location = new Point(1002, 6);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(214, 23);
+            txtBuscar.TabIndex = 91;
             // 
             // FormCompras
             // 
@@ -394,8 +395,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1285, 594);
-            Controls.Add(iconButton2);
-            Controls.Add(textBox1);
+            Controls.Add(btnBuscar);
+            Controls.Add(txtBuscar);
             Controls.Add(txt7);
             Controls.Add(dgvCompras);
             Controls.Add(cbItemsPorPagina);
@@ -447,8 +448,8 @@
         private DataGridView dgvCompras;
         private ComboBox cbRubro;
         private Label txt7;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private TextBox textBox1;
+        private FontAwesome.Sharp.IconButton btnBuscar;
+        private TextBox txtBuscar;
         private BindingSource detalleCompraBindingSource;
         private DataGridViewTextBoxColumn productoid;
         private DataGridViewTextBoxColumn nombreproducto;

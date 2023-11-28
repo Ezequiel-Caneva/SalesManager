@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             dgvVentas = new DataGridView();
-            labelcontenedor = new Label();
             txt6 = new Label();
             cbItemsPorPagina = new ComboBox();
             txtPagina = new TextBox();
             btnAnterior = new FontAwesome.Sharp.IconButton();
             btnSiguiente = new FontAwesome.Sharp.IconButton();
+            btnFactura = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
@@ -47,49 +47,40 @@
             dgvVentas.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvVentas.BorderStyle = BorderStyle.None;
             dgvVentas.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
-            dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.White;
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvVentas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVentas.EnableHeadersVisualStyles = false;
             dgvVentas.GridColor = Color.White;
-            dgvVentas.Location = new Point(137, 35);
+            dgvVentas.Location = new Point(34, 35);
             dgvVentas.Name = "dgvVentas";
             dgvVentas.ReadOnly = true;
             dgvVentas.RowHeadersVisible = false;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle8.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = Color.SteelBlue;
-            dataGridViewCellStyle8.SelectionForeColor = Color.White;
-            dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dgvVentas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dgvVentas.RowTemplate.Height = 25;
             dgvVentas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvVentas.Size = new Size(787, 368);
             dgvVentas.TabIndex = 103;
-            // 
-            // labelcontenedor
-            // 
-            labelcontenedor.BackColor = Color.FromArgb(40, 60, 90);
-            labelcontenedor.BorderStyle = BorderStyle.FixedSingle;
-            labelcontenedor.Dock = DockStyle.Left;
-            labelcontenedor.Location = new Point(0, 0);
-            labelcontenedor.Name = "labelcontenedor";
-            labelcontenedor.Size = new Size(131, 538);
-            labelcontenedor.TabIndex = 102;
+            dgvVentas.CellClick += dgvVentas_CellClick;
             // 
             // txt6
             // 
             txt6.BackColor = Color.FromArgb(45, 66, 91);
             txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             txt6.ForeColor = Color.White;
-            txt6.Location = new Point(137, 9);
+            txt6.Location = new Point(12, 9);
             txt6.Name = "txt6";
             txt6.Size = new Size(163, 23);
             txt6.TabIndex = 104;
@@ -100,7 +91,7 @@
             // 
             cbItemsPorPagina.FormattingEnabled = true;
             cbItemsPorPagina.Items.AddRange(new object[] { "5", "10", "15", "20", "25", "50" });
-            cbItemsPorPagina.Location = new Point(903, 419);
+            cbItemsPorPagina.Location = new Point(780, 410);
             cbItemsPorPagina.Name = "cbItemsPorPagina";
             cbItemsPorPagina.Size = new Size(29, 23);
             cbItemsPorPagina.TabIndex = 108;
@@ -109,7 +100,7 @@
             // txtPagina
             // 
             txtPagina.BackColor = SystemColors.ActiveCaption;
-            txtPagina.Location = new Point(827, 418);
+            txtPagina.Location = new Point(704, 409);
             txtPagina.Name = "txtPagina";
             txtPagina.Size = new Size(30, 23);
             txtPagina.TabIndex = 107;
@@ -122,7 +113,7 @@
             btnAnterior.IconColor = Color.Black;
             btnAnterior.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAnterior.IconSize = 20;
-            btnAnterior.Location = new Point(785, 418);
+            btnAnterior.Location = new Point(662, 409);
             btnAnterior.Name = "btnAnterior";
             btnAnterior.Size = new Size(36, 23);
             btnAnterior.TabIndex = 106;
@@ -135,26 +126,41 @@
             btnSiguiente.IconColor = Color.Black;
             btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnSiguiente.IconSize = 20;
-            btnSiguiente.Location = new Point(863, 418);
+            btnSiguiente.Location = new Point(740, 409);
             btnSiguiente.Name = "btnSiguiente";
             btnSiguiente.Size = new Size(34, 23);
             btnSiguiente.TabIndex = 105;
             btnSiguiente.UseVisualStyleBackColor = true;
             btnSiguiente.Click += btnSiguiente_Click;
             // 
+            // btnFactura
+            // 
+            btnFactura.BackColor = Color.FromArgb(45, 66, 91);
+            btnFactura.ForeColor = Color.White;
+            btnFactura.IconChar = FontAwesome.Sharp.IconChar.None;
+            btnFactura.IconColor = Color.Black;
+            btnFactura.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            btnFactura.Location = new Point(827, 35);
+            btnFactura.Name = "btnFactura";
+            btnFactura.Size = new Size(94, 28);
+            btnFactura.TabIndex = 109;
+            btnFactura.Text = "Factura";
+            btnFactura.UseVisualStyleBackColor = false;
+            btnFactura.Click += btnFactura_Click;
+            // 
             // Ventas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
-            ClientSize = new Size(1012, 538);
+            ClientSize = new Size(1047, 538);
+            Controls.Add(btnFactura);
             Controls.Add(cbItemsPorPagina);
             Controls.Add(txtPagina);
             Controls.Add(btnAnterior);
             Controls.Add(btnSiguiente);
             Controls.Add(txt6);
             Controls.Add(dgvVentas);
-            Controls.Add(labelcontenedor);
             Name = "Ventas";
             Text = "Ventas";
             Load += Ventas_Load;
@@ -166,11 +172,11 @@
         #endregion
 
         private DataGridView dgvVentas;
-        private Label labelcontenedor;
         private Label txt6;
         private ComboBox cbItemsPorPagina;
         private TextBox txtPagina;
         private FontAwesome.Sharp.IconButton btnAnterior;
         private FontAwesome.Sharp.IconButton btnSiguiente;
+        private FontAwesome.Sharp.IconButton btnFactura;
     }
 }

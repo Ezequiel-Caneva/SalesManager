@@ -58,8 +58,6 @@
             iconToolStripButton1 = new FontAwesome.Sharp.IconToolStripButton();
             btnFactura = new FontAwesome.Sharp.IconButton();
             btnVer = new FontAwesome.Sharp.IconButton();
-            iconButton2 = new FontAwesome.Sharp.IconButton();
-            textBox1 = new TextBox();
             label1 = new Label();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvPedidos).BeginInit();
@@ -407,28 +405,6 @@
             btnVer.UseVisualStyleBackColor = false;
             btnVer.Click += btnVer_Click;
             // 
-            // iconButton2
-            // 
-            iconButton2.BackColor = Color.FromArgb(45, 66, 91);
-            iconButton2.FlatStyle = FlatStyle.Popup;
-            iconButton2.IconChar = FontAwesome.Sharp.IconChar.MagnifyingGlass;
-            iconButton2.IconColor = Color.White;
-            iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            iconButton2.IconSize = 24;
-            iconButton2.Location = new Point(663, 5);
-            iconButton2.Name = "iconButton2";
-            iconButton2.Size = new Size(31, 23);
-            iconButton2.TabIndex = 92;
-            iconButton2.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Location = new Point(443, 5);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(214, 23);
-            textBox1.TabIndex = 91;
-            // 
             // label1
             // 
             label1.BackColor = Color.FromArgb(40, 60, 90);
@@ -453,8 +429,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1423, 594);
-            Controls.Add(iconButton2);
-            Controls.Add(textBox1);
             Controls.Add(btnVer);
             Controls.Add(btnFactura);
             Controls.Add(btnCancelar);
@@ -499,8 +473,6 @@
         private FontAwesome.Sharp.IconToolStripButton iconToolStripButton1;
         private FontAwesome.Sharp.IconButton btnFactura;
         private FontAwesome.Sharp.IconButton btnVer;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private TextBox textBox1;
         private BindingSource pedidoBindingSource;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn fecha;
