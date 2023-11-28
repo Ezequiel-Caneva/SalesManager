@@ -220,7 +220,10 @@ namespace App.Presentation
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
-
+            monthCalendar1.Visible = false;
+            btnSeleccionar.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
             Search search = new Search()
             {
                 PageIndex = 1,
@@ -295,7 +298,10 @@ namespace App.Presentation
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-
+            monthCalendar1.Visible = false;
+            btnSeleccionar.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
             Search search = new Search()
             {
                 PageIndex = 1,
