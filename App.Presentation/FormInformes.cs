@@ -41,6 +41,8 @@ namespace App.Presentation
 
             monthCalendar1.Visible = false;
             btnSeleccionar.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
         }
 
         private void dgvInformes_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -52,6 +54,8 @@ namespace App.Presentation
         {
             monthCalendar1.Visible = false;
             btnSeleccionar.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
             var result = traerInfomacion();
             var informe = result.Items
             .Where(p => p._vendedor != null)
@@ -79,6 +83,8 @@ namespace App.Presentation
             mostrar = "ventas";
             monthCalendar1.Visible = true;
             btnSeleccionar.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
             DateTime fechaInicio = new DateTime(2023, 1, 1); // Fecha de inicio del período
             DateTime fechaFin = new DateTime(2023, 12, 31);
 
@@ -87,10 +93,11 @@ namespace App.Presentation
                 .Where(p => p._vendedor != null && p.fecha >= fechaInicio && p.fecha <= fechaFin)
                 .Select(p => new
                 {
+                    Fecha = p.fecha.ToString(),
                     VentaId = p.pedidoid,
                     NombreVendedor= p._vendedor?.usuario.usuario,
                     NombreCliente = p._cliente?.nombre,
-
+                    DniCliente = p._cliente?.dni,
                     MontoTotal = p._factura?.montototal,
                 })
                 .OrderByDescending(x => x.VentaId) // Opcional: puedes cambiar a otra propiedad para ordenar
@@ -130,17 +137,20 @@ namespace App.Presentation
                     MessageBox.Show("Por favor, seleccione tanto la fecha de inicio como la de fin.");
                     return;
                 }
-
-                label2.Text = fechaInicio.ToString();
-                label3.Text = fechaFin.ToString();
+                label2.Visible = true;
+                label3.Visible = true;
+               
+               
                 var result = traerInfomacion();
                 var informe = result.Items
                 .Where(p => p._vendedor != null && p.fecha >= fechaInicio && p.fecha <= fechaFin)
                 .Select(p => new
                 {
-                    VentaId = p.pedidoid,
-                    NombreVendedor = p._vendedor?.usuario.usuario,
+                    Fecha = p.fecha.ToString(),
+                    VentaId = p.pedidoid,       
+                    NombreVendedor = p._vendedor?.usuario.usuario,               
                     NombreCliente = p._cliente?.nombre,
+                    DniCliente = p._cliente?.dni,
 
                     MontoTotal = p._factura?.montototal,
                 })
@@ -159,10 +169,12 @@ namespace App.Presentation
             {
                 fechaInicio = e.Start;
                 primeraFechaSeleccionada = true;
+                label2.Text = fechaInicio.ToString();
             }
             else
             {
                 fechaFin = e.Start;
+                label3.Text = fechaFin.ToString();
                 primeraFechaSeleccionada = false;
             }
         }

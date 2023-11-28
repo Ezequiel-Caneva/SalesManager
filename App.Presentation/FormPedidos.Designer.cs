@@ -68,6 +68,8 @@
             // dgvPedidos
             // 
             dgvPedidos.AllowUserToDeleteRows = false;
+            dgvPedidos.AllowUserToResizeColumns = false;
+            dgvPedidos.AllowUserToResizeRows = false;
             dgvPedidos.AutoGenerateColumns = false;
             dgvPedidos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPedidos.BackgroundColor = Color.FromArgb(45, 66, 91);

@@ -46,6 +46,7 @@
             txtasd = new Label();
             txtZona = new TextBox();
             dgvVendedores = new DataGridView();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvVendedores).BeginInit();
             SuspendLayout();
             // 
@@ -220,7 +221,7 @@
             dgvVendedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvVendedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvVendedores.EnableHeadersVisualStyles = false;
-            dgvVendedores.GridColor = Color.SteelBlue;
+            dgvVendedores.GridColor = Color.White;
             dgvVendedores.Location = new Point(322, 38);
             dgvVendedores.Name = "dgvVendedores";
             dgvVendedores.ReadOnly = true;
@@ -244,12 +245,25 @@
             dgvVendedores.Size = new Size(795, 478);
             dgvVendedores.TabIndex = 115;
             // 
+            // label4
+            // 
+            label4.BackColor = Color.FromArgb(45, 66, 91);
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(322, 9);
+            label4.Name = "label4";
+            label4.Size = new Size(149, 23);
+            label4.TabIndex = 116;
+            label4.Text = "Lista de Vendedores";
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // FormUsuarios
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(45, 66, 91);
             ClientSize = new Size(1147, 595);
+            Controls.Add(label4);
             Controls.Add(dgvVendedores);
             Controls.Add(txtZona);
             Controls.Add(txtasd);
@@ -296,5 +310,6 @@
         private Label txtasd;
         private TextBox txtZona;
         private DataGridView dgvVendedores;
+        private Label label4;
     }
 }

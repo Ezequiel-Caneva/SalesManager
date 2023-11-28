@@ -105,6 +105,22 @@ namespace App.Data
             var cliente = _context.Cliente.SingleOrDefault(p => p.dni == search.TextToSearch);
             return cliente;
         }
+        public Response<Solicitud> solicitudesPendientes(Search search)
+        {
+            var skipRows = ((search.PageIndex - 1) * search.PageSize);
+            // Obtén todos los productos sin aplicar filtro
+            var query = _context.Solicutud
+           .Where(detalle => detalle.estado == search.TextToSearch);
+            var count = query.Count();
+            var response = new Response<Solicitud>()
+            {
+                Items = query.Skip(skipRows)
+                             .Take(search.PageSize)
+                             .ToList(),
+                Total = count
+            };
 
+            return response;
+        }
     }
 }

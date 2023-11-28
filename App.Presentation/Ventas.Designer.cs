@@ -43,6 +43,8 @@
             // dgvVentas
             // 
             dgvVentas.AllowUserToDeleteRows = false;
+            dgvVentas.AllowUserToResizeColumns = false;
+            dgvVentas.AllowUserToResizeRows = false;
             dgvVentas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvVentas.BackgroundColor = Color.FromArgb(45, 66, 91);
             dgvVentas.BorderStyle = BorderStyle.None;

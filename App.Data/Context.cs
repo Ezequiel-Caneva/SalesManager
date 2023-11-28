@@ -27,6 +27,7 @@ namespace App.Data
         public DbSet<Cobro> Cobro { get; set; }
         public DbSet<Vendedor> Vendedor { get; set; }
         public DbSet<Promocion> Promocion { get; set; }
+        public DbSet<Solicitud> Solicutud { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configura la cadena de conexión a la base de datos

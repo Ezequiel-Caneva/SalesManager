@@ -104,7 +104,7 @@ namespace App.Presentation
             if (e.RowIndex >= 0)
             {
                 productoid = (int)dgvProductos.Rows[e.RowIndex].Cells["Nro"].Value;
-                txtproductoselec.Text = productoid.ToString();
+               
             }
 
         }
@@ -113,7 +113,7 @@ namespace App.Presentation
             if (e.RowIndex >= 0)
             {
                 _listadoid = (int)dgvLista.Rows[e.RowIndex].Cells["Nro"].Value;
-                txtlistado.Text = _listadoid.ToString();
+                
             }
         }
         private void btnBuscar_Click(object sender, EventArgs e)

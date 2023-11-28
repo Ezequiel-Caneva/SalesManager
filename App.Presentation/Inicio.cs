@@ -98,6 +98,11 @@ namespace App.Presentation
         {
             AbrirFormulario((IconMenuItem)sender, new Ventas());
         }
+        private void menuSolicitudes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario((IconMenuItem)sender, new FormSolicitudes());
+        }
+
         private void AbrirFormulario(IconMenuItem menu, Form formulario)
         {
             if (_menuActivo != null)
@@ -148,6 +153,6 @@ namespace App.Presentation
             }
         }
 
-        
+     
     }
 }

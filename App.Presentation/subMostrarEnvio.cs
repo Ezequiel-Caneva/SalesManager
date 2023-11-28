@@ -47,16 +47,16 @@ namespace App.Presentation
             var jsonToDeserialize2 = response2.Content.ReadAsStringAsync().Result;
             var result2 = JsonConvert.DeserializeObject<Envio>(jsonToDeserialize2);
             var envio = result2;
-            label1.Text = $"Envioid: {envio.envioid} \n" +
-                          $"Condigo de Seguimiento: {envio.codigoseguimiento}\n" +
-                          $"Fecha de envio: {envio.fecha_envio.ToString()}\n" +
-                          $"Fecha de recepcion: {envio.fecha_recepcion.ToString()}\n" +
-                          $"Empresa de transporte: {envio.empresa_transporte}\n" +
-                          $"Cliente: {cliente.nombre}\n" +
-                          $"Direccion: {cliente.direccion}\n" +
-                          $"Telefono: {cliente.telefono}\n" +
-                          $"Ciudad: {cliente.ciudad}\n" +
-                          $"Codigo posta: {cliente.codigopostal}";
+            label11.Text = $"Envioid: {envio.envioid}";
+            label2.Text = $"Condigo de Seguimiento: {envio.codigoseguimiento}";
+            label3.Text = $"Fecha de envio: {envio.fecha_envio.ToString()}";
+            label4.Text = $"Fecha de recepcion: {envio.fecha_recepcion.ToString()}";
+            label5.Text = $"Empresa de transporte: {envio.empresa_transporte}";
+            label6.Text = $"Cliente: {cliente.nombre}";
+            label7.Text = $"Direccion: {cliente.direccion}";
+            label8.Text = $"Telefono: {cliente.telefono}";
+            label9.Text = $"Ciudad: {cliente.ciudad}";
+            label10.Text = $"Codigo posta: {cliente.codigopostal}";
         }
 
     }

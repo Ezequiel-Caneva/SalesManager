@@ -33,15 +33,16 @@
             menuVentasMostrador = new FontAwesome.Sharp.IconMenuItem();
             menuPedidos = new FontAwesome.Sharp.IconMenuItem();
             menuVentas = new FontAwesome.Sharp.IconMenuItem();
+            menuVenta = new FontAwesome.Sharp.IconMenuItem();
             menuCompras = new FontAwesome.Sharp.IconMenuItem();
             menuClientes = new FontAwesome.Sharp.IconMenuItem();
             menuProveedores = new FontAwesome.Sharp.IconMenuItem();
             menuStock = new FontAwesome.Sharp.IconMenuItem();
+            menuSolicitudes = new FontAwesome.Sharp.IconMenuItem();
             menuInformes = new FontAwesome.Sharp.IconMenuItem();
             menuUsuarios = new FontAwesome.Sharp.IconMenuItem();
             menuStrip2 = new MenuStrip();
             contenedor = new Panel();
-            menuVenta = new FontAwesome.Sharp.IconMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,17 +61,17 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ButtonHighlight;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuVenta, menuCompras, menuClientes, menuProveedores, menuStock, menuInformes, menuUsuarios });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { menuVentasMostrador, menuPedidos, menuVentas, menuVenta, menuCompras, menuClientes, menuProveedores, menuStock, menuSolicitudes, menuInformes, menuUsuarios });
             menuStrip1.Location = new Point(0, 58);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(1271, 73);
+            menuStrip1.Size = new Size(1365, 73);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
             // 
             // menuVentasMostrador
             // 
             menuVentasMostrador.AutoSize = false;
-            menuVentasMostrador.IconChar = FontAwesome.Sharp.IconChar.ShoppingCart;
+            menuVentasMostrador.IconChar = FontAwesome.Sharp.IconChar.CashRegister;
             menuVentasMostrador.IconColor = Color.Black;
             menuVentasMostrador.IconFont = FontAwesome.Sharp.IconFont.Auto;
             menuVentasMostrador.IconSize = 50;
@@ -108,6 +109,20 @@
             menuVentas.Text = "Cobros";
             menuVentas.TextImageRelation = TextImageRelation.ImageAboveText;
             menuVentas.Click += menuVentas_Click;
+            // 
+            // menuVenta
+            // 
+            menuVenta.AutoSize = false;
+            menuVenta.IconChar = FontAwesome.Sharp.IconChar.CommentDollar;
+            menuVenta.IconColor = Color.Black;
+            menuVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuVenta.IconSize = 50;
+            menuVenta.ImageScaling = ToolStripItemImageScaling.None;
+            menuVenta.Name = "menuVenta";
+            menuVenta.Size = new Size(122, 69);
+            menuVenta.Text = "Ventas";
+            menuVenta.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuVenta.Click += menuVenta_Click;
             // 
             // menuCompras
             // 
@@ -165,6 +180,20 @@
             menuStock.TextImageRelation = TextImageRelation.ImageAboveText;
             menuStock.Click += menuStock_Click;
             // 
+            // menuSolicitudes
+            // 
+            menuSolicitudes.AutoSize = false;
+            menuSolicitudes.IconChar = FontAwesome.Sharp.IconChar.Bell;
+            menuSolicitudes.IconColor = Color.Black;
+            menuSolicitudes.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            menuSolicitudes.IconSize = 50;
+            menuSolicitudes.ImageScaling = ToolStripItemImageScaling.None;
+            menuSolicitudes.Name = "menuSolicitudes";
+            menuSolicitudes.Size = new Size(122, 69);
+            menuSolicitudes.Text = "Solicitudes";
+            menuSolicitudes.TextImageRelation = TextImageRelation.ImageAboveText;
+            menuSolicitudes.Click += menuSolicitudes_Click;
+            // 
             // menuInformes
             // 
             menuInformes.AutoSize = false;
@@ -200,7 +229,7 @@
             menuStrip2.Location = new Point(0, 0);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.RightToLeft = RightToLeft.Yes;
-            menuStrip2.Size = new Size(1271, 58);
+            menuStrip2.Size = new Size(1365, 58);
             menuStrip2.TabIndex = 2;
             menuStrip2.Text = "menuStrip2";
             // 
@@ -210,28 +239,14 @@
             contenedor.Dock = DockStyle.Fill;
             contenedor.Location = new Point(0, 131);
             contenedor.Name = "contenedor";
-            contenedor.Size = new Size(1271, 608);
+            contenedor.Size = new Size(1365, 608);
             contenedor.TabIndex = 3;
-            // 
-            // menuVenta
-            // 
-            menuVenta.AutoSize = false;
-            menuVenta.IconChar = FontAwesome.Sharp.IconChar.Receipt;
-            menuVenta.IconColor = Color.Black;
-            menuVenta.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            menuVenta.IconSize = 50;
-            menuVenta.ImageScaling = ToolStripItemImageScaling.None;
-            menuVenta.Name = "menuVenta";
-            menuVenta.Size = new Size(122, 69);
-            menuVenta.Text = "Ventas";
-            menuVenta.TextImageRelation = TextImageRelation.ImageAboveText;
-            menuVenta.Click += menuVenta_Click;
             // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1271, 739);
+            ClientSize = new Size(1365, 739);
             Controls.Add(contenedor);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
@@ -270,5 +285,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private FontAwesome.Sharp.IconMenuItem menuStock;
         private FontAwesome.Sharp.IconMenuItem menuVenta;
+        private FontAwesome.Sharp.IconMenuItem menuSolicitudes;
     }
 }

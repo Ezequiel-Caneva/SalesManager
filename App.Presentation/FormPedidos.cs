@@ -68,6 +68,7 @@ namespace App.Presentation
             btnConfirmar.Visible = false;
             btnCancelar.Visible = false;
             btnDespachar.Visible = true;
+            btnVer.Visible = false;
             btnFactura.Visible = true;
             dgvDetalle.Visible = false;
             filtro = "Confirmado";
@@ -427,6 +428,7 @@ namespace App.Presentation
             BindingList<Pedido> bindingList = new BindingList<Pedido>(result.Items);
             dgvPedidos.DataSource = bindingList;
             dgvPedidos.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            dgvPedidos.AllowUserToAddRows = false;
         }
         public Boolean CambiarEstado(Pedido pedido)
         {

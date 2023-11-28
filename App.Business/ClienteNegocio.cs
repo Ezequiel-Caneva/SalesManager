@@ -35,6 +35,9 @@ namespace App.Business
         {
             return _clienteRepositorio.TraerCliente(search);
         }
-
+        public Response<Solicitud> solicitudesPendientes(Search search)
+        {
+            return _clienteRepositorio.solicitudesPendientes(search);
+        }
     }
 }

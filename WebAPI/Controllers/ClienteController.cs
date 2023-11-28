@@ -39,6 +39,12 @@ namespace WebAPI.Controllers
         {
             return _clienteNegocio.TraerCliente(search);
         }
+        [HttpPost("solicitudesPendientes")]
+        public Response<Solicitud> solicitudesPendientes(Search search)
+        {
+            return _clienteNegocio.solicitudesPendientes(search);
+        }
+
 
 
 
