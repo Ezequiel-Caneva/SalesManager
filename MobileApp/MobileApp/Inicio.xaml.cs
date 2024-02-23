@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using MobileApp.App.Entities;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Microsoft.Maui.Controls.Xaml;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace MobileApp
 {
@@ -26,7 +26,7 @@ namespace MobileApp
             string username = usernameEntry.Text;
             string password = passwordEntry.Text;
 
-            var request = new Login
+            var request = new LoginRequest
             {
                 Username = username,
                 Password = password

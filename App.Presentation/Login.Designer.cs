@@ -48,6 +48,7 @@
             label1.Name = "label1";
             label1.Size = new Size(261, 330);
             label1.TabIndex = 0;
+            label1.Click += label1_Click;
             // 
             // label2
             // 
@@ -60,7 +61,6 @@
             label2.Size = new Size(214, 31);
             label2.TabIndex = 1;
             label2.Text = "MotoPartes Express";
-            
             // 
             // iconPictureBox1
             // 
