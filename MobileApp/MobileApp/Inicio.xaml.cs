@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls.Xaml;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui;
+using App.Entities;
+using Newtonsoft.Json;
 
 namespace MobileApp
 {
@@ -32,18 +34,12 @@ namespace MobileApp
                 Password = password
             };
 
-            HttpResponseMessage response = await _client.PostAsJsonAsync("nombre_del_endpoint_para_iniciar_sesion", request);
-
+            string data = JsonConvert.SerializeObject(request);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Usuario/Login", content).Result;
             if (response.IsSuccessStatusCode)
             {
-                // El inicio de sesión fue exitoso, redirige a la página principal
-                var usuario = await response.Content.ReadAsAsync<Usuario>();
-                await Navigation.PushAsync(new PaginaPrincipal());
-            }
-            else
-            {
-                // El inicio de sesión falló, muestra un mensaje de error al usuario
-                await DisplayAlert("Error", "Nombre de usuario o contraseña incorrectos", "OK");
+              
             }
         }
     }
