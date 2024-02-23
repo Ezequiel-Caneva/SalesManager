@@ -71,9 +71,17 @@ namespace App.Business
         {
             return _stockRepositorio.Descontar(search);
         }
-           public Boolean SacarPromocion(Search search)
+        public Boolean SacarPromocion(Search search)
         {
             return _stockRepositorio.SacarPromocion(search);
+        }
+        public List<Producto> ObtenerProductosWeb()
+        {
+            return _stockRepositorio.ObtenerProductosWeb();
+        }
+        public List<Promocion> ObtenerPromocionWeb() 
+        {
+            return _stockRepositorio.ObtenerPromocionWeb();
         }
     }
 }

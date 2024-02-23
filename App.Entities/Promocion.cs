@@ -18,5 +18,6 @@ namespace App.Entities
         public int descuento { get; set; }
         public decimal preciodescuento { get; set; }
         public Boolean estado { get; set; }
+        public Producto? _producto { get; set; }
     }
 }

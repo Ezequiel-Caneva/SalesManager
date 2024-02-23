@@ -1,5 +1,6 @@
 ﻿using App.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -181,6 +182,35 @@ namespace App.Data
             }
             return false;
 
+        }
+        public List<Producto> ObtenerProductosWeb()
+        {
+            var Productos = ObtenerProductos();
+            var productosweb = new List<Producto >();
+            foreach (Producto producto in Productos)
+            {
+                {
+                    if (producto.path != null)
+                    {
+                       productosweb.Add(producto);
+                    }
+                }
+            }
+            return productosweb;
+        }
+        public List<Promocion> ObtenerPromocionWeb() 
+        {
+            var query = _context.Promocion
+                        .Include(p => p._producto);
+            var promocionWeb = new List<Promocion>();
+            foreach(Promocion promocion in query)
+            {
+                if(promocion._producto.promocion == true)
+                {
+                    promocionWeb.Add(promocion);    
+                }
+            }
+            return promocionWeb;
         }
     }
 }

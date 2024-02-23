@@ -123,5 +123,17 @@ namespace App.Data
 
             return response;
         }
+        public Boolean Solicitud(Solicitud Solicitud)
+        {
+            if (Solicitud != null)
+            {
+                Solicitud.estado = "Pendiente";
+                _context.Solicutud.Add(Solicitud);
+                _context.SaveChanges();
+                return true;
+            }
+            else
+                return false;
+        }
     }
 }

@@ -61,8 +61,6 @@ namespace WebAPI.Controllers
             return _stocknegocio.EliminarRubro(search);
         }
 
-
-
         //Mostar rubros y productos en dgv
         [HttpPost("MostrarProducto")]
         public Response<Producto> MostrarProducto(Search search)
@@ -90,7 +88,15 @@ namespace WebAPI.Controllers
         {
             return _stocknegocio.SacarPromocion(search);
         }
-
-
+        [HttpGet("ObtenerProductosWeb")]
+        public List<Producto> ObtenerProductosWeb()
+        {
+            return _stocknegocio.ObtenerProductosWeb();
+        }
+        [HttpGet("ObtenerPromocionWeb")]
+         public List<Promocion> ObtenerPromocionWeb()
+        {
+            return _stocknegocio.ObtenerPromocionWeb();
+        }
     }
 }

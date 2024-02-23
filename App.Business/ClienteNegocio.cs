@@ -39,5 +39,10 @@ namespace App.Business
         {
             return _clienteRepositorio.solicitudesPendientes(search);
         }
+        public Boolean Solicitud(Solicitud Solicitud)
+        {
+            return _clienteRepositorio.Solicitud(Solicitud);
+
+        }
     }
 }

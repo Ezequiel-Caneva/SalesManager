@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
         {
             return _clienteNegocio.EditarCliente(editarCliente);
         }
-     
+
         [HttpPost("MostrarCliente")]
         public Response<Cliente> MostrarCliente(Search search)
         {
@@ -44,9 +44,11 @@ namespace WebAPI.Controllers
         {
             return _clienteNegocio.solicitudesPendientes(search);
         }
+        [HttpPost("Solicitud")]
+        public Boolean Solicitud(Solicitud Solicitud)
+        {
+            return _clienteNegocio.Solicitud(Solicitud);
 
-
-
-
+        }
     }
 }

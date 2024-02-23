@@ -130,7 +130,10 @@ namespace App.Presentation
                 {
                     PageIndex = _currentPage,
                     PageSize = _currentItemsPerPage,
-                    TextToSearch = pedidoId.ToString()
+                    TextToSearch = pedidoId.ToString(),
+                     TextToSearch2 = "",
+                     num = 0
+
                 };
                 string json = JsonConvert.SerializeObject(search);
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");

@@ -31,7 +31,7 @@ namespace App.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             // Configura la cadena de conexión a la base de datos
-            string connectionString = "workstation id=Moto-Top.mssql.somee.com;packet size=4096;user id=Joaquin0109_SQLLogin_1;pwd=be1r74uey8;data source=Moto-Top.mssql.somee.com;persist security info=False;initial catalog=Moto-Top;TrustServerCertificate=True;";
+            string connectionString = "Persist Security Info=True;Initial Catalog=MOTO_PARTES_EXPRESS;Data Source=.; Integrated Security=True;TrustServerCertificate=True;";
             optionsBuilder.UseSqlServer(connectionString);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -74,6 +74,10 @@ namespace App.Data
             .HasOne(p => p._pedido)
            .WithMany()
            .HasForeignKey(p => p.pedido);
+            modelBuilder.Entity<Promocion>()
+            .HasOne(p => p._producto)
+           .WithMany()
+           .HasForeignKey(p => p.productoid);
 
 
 
