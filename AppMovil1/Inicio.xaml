@@ -1,0 +1,12 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMovil1.Inicio">
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="20">
+        <Entry x:Name="usernameEntry" Placeholder="Nombre de usuario" />
+        <Entry x:Name="passwordEntry" Placeholder="Contraseña" IsPassword="True" />
+        <Button Text="Iniciar sesión" Clicked="OnLoginButtonClicked" />
+        <Label Text="¿No tienes una cuenta? Regístrate aquí" TextColor="Blue" FontAttributes="Italic" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" />
+    </StackLayout>
+
+</ContentPage>
