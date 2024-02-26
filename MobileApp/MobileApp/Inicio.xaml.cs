@@ -27,19 +27,30 @@ namespace MobileApp
         {
             string username = usernameEntry.Text;
             string password = passwordEntry.Text;
-
             var request = new LoginRequest
             {
-                Username = username,
-                Password = password
+                usuario = username,
+                contrasenia = password
             };
-
             string data = JsonConvert.SerializeObject(request);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             HttpResponseMessage response = _client.PostAsync($"{_client.BaseAddress}/Usuario/Login", content).Result;
             if (response.IsSuccessStatusCode)
             {
-              
+                var jsonToDeserialize = await response.Content.ReadAsStringAsync();
+                var usuarioLogeado = JsonConvert.DeserializeObject<Usuario>(jsonToDeserialize);
+                if (usuarioLogeado != null)
+                {
+                    await Navigation.PushAsync(new Menu(usuarioLogeado));
+                }
+                else
+                {                 
+                    await DisplayAlert("Error", "El usuario obtenido es nulo", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Error", "Inicio de sesión fallido", "OK");
             }
         }
     }
