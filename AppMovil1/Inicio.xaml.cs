@@ -25,11 +25,9 @@ public partial class Inicio : ContentPage
                 usuario = username,
                 contrasenia = password
             };
-
             string data = JsonConvert.SerializeObject(request);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/Usuario/Login", content);
-
             if (response.IsSuccessStatusCode)
             {
                 var jsonToDeserialize = await response.Content.ReadAsStringAsync();
