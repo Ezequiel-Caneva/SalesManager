@@ -25,8 +25,5 @@ namespace App.Entities
         public Factura? _factura { get; set; }
         [NotMapped]
         public Cliente? _cliente {  get; set; }
-
-
-
     }
 }

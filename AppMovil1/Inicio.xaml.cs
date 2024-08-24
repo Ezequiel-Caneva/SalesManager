@@ -6,7 +6,7 @@ namespace AppMovil1;
 
 public partial class Inicio : ContentPage
 {
-      private readonly Uri _baseAddress = new Uri("https://localhost:7198/api");
+      private readonly Uri _baseAddress = new Uri("https://11kd2wkz-5022.brs.devtunnels.ms");
        private readonly HttpClient _client;
     public Inicio()
     {
@@ -27,7 +27,8 @@ public partial class Inicio : ContentPage
             };
             string data = JsonConvert.SerializeObject(request);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/Usuario/Login", content);
+            HttpResponseMessage response = await _client.PostAsync($"{_client.BaseAddress}/api/Usuario/Login", content);
+
             if (response.IsSuccessStatusCode)
             {
                 var jsonToDeserialize = await response.Content.ReadAsStringAsync();

@@ -219,6 +219,31 @@ namespace App.Data
                 return true;
 
         }
+        public Boolean AgregarPedido2(Pedido pedido)
+        {
+
+            _context.Pedido.Add(pedido);         
+            _context.SaveChanges();
+
+            int pedidoidGenerado = pedido.pedidoid;
+            foreach (var detalleventa in pedido._venta)
+            {
+                detalleventa.pedido = pedidoidGenerado;
+                detalleventa._producto = null;
+                _context.detalleVenta.Add(detalleventa);
+
+            }
+
+            foreach (var detalleventa in pedido._venta)
+            {
+                var producto = _context.Producto.FirstOrDefault(u => u.productoid == detalleventa.producto);
+                producto.stock = producto.stock - detalleventa.cantidad;
+            }
+            _context.SaveChanges();
+
+            return true;
+
+        }
 
     }
    

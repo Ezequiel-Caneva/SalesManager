@@ -59,6 +59,11 @@ namespace App.Business
             return _pedidoRepositorio.AgregarPedido(pedido);
 
         }
+        public Boolean AgregarPedido2(Pedido pedido)
+        {
+            return _pedidoRepositorio.AgregarPedido2(pedido);
+
+        }
 
     }
 }
