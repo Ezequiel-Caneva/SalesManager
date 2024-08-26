@@ -24,6 +24,7 @@ namespace App.Entities
         [NotMapped]
         public Producto? _producto { set; get; } = null;
         [NotMapped]
+        [JsonIgnore]
         public Pedido? _pedido { set; get; } = null;
 
 

@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace App.Entities
@@ -18,6 +19,9 @@ namespace App.Entities
         public int? factura { get; set; }    
         public int? vendedor { get; set; }   
         public int? cliente { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
         public Vendedor? _vendedor { get; set; }
         [NotMapped]
         public List<DetalleVenta>? _venta {  get; set; } 

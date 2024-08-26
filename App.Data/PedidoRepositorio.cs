@@ -102,20 +102,42 @@ namespace App.Data
             };
             return response;
         }
-    
+
         public Pedido ObtenerPedido(Search search)
         {
-            var pedido = _context.Pedido
-                     .Include(p => p._factura)
-                     .Include(p=>p._cliente)
-                     .SingleOrDefault(p => p.pedidoid == Convert.ToInt32(search.TextToSearch));
-            var detalles = _context.detalleVenta
-             .Where(detalle => detalle.pedido == pedido.pedidoid)
-              .Include(detalle => detalle._producto)
-              .ToList();
-            pedido._venta = detalles;
+            Pedido pedido;
+
+            try
+            {
+                // Buscar el pedido por ID
+                pedido = _context.Pedido
+                    .Include(p => p._factura)
+                    .Include(p => p._cliente)
+                    .SingleOrDefault(p => p.pedidoid == Convert.ToInt32(search.TextToSearch));
+
+                if (pedido == null)
+                {
+                    throw new Exception("Pedido no encontrado");
+                }
+
+                // Cargar los detalles de venta asociados
+                var detalles = _context.detalleVenta
+                    .Where(detalle => detalle.pedido == pedido.pedidoid)
+                    .Include(detalle => detalle._producto)
+                    .ToList();
+
+                // Asignar los detalles de venta al pedido
+                pedido._venta = detalles;
+            }
+            catch (Exception ex)
+            {
+                // Manejo de la excepción
+                throw new Exception("Error al obtener el pedido: " + ex.Message, ex);
+            }
+
             return pedido;
         }
+
         public Boolean Confirmar(Pedido pedido)
         {
 
