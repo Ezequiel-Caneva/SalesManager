@@ -46,7 +46,16 @@ switch (opcion)
         string numerorol = Console.ReadLine();
         int rol = int.Parse(numerorol);
 
-        usuarioBusiness.CrearUsuario(dni, username, password, email, rol);
+
+        Usuario usuario = new Usuario();
+
+        usuario.dni = dni;
+        usuario.usuario = username;
+        usuario.rol = rol;
+        usuario.email = email;
+        usuario.contraseniahash = password;
+
+        usuarioBusiness.CrearUsuario(usuario);
 
 
         Console.WriteLine("Cuenta de usuario creada con éxito.");
