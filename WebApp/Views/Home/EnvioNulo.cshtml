@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "Layout";
+    ViewBag.Title = "Detalles del Envío";
+}
+
+<div class="container mt-4">
+    <h3>@ViewBag.Title</h3>
+
+    <div class="alert alert-info">
+        <h5>Detalles del Envío</h5>
+        <p>¡Todavía no se ha despachado tu pedido!</p>
+    </div>
+
+    <a href="@Url.Action("Index")" class="btn btn-primary mt-3">Volver a Pedidos</a>
+</div>

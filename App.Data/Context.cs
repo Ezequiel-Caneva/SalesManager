@@ -78,7 +78,8 @@ namespace App.Data
             .HasOne(p => p._producto)
            .WithMany()
            .HasForeignKey(p => p.productoid);
-
+            modelBuilder.Entity<Envio>()
+      
 
 
         }

@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model App.Entities.Response<App.Entities.Pedido>
+
+@{
+    Layout = "Layout";
+    ViewBag.Title = "Pedidos";
+}
+
+<div class="container mt-4">
+    <h3>@ViewBag.Title</h3>
+
+    @if (Model != null && Model.Items.Count > 0)
+    {
+        <div class="row">
+            @foreach (var pedido in Model.Items)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="card-title">Nro Pedido: @pedido.pedidoid</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Estado:</strong> @pedido.estado</p>
+                            <p><strong>Fecha:</strong> @pedido.fecha?.ToString("dd/MM/yyyy HH:mm")</p>
+                            <p><strong>Factura:</strong> @pedido.factura</p>
+                            @if (pedido.estado == "Despachado")
+                            {
+                                <a href="@Url.Action("DetalleEnvio", new { pedidoId = pedido.pedidoid })" class="btn btn-primary">Ver Detalle de Envío</a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>No se encontraron pedidos para los datos proporcionados.</p>
+    }
+</div>

@@ -82,5 +82,13 @@ namespace App.Business
         {
             return await _pedidoRepositorio.ActualizarEstadoPedido(pedidoId, nuevoEstado);
         }
+        public Response<Pedido> MostrarPedidosCliente(Search search)
+        {
+            return _pedidoRepositorio.MostrarPedidosCliente(search);
+        }
+        public async Task<Envio> ObtenerDetalleEnvioPorPedido(int pedidoid)
+        {
+            return await _pedidoRepositorio.ObtenerDetalleEnvioPorPedido(pedidoid);
+        }
     }
 }

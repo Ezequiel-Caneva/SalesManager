@@ -42,6 +42,26 @@ namespace App.Data
 
             return response;
         }
+        public Response<Pedido> MostrarPedidosCliente(Search search)
+        {
+
+
+            var cliente = _context.Cliente.FirstOrDefault(u => u.dni == search.TextToSearch && u.clienteid == search.num);
+          
+            var query = _context.Pedido.Where(p => p.cliente == cliente.clienteid).
+
+                Include(detalle => detalle._cliente);
+               
+            var count = query.Count();
+
+            var response = new Response<Pedido>()
+            {
+                Items = query.ToList(),
+                Total = count
+            };
+
+            return response;
+        }
         public Response<Pedido> GetPedidosPorVendedor(Search search)
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
@@ -212,6 +232,7 @@ namespace App.Data
             var envio= _context.Envio.FirstOrDefault(u => u.pedido == Convert.ToInt32(search.TextToSearch));
             return envio;
         }
+    
         public Boolean AgregarPedido(Pedido pedido)
         {
         
@@ -302,6 +323,12 @@ namespace App.Data
             _context.Set<Pedido>().Update(pedido);
             await _context.SaveChangesAsync();
             return true;
+        }
+        public async Task<Envio> ObtenerDetalleEnvioPorPedido(int pedidoid)
+        {
+            return await _context.Envio
+                                 .Where(e => e.pedido == pedidoid)
+                                 .FirstOrDefaultAsync();
         }
 
     }

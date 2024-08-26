@@ -1,0 +1,24 @@
+﻿@model App.Entities.Envio
+
+@{
+    Layout = "Layout";
+    ViewBag.Title = "Detalle del Envío";
+}
+
+<div class="container mt-4">
+    <h3>@ViewBag.Title</h3>
+
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="card-title">Detalles del Envío</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Código de Seguimiento:</strong> @Model.codigoseguimiento</p>
+            <p><strong>Fecha de Envío:</strong> @Model.fecha_envio.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Fecha de Recepción:</strong> @Model.fecha_recepcion.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Empresa de Transporte:</strong> @Model.empresa_transporte</p>
+        </div>
+    </div>
+
+    <a href="@Url.Action("Index")" class="btn btn-primary mt-3">Volver a Pedidos</a>
+</div>

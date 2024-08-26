@@ -101,5 +101,20 @@ namespace WebAPI.Controllers
             var result = await _pedidoNegocio.ActualizarCantidadProducto(request.PedidoId, request.ProductoId, request.NuevaCantidad);
             return Ok(result);
         }
+        [HttpPost("SeguirEnvioCliente")]
+        public Response<Pedido> MostrarPedidosCliente(Search search)
+        {
+            return _pedidoNegocio.MostrarPedidosCliente(search);
+        }
+        [HttpGet("DetallesEnvio/{pedidoid}")]
+        public async Task<IActionResult> ObtenerDetallesEnvio(int pedidoid)
+        {
+            var envio = await _pedidoNegocio.ObtenerDetalleEnvioPorPedido(pedidoid);
+            if (envio == null)
+            {
+                return NotFound("Envío no encontrado.");
+            }
+            return Ok(envio);
+        }
     }
 }
