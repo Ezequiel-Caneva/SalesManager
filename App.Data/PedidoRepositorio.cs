@@ -42,6 +42,26 @@ namespace App.Data
 
             return response;
         }
+        public Response<Pedido> GetPedidosPorVendedor(Search search)
+        {
+            var skipRows = ((search.PageIndex - 1) * search.PageSize);
+
+            var query = _context.Pedido
+                .Where(p => p.vendedor == Convert.ToInt32(search.TextToSearch))                
+                .ToList();
+
+            var count = query.Count();
+
+            var response = new Response<Pedido>()
+            {
+                Items = query.Skip(skipRows)
+                             .Take(search.PageSize)
+                             .ToList(),
+                Total = count
+            };
+            return response;
+        }
+
         public Response<DetalleVenta> DetallePedido(Search search)
         {
             var skipRows = ((search.PageIndex - 1) * search.PageSize);
@@ -76,7 +96,6 @@ namespace App.Data
             pedido._venta = detalles;
             return pedido;
         }
-     
         public Boolean Confirmar(Pedido pedido)
         {
 
@@ -237,12 +256,52 @@ namespace App.Data
             foreach (var detalleventa in pedido._venta)
             {
                 var producto = _context.Producto.FirstOrDefault(u => u.productoid == detalleventa.producto);
-                producto.stock = producto.stock - detalleventa.cantidad;
+                
             }
             _context.SaveChanges();
 
             return true;
 
+        }
+
+        public async Task<bool> ActualizarCantidadProducto(int pedidoId, int productoId, int nuevaCantidad)
+        {
+            var detalleVenta = await _context.Set<DetalleVenta>()
+                .FirstOrDefaultAsync(dv => dv.pedido == pedidoId && dv.producto == productoId);
+
+            if (detalleVenta == null)
+                return false;
+
+            detalleVenta.cantidad = nuevaCantidad;
+            _context.Set<DetalleVenta>().Update(detalleVenta);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> EliminarProductoDelPedido(int pedidoId, int productoId)
+        {
+            var detalleVenta = await _context.Set<DetalleVenta>()
+                .FirstOrDefaultAsync(dv => dv.pedido == pedidoId && dv.producto == productoId);
+
+            if (detalleVenta == null)
+                return false;
+
+            _context.Set<DetalleVenta>().Remove(detalleVenta);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> ActualizarEstadoPedido(int pedidoId, string nuevoEstado)
+        {
+            var pedido = await _context.Set<Pedido>().FindAsync(pedidoId);
+
+            if (pedido == null)
+                return false;
+
+            pedido.estado = nuevoEstado;
+            _context.Set<Pedido>().Update(pedido);
+            await _context.SaveChangesAsync();
+            return true;
         }
 
     }

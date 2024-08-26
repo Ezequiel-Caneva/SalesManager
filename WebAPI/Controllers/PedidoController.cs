@@ -29,13 +29,13 @@ namespace WebAPI.Controllers
         public Pedido ObtenerPedido(Search search)
         {
             return _pedidoNegocio.ObtenerPedido(search);
-        }  
+        }
         [HttpPost("ObtenerFactura")]
         public Pedido ObtenerFactura(Search search)
         {
             return _pedidoNegocio.ObtenerFactura(search);
         }
-        [HttpPost("Rechazado")] 
+        [HttpPost("Rechazado")]
         public Boolean Rechazar(Pedido pedido)
         {
             return _pedidoNegocio.Rechazar(pedido);
@@ -51,7 +51,7 @@ namespace WebAPI.Controllers
             return _pedidoNegocio.Rechazar(pedido);
         }
         [HttpPost("EnvioNuevo")]
-        public Boolean EnvioNuevo(Envio envioNuevo) 
+        public Boolean EnvioNuevo(Envio envioNuevo)
         {
             return _pedidoNegocio.EnvioNuevo(envioNuevo);
         }
@@ -75,6 +75,31 @@ namespace WebAPI.Controllers
         {
             return _pedidoNegocio.AgregarPedido2(pedido);
         }
+        [HttpPost("GetPedidosPorVendedor")]
+        public Response<Pedido> GetPedidosPorVendedor(Search search)
+        {
+            return _pedidoNegocio.GetPedidosPorVendedor(search);
+        }
+        // Nuevo endpoint para eliminar producto del pedido
+        [HttpPost("EliminarProductoDelPedido")]
+        public async Task<IActionResult> EliminarProductoDelPedido([FromBody] EliminarProductoRequest request)
+        {
+            var result = await _pedidoNegocio.EliminarProductoDelPedido(request.PedidoId, request.ProductoId);
+            return Ok(result);
+        }
 
+        [HttpPost("ActualizarEstadoPedido")]
+        public async Task<IActionResult> ActualizarEstadoPedido([FromBody] ActualizarEstadoRequest request)
+        {
+            var result = await _pedidoNegocio.ActualizarEstadoPedido(request.PedidoId, request.NuevoEstado);
+            return Ok(result);
+        }
+
+        [HttpPut("ActualizarCantidadProducto")]
+        public async Task<IActionResult> ActualizarCantidadProducto([FromBody] ActualizarCantidadRequest request)
+        {
+            var result = await _pedidoNegocio.ActualizarCantidadProducto(request.PedidoId, request.ProductoId, request.NuevaCantidad);
+            return Ok(result);
+        }
     }
 }

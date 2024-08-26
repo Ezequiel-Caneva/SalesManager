@@ -64,6 +64,23 @@ namespace App.Business
             return _pedidoRepositorio.AgregarPedido2(pedido);
 
         }
+        public Response<Pedido> GetPedidosPorVendedor(Search search)
+        {
+            return _pedidoRepositorio.GetPedidosPorVendedor(search);
+        }
+        public async Task<bool> ActualizarCantidadProducto(int pedidoId, int productoId, int nuevaCantidad)
+        {
+            return await _pedidoRepositorio.ActualizarCantidadProducto(pedidoId, productoId, nuevaCantidad);
+        }
 
+        public async Task<bool> EliminarProductoDelPedido(int pedidoId, int productoId)
+        {
+            return await _pedidoRepositorio.EliminarProductoDelPedido(pedidoId, productoId);
+        }
+
+        public async Task<bool> ActualizarEstadoPedido(int pedidoId, string nuevoEstado)
+        {
+            return await _pedidoRepositorio.ActualizarEstadoPedido(pedidoId, nuevoEstado);
+        }
     }
 }

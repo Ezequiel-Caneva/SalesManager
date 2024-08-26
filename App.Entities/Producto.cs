@@ -20,6 +20,7 @@ namespace App.Entities
         public int rubro { get; set; }
         public bool? promocion { get; set; }
         public string? path { get; set; }
+        [NotMapped]
         public Rubro? _Rubro { get; set; }
 
         [NotMapped]
