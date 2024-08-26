@@ -11,7 +11,7 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly Uri _baseAddress = new Uri("https://localhost:7198/api");
+        private readonly Uri _baseAddress = new Uri("http://mototopAPI.somee.com/api");
         private readonly HttpClient _client;
 
         public HomeController(ILogger<HomeController> logger)
@@ -25,6 +25,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
+   
         [Route("catalogo")]
         public IActionResult Catalogo()
         {
@@ -112,6 +113,7 @@ namespace WebApp.Controllers
             return View();
         }
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> ConsultarEnvio(string dni, int clienteid)
         {
             var search = new
@@ -123,27 +125,43 @@ namespace WebApp.Controllers
                 PageSize = 20
             };
 
-            var response = await _client.PostAsJsonAsync(_client.BaseAddress + "/Pedido/SeguirEnvioCliente", search);
-
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var jsonResponse = await response.Content.ReadAsStringAsync();
-                var pedidos = JsonConvert.DeserializeObject<Response<Pedido>>(jsonResponse);
+                var response = await _client.PostAsJsonAsync(_client.BaseAddress + "/Pedido/SeguirEnvioCliente", search);
 
-                // Verifica que la respuesta no esté vacía
-                if (pedidos != null && pedidos.Items.Count > 0)
+                if (response.IsSuccessStatusCode)
                 {
-                    return View("Pedidos", pedidos);
+                    var jsonResponse = await response.Content.ReadAsStringAsync();
+                    var pedidos = JsonConvert.DeserializeObject<Response<Pedido>>(jsonResponse);
+
+                    if (pedidos != null && pedidos.Items.Count > 0)
+                    {
+                        return View("Pedidos", pedidos);
+                    }
+                    else
+                    {
+                        ViewBag.Message = "No se encontraron pedidos para los datos proporcionados.";
+                        return View("SeguirEnvio"); // Muestra la vista con mensaje
+                    }
                 }
                 else
                 {
-                    ViewBag.Message = "No se encontraron pedidos para los datos proporcionados.";
-                    return View("Pedidos", pedidos); // Muestra la vista con mensaje
+                    ViewBag.Message = "Error en la búsqueda. Por favor, verifica los datos e inténtalo de nuevo.";
+                    return View("SeguirEnvio"); // Muestra la vista con mensaje de error
                 }
             }
-
-            ModelState.AddModelError("", "Error al buscar los pedidos. Por favor, intenta nuevamente.");
-            return View("Pedidos"); // O una vista específica para errores
+            catch (HttpRequestException ex)
+            {
+                _logger.LogError(ex, "Error en la solicitud a la API");
+                ViewBag.Message = "No se pudo conectar con el servidor. Por favor, inténtelo de nuevo más tarde.";
+                return View("SeguirEnvio"); // Muestra la vista con mensaje de error
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error inesperado");
+                ViewBag.Message = "Ocurrió un error inesperado. Por favor, inténtelo de nuevo más tarde.";
+                return View("SeguirEnvio"); // Muestra la vista con mensaje de error
+            }
         }
 
         [Route("detalle-envio/{pedidoId}")]

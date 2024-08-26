@@ -2,16 +2,16 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-   
     Layout = "Layout";
+    ViewBag.Title = "Confirmación";
 }
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Confirmation</title>
-</head>
-<body>
-    <h1>¡Solicitud enviada correctamente!</h1>
-    <p>Gracias por contactarnos. Tu solicitud ha sido enviada con éxito.</p>
-</body>
-</html>
+
+<div class="container mt-4">
+    <div class="alert alert-success">
+        <h4 class="alert-heading">¡Solicitud enviada correctamente!</h4>
+        <p>Gracias por contactarnos. Tu solicitud ha sido enviada con éxito.</p>
+        <hr>
+        <p class="mb-0">Te responderemos lo antes posible. Si tienes más preguntas, no dudes en <a href="@Url.Action("Contacto", "Home")">contactarnos</a>.</p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-primary mt-3">Volver al Inicio</a>
+    </div>
+</div>
