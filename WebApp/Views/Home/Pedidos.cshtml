@@ -17,12 +17,15 @@
         <div class="row">
             @foreach (var pedido in Model.Items)
             {
+                @if (@pedido.estado != "Vendido")
+                {
                 <div class="col-md-4 mb-4">
                     <div class="card">
                         <div class="card-header bg-dark text-white">
                             <h5 class="card-title">Nro Pedido: @pedido.pedidoid</h5>
                         </div>
                         <div class="card-body">
+                           
                             <p><strong>Estado:</strong> @pedido.estado</p>
                             <p><strong>Fecha:</strong> @pedido.fecha?.ToString("dd/MM/yyyy HH:mm")</p>
                             <p><strong>Factura:</strong> @pedido.factura</p>
@@ -30,9 +33,11 @@
                             {
                                 <a href="@Url.Action("DetalleEnvio", new { pedidoId = pedido.pedidoid })" class="btn btn-primary">Ver Detalle de Envío</a>
                             }
+                            
                         </div>
                     </div>
                 </div>
+                }
             }
         </div>
     }

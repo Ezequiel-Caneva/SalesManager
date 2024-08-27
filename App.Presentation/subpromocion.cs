@@ -14,7 +14,7 @@ namespace App.Presentation
 {
     public partial class subpromocion : Form
     {
-        private readonly Uri _baseAddress = new Uri("https://localhost:7198/api");
+        private readonly Uri _baseAddress = new Uri("http://mototopAPI.somee.com/api");
         private readonly HttpClient _client;
         int _productoid;
         public subpromocion(int productoid)

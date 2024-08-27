@@ -60,7 +60,7 @@
             dgvSolicitudes.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new Font("Century Gothic", 11.25F);
             dataGridViewCellStyle1.ForeColor = Color.Black;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -76,7 +76,7 @@
             dgvSolicitudes.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Century Gothic", 9.75F);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = Color.SteelBlue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -84,13 +84,12 @@
             dgvSolicitudes.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvSolicitudes.RowHeadersVisible = false;
             dataGridViewCellStyle3.BackColor = Color.FromArgb(45, 66, 91);
-            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Century Gothic", 9.75F);
             dataGridViewCellStyle3.ForeColor = Color.White;
             dataGridViewCellStyle3.SelectionBackColor = Color.SteelBlue;
             dgvSolicitudes.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            dgvSolicitudes.RowTemplate.Height = 25;
             dgvSolicitudes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvSolicitudes.Size = new Size(720, 364);
+            dgvSolicitudes.Size = new Size(978, 510);
             dgvSolicitudes.TabIndex = 94;
             // 
             // solicitudid
@@ -148,7 +147,7 @@
             // txt6
             // 
             txt6.BackColor = Color.FromArgb(45, 66, 91);
-            txt6.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txt6.Font = new Font("Segoe UI", 12F);
             txt6.ForeColor = Color.White;
             txt6.Location = new Point(81, 0);
             txt6.Name = "txt6";

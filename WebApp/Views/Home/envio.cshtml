@@ -2,7 +2,7 @@
 
 @{
     Layout = "Layout";
-    ViewBag.Title = "Detalle del Envío";
+    ViewBag.Title = "";
 }
 
 <div class="container mt-4">
@@ -15,7 +15,7 @@
         <div class="card-body">
             <p><strong>Código de Seguimiento:</strong> @Model.codigoseguimiento</p>
             <p><strong>Fecha de Envío:</strong> @Model.fecha_envio.ToString("dd/MM/yyyy HH:mm")</p>
-            <p><strong>Fecha de Recepción:</strong> @Model.fecha_recepcion.ToString("dd/MM/yyyy HH:mm")</p>
+            <p><strong>Fecha de Recepción:</strong> @Model.fecha_recepcion.ToString("dd/MM/yyyy")</p>
             <p><strong>Empresa de Transporte:</strong> @Model.empresa_transporte</p>
         </div>
     </div>

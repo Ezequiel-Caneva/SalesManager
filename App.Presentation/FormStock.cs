@@ -16,7 +16,7 @@ namespace App.Presentation
 {
     public partial class FormStock : Form
     {
-        private readonly Uri _baseAddress = new Uri("https://localhost:7198/api");
+        private readonly Uri _baseAddress = new Uri("http://mototopAPI.somee.com/api");
         private readonly HttpClient _client;
         private int _currentItemsPerPage;
         private int _currentPage;
@@ -42,6 +42,18 @@ namespace App.Presentation
             cbRubro.DataSource = rubros;
             cbRubro.DisplayMember = "categoria";
             cbRubro.ValueMember = "rubroid";
+            // Configura el DataGridView al cargar el formulario
+            DataGridViewColumn pathColumn = dgvProducto.Columns["path"];
+
+            if (pathColumn != null)
+            {
+                // Fijar el ancho de la columna 'path'
+                pathColumn.Width = 150; // Cambia este valor según tu necesidad
+
+                // Configurar para que el texto se corte si es más largo que el ancho de la celda
+                pathColumn.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
+                pathColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
         }
 
 
@@ -302,8 +314,6 @@ namespace App.Presentation
                 DataGridViewRow selectedRow = dgvProducto.Rows[e.RowIndex];
                 if (mostrarProductos == true)
                 {
-
-
                     selectedRow.Selected = true;
                     _productoid = (int)selectedRow.Cells["productoid"].Value;
                     txtNombreProducto.Text = selectedRow.Cells["nombre"].Value.ToString();
@@ -320,7 +330,6 @@ namespace App.Presentation
                     }
                     else
                     {
-                        // Si el valor es nulo, puedes decidir qué hacer, por ejemplo, asignar una cadena vacía.
                         txtURL.Text = string.Empty;
                     }
                 }

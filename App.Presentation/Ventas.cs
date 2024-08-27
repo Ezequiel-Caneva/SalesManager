@@ -17,7 +17,7 @@ namespace App.Presentation
 {
     public partial class Ventas : Form
     {
-        private readonly Uri _baseAddress = new Uri("https://localhost:7198/api");
+        private readonly Uri _baseAddress = new Uri("http://mototopAPI.somee.com/api");
         private readonly HttpClient _client;
         private int _currentItemsPerPage;
         private int _currentPage;
